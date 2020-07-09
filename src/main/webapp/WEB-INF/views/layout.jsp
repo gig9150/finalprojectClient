@@ -10,7 +10,7 @@
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BLUEBOX</title>
+<title>MegaCinema</title>
 <link rel="icon" type="image/png" href="${cp}/resources/logo/logo.png" />
 <style>
 @import url(https://fonts.googleapis.com/css?family=PT+Sans:400,400i,700);
