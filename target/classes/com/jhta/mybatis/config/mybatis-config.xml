@@ -6,6 +6,7 @@
   <typeAliases>
   	<typeAlias type="com.jhta.project.vo.MembersVo" alias="members"/>
   	<typeAlias type="com.jhta.project.vo.ActorVo" alias="actor"/>
+  	<typeAlias type="com.jhta.project.vo.AllMoviesVo" alias="allMovies"/>
   	<typeAlias type="com.jhta.project.vo.AskVo" alias="ask"/>
   	<typeAlias type="com.jhta.project.vo.BookVo" alias="book"/>
   	<typeAlias type="com.jhta.project.vo.BranchVo" alias="branch"/>

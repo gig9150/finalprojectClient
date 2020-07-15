@@ -4,6 +4,21 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jhta.mybatis.mapper.film">
 	<select id="getinfo" parameterType="int" resultType="film">
-		select * from film where filmNum=#{filmNum} 
+		select *
+		from film where filmNum=#{filmNum}
+	</select>
+
+	<!-- 누적관객수별 영화명, 영화이미지, 누적관객수 -->
+	<select id="showAllMovies" resultType="allMovies">
+	<![CDATA[
+		select aa.*, m.movieimgUrl, (select sum(totalpeople) from total t where
+		aa.filmnum=t.filmnum) totalPeople
+			from
+			(
+				select filmName, filmNum from film where filmend>=sysdate
+			)aa, movieimg m
+		where m.filmNum= aa.filmNum
+		order by totalPeople desc
+	]]>
 	</select>
 </mapper>
