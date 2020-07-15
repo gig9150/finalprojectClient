@@ -5,7 +5,7 @@
 <head>
 <style>
 	#inquiry_wrap{
-		border: 1px solid red;
+		border: 1px solid gray;
 		width: 50%;
 		height: 100%;
 		margin: auto;
@@ -23,7 +23,7 @@
 			<li><a href="#"><span>쿠폰함</span></a></li>
 			<li><a href="#"><span>내가 본 영화</span></a></li>
 			<li><a href="${cp }/mypage/inquiry.do"><span>1:1문의</span></a></li>
-			<li><a href="#"><span>MY 정보 관리</span></a></li>
+			<li><a href="${cp }/mypage/memberInfo.do"><span>회원정보관리</span></a></li>
 		</ul>
 	</div>
 </div>

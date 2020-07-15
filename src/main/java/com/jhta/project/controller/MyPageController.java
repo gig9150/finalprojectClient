@@ -18,10 +18,13 @@ public class MyPageController {
 	@Autowired
 	private AskService askService;
 	
+	//결제 내역,예매 내역
 	@RequestMapping("/mypage/payment.do")
 	public String payment() {
 		return ".mypage.payment";
 	}
+	
+	//1:1문의
 	@RequestMapping("/mypage/inquiry.do")
 	public String askList(@RequestParam(value="pageNum",defaultValue = "1")int pageNum,Model model) {
 		int totalRowCount=askService.count();
@@ -33,7 +36,23 @@ public class MyPageController {
 		model.addAttribute("list", list);
 		model.addAttribute("pu",pu);
 		return ".mypage.inquiry";
-		
+	}
+	
+	//회원정보관리
+	@RequestMapping("/mypage/memberInfo.do")
+	public String memberInfo(){
+		return ".mypage.memberInfo";
 	}
 	
 }
+
+
+
+
+
+
+
+
+
+
+

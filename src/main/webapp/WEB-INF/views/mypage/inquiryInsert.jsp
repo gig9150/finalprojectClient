@@ -5,7 +5,7 @@
 <head>
 <style>
 	#inquiry_wrap{
-		border: 1px solid red;
+		border: 1px solid gray;
 		width: 50%;
 		height: 100%;
 		margin: auto;
