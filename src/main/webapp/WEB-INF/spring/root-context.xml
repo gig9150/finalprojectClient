@@ -32,8 +32,8 @@
 	</bean>
 
 	<context:component-scan
-		base-package="com.jhta.project.controller">
+		base-package="com.jhta.project">
 		<context:exclude-filter type="annotation"
-			expression="org.springframework.web.bind.annotation.RestController" />
+			expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
 </beans>
