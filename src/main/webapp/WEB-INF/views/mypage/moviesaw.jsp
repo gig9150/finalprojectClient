@@ -38,7 +38,10 @@
 			<span>0편</span>
 		</div>
 		<c:forEach items="${list }" var="list">
-			
+			<div>
+				<img src="${cp }/resources/images/images/001.jpg"/>
+				
+			</div>
 		</c:forEach>
 	</div>
 </div>
