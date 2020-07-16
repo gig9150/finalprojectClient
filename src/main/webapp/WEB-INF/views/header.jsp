@@ -8,8 +8,8 @@
 	      		<li><a href="">고객센터</a></li>
 	      	</ul>
 		    <ul class="top-menu-two">
-		      <li><a href="">로그인</a></li>
-		      <li><a href="">회원가입</a></li>
+		      <li><a href="${cp }/log/login.do">로그인</a></li>
+		      <li><a href="${cp }/log/signupstart.do">회원가입</a></li>
 		      <li><a href="${cp }/mypage/payment.do">마이페이지</a></li>
 		    </ul>
 	  </div>
