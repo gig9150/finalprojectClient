@@ -41,6 +41,7 @@ public class AllMoviesVo {
 	public void setTotalPeople(int totalPeople) {
 		this.totalPeople = totalPeople;
 	}
+
 	
 	
 }

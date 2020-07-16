@@ -18,8 +18,10 @@ public class MovieList {
 	public String showAllMovies(Model model){
 		System.out.println("CONTROLLERÅº´Ù");
 		List<AllMoviesVo> allMovieList=movieListService.showAllMovies();
+		System.out.println(allMovieList.get(0).getFilmName()+"11111111");
+		System.out.println(allMovieList.get(1).getFilmName()+"222222");
 		model.addAttribute("allMovieList", allMovieList);
-		System.out.println(allMovieList+"---------");
 		return ".movie.showMovies";
 	}
 }
+ 

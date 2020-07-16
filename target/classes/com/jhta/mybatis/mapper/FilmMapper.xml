@@ -21,4 +21,17 @@
 		order by totalPeople desc
 	]]>
 	</select>
+
+	<select id="showMoviesByReview" resultType="">
+	<![CDATA[
+		select bb.*, m.movieimgUrl, nvl((select count(mreviewnum) from mreview mr where
+		bb.filmnum=mr.filmnum group by filmnum),0) countreview
+			from
+			(
+				select filmName, filmNum from film where filmend>=sysdate
+			)bb, movieimg m
+		where m.filmNum= bb.filmNum
+		order by countreview desc
+	]]>
+	</select>
 </mapper>
