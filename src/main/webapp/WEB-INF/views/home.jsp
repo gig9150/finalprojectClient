@@ -30,7 +30,6 @@
           </p>
           <a href ="#">Read more</a>
         </div>
-
         <div class="box">
           <h2>Social Media</h2>
           <div class="icon-box">

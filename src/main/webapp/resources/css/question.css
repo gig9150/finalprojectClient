@@ -1,0 +1,96 @@
+@charset "UTF-8";
+/* 문의사항 */
+.radio{
+	display: inline-block;
+}
+.service-content > div > li{
+	margin-bottom:10px
+}
+.question-btn{ 
+    display: inline-block;
+    height: 36px;
+    margin: 0;
+    padding: 0 15px;
+    text-align: center;
+    line-height: 34px;
+    color: #503396;
+    font-weight: 400;
+    border-radius: 4px;
+    text-decoration: none;
+    border: 1px solid #503396;
+    vertical-align: middle;
+    background-color: #503396;
+    cursor: pointer;
+}
+.question-btn:hover{
+    background-color: #351f67;
+}
+
+.question-btn:active,
+.question-btn:focus, 
+.question-btn:hover,
+.question-btn:visited {
+    color: #fff;
+    text-decoration: none;
+}
+
+.question-button{
+	position: relative;
+    left: 750px;
+    bottom: 55px;
+}
+.question-div{
+	width: 950px;
+    position: relative;
+    right: 35px;
+    border-top:2px double gray;
+    border-bottom:2px double gray;
+    padding: 20px 0;
+    margin-top:30px;
+    margin-bottom:30px;
+}
+.agree-span{
+	color:red;
+	padding-left:10px;
+}
+.row{
+	border-bottom:1px solid #d1d5dd;
+	padding-top:10px;
+}
+.row.text-right{
+	padding-bottom:10px;
+}
+.form-control.street{
+	width: 20%;
+    display: inline-block;
+    margin: 0 20px 0 20px;
+}
+dl{
+	margin:0;
+	padding:0;
+	box-sizing: border-box;
+}
+dt{
+	position: relative;
+    padding: 0 30px;
+    border-bottom: 1px solid #d8d9db;
+    height: 50px;
+    line-height: 48px;
+}
+dd{
+	padding: 30px;
+}
+.agree-box{
+	border: 1px solid #d8d9db;
+    border-radius: 10px;
+    width: 900px;
+    position:relative;
+    right:20px;
+}
+.btn-lg{
+	background-color:#503396;
+	border-color: #503396;
+}
+.checkbox{
+	display:inline-block;
+}
