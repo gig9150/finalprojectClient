@@ -1,0 +1,71 @@
+내가 관람한 영화 쿼리       MovieSawVo
+select mo.movieimgurl movieimgurl, f.filmname filmname, ms.mstarttime mstarttime,t.theathername theathername, br.brname brname
+from membership m, charge c, book b, mschedule ms, theather t , branch br , purchasefilm p, film f, movieimg mo
+where m.memnum=c.memnum and c.chargenum=b.chargenum and b.mschedulenum=ms.mschedulenum and t.theathernum=ms.theathernum and
+t.branchnum=br.branchnum and p.purchasefilmnum=ms.purchasefilmnum and p.filenum=f.filmnum and f.filmnum=mo.filmnum and
+m.memnum=122(#{memnum})
+
+관람한 영화 카운트          BookDetailsVo
+select count(book.booknum) from (
+    select chargenum chargenum
+    from charge charge
+    where memnum=21
+)charge, book book
+
+예매내역
+select mo.movieimgurl 이미지경로, f.filmname 영화명, ms.mstarttime 상영시작시간,t.theathername 상영관명, br.brname 지점명,s.seatname 좌석,c.chregdate 결제일시, c.totalbill 주문금액
+from membership m, charge c, book b, mschedule ms, theather t , branch br , purchasefilm p, film f, movieimg mo, seat s
+where m.memnum=c.memnum and c.chargenum=b.chargenum and b.mschedulenum=ms.mschedulenum and t.theathernum=ms.theathernum and
+t.branchnum=br.branchnum and p.purchasefilmnum=ms.purchasefilmnum and p.filenum=f.filmnum and f.filmnum=mo.filmnum and
+s.seatnum=b.seatnum and m.memnum=122
+
+
+-------------------------------------------------------------------------------
+--회원
+insert into membership values(memnum.nextval,'최성진','choi','1234','01012124545','950101-1','choi@test.com','브론즈',sysdate);
+select * from membership;
+
+--결제
+insert into charge values(chargenum.nextval,122,0,'카드','회원',sysdate,'010',20000);
+select * from charge;
+
+--장르
+insert into genre values(genrenum.nextval,'드라마');
+select * from genre;
+
+--영화
+insert into film values(filmnum.nextval,'반도','줄거리',sysdate,'2020-08-01',100000000,'김감독','상영중',3);
+select * from film;
+
+--영화 이미지
+insert into movieimg values(movieImgNum.nextval,'이미지경로',21);
+select * from movieimg;
+
+--지점 요청 시퀀스
+insert into proposal values(proposalnum.nextval,'sung','종로','목적','중','영업중');
+select * from proposal;
+
+--지점 테이블
+insert into branch values(branchnum.nextval,1,'피카다리','최성진','영업중','2020-07-15');
+select * from branch;
+
+--영화상영권구매
+insert into purchasefilm values(purchasefilmnum.nextval,'2020-08-01',sysdate,21,21);
+select * from purchasefilm;
+
+--상영관테이블
+insert into theather values(theathernum.nextval,21,'3관');
+select * from theather;
+
+--영화상영스케줄
+insert into mschedule values(mschedulenum.nextval,'20:30',1,21);
+select * from mschedule;
+
+--좌석
+insert into seat values(seatnum.nextval,21,5,5,0);
+select * from seat;
+
+--예약테이블
+insert into book values(booknum.nextval,'예매완료',1,41,101);
+select * from book;
+

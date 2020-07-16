@@ -25,8 +25,8 @@
 			<li><a href="${cp }/mypage/inquiry.do"><span>1:1문의</span></a></li>
 			<li><a href="${cp }/mypage/memberInfo.do"><span>회원정보관리</span></a></li>
 		</ul>
+	<h1>쿠폰함</h1>
 	</div>
-	<h1>예매 내역</h1>
 </div>
 </body>
 </html>

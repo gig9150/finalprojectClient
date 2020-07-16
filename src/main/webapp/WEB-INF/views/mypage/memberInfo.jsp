@@ -33,8 +33,8 @@
 	<div id="mypage_top_menu">
 		<ul>
 			<li><a href="${cp }/mypage/payment.do"><span>결제내역</span></a></li>
-			<li><a href="#"><span>쿠폰함</span></a></li>
-			<li><a href="#"><span>내가 본 영화</span></a></li>
+			<li><a href="${cp }/mypage/cupon.do"><span>쿠폰함</span></a></li>
+			<li><a href="${cp }/mypage/moviesaw.do"><span>내가 본 영화</span></a></li>
 			<li><a href="${cp }/mypage/inquiry.do"><span>1:1문의</span></a></li>
 			<li><a href="${cp }/mypage/memberInfo.do"><span>회원정보관리</span></a></li>
 		</ul>
@@ -43,25 +43,25 @@
 		<ul>
 			<li>
 				<a href="#">
-					<span><img src="${cp }/resources/images/user.png" alt=""></span>
+					<span><img src="${cp }/resources/images/mypage/user.png" alt=""></span>
 					<span>회원 정보 변경</span>
 				</a>
 			</li>
 			<li>
 				<a href="#">
-					<span><img src="${cp }/resources/images/pwd.png" alt=""></span>
+					<span><img src="${cp }/resources/images/mypage/pwd.png" alt=""></span>
 					<span>비밀번호 변경</span>
 				</a>
 			</li>
 			<li>
 				<a href="#">
-					<span><img src="${cp }/resources/images/profile.png" alt=""></span>
+					<span><img src="${cp }/resources/images/mypage/profile.png" alt=""></span>
 					<span>프로필 변경</span>
 				</a>
 			</li>
 			<li>
 				<a href="#">
-					<span><img src="${cp }/resources/images/secession.png" alt=""></span>
+					<span><img src="${cp }/resources/images/mypage/secession.png" alt=""></span>
 					<span>회원탈퇴</span>
 				</a>
 			</li>

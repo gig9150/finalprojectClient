@@ -7,6 +7,7 @@
   	<typeAlias type="com.jhta.project.vo.MembersVo" alias="members"/>
   	<typeAlias type="com.jhta.project.vo.ActorVo" alias="actor"/>
   	<typeAlias type="com.jhta.project.vo.AskVo" alias="ask"/>
+  	<typeAlias type="com.jhta.project.vo.BookDetailsVo" alias="bookdetails"/>
   	<typeAlias type="com.jhta.project.vo.BookVo" alias="book"/>
   	<typeAlias type="com.jhta.project.vo.BranchVo" alias="branch"/>
   	<typeAlias type="com.jhta.project.vo.BrInfoVo" alias="brinfo"/>
@@ -21,6 +22,7 @@
   	<typeAlias type="com.jhta.project.vo.MileVo" alias="mile"/>
   	<typeAlias type="com.jhta.project.vo.MissingVo" alias="missing"/>
   	<typeAlias type="com.jhta.project.vo.MovieImgVo" alias="movieimg"/>
+  	<typeAlias type="com.jhta.project.vo.MovieSawVo" alias="moviesaw"/>
   	<typeAlias type="com.jhta.project.vo.MReviewVo" alias="mreview"/>
   	<typeAlias type="com.jhta.project.vo.MScheduleVo" alias="mschedule"/>
   	<typeAlias type="com.jhta.project.vo.ProposalVo" alias="proposal"/>
@@ -55,6 +57,7 @@
     <mapper resource="com/jhta/mybatis/mapper/MileMapper.xml"/>
     <mapper resource="com/jhta/mybatis/mapper/MissingMapper.xml"/>
     <mapper resource="com/jhta/mybatis/mapper/MovieImgMapper.xml"/>
+    <mapper resource="com/jhta/mybatis/mapper/MovieSawMapper.xml"/>
     <mapper resource="com/jhta/mybatis/mapper/MReviewMapper.xml"/>
     <mapper resource="com/jhta/mybatis/mapper/MScheduleMapper.xml"/>
     <mapper resource="com/jhta/mybatis/mapper/ProposalMapper.xml"/>

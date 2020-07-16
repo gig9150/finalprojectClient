@@ -10,18 +10,36 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.jhta.project.service.AskService;
+import com.jhta.project.service.MovieSawService;
 import com.jhta.project.vo.AskVo;
+import com.jhta.project.vo.MovieSawVo;
 import com.jtha.util.PageUtil;
 
 @Controller
 public class MyPageController {
 	@Autowired
 	private AskService askService;
+	@Autowired
+	private MovieSawService movieSawService;
 	
 	//결제 내역,예매 내역
 	@RequestMapping("/mypage/payment.do")
 	public String payment() {
 		return ".mypage.payment";
+	}
+	
+	//쿠폰함
+	@RequestMapping("/mypage/cupon.do")
+	public String cupon() {
+		return ".mypage.cupon";
+	}
+	
+	//내가 본 영화
+	@RequestMapping("/mypage/moviesaw.do")
+	public String moviesaw(Model model) {
+		List<MovieSawVo> list=movieSawService.moviesawList(122);
+		model.addAttribute("list",list);
+		return ".mypage.moviesaw";
 	}
 	
 	//1:1문의
@@ -43,6 +61,7 @@ public class MyPageController {
 	public String memberInfo(){
 		return ".mypage.memberInfo";
 	}
+	
 	
 }
 

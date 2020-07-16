@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jhta.mybatis.mapper.moviesaw">
+	<select id="moviesawList" resultType="moviesaw" parameterType="int">
+		select m.memnum memnum, f.filmnum filmnum, b.booknum booknum, mo.movieimgurl movieimgurl, f.filmname filmname, ms.mstarttime mstarttime,t.theathername theathername, br.brname brname
+from membership m, charge c, book b, mschedule ms, theather t , branch br , purchasefilm p, film f, movieimg mo
+where m.memnum=c.memnum and c.chargenum=b.chargenum and b.mschedulenum=ms.mschedulenum and t.theathernum=ms.theathernum and
+t.branchnum=br.branchnum and p.purchasefilmnum=ms.purchasefilmnum and p.filenum=f.filmnum and f.filmnum=mo.filmnum and
+		m.memnum=${memNum}
+	</select>
+</mapper>
