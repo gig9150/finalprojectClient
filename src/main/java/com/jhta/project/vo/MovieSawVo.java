@@ -1,52 +1,24 @@
 package com.jhta.project.vo;
 
 public class MovieSawVo {
-	private int memnum;
-	private int filmnum;
-	private int booknum;
 	private String movieimgurl;
 	private String filmname;
 	private String mstarttime;
 	private String theathername;
 	private String brname;
+	private String mreview;
 	
 	public MovieSawVo() {}
 
-	public MovieSawVo(int memnum, int filmnum, int booknum, String movieimgurl, String filmname, String mstarttime,
-			String theathername, String brname) {
+	public MovieSawVo(String movieimgurl, String filmname, String mstarttime, String theathername, String brname,
+			String mreview) {
 		super();
-		this.memnum = memnum;
-		this.filmnum = filmnum;
-		this.booknum = booknum;
 		this.movieimgurl = movieimgurl;
 		this.filmname = filmname;
 		this.mstarttime = mstarttime;
 		this.theathername = theathername;
 		this.brname = brname;
-	}
-
-	public int getMemnum() {
-		return memnum;
-	}
-
-	public void setMemnum(int memnum) {
-		this.memnum = memnum;
-	}
-
-	public int getFilmnum() {
-		return filmnum;
-	}
-
-	public void setFilmnum(int filmnum) {
-		this.filmnum = filmnum;
-	}
-
-	public int getBooknum() {
-		return booknum;
-	}
-
-	public void setBooknum(int booknum) {
-		this.booknum = booknum;
+		this.mreview = mreview;
 	}
 
 	public String getMovieimgurl() {
@@ -87,6 +59,14 @@ public class MovieSawVo {
 
 	public void setBrname(String brname) {
 		this.brname = brname;
+	}
+
+	public String getMreview() {
+		return mreview;
+	}
+
+	public void setMreview(String mreview) {
+		this.mreview = mreview;
 	}
 
 }

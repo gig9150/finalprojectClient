@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,7 +26,39 @@
 			<li><a href="${cp }/mypage/inquiry.do"><span>1:1문의</span></a></li>
 			<li><a href="${cp }/mypage/memberInfo.do"><span>회원정보관리</span></a></li>
 		</ul>
-	<h1>쿠폰함</h1>
+	</div>
+	<div>
+		<table class="table">
+		  <thead>
+			<tr>
+				<th>구분</th>
+				<th>쿠폰명</th>
+				<th>유효기간</th>
+				<th>쿠폰상태</th>
+			</tr>
+		  </thead>
+		  <tbody>
+			<c:forEach items="${list }" var="vo">
+				<tr>
+					<td>${vo.cSort }</td>
+					<td>${vo.cName }</td>
+					<tD>${vo.cuponStart } ~ ${vo.cuponEnd }</td>
+					<tD>${vo.cuponStatus }</td>
+				</tr>
+			</c:forEach>
+			<c:if test="${empty list}">
+				<tr>
+					<td colspan="4">
+						<div id="inquiry_div">
+							<img src="${cp }/resources/images/mypage/inquiry.png"/>
+							<p>사용 가능한 쿠폰이 없습니다.</p>
+						</div>
+					</td>
+				</tr>
+			</c:if>	
+		  </tbody>
+		</table>
+		<input type="button" value="펼쳐보기 Ⅴ" style="width: 100%; background-color: #ffffff; border: 1px solid #ECECEC;">
 	</div>
 </div>
 </body>

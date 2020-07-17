@@ -6,4 +6,16 @@
 	<select id="getinfo" parameterType="int" resultType="cupon">
 		select * from cupon where cuponNum=#{cuponNum} 
 	</select>
+	<select id="list" resultType="cupon">
+	<![CDATA[
+		select * from (
+		    select aa.*,rownum from(
+		        select c.cuponnum, c.cname, to_char(c.cuponstart, 'yyyy-mm-dd') cuponstart, to_char(c.cuponend, 'yyyy-mm-dd') cuponend, c.csort, c.memnum, c.cuponrate, c.cuponstatus
+		        from cupon c
+		        ORDER BY cuponstart DESC,cuponend ASC,cuponstatus ASC
+		    )aa
+		)
+		where rownum<11
+	]]>
+	</select>
 </mapper>

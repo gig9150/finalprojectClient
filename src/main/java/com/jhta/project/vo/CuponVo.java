@@ -6,23 +6,27 @@ public class CuponVo {
 	private int cuponNum;
 	private String cuponStatus;
 	private String cName;
-	private Date cuponStart;
-	private Date cuponEnd;
+	private String cuponStart;
+	private String cuponEnd;
+	private String cSort;
 	private int memNum;
 	private int cuponRate;
-	public CuponVo(int cuponNum, String cuponStatus, String cName, Date cuponStart, Date cuponEnd, int memNum,
-			int cuponRate) {
+	
+	public CuponVo() {
+		super();
+	}
+	
+	public CuponVo(int cuponNum, String cuponStatus, String cName, String cuponStart, String cuponEnd, String cSort,
+			int memNum, int cuponRate) {
 		super();
 		this.cuponNum = cuponNum;
 		this.cuponStatus = cuponStatus;
 		this.cName = cName;
 		this.cuponStart = cuponStart;
 		this.cuponEnd = cuponEnd;
+		this.cSort = cSort;
 		this.memNum = memNum;
 		this.cuponRate = cuponRate;
-	}
-	public CuponVo() {
-		super();
 	}
 	public int getCuponNum() {
 		return cuponNum;
@@ -42,17 +46,23 @@ public class CuponVo {
 	public void setcName(String cName) {
 		this.cName = cName;
 	}
-	public Date getCuponStart() {
+	public String getCuponStart() {
 		return cuponStart;
 	}
-	public void setCuponStart(Date cuponStart) {
+	public void setCuponStart(String cuponStart) {
 		this.cuponStart = cuponStart;
 	}
-	public Date getCuponEnd() {
+	public String getCuponEnd() {
 		return cuponEnd;
 	}
-	public void setCuponEnd(Date cuponEnd) {
+	public void setCuponEnd(String cuponEnd) {
 		this.cuponEnd = cuponEnd;
+	}
+	public String getcSort() {
+		return cSort;
+	}
+	public void setcSort(String cSort) {
+		this.cSort = cSort;
 	}
 	public int getMemNum() {
 		return memNum;

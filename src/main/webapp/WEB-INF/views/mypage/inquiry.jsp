@@ -67,7 +67,7 @@
 				<tr>
 					<td colspan="4">
 						<div id="inquiry_div">
-							<img src="${cp }/resources/images/inquiry.png"/>
+							<img src="${cp }/resources/images/mypage/inquiry.png"/>
 							<p>문의 내역이 존재하지 않습니다.</p>
 						</div>
 					</td>

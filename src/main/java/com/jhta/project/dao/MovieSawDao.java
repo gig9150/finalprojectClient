@@ -17,5 +17,8 @@ public class MovieSawDao {
 	public List<MovieSawVo> moviesawList(int memNum){
 		return session.selectList(NAMESPASE+".moviesawList",memNum);
 	}
+	public int movieCount(){
+		return session.selectOne(NAMESPASE+".movieCount");
+	}
 
 }
