@@ -35,6 +35,9 @@
 
         <div class='menu-group'>
           <a href="#">예매</a>
+           <div class="sub-menu">
+	          <a href="${cp }/buy/screen/selected.do">테스트용</a>
+          </div>
         </div>
         <div class='menu-group'>
           <a href="#">영화</a>
