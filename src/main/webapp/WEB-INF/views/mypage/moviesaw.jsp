@@ -117,22 +117,22 @@
 					<div id="btn_box">
 						<c:choose>
 							<c:when test="${list.mreview == '관람평을 작성해보세요.'}">
-								<input type="button" value="관람평등록" data-toggle="modal" data-target="#myModal">
+								<input type="button" value="관람평등록" data-toggle="modal" data-target="#reviewAdd">
 							</c:when>
 							<c:otherwise>
-								<input type="button" value="관람평수정" data-toggle="modal" data-target="#myModal">
+								<input type="button" value="관람평수정" data-toggle="modal" data-target="#reviewUpdate">
 							</c:otherwise>
 						</c:choose>
 						
 						<!-- Modal -->
-						  <div class="modal fade" id="myModal" role="dialog">
+						  <div class="modal fade" id="reviewAdd" role="dialog">
 						    <div class="modal-dialog">
 						    
 						      <!-- Modal content-->
 						      <div class="modal-content">
 						        <div class="modal-header">
 						          <button type="button" class="close" data-dismiss="modal">&times;</button>
-						          <h4 class="modal-title">Modal Header</h4>
+						          <h4 class="modal-title">관람평 등록</h4>
 						        </div>
 						        <div class="modal-body">
 						          <p>Some text in the modal.</p>
@@ -141,7 +141,26 @@
 						          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 						        </div>
 						      </div>
-						      
+						    </div>
+						   </div>
+						   
+						 <!-- Modal -->
+						   <div class="modal fade" id="reviewUpdate" role="dialog">
+						    <div class="modal-dialog">
+						    
+						      <!-- Modal content-->
+						      <div class="modal-content">
+						        <div class="modal-header">
+						          <button type="button" class="close" data-dismiss="modal">&times;</button>
+						          <h4 class="modal-title">관람평 수정</h4>
+						        </div>
+						        <div class="modal-body">
+						          <p>Some text in the modal.</p>
+						        </div>
+						        <div class="modal-footer">
+						          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						        </div>
+						      </div>
 						    </div>
 						   </div>
 					</div>
