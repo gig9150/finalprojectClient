@@ -12,7 +12,6 @@
 			<li><a href="">공지사항</a><span>></span></li>
 			<li><a href="${cp}/service/questionBoard.do">1:1문의</a><span>></span></li>
 			<li><a href="">대관 문의</a><span>></span></li>
-			<li><a href="">지점 신청</a><span>></span></li>
 			<li><a href="">분실문 문의</a><span>></span></li>
 		</ul>
 		<div class="customer-div">

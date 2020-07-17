@@ -20,5 +20,5 @@ public class HomeController {
 		String cp=session.getServletContext().getContextPath();
 		session.getServletContext().setAttribute("cp",cp);
 		return ".main";
-	}	
+	}
 }

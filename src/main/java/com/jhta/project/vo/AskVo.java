@@ -1,5 +1,6 @@
 package com.jhta.project.vo;
 
+
 public class AskVo {
 	private int askNum;
 	private int memNum;

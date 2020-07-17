@@ -9,6 +9,7 @@
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="https://sgisapi.kostat.go.kr/OpenAPI3/auth/javascriptAuth?consumer_key=9eab37aa8a4742fb8e60"></script>
 <link href="${cp}/resources/css/layout.css" rel="stylesheet">
 <link href="${cp}/resources/css/service.css" rel="stylesheet">
 <link href="${cp}/resources/css/question.css" rel="stylesheet">

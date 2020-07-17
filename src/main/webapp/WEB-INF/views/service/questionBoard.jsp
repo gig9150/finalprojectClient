@@ -13,7 +13,6 @@
 			<li class="on"><a href="${cp}/service/questionBoard.do">1:1문의</a><span
 				class="on">></span></li>
 			<li><a href="">대관 문의</a><span>></span></li>
-			<li><a href="">지점 신청</a><span>></span></li>
 			<li><a href="">분실문 문의</a><span>></span></li>
 		</ul>
 		<div class="customer-div">
@@ -80,8 +79,8 @@
 					<div class="col-xs-6 form-group">
 						<label for="postal"> 문의사항 </label><br> <label><input
 							type="radio" id="postal" name="postal" class="radio">지점문의</label>
-						<select class="form-control input-sm" disabled="disabled"><option>지역선택</option></select>
-						<select class="form-control input-sm" disabled="disabled"><option>극장선택</option></select><br>
+						<select class="form-control input-sm" disabled="disabled" id="postal-select1"><option>지역선택</option></select>
+						<select class="form-control input-sm" disabled="disabled" id="postal-select2"><option>극장선택</option></select><br>
 						<label><input type="radio" id="postal" name="postal" class="radio">
 						기타문의</label>
 						<select class="form-control input-sm" disabled="disabled">

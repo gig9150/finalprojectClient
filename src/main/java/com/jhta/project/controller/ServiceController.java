@@ -16,4 +16,9 @@ public class ServiceController {
 	public String goQuestionBoard() {
 		return ".service.questionBoard";
 	}
+	
+	@RequestMapping("/service/branchApplyBoard.do")
+	public String goApplyBoard() {
+		return ".service.branchApplyBoard";
+	}
 }

@@ -8,7 +8,7 @@
             <a href="#">Services</a>
             <a href="#">Works</a>
             <a href="#">Blog</a>
-            <a href="#">Contact us</a>
+            <a href="${cp}/service/branchApplyBoard.do">지점 신청 문의</a>
           </nav>
 
         <div class="social-icons">
