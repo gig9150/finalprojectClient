@@ -1,13 +1,22 @@
 @charset "UTF-8";
 
 #signwarp {
-	
 	width: 1271px;
 	height: 637px;
 	margin-left: 336px;
 }
-.form{
+
+.form-group {
+	height: 85px;
+	margin-bottom: -5px;
+}
+
+.form {
 	margin-top: 42px;
+}
+.chek_font{
+	color: red;
+	font-weight: bold;
 }
 #birth {
 	width: 125px;
@@ -30,6 +39,11 @@
 	padding: 5%;
 	border: 1px solid #ced4da;
 	margin-bottom: 2%;
+}
+
+.col-md-6 {
+	width: 430px;
+	height: 169px;
 }
 
 .form-control {
