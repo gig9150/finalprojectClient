@@ -74,6 +74,51 @@
 		padding: 10px;
 	    font-size: 26px;
 	}
+	.modal-header .modal-title{
+		text-align: center;
+		display: inline-block;
+	}
+	.modal-header .cloas{
+		display: inline-block;
+		text-align: right;
+	}
+	.starR{
+	  background: url('http://miuu227.godohosting.com/images/icon/ico_review.png') no-repeat right 0;
+	  background-size: auto 100%;
+	  width: 30px;
+	  height: 30px;
+	  display: inline-block;
+	  text-indent: -9999px;
+	  cursor: pointer;
+	}
+	.starR.on{background-position:0 0;}
+	.starRev{
+		text-align: center;
+		padding: 10px 0 15px;
+	}
+	.modal-body{
+		text-align: center;
+	}
+	.modal-body .review_content{
+		width: 100%;
+	    box-sizing: border-box;
+	    border: 1px solid #DDD;
+	    resize: none;
+	    font-size: 2em;
+	    border-radius: 4px;
+	    padding: 13px 18px;
+	}
+	.modal-body #score{
+		margin-right: 5px;
+    	font-size: 38px;
+	}
+	.modal-body #score span{
+		font-size: 17px;
+	}
+	#modal-movie-tit{
+		font-size: 22px;
+	}
+	
 </style>
 <link rel="stylesheet" href="${cp }/resources/css/mypage/mypage_top_menu.css" type="text/css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -108,7 +153,7 @@
 					<div id="detail_info">
 						<span id="txt">${list.brname }  ${list.theathername }</span><br>
 						<span id="txt time">${list.mstarttime }</span><br>
-						<span id="txt">관람 인원 2명</span><br>
+						<span id="txt">관람 인원 ${list.userCount }명</span><br>
 					</div>
 					<dl id="review_box">
 						<dt>My Review</dt>
@@ -123,46 +168,83 @@
 								<input type="button" value="관람평수정" data-toggle="modal" data-target="#reviewUpdate">
 							</c:otherwise>
 						</c:choose>
+						<input type="button" value="삭제" onclick="alert('${list.filmnum}')">
 						
 						<!-- Modal -->
+						<!-- 리뷰 등록 -->
 						  <div class="modal fade" id="reviewAdd" role="dialog">
 						    <div class="modal-dialog">
 						    
 						      <!-- Modal content-->
 						      <div class="modal-content">
+						      <input type="text" value=${list.filmnum } id="modal_filmnum">
+						      <input type="text" value=${list.booknum } id="modal_booknum">
 						        <div class="modal-header">
-						          <button type="button" class="close" data-dismiss="modal">&times;</button>
 						          <h4 class="modal-title">관람평 등록</h4>
+						          <button type="button" class="close" data-dismiss="modal">&times;</button>
 						        </div>
 						        <div class="modal-body">
-						          <p>Some text in the modal.</p>
+						        	<strong id="modal-movie-tit">${list.filmname }</strong>
+							        	<div class="starRev">
+						        		 <h4 id="score">10<span></span></h4>
+										  <span class="starR on">1</span>
+										  <span class="starR on">2</span>
+										  <span class="starR on">3</span>
+										  <span class="starR on">4</span>
+										  <span class="starR on">5</span>
+										  <span class="starR on">6</span>
+										  <span class="starR on">7</span>
+										  <span class="starR on">8</span>
+										  <span class="starR on">9</span>
+										  <span class="starR on">10</span>
+										</div>
+						        	<textarea rows="5" cols="20" class="review_content" id="review_insert" placeholder="평점 및 영화 리뷰를 작성해주세요."></textarea>
 						        </div>
 						        <div class="modal-footer">
-						          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						          <button type="button" class="btn btn-default" data-dismiss="modal" id="reviewInsert">확인</button>
+						          <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
 						        </div>
 						      </div>
 						    </div>
 						   </div>
-						   
+						   <!-- //////////////////////////////////////////////////////////////////////////////////  -->
 						 <!-- Modal -->
+						 <!-- 리뷰 수정 -->
 						   <div class="modal fade" id="reviewUpdate" role="dialog">
 						    <div class="modal-dialog">
-						    
 						      <!-- Modal content-->
 						      <div class="modal-content">
+						      <input type="text" value=${list.filmnum } id="modal_filmnum">
+						      <input type="text" value=${list.booknum } id="modal_booknum">
 						        <div class="modal-header">
 						          <button type="button" class="close" data-dismiss="modal">&times;</button>
 						          <h4 class="modal-title">관람평 수정</h4>
 						        </div>
 						        <div class="modal-body">
-						          <p>Some text in the modal.</p>
+						        	<strong id="modal-movie-tit">${list.filmname }</strong>
+							        	<div class="starRev">
+						        		 <h4 id="score">10<span></span></h4>
+										  <span class="starR on">1</span>
+										  <span class="starR on">2</span>
+										  <span class="starR on">3</span>
+										  <span class="starR on">4</span>
+										  <span class="starR on">5</span>
+										  <span class="starR on">6</span>
+										  <span class="starR on">7</span>
+										  <span class="starR on">8</span>
+										  <span class="starR on">9</span>
+										  <span class="starR on">10</span>
+										</div>
+						        	<textarea rows="5" cols="20" class="review_content" id="review_Update">${list.mreview }</textarea>
 						        </div>
 						        <div class="modal-footer">
-						          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						          <button type="button" class="btn btn-default" data-dismiss="modal" id="reviewInsert">확인</button>
+						          <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
 						        </div>
 						      </div>
 						    </div>
 						   </div>
+						   <!-- //////////////////////////////////////////////////////////////////////////////////  -->
 					</div>
 				</div>
 			</li>
@@ -176,10 +258,50 @@
 <script type="text/javascript" src="${cp }/resources/js/jquery-3.5.1.js"></script>
 <script type="text/javascript">
 	$(function(){
-		/* $("#reviewAdd").click(function(){
-			alert("모달 띄울 예정");
-		}); */
+		$('.starRev span').click(function(){
+		  $(this).parent().children('span').removeClass('on');
+		  $(this).addClass('on').prevAll('span').addClass('on');
+		  $("#score").text($(this).text());
+		  return false;
+		});
+		$('#reviewInsert').click(function(){
+			var mScore=$("#score").text();
+			var rContent=$("#review_insert").val();
+			var filmnum=$("#modal_filmnum").val();
+			var booknum=$("#modal_booknum").val();
+			$.ajax({
+				url:"${cp}/mypage/reviewInsert.do",
+				data : {mScore:mScore,rContent:rContent,filmNum:filmnum,bookNum:booknum},
+				contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+				method: 'POST',
+				dataType : 'JSON',
+				success : function(data){
+					alert('관람평이 저장되었습니다.');
+				}
+			});
+		});
+		$('#reviewUpdate').click(function(){
+			var mScore=$("#score").text();
+			var rContent=$("#review_Update").val();
+			var filmnum=$("#modal_filmnum").val();
+			var booknum=$("#modal_booknum").val();
+			$.ajax({
+				url:"${cp}/mypage/reviewUpdate.do",
+				data : {mScore:mScore,rContent:rContent,filmNum:filmnum,bookNum:booknum},
+				contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+				method: 'POST',
+				dataType : 'JSON',
+				success : function(data){
+					alert('관람평이 수정 완료되었습니다');
+				}
+			});
+		});
+		
+		
 	});
+	
+	
+	
 </script>
 </html>
 

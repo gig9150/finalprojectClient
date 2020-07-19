@@ -6,4 +6,14 @@
 	<select id="getinfo" parameterType="int" resultType="mreview">
 		select * from mreview where mReviewNum=#{mReviewNum}
 	</select>
+	<insert id="insert" parameterType="mreview">
+		insert into mreview(mreviewnum,rcontent,liketotal,mscore,memnum,filmnum,booknum,reviewregdate)
+		values(mreviewnum.nextval,#{rContent},0,#{mScore},#{memNum},#{filmNum},#{bookNum},sysdate)
+	</insert>
+	<update id="update" parameterType="mreview">
+		update mreview set rcontent=#{rContent} where memnum=#{memNum}
+	</update>
+	<delete id="delete" parameterType="mreview">
+		delete from mreview where memnum=#{memNum} and filmnum=#{filmNum} and booknum=#{bookNum}
+	</delete>
 </mapper>

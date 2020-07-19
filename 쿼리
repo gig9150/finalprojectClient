@@ -1,86 +1,77 @@
-내가 관람한 영화 쿼리       MovieSawVo
-select f.filmnum filmnum, b.booknum booknum, mo.movieimgurl movieimgurl, f.filmname filmname, ms.mstarttime mstarttime,t.theathername theathername, br.brname brname
-from membership m, charge c, book b, mschedule ms, theather t , branch br , purchasefilm p, film f, movieimg mo
-where m.memnum=c.memnum and c.chargenum=b.chargenum and b.mschedulenum=ms.mschedulenum and t.theathernum=ms.theathernum and
-t.branchnum=br.branchnum and p.purchasefilmnum=ms.purchasefilmnum and p.filenum=f.filmnum and f.filmnum=mo.filmnum and
-m.memnum=122${memNum}
-
-
-select pp.movieimgurl, pp.filmnum, pp.mstarttime, pp.theathername, pp.brname
-       ,nvl((select mreview.rcontent from mreview where pp.filmnum=mreview.filmnum and pp.booknum=mreview.booknum and memnum=mreview.memnum),'관람평을 작성해보세요.') mreview
-from (select m.memnum memnum, f.filmnum filmnum, b.booknum booknum, mo.movieimgurl movieimgurl, f.filmname filmname, ms.mstarttime mstarttime,t.theathername theathername, br.brname brname
-from membership m, charge c, book b, mschedule ms, theather t , branch br , purchasefilm p, film f, movieimg mo, mreview mr
-where m.memnum=c.memnum and c.chargenum=b.chargenum and b.mschedulenum=ms.mschedulenum and t.theathernum=ms.theathernum and
-t.branchnum=br.branchnum and p.purchasefilmnum=ms.purchasefilmnum and p.filenum=f.filmnum and f.filmnum=mo.filmnum and
-m.memnum=122) pp
-
-
-관람한 영화 카운트          MovieSawVo
-select count(*) from(
-    select pp.movieimgurl, pp.filmname, pp.filmnum, pp.mstarttime, pp.theathername, pp.brname
-       ,nvl((select mreview.rcontent from mreview where pp.filmnum=mreview.filmnum and pp.booknum=mreview.booknum and memnum=mreview.memnum),'관람평을 작성해보세요.') mreview
-    from (select m.memnum memnum, f.filmnum filmnum, b.booknum booknum, mo.movieimgurl movieimgurl, f.filmname filmname, ms.mstarttime mstarttime,t.theathername theathername, br.brname brname
-    from membership m, charge c, book b, mschedule ms, theather t , branch br , purchasefilm p, film f, movieimg mo, mreview mr
-    where m.memnum=c.memnum and c.chargenum=b.chargenum and b.mschedulenum=ms.mschedulenum and t.theathernum=ms.theathernum and
-    t.branchnum=br.branchnum and p.purchasefilmnum=ms.purchasefilmnum and p.filenum=f.filmnum and f.filmnum=mo.filmnum and
-    m.memnum=122) pp
-)
-
-
-예매내역
-select mo.movieimgurl 이미지경로, f.filmname 영화명, ms.mstarttime 상영시작시간,t.theathername 상영관명, br.brname 지점명,s.seatname 좌석,c.chregdate 결제일시, c.totalbill 주문금액
-from membership m, charge c, book b, mschedule ms, theather t , branch br , purchasefilm p, film f, movieimg mo, seat s
-where m.memnum=c.memnum and c.chargenum=b.chargenum and b.mschedulenum=ms.mschedulenum and t.theathernum=ms.theathernum and
-t.branchnum=br.branchnum and p.purchasefilmnum=ms.purchasefilmnum and p.filenum=f.filmnum and f.filmnum=mo.filmnum and
-s.seatnum=b.seatnum and m.memnum=122
-
-
--------------------------------------------------------------------------------
 --회원
 insert into membership values(memnum.nextval,'최성진','choi','1234','01012124545','950101-1','choi@test.com','브론즈',sysdate);
 select * from membership;
 
 --결제
-insert into charge values(chargenum.nextval,122,0,'카드','회원',sysdate,'010',20000);
+insert into charge values(chargenum.nextval,1,0,'카드','회원',sysdate,'010',20000);
 select * from charge;
 
 --장르
 insert into genre values(genrenum.nextval,'드라마');
 select * from genre;
 
+
 --영화
-insert into film values(filmnum.nextval,'반도','줄거리',sysdate,'2020-08-01',100000000,'김감독','상영중',3);
+insert into film values(filmnum.nextval,'반도','줄거리',sysdate,'2020-08-01',100000000,'김감독','상영중',1);
 select * from film;
 
 --영화 이미지
-insert into movieimg values(movieImgNum.nextval,'이미지경로',21);
+insert into movieimg values(movieImgNum.nextval,'이미지경로',1);
 select * from movieimg;
 
 --지점 요청 시퀀스
 insert into proposal values(proposalnum.nextval,'sung','종로','목적','중','영업중');
 select * from proposal;
 
+update proposal set pronum=1 where pronum=2;
+
 --지점 테이블
 insert into branch values(branchnum.nextval,1,'피카다리','최성진','영업중','2020-07-15');
 select * from branch;
 
 --영화상영권구매
-insert into purchasefilm values(purchasefilmnum.nextval,'2020-08-01',sysdate,21,21);
+insert into purchasefilm values(purchasefilmnum.nextval,'2020-08-01',sysdate,1,1);
 select * from purchasefilm;
+update purchasefilm set purchasefilmnum=1 where purchasefilmnum=4;
 
 --상영관테이블
-insert into theather values(theathernum.nextval,21,'3관');
+insert into theather values(theathernum.nextval,1,'3관');
 select * from theather;
 
 --영화상영스케줄
-insert into mschedule values(mschedulenum.nextval,'20:30',1,21);
+insert into mschedule values(mschedulenum.nextval,'20:30',1,1);
 select * from mschedule;
 
+
 --좌석
-insert into seat values(seatnum.nextval,21,5,5,0);
+insert into seat values(seatnum.nextval,1,5,5,100,'E5');
 select * from seat;
 
 --예약테이블
-insert into book values(booknum.nextval,'예매완료',1,41,101);
+insert into book values(booknum.nextval,'예매완료',1,1,1);
 select * from book;
 
+
+
+
+--내가 관람한 영화
+select pp.movieimgurl, pp.filmname, pp.filmnum, pp.mstarttime, pp.theathername, pp.brname
+            ,nvl((select mreview.rcontent from mreview where pp.filmnum=mreview.filmnum and pp.booknum=mreview.booknum and memnum=mreview.memnum),'관람평을 작성해보세요.') mreview
+    from (
+        select m.memnum memnum, f.filmnum filmnum, b.booknum booknum, mo.movieimgurl movieimgurl, f.filmname filmname, ms.mstarttime mstarttime,t.theathername theathername, br.brname brname 
+        from membership m, charge c, book b, mschedule ms, theather t , branch br , purchasefilm p, film f, movieimg mo
+        where m.memnum=c.memnum and c.chargenum=b.chargenum and b.mschedulenum=ms.mschedulenum and t.theathernum=ms.theathernum and
+        t.branchnum=br.branchnum and p.purchasefilmnum=ms.purchasefilmnum and p.filmnum=f.filmnum and f.filmnum=mo.filmnum and
+        m.memnum=1) pp;
+
+--내가 관람한 영화 카운트
+select count(*) 
+from(
+    select m.memnum memnum, f.filmnum filmnum, b.booknum booknum, mo.movieimgurl movieimgurl, f.filmname filmname, ms.mstarttime mstarttime,t.theathername theathername, br.brname brname 
+    from membership m, charge c, book b, mschedule ms, theather t , branch br , purchasefilm p, film f, movieimg mo
+    where m.memnum=c.memnum and c.chargenum=b.chargenum and b.mschedulenum=ms.mschedulenum and t.theathernum=ms.theathernum and
+    t.branchnum=br.branchnum and p.purchasefilmnum=ms.purchasefilmnum and p.filmnum=f.filmnum and f.filmnum=mo.filmnum and
+    m.memnum=1);
+
+--관람 인원 카운트
+select count(*) from charge c, book b where c.chargenum=b.chargenum and memnum=1;

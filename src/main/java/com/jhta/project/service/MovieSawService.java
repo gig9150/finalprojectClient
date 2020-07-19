@@ -16,8 +16,8 @@ public class MovieSawService {
 	public List<MovieSawVo> moviesawList(int memNum){
 		return movieSawDao.moviesawList(memNum);
 	}
-	public int movieCount(){
-		return movieSawDao.movieCount();
+	public int movieCount(int memNum){
+		return movieSawDao.movieCount(memNum);
 	}
 	
 }
