@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <link href="${cp }/resources/css/log/signup.css" rel="stylesheet">
 <script src="${cp }/resources/js/log/signup.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <form onsubmit="return checkform()" method="post">
 	<div id="signwarp">
 		<div class="container register-form">
@@ -31,7 +32,7 @@
 									<div class="chek_font" id="phone_chek"></div>
 							</div>
 							<div class="form-group">
-								생년월일(ex:0001053) <input type="text" class="form-control"
+								생년월일(ex:000105-3) <input type="text" class="form-control"
 									name="birth" id="birth" placeholder="생년월일" value="" />
 									<div class="chek_font" id="birth_chek"></div>
 							</div>
@@ -58,8 +59,8 @@
 						</div>
 					</div>
 					<div>
-						<button type="submit" class="btnSubmit">Submit</button>
-						<button type="reset" class="btnSubmit">Reset</button>
+						<button type="submit" class="btnSubmit" id="submit">Submit</button>
+						<button type="reset" class="btnSubmit" id="reset">Reset</button>
 					</div>
 				</div>
 			</div>
