@@ -79,9 +79,9 @@ public class MyPageController {
 	//평점/리뷰 작성
 	@RequestMapping(value="/mypage/reviewInsert.do",produces = {MediaType.APPLICATION_JSON_UTF8_VALUE,MediaType.APPLICATION_XML_VALUE})
 	@ResponseBody
-	public String reviewInsert(String rContent,int mScore,int filmNum, int bookNum) {
+	public String reviewInsert(String rContent,int mScore,int filmNum, int chargeNum) {
 		 						//시퀀스     리뷰내용 좋아요수 평점  회원번호 영화번호        예약번호      작성일
-		MReviewVo vo=new MReviewVo(0, rContent, 0, mScore, 1, filmNum, bookNum, null);
+		MReviewVo vo=new MReviewVo(0, rContent, 0, mScore, 1, filmNum, chargeNum, null);
 		int n=mreviewServie.mreviewInsert(vo);
 		if(n>0) {
 			return "success";
@@ -92,9 +92,9 @@ public class MyPageController {
 	//평점/리뷰 수정
 	@RequestMapping(value="/mypage/reviewUpdate.do",produces = {MediaType.APPLICATION_JSON_UTF8_VALUE,MediaType.APPLICATION_XML_VALUE})
 	@ResponseBody
-	public String reviewUpdate(String rContent,int mScore,int filmNum, int bookNum) {
+	public String reviewUpdate(String rContent,int mScore,int filmNum, int chargeNum) {
 								 //시퀀스     리뷰내용 좋아요수 평점  회원번호 영화번호        예약번호      작성일
-		MReviewVo vo=new MReviewVo(0, rContent, 0, mScore, 1, filmNum, bookNum, null);
+		MReviewVo vo=new MReviewVo(0, rContent, 0, mScore, 1, filmNum, chargeNum, null);
 		int n=mreviewServie.mreviewUpdate(vo);
 		System.out.println(n+"ffffffffffffff");
 		if(n>0) {

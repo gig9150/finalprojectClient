@@ -7,14 +7,14 @@ public class MReviewVo {
 	private int mScore;
 	private int memNum;
 	private int filmNum;
-	private int bookNum;
+	private int chargeNum;
 	private String reviewregdate;
 	
 	public MReviewVo() {
 		super();
 	}
 
-	public MReviewVo(int mReviewNum, String rContent, int likeTotal, int mScore, int memNum, int filmNum, int bookNum,
+	public MReviewVo(int mReviewNum, String rContent, int likeTotal, int mScore, int memNum, int filmNum, int chargeNum,
 			String reviewregdate) {
 		super();
 		this.mReviewNum = mReviewNum;
@@ -23,7 +23,7 @@ public class MReviewVo {
 		this.mScore = mScore;
 		this.memNum = memNum;
 		this.filmNum = filmNum;
-		this.bookNum = bookNum;
+		this.chargeNum = chargeNum;
 		this.reviewregdate = reviewregdate;
 	}
 
@@ -75,12 +75,12 @@ public class MReviewVo {
 		this.filmNum = filmNum;
 	}
 
-	public int getBookNum() {
-		return bookNum;
+	public int getChargeNum() {
+		return chargeNum;
 	}
 
-	public void setBookNum(int bookNum) {
-		this.bookNum = bookNum;
+	public void setChargeNum(int chargeNum) {
+		this.chargeNum = chargeNum;
 	}
 
 	public String getReviewregdate() {
