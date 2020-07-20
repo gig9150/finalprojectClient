@@ -4,9 +4,11 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
   <typeAliases>
+    <typeAlias type="com.jhta.project.vo.ReviewBoardVo" alias="reviewBoard"/>
   	<typeAlias type="com.jhta.project.vo.MembersVo" alias="members"/>
   	<typeAlias type="com.jhta.project.vo.ActorVo" alias="actor"/>
-  	<typeAlias type="com.jhta.project.vo.AllMoviesVo" alias="allMovies"/>
+  	<typeAlias type="com.jhta.project.vo.AllMoviesVo" alias="allmovies"/>
+  	<typeAlias type="com.jhta.project.vo.AllByMReviewVo" alias="allbymreview"/>
   	<typeAlias type="com.jhta.project.vo.AskVo" alias="ask"/>
   	<typeAlias type="com.jhta.project.vo.BookVo" alias="book"/>
   	<typeAlias type="com.jhta.project.vo.BranchVo" alias="branch"/>
@@ -23,7 +25,9 @@
   	<typeAlias type="com.jhta.project.vo.MissingVo" alias="missing"/>
   	<typeAlias type="com.jhta.project.vo.MovieImgVo" alias="movieimg"/>
   	<typeAlias type="com.jhta.project.vo.MReviewVo" alias="mreview"/>
+  	<typeAlias type="com.jhta.project.vo.ReviewInfoVo" alias="reviewInfo"/>
   	<typeAlias type="com.jhta.project.vo.MScheduleVo" alias="mschedule"/>
+  	<typeAlias type="com.jhta.project.vo.MoviesInfoVo" alias="moviesinfo"/>
   	<typeAlias type="com.jhta.project.vo.ProposalVo" alias="proposal"/>
   	<typeAlias type="com.jhta.project.vo.QnaVo" alias="qna"/>
   	<typeAlias type="com.jhta.project.vo.ReplyVo" alias="reply"/>

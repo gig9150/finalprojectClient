@@ -9,29 +9,35 @@
 	</select>
 
 	<!-- 누적관객수별 영화명, 영화이미지, 누적관객수 -->
-	<select id="showAllMovies" resultType="allMovies">
-	<![CDATA[
-		select aa.*, m.movieimgUrl, (select sum(totalpeople) from total t where
-		aa.filmnum=t.filmnum) totalPeople
-			from
-			(
-				select filmName, filmNum from film where filmend>=sysdate
-			)aa, movieimg m
-		where m.filmNum= aa.filmNum
-		order by totalPeople desc
-	]]>
+	<select id="showAllMovies" resultType="allmovies">
+		<![CDATA[
+			select aa.*, m.movieimgUrl, (select sum(totalpeople) from total t where
+			aa.filmnum=t.filmnum) totalPeople
+				from
+				(
+					select filmName, filmNum from film where filmend>=sysdate
+				)aa, movieimg m
+			where m.filmNum= aa.filmNum
+			order by totalPeople desc
+		]]>
 	</select>
-
-	<select id="showMoviesByReview" resultType="">
-	<![CDATA[
-		select bb.*, m.movieimgUrl, nvl((select count(mreviewnum) from mreview mr where
-		bb.filmnum=mr.filmnum group by filmnum),0) countreview
-			from
-			(
-				select filmName, filmNum from film where filmend>=sysdate
-			)bb, movieimg m
-		where m.filmNum= bb.filmNum
-		order by countreview desc
-	]]>
+	<!-- 리뷰순 영화명, 영화이미지, 누적관객수 -->
+	<select id="showMoviesByReview" resultType="allbymreview">
+		<![CDATA[
+			select bb.*, m.movieimgUrl, nvl((select count(mreviewnum) from mreview mr where
+			bb.filmnum=mr.filmnum group by filmnum),0) countreview
+				from
+				(
+					select filmName, filmNum from film where filmend>=sysdate
+				)bb, movieimg m
+			where m.filmNum= bb.filmNum
+			order by countreview desc
+		]]>
+	</select>
+	
+	<select id="moviesInfo" resultType="film" parameterType="int">
+		select f.filmhead, g.genrename, f.filmstory, f.filmstart, c.castname 
+			from film f, genre g, cast c 
+		where f.genrenum=g.genrenum and c.filmnum=f.filmnum;
 	</select>
 </mapper>
