@@ -2,6 +2,8 @@ package com.jhta.project.vo;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class ProposalVo {
 	private int proNum;
 	private String memberId;
@@ -9,6 +11,7 @@ public class ProposalVo {
 	private String proGoal;
 	private String proScale;
 	private String proStatus;
+	@DateTimeFormat(pattern="dd/MM/yyyy")
 	private Date proRegdate;
 	public ProposalVo(int proNum, String memberId, String proAddr, String proGoal, String proScale, String proStatus,
 			Date proRegdate) {

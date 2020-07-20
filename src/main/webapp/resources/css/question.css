@@ -87,7 +87,7 @@ dd{
     position:relative;
     right:20px;
 }
-.btn-lg{
+.btn-success.btn-lg{
 	background-color:#503396;
 	border-color: #503396;
 }

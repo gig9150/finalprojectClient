@@ -6,4 +6,7 @@
 	<select id="getinfo" parameterType="int" resultType="qna">
 		select * from proposal where proNum=#{proNum}
 	</select>
+	<insert id="insert" parameterType="proposal">
+		insert into proposal values(#{memberId},#{proAddr},#{proGoal},#{proScale},#{proStatus},sysdate)
+	</insert>
 </mapper>
