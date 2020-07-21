@@ -12,36 +12,9 @@
 		margin: auto;
 	}
 	#ticketing_box{
-		border: 1px solid green;
-		width: 100%;
-		height: 1000px;
-	}
-	#ticketing_info{
-		border: 1px solid orange;
 		width: 100%;
 	}
-	#ticketing_bx{
-		width: 100%;
-		height: 300px;
-	}
-	#ticketing_poster{
-		width: 22%;
-		height: 100%;
-		border: 1px solid red;
-		padding: 10px;
-		float: left;
-	}
-	#ticketing_info img{
-		border: 1px solid;
-		width: 100%;
-		height: 100%;
-	}
-	#ticketing_contents{
-		border: 1px solid blue;
-		float: left;
-		width: 100%;
-		height: 100%;
-	}
+	
 </style>
 <link rel="stylesheet" href="${cp }/resources/css/mypage/mypage_top_menu.css" type="text/css">
 <meta charset="UTF-8">
@@ -59,18 +32,40 @@
 		</ul>
 	</div>
 	<h3>나의 예매내역</h3>
-	<div id="ticketing_box">
+	<table id="ticketing_box" border="1">
+	  <tbody>
 		<c:forEach items="${list }" var="list" varStatus="i">
-			<div id="ticketing_bx">
-				<div id="ticketing_poster">
-					<img src="${cp }/resources/images/images/00${i.index+1 }.jpg" />
-				</div>
-				<div id="ticketing_contents">
-					ㅇㄹㄴㅇㄹㄴㅇㄹㄴㅇ
-				</div>
-			</div>
+			<tr>
+				<th rowspan="5"><img src="${cp }/resources/images/images/00${i.index+1 }.jpg" /><th>
+			</tr>
+			<tr>
+				<th colspan="4">${list.filmname }</th>
+			</tr>
+			<tr>
+				<th>관람 일시</th>
+				<td>${list.mstarttime }</td>
+				<th>상영관</th>
+				<td>${list.theathername }</td>
+			</tr>
+			<tr>
+				<th>관람 극장</th>
+				<td>${list.brname }</td>
+				<th>관람좌석</th>
+				<td>${list.seatname } </td>
+			</tr>
+			<tr>
+				<th>결제 날짜</th>
+				<td>${list.chregdate }</td>
+				<th>매수</th>
+				<td>일반 ${list.usercount }</td>
+			</tr>
+			<tr>
+				<th>결제 수단</th>
+				<td colspan="3">${list.payment }</td>
+			</tr>
 		</c:forEach>
-	</div>	
+	  <tbody>
+	</table>	
 </div>
 </body>
 </html>
