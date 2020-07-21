@@ -1,13 +1,13 @@
 package com.jhta.project.vo;
 
 import java.sql.Date;
-//¿©±â´Â ¿µÈ­»ó¼¼º¸±â Å¬¸¯ÇßÀ» ¶§ »ó¼¼³»¿ªµé(Àå¸£,°³ºÀÀÏ,°¨µ¶,Ãâ¿¬,ÁÙ°Å¸®) ´ã°í ÀÖ´Â VO
+//ì˜í™”ìƒì„¸ì •ë³´ í˜ì´ì§€ ì •ë³´ë‹´ì€ VO
 public class MoviesInfoVo {
-	private String genreName; //Àå¸£ÀÌ¸§
-	private Date filmStart; //°³ºÀÀÏ
-	private String filmHead; //°¨µ¶
-	private String castName; //Ãâ¿¬Áø
-	private String filmStory; //ÁÙ°Å¸®
+	private String genreName; //ì¥ë¥´ì´ë¦„
+	private Date filmStart; //ê°œë´‰ì¼
+	private String filmHead; //ê°ë…
+	private String castName; //ì¶œì—°ì§„
+	private String filmStory; //ì¤„ê±°ë¦¬
 	
 	public MoviesInfoVo() {}
 	public MoviesInfoVo(String genreName, Date filmStart, String filmHead, String castName, String filmStory) {

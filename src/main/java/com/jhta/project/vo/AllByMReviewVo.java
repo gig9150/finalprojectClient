@@ -1,10 +1,10 @@
 package com.jhta.project.vo;
 
 public class AllByMReviewVo {
-	private String filmName; //¿µÈ­¸í
-	private int filmNum; //¿µÈ­¹øÈ£
-	private String movieImgUrl; //¿µÈ­ÀÌ¹ÌÁö
-	private int countmReview;//¿µÈ­¸®ºä¼ö
+	private String filmName; //ì˜í™”ëª…
+	private int filmNum; //ì˜í™”ë²ˆí˜¸
+	private String movieImgUrl; //ì˜í™”ì´ë¯¸ì§€
+	private int countmReview;//ë¦¬ë·°ìˆ˜
 	
 	public AllByMReviewVo() {}
 	public AllByMReviewVo(String filmName, int filmNum, String movieImgUrl, int countmReview) {

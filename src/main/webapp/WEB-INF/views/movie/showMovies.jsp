@@ -20,23 +20,31 @@
 	height: 1200px;
 	margin: auto;
 	padding: 50px 0 0 0;
+	background-color: violet;
+	position: absolute;
 }
 
-.movie_list li {
-	float: left;
-	position: relative;
-	width: 184px;
-	margin: 0 7.5px;
+#nav_list {
+	width: 100%;
+	height: 50px;
+	margin: 0;
+	padding: 0;
+}
+
+.btn_type li {
+	float: right;
+	border-right: 1px solid #ccc;
+	line-height: 10px;
+	padding-left: 20px;
 	text-align: center;
+	padding-left: 20px;
 }
 
-.btn_type>li {
-	float: left;
-}
+
 </style>
 <div class="container">
 	<div id="content_wrap">
-		<div id="aaaa">
+		<div id="nav_list">
 			<ul class="main_title">
 				<li>현재상영작</li>
 			</ul>
@@ -46,27 +54,27 @@
 				<li><a href="#">관람평순</a></li>
 			</ul>
 		</div>
-		<div id="movie_list">
+		
+		<div id="movie_list" style="display:flex; position: relative; width:90%; background-color: orange;">
+					<ul>
 			<c:forEach var="movieList" items="${allMovieList }">
-				<ul>
-					<li class="screen_add_box">
-						<div class="top_info">
-							<span class="poster_info"><img
+	
+					<li class="screen_add_box" style="float:left;margin-right:20px">
+						<div >
+							<span><img
 								src="${movieList.movieImgUrl }" style="width: 150px;" /></span>
-							<div class="btm_info">
-								<strong class="tit_info">${movieList.filmName }</strong> <span
-									class="sub_info"> <span class="rate_info">${movieList.totalPeople}
+							<div >
+								<strong class="tit_info" style="display:block;">${movieList.filmName }</strong> <span
+									class="sub_info"> <span class="rate_info">예매율 ${movieList.rRate}
 								</span> <span class="star_info"></span>
 
 								</span>
-
 							</div>
 						</div>
-
 					</li>
-				</ul>
-			</c:forEach>
 
+			</c:forEach>
+							</ul>
 		</div>
 	</div>
 </div>

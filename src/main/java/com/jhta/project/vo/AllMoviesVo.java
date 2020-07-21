@@ -2,21 +2,35 @@ package com.jhta.project.vo;
 
 public class AllMoviesVo {
 	
-	private String filmName; //¿µÈ­¸í
-	private int filmNum; //¿µÈ­¹øÈ£
-	private String movieImgUrl; //¿µÈ­ÀÌ¹ÌÁö
-	private int totalPeople; //´©Àû°ü°´¼ö
-	//private Float ReservationRate; //¿¹¸ÅÀ²
-	//private Float movieGPA; //¿µÈ­ÆòÁ¡
-	//private int countmReview;//¿µÈ­¸®ºä¼ö
+	private String filmName; //ì˜í™”ëª…
+	private int filmNum; //ì˜í™”ë²ˆí˜¸
+	private String movieImgUrl; //ì˜í™”ì´ë¯¸ì§€
+	private int totalPeople; //ê´€ëŒê°ìˆ˜
+	private float rRate; //ì˜ˆë§¤ìœ¨
+	private int totalSum; //ì´ê´€ëŒê°ìˆ˜
 	
 	public AllMoviesVo() {}
-	public AllMoviesVo(String filmName, int filmNum, String movieImgUrl, int totalPeople) {
-		super();
+
+	public AllMoviesVo(String filmName, int filmNum, String movieImgUrl, int totalPeople, float rRate, int totalSum) {
 		this.filmName = filmName;
 		this.filmNum = filmNum;
 		this.movieImgUrl = movieImgUrl;
 		this.totalPeople = totalPeople;
+		this.rRate = rRate;
+		this.totalSum = totalSum;
+	}
+	
+	public float getrRate() {
+		return rRate;
+	}
+	public void setrRate(float rRate) {
+		this.rRate = rRate;
+	}
+	public int getTotalSum() {
+		return totalSum;
+	}
+	public void setTotalSum(int totalSum) {
+		this.totalSum = totalSum;
 	}
 	public String getFilmName() {
 		return filmName;
@@ -42,7 +56,4 @@ public class AllMoviesVo {
 	public void setTotalPeople(int totalPeople) {
 		this.totalPeople = totalPeople;
 	}
-
-	
-	
 }

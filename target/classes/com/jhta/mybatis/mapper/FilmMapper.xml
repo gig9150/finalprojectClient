@@ -7,12 +7,30 @@
 		select *
 		from film where filmNum=#{filmNum}
 	</select>
-
+	
+	<!-- 예매율별 영화명,영화이미지, 예매율  -->
+	<select id="movieListRrate" resultType="allmovies">
+	select trunc(totalpeople/totalSum*100,1) rRate,bb.* from     
+		(select aa.*, m.movieimgUrl, nvl((select sum(totalpeople)from total t where aa.filmnum=t.filmnum),0) totalPeople, 
+		(select sum(totalCount) from (select (select sum(totalpeople) total from total t where aa.filmnum=t.filmnum) totalCount
+			from 
+			(
+			select filmName, filmNum from film where filmend>=sysdate
+			)aa, movieimg m
+			where m.filmNum= aa.filmNum)) totalSum
+            	from 
+            (
+                select filmName, filmNum from film where filmend>=sysdate
+            )aa, movieimg m
+        where m.filmNum= aa.filmNum
+        order by totalPeople desc)bb
+	
+	</select>
 	<!-- 누적관객수별 영화명, 영화이미지, 누적관객수 -->
 	<select id="showAllMovies" resultType="allmovies">
 		<![CDATA[
-			select aa.*, m.movieimgUrl, (select sum(totalpeople) from total t where
-			aa.filmnum=t.filmnum) totalPeople
+			select aa.*, m.movieimgUrl, nvl((select sum(totalpeople) from total t where
+			aa.filmnum=t.filmnum),0) totalPeople
 				from
 				(
 					select filmName, filmNum from film where filmend>=sysdate
@@ -38,6 +56,6 @@
 	<select id="moviesInfo" resultType="film" parameterType="int">
 		select f.filmhead, g.genrename, f.filmstory, f.filmstart, c.castname 
 			from film f, genre g, cast c 
-		where f.genrenum=g.genrenum and c.filmnum=f.filmnum;
+		where f.genrenum=g.genrenum and c.filmnum=f.filmnum
 	</select>
 </mapper>

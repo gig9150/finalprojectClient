@@ -16,9 +16,10 @@ public class MovieListDao {
 	@Autowired
 	private SqlSession sqlSession;
 	private final String NAMESPACE="com.jhta.mybatis.mapper.film";
+	//예매율순으로 상영 영화 불러오기
 	public List<AllMoviesVo> showAllMovies(){
-		System.out.println("DAOź��");
-		return sqlSession.selectList(NAMESPACE+".showAllMovies");
+		System.out.println("DAO진입");
+		return sqlSession.selectList(NAMESPACE+".movieListRrate");
 	}
 	
 	//관람평순으로 상영 영화 불러오기

@@ -14,7 +14,7 @@ public class MovieListService {
 	@Autowired
 	MovieListDao mListDao;
 	public List<AllMoviesVo> showAllMovies(){
-		System.out.println("SERVICEź��");
+		System.out.println("SERVICE진입");
 		return mListDao.showAllMovies();
 	}
 	
