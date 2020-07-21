@@ -78,10 +78,13 @@ $(function(){
 		$("#addr-modal").modal('hide');
 	});
 	
+	$('#Carousel').carousel({
+        interval: 5000
+    })
 	
 	setTimeout(function(){  
 		map.relayout();
-	},1000);
+	},2000);
 	
 	/*/////////////////////////////////카카오 지도/////////////////////////////// */
 	var addr = '';

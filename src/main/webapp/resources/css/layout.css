@@ -357,25 +357,137 @@ header > .container .search-box input[type="submit"] {
 .slider {
   background-color: #120c0b;
 }
+
 .slider .container > .slider-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  padding: 60px 0 80px 0;
-}
-.slider .container > .slider-header h1 {
-  color: #ffffff;
-  margin: 0 15px 15px 0;
+  padding: 60px 0 10px 0;
+  text-align: center;
 }
 
+.slider .container > .slider-header h3{
+  color: #ffffff;
+  margin: 0 15px 10px 0;
+  padding-bottom:5px;
+}
+
+.home-movie-btn1{
+	height: 30px;
+    padding: 0 !important;
+    width: 33%;
+}
+
+.home-movie-btn1 > img{
+	width:40%
+}
+
+.home-movie-btn2{
+	padding: 0 !important;
+    height: 30px;
+    width: 64%;
+    margin-left: 2px;
+}
+
+.thumbnail{
+	margin-bottom:10px !important;
+}
+
+.thumbnail > img{
+	height:280px;
+}
+
+.movie-search-row.row{
+	margin-top:20px;
+	padding-top:20px;
+	background-color:#150f10;
+	border-bottom:none;
+}
+
+.movie-search-row.row > div{
+	border-right:1px solid white;
+}
+
+.movie-search-row-div > input{
+	width: 80%;
+	BORDER-BOTTOM: teal 1px solid;
+	BORDER-LEFT: medium none;
+	BORDER-RIGHT: medium none;
+	BORDER-TOP: medium none;
+	background-color: #120c0b;
+}
+
+.movie-search-row-div > button{
+    padding: 0 !important;
+    width: 16%;
+    height: 0px;
+}
+.movie-search-row-div > p{
+	display: inline-block;
+	font-size: 20px;
+}
+
+.movie-search-row > .col-md-3:first-child{
+	height: 38px;
+}
+/*home.jsp grid*/
+.main-grid .img-responsive {
+    margin-bottom: 30px;
+}
+.main-grid::before{
+	position: absolute;
+    left: 0;
+    top: 1080px;
+    display: block;
+    width: 100%;
+    height: 72%;
+    background-color: #503396;
+}
+.row .col-sm-6{
+	border-bottom:none;
+}
+.carousel.slide{
+	height: 390px;
+}
+/*////////////*/
+/*home.jsp grid 밑에*/
+.menu-link{
+	float: left;
+	width: 20%;
+	text-align: center;
+}
+.menu-link > span{
+	font-size: 80px;
+	left:5px;
+}
+
+.menu-link > a{
+    display: block;
+    font-size: 15px;
+    color:black;
+    position: relative;
+    left: 5px;
+}
+/*//////////////*/
+/*main-section3*/
+.main-section3{
+	height:1000px
+}
+.main-section3::before{
+	position: absolute;
+    left: 0;
+    top: 1778px;
+    display: block;
+    width: 100%;
+    height: 20%;
+    background-color: #252451;
+}
+
+/*///////////////*/
 .portfolio .container {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   padding: 50px 0;
 }
-.portfolio .container .box {
+.portfolio .container .box{
   text-align: center;
 }
 .portfolio .container .box .icon-box {
