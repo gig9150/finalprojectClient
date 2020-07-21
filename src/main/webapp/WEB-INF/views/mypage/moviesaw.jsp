@@ -143,17 +143,17 @@
 			<h4 id="mypageTit">내가 관람한 영화 <span id="movieCount">${movieCount }</span>편</h4>
 		</div>
 		<ul id="my_movie_list">
-		<c:forEach items="${list }" var="list">
+		<c:forEach items="${list }" var="list" varStatus="i">
 			<li>
 				<div id="poster">
-					<img src="${cp }/resources/images/images/002.jpg" />
+					<img src="${cp }/resources/images/images/00${i.index+1 }.jpg" />
 				</div>
 				<div id="movieContent">
 					<strong id="tit">${list.filmname }</strong><br>
 					<div id="detail_info">
 						<span id="txt">${list.brname }  ${list.theathername }</span><br>
 						<span id="txt time">${list.mstarttime }</span><br>
-						<span id="txt">관람 인원 ?명</span><br>
+						<span id="txt">관람 인원 ${list.usercount }명</span><br>
 					</div>
 					<dl id="review_box">
 						<dt>My Review</dt>
@@ -162,96 +162,105 @@
 					<div id="btn_box">
 						<c:choose>
 							<c:when test="${list.mreview == '관람평을 작성해보세요.'}">
-								<input type="button" value="관람평등록" data-toggle="modal" data-target="#reviewAdd">
+								<input type="button" value="관람평등록" data-toggle="modal" data-target="#review${i.index }">
 							</c:when>
 							<c:otherwise>
-								<input type="button" value="관람평수정" data-toggle="modal" data-target="#reviewUpdate">
+								<input type="button" value="관람평수정" data-toggle="modal" data-target="#review${i.index }">
 							</c:otherwise>
 						</c:choose>
 					</div>
 				</div>
 			</li>
+			
+			
+		<!-- Modal -->
+		<!-- 리뷰 등록 -->
+		<div class="modal fade" id="review${i.index }" role="dialog">
+			<input type="text" value="${list.filmnum }" id="modal_filmnum">
+			<input type="text" value="${list.chargenum }" id="modal_chargenum">
+		  <div class="modal-dialog">
+		  
+			
+						
+		    <!-- Modal content-->
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h4 class="modal-title">관람평 등록/수정</h4>
+		        <button type="button" class="close" data-dismiss="modal">&times;</button>
+		      </div>
+		      <div class="modal-body">
+		      	<strong id="modal-movie-tit">${list.filmname }</strong>
+		       	<div class="starRev">
+		      		 <h4 id="score">10<span></span></h4>
+				  <span class="starR on">1</span>
+				  <span class="starR on">2</span>
+				  <span class="starR on">3</span>
+				  <span class="starR on">4</span>
+				  <span class="starR on">5</span>
+				  <span class="starR on">6</span>
+				  <span class="starR on">7</span>
+				  <span class="starR on">8</span>
+				  <span class="starR on">9</span>
+				  <span class="starR on">10</span>
+				</div>
+		      	<textarea rows="5" cols="20" class="review_content" id="review_insert" placeholder="평점 및 영화 리뷰를 작성해주세요.">${list.mreview }</textarea>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal" id="reviewInsert">확인</button>
+		        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+		      </div>
+		    </div>
+		  </div>
+		  
+		  
+		
+		
+		 </div>
+		 <!-- //////////////////////////////////////////////////////////////////////////////////  -->
+		<%-- <!-- Modal -->
+		<!-- 리뷰 수정 -->
+		<div class="modal fade" id="reviewUpdate${i.index }" role="dialog">
+			<input type="text" value="${list.filmnum }" id="modal_filmnum">
+			<input type="text" value="${list.chargenum }" id="modal_chargenum">
+		 <div class="modal-dialog">
+		   <!-- Modal content-->
+		   <div class="modal-content">
+		     <div class="modal-header">
+		       <button type="button" class="close" data-dismiss="modal">&times;</button>
+		       <h4 class="modal-title">관람평 수정</h4>
+		     </div>
+		     <div class="modal-body">
+		     	<strong id="modal-movie-tit">${list.filmname }</strong>
+		      	<div class="starRev">
+		     		 <h4 id="score">10<span></span></h4>
+			  <span class="starR on">1</span>
+			  <span class="starR on">2</span>
+			  <span class="starR on">3</span>
+			  <span class="starR on">4</span>
+			  <span class="starR on">5</span>
+			  <span class="starR on">6</span>
+			  <span class="starR on">7</span>
+			  <span class="starR on">8</span>
+			  <span class="starR on">9</span>
+			  <span class="starR on">10</span>
+			</div>
+		     	<textarea rows="5" cols="20" class="review_content" id="review_Update">${list.mreview }</textarea>
+		     </div>
+		     <div class="modal-footer">
+		       <button type="button" class="btn btn-default" data-dismiss="modal" id="reviewUpdate">확인</button>
+		       <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+		     </div>
+		   </div>
+		 </div>
+		</div>
+		<!-- //////////////////////////////////////////////////////////////////////////////////  --> --%>
+			
 		</c:forEach>
 		</ul>
 	</div>
 </div>
 
 
-<!-- Modal -->
-<!-- 리뷰 등록 -->
-<div class="modal fade" id="reviewAdd" role="dialog">
-  <div class="modal-dialog">
-  
-    <!-- Modal content-->
-    <div class="modal-content">
-    <%-- <input type="text" value=${this } id="modal_filmnum"> --%>
-    <%-- <input type="text" value=${list.chargenum } id="modal_chargenum"> --%>
-      <div class="modal-header">
-        <h4 class="modal-title">관람평 등록</h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
-      <div class="modal-body">
-      	<strong id="modal-movie-tit">영화제목</strong>
-       	<div class="starRev">
-      		 <h4 id="score">10<span></span></h4>
-		  <span class="starR on">1</span>
-		  <span class="starR on">2</span>
-		  <span class="starR on">3</span>
-		  <span class="starR on">4</span>
-		  <span class="starR on">5</span>
-		  <span class="starR on">6</span>
-		  <span class="starR on">7</span>
-		  <span class="starR on">8</span>
-		  <span class="starR on">9</span>
-		  <span class="starR on">10</span>
-		</div>
-      	<textarea rows="5" cols="20" class="review_content" id="review_insert" placeholder="평점 및 영화 리뷰를 작성해주세요."></textarea>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal" id="reviewInsert">확인</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-      </div>
-    </div>
-  </div>
- </div>
- <!-- //////////////////////////////////////////////////////////////////////////////////  -->
-<!-- Modal -->
-<!-- 리뷰 수정 -->
-<div class="modal fade" id="reviewUpdate" role="dialog">
- <div class="modal-dialog">
-   <!-- Modal content-->
-   <div class="modal-content">
-   <%-- <input type="text" value=${this } id="modal_filmnum"> --%>
-   <%-- <input type="text" value=${list.chargenum } id="modal_chargenum"> --%>
-     <div class="modal-header">
-       <button type="button" class="close" data-dismiss="modal">&times;</button>
-       <h4 class="modal-title">관람평 수정</h4>
-     </div>
-     <div class="modal-body">
-     	<strong id="modal-movie-tit">영화제목</strong>
-      	<div class="starRev">
-     		 <h4 id="score">10<span></span></h4>
-	  <span class="starR on">1</span>
-	  <span class="starR on">2</span>
-	  <span class="starR on">3</span>
-	  <span class="starR on">4</span>
-	  <span class="starR on">5</span>
-	  <span class="starR on">6</span>
-	  <span class="starR on">7</span>
-	  <span class="starR on">8</span>
-	  <span class="starR on">9</span>
-	  <span class="starR on">10</span>
-	</div>
-     	<textarea rows="5" cols="20" class="review_content" id="review_Update">리뷰수정</textarea>
-     </div>
-     <div class="modal-footer">
-       <button type="button" class="btn btn-default" data-dismiss="modal" id="reviewInsert">확인</button>
-       <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-     </div>
-   </div>
- </div>
-</div>
-<!-- //////////////////////////////////////////////////////////////////////////////////  -->
 
 </body>
 <script type="text/javascript" src="${cp }/resources/js/jquery-3.5.1.js"></script>
@@ -263,6 +272,7 @@
 		  $("#score").text($(this).text());
 		  return false;
 		});
+		//리뷰 등록
 		$('#reviewInsert').click(function(){
 			var mScore=$("#score").text();
 			var rContent=$("#review_insert").val();
@@ -270,7 +280,7 @@
 			var chargenum=$("#modal_chargenum").val();
 			$.ajax({
 				url:"${cp}/mypage/reviewInsert.do",
-				data : {mScore:mScore,rContent:rContent,filmNum:filmnum,chargeNum:chargenum},
+				data : {"mScore":mScore,"rContent":rContent,"filmNum":filmnum,"chargeNum":chargenum},
 				contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 				method: 'POST',
 				dataType : 'JSON',
@@ -279,6 +289,7 @@
 				}
 			});
 		});
+		//리뷰 수정
 		$('#reviewUpdate').click(function(){
 			var mScore=$("#score").text();
 			var rContent=$("#review_Update").val();
@@ -286,7 +297,7 @@
 			var chargenum=$("#modal_chargenum").val();
 			$.ajax({
 				url:"${cp}/mypage/reviewUpdate.do",
-				data : {mScore:mScore,rContent:rContent,filmNum:filmnum,chargeNum:chargenum},
+				data : {"mScore":mScore,"rContent":rContent,"filmNum":filmnum,"chargeNum":chargenum},
 				contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 				method: 'POST',
 				dataType : 'JSON',

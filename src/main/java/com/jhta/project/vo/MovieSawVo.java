@@ -1,20 +1,21 @@
 package com.jhta.project.vo;
 
 public class MovieSawVo {
-	private String movieimgurl;
-	private String filmname;
-	private String mstarttime;
-	private String theathername;
-	private String brname;
-	private String mreview;
-	private int filmnum;
-	private int booknum;
-	private int chargenum;
+	private String movieimgurl;//이미지경로
+	private String filmname;//영화명
+	private String mstarttime;//상영시작시간
+	private String theathername;//상영관
+	private String brname;//지점명
+	private String mreview;//리뷰내용
+	private int filmnum;//영화번호
+	private int booknum;//예매번호
+	private int chargenum;//결제번호
+	private int usercount;//관람인원
 
 	public MovieSawVo() {}
 
 	public MovieSawVo(String movieimgurl, String filmname, String mstarttime, String theathername, String brname,
-			String mreview, int filmnum, int booknum, int chargenum) {
+			String mreview, int filmnum, int booknum, int chargenum, int usercount) {
 		super();
 		this.movieimgurl = movieimgurl;
 		this.filmname = filmname;
@@ -25,6 +26,7 @@ public class MovieSawVo {
 		this.filmnum = filmnum;
 		this.booknum = booknum;
 		this.chargenum = chargenum;
+		this.usercount = usercount;
 	}
 
 	public String getMovieimgurl() {
@@ -97,6 +99,14 @@ public class MovieSawVo {
 
 	public void setChargenum(int chargenum) {
 		this.chargenum = chargenum;
+	}
+
+	public int getUsercount() {
+		return usercount;
+	}
+
+	public void setUsercount(int usercount) {
+		this.usercount = usercount;
 	}
 
 }

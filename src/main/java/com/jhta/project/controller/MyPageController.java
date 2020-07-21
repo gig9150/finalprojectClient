@@ -15,10 +15,12 @@ import com.jhta.project.service.AskService;
 import com.jhta.project.service.CuponService;
 import com.jhta.project.service.MReviewService;
 import com.jhta.project.service.MovieSawService;
+import com.jhta.project.service.TicketingService;
 import com.jhta.project.vo.AskVo;
 import com.jhta.project.vo.CuponVo;
 import com.jhta.project.vo.MReviewVo;
 import com.jhta.project.vo.MovieSawVo;
+import com.jhta.project.vo.TicketingVo;
 import com.jtha.util.PageUtil;
 
 @Controller
@@ -31,10 +33,14 @@ public class MyPageController {
 	private CuponService cuponService;
 	@Autowired
 	private MReviewService mreviewServie;
+	@Autowired
+	private TicketingService ticketingService;
 	
 	//결제 내역,예매 내역
 	@RequestMapping("/mypage/payment.do")
-	public String payment() {
+	public String payment(Model model) {
+		List<TicketingVo> list=ticketingService.ticketingtList(1);
+		model.addAttribute("list",list);
 		return ".mypage.payment";
 	}
 	

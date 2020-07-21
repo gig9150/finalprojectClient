@@ -22,7 +22,7 @@
   	<typeAlias type="com.jhta.project.vo.MileVo" alias="mile"/>
   	<typeAlias type="com.jhta.project.vo.MissingVo" alias="missing"/>
   	<typeAlias type="com.jhta.project.vo.MovieImgVo" alias="movieimg"/>
-  	<typeAlias type="com.jhta.project.vo.MovieSawVo" alias="moviesaw"/>
+  	<typeAlias type="com.jhta.project.vo.MovieSawVo" alias="moviesaw"/><!-- 내가 관람한 영화목록 -->
   	<typeAlias type="com.jhta.project.vo.MReviewVo" alias="mreview"/>
   	<typeAlias type="com.jhta.project.vo.MScheduleVo" alias="mschedule"/>
   	<typeAlias type="com.jhta.project.vo.ProposalVo" alias="proposal"/>
@@ -36,6 +36,7 @@
   	<typeAlias type="com.jhta.project.vo.StoreInfoVo" alias="storeinfo"/>
   	<typeAlias type="com.jhta.project.vo.StoreVo" alias="store"/>
   	<typeAlias type="com.jhta.project.vo.TheatherVo" alias="theather"/>
+  	<typeAlias type="com.jhta.project.vo.TicketingVo" alias="ticketing"/><!-- 예매내역 -->
   	<typeAlias type="com.jhta.project.vo.TotalVo" alias="total"/>
   	<typeAlias type="com.jhta.project.vo.WScheduleVo" alias="wschedule"/>
   </typeAliases>
@@ -57,7 +58,7 @@
     <mapper resource="com/jhta/mybatis/mapper/MileMapper.xml"/>
     <mapper resource="com/jhta/mybatis/mapper/MissingMapper.xml"/>
     <mapper resource="com/jhta/mybatis/mapper/MovieImgMapper.xml"/>
-    <mapper resource="com/jhta/mybatis/mapper/MovieSawMapper.xml"/>
+    <mapper resource="com/jhta/mybatis/mapper/MovieSawMapper.xml"/><!-- 내가 관람한 영화목록 -->
     <mapper resource="com/jhta/mybatis/mapper/MReviewMapper.xml"/>
     <mapper resource="com/jhta/mybatis/mapper/MScheduleMapper.xml"/>
     <mapper resource="com/jhta/mybatis/mapper/ProposalMapper.xml"/>
@@ -70,6 +71,7 @@
     <mapper resource="com/jhta/mybatis/mapper/StaffTypeMapper.xml"/>
     <mapper resource="com/jhta/mybatis/mapper/StoreMapper.xml"/>
     <mapper resource="com/jhta/mybatis/mapper/TheatherMapper.xml"/>
+    <mapper resource="com/jhta/mybatis/mapper/TicketingMapper.xml"/><!-- 예매내역 -->
     <mapper resource="com/jhta/mybatis/mapper/TotalMapper.xml"/>
     <mapper resource="com/jhta/mybatis/mapper/WScheduleMapper.xml"/>
   </mappers>

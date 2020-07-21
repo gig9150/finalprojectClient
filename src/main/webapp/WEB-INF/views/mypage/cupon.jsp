@@ -11,6 +11,11 @@
 		height: 100%;
 		margin: auto;
 	}
+	#cupon_div{
+		padding: 80px 0px;
+		width: 100%;
+		text-align: center;
+	}
 </style>
 <link rel="stylesheet" href="${cp }/resources/css/mypage/mypage_top_menu.css" type="text/css">
 <meta charset="UTF-8">
@@ -42,14 +47,14 @@
 				<tr>
 					<td>${vo.cSort }</td>
 					<td>${vo.cName }</td>
-					<tD>${vo.cuponStart } ~ ${vo.cuponEnd }</td>
-					<tD>${vo.cuponStatus }</td>
+					<td>${vo.cuponStart } ~ ${vo.cuponEnd }</td>
+					<td>${vo.cuponStatus }</td>
 				</tr>
 			</c:forEach>
 			<c:if test="${empty list}">
 				<tr>
 					<td colspan="4">
-						<div id="inquiry_div">
+						<div id="cupon_div">
 							<img src="${cp }/resources/images/mypage/inquiry.png"/>
 							<p>사용 가능한 쿠폰이 없습니다.</p>
 						</div>
@@ -58,8 +63,7 @@
 			</c:if>	
 		  </tbody>
 		</table>
-		<input type="button" value="펼쳐보기 Ⅴ" style="width: 100%; background-color: #ffffff; border: 1px solid #ECECEC;">
-	</div>
+		</div>
 </div>
 </body>
 </html>
