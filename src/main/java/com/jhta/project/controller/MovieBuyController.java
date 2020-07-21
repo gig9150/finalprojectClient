@@ -1,16 +1,20 @@
 package com.jhta.project.controller;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
 import com.jhta.project.service.RestService;
+import com.jhta.project.vo.BookVo;
 import com.jhta.project.vo.SeatVo;
 
 @Controller
@@ -30,4 +34,42 @@ public class MovieBuyController {
 		model.addAttribute("theatherNum",theatherNum);
 		return ".buy.screen";
 	}
+	
+	@RequestMapping(value="/buy/screen/reservation.do")
+	public String reservation(String[] seatName,int[] seatNum,int seatMoney,Model model) {
+		model.addAttribute("seatName",seatName);
+		model.addAttribute("seatNum",seatNum);
+		model.addAttribute("seatMoney",seatMoney);
+		return ".buy.ticketing";
+	}
+	
+	@RequestMapping("/payments/complete.do")
+	@ResponseBody
+	public String completa(String imp_uid) {
+		System.out.println(imp_uid);
+		return imp_uid;
+	}
+	
+	@RequestMapping("/buy/screen/insert.do")
+	public String completa(String[] seatName,int[] seatNum,int seatMoney,String msg,Model model) {
+		System.out.println("결제 완료쪽 컨트롤러다..."+seatMoney);
+		String url="http://localhost:9090/projectdb/buy/screen/insert.do?seatMoney="+seatMoney;
+		Gson gson=new Gson();
+		List<BookVo> list=new ArrayList<BookVo>();
+		for(int i=0;i<seatName.length;i++) {
+			list.add(new BookVo(0, "결제완료", seatNum[i], 1));
+		}
+		String jsonString=gson.toJson(list);
+		String code="error";
+		try {
+			code=service.post(url, jsonString).trim();
+		}catch(Exception e) {
+			return code;
+		}
+		System.out.println(msg);
+		model.addAttribute("msg",msg);
+		model.addAttribute("code",code);
+		return ".buy.checked";
+	}
+	
 }

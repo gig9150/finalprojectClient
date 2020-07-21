@@ -81,7 +81,6 @@ li {
 						<li><button type="button" class="btns" value="${i }" id="btns${i }">${i }</button></li>
 					</c:forEach>
 					</ul>
-					<input type="text" id="checkNum">
 					<div>
 						<span id="seatName" style="font-size: 40px">좌석선택</span>
 					</div>
@@ -94,7 +93,11 @@ li {
 					<div id="formData">
 					</div>
 				</div>
-				<button type="button" id="btn2" style="border-bottom:5%;" class="btn btn-primary btn-block">구매하기</button>
+				<form action="${cp }/buy/screen/reservation.do" method="post">
+					<div id="formAction">
+					</div>
+					<button disabled="disabled" type="submit" id="btn2" style="border-bottom:5%;" class="btn btn-primary btn-block">구매하기</button>
+				</form>
 			</div>
 		</div>
 	</div>
@@ -139,54 +142,57 @@ li {
 		var seatPk=$(this).next().next().val();
 		var seatSale=$(this).next().val();
 		var bl=true;		
-		if(users>0){
-			for(var j=0;j<str.length;j++){
-				if(str[j]==checkVal){
-					if (seatSale == '80') {
-						$(this).css("background-color", "blue");
-					} else if (seatSale == '90') {
-						$(this).css("background-color", "red");
-					} else if (seatSale == '110') {
-						$(this).css("background-color", "pink");
-					} else if(seatSale == '100'){
-						$(this).css("background-color", "rgb(239, 239, 239)");
-					}
-					users = users+1;
-					$("#checkNum").val(users);
-					var index= str.indexOf(checkVal);
-					if(index>-1){
-						str.splice(index, 1);
-						seatNum.splice(index,1);
-						sSale.splice(index,1);
-						$("#seatName").text(str);
-						$("#sale").text(sSale);
-						$("#money").text("-");
-					}
-					alert("break걸림...");
-					bl=false;
-					break;
+		for(var j=0;j<str.length;j++){
+			if(str[j]==checkVal){
+				if (seatSale == '80') {
+					$(this).css("background-color", "blue");
+				} else if (seatSale == '90') {
+					$(this).css("background-color", "red");
+				} else if (seatSale == '110') {
+					$(this).css("background-color", "pink");
+				} else if(seatSale == '100'){
+					$(this).css("background-color", "rgb(239, 239, 239)");
 				}
-			}
-			if(bl){
-				$(this).css("background-color", "yellow");
-				users = users-1;
+				users = users+1;
 				$("#checkNum").val(users);
-				str.push($(this).val());
-				seatNum.push(seatPk);
-				sSale.push(seatSale);
-				$("#seatName").text(str);
-				var sum=0;
-				for(var i=0;i<sSale.length;i++){
-					sum += parseInt(sSale[i]);
+				var index= str.indexOf(checkVal);
+				if(index>-1){
+					str.splice(index, 1);
+					seatNum.splice(index,1);
+					sSale.splice(index,1);
+					$("#seatName").text(str);
+					$("#sale").text(sSale);
+					$("#money").text("-");
 				}
-				totalMoney+= (seatSale/100)*buyMoney;
-				totalMoney=parseInt(totalMoney);
-				var arg=Math.ceil(sum/sSale.length);
-				$("#sale").text(arg);
-				$("#money").text(totalMoney);
+				alert("break걸림...");
+				bl=false;
+				break;
 			}
-		}else{
-			alert("총할인율.."+seatNum);
+		}
+		if(bl){
+			$(this).css("background-color", "yellow");
+			users = users-1;
+			$("#checkNum").val(users);
+			str.push($(this).val());
+			seatNum.push(seatPk);
+			sSale.push(seatSale);
+			$("#seatName").text(str);
+			var sum=0;
+			for(var i=0;i<sSale.length;i++){
+				sum += parseInt(sSale[i]);
+			}
+			totalMoney+= (seatSale/100)*buyMoney;
+			totalMoney=parseInt(totalMoney);
+			var arg=Math.ceil(sum/sSale.length);
+			$("#sale").text(arg);
+			$("#money").text(totalMoney);
+			$("#formAction").append("<input type='text' name='seatName' value='"+$(this).val()+"'>");
+			$("#formAction").append("<input type='text' name='seatNum' value='"+seatPk+"'>");
+		}
+		if(users==0){
+			$("#formAction").append("<input type='text' name='seatMoney' value='"+$("#money").text()+"'>");
+			$("#btn2").prop("disabled",false);
+			alert("넘겨줄 값들.."+seatNum+","+sSale+","+str);
 		}
 	});
 
@@ -211,6 +217,7 @@ li {
 			$("#seatName").text(str);
 			$("#sale").text('-');
 			$("#money").text('-');
+			$("#formAction").empty();
 			totalMoney=0;
 			getList();
 			bl2=true;
