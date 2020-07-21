@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
 import com.jhta.project.service.RestService;
+import com.jhta.project.vo.MembershipVo;
 
 @Controller
 public class LogController {
@@ -37,5 +38,19 @@ public class LogController {
 		String code=service.get(url).trim();
 		Gson gson = new Gson();
 		return gson.toJson(code);
+	}
+	
+	@RequestMapping(value="/log/signmake.do")
+	public String signmake(MembershipVo vo) {
+		String url="http://localhost:9090/projectdb/log/signmake.do";
+		Gson gson = new Gson();
+		String jsonString = gson.toJson(vo);
+		System.out.println(jsonString);
+		String code=service.post(url, jsonString).trim();
+		if(code.equals("success")) {
+			return ".main";
+		}else {
+			return "error";
+		}
 	}
 }

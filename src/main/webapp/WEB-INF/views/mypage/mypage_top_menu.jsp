@@ -35,7 +35,7 @@
 		<li><a href="#"><span>쿠폰함</span></a></li>
 		<li><a href="#"><span>내가 본 영화</span></a></li>
 		<li><a href="${cp }/mypage/inquiry.do"><span>1:1문의</span></a></li>
-		<li><a href="#"><span>MY 정보 관리</span></a></li>
+		<li><a href="${cp }/mypage/inquiry.do"><span>MY 정보 관리</span></a></li>
 	</ul>
 </div>
 </body>

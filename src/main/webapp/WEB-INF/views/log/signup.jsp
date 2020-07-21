@@ -3,7 +3,7 @@
 <link href="${cp }/resources/css/log/signup.css" rel="stylesheet">
 <script src="${cp }/resources/js/log/signup.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<form onsubmit="return checkform()" method="post">
+<form action="${cp }/log/signmake.do" method="post" id="signmake">
 	<div id="signwarp">
 		<div class="container register-form">
 			<div class="form">
@@ -27,19 +27,19 @@
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
-								전화번호 <input type="text" class="form-control" name="memPhone"
+								전화번호 ('-'없이 입력)<input type="text" class="form-control" name="memPhone"
 									id="memPhone" placeholder="전화번호">
 									<div class="chek_font" id="phone_chek"></div>
 							</div>
 							<div class="form-group">
-								생년월일(ex:000105-3) <input type="text" class="form-control"
+								생년월일 (ex:000105-3) <input type="text" class="form-control"
 									name="birth" id="birth" placeholder="생년월일" value="" />
 									<div class="chek_font" id="birth_chek"></div>
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
-								비밀번호 <input type="password" class="form-control" name="passwd"
+								비밀번호 <input type="password" class="form-control" 
 									id="passwd" placeholder="비밀번호" />
 									<div class="chek_font" id="passwd_chek"></div>
 							</div>

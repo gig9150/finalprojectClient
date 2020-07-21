@@ -2,7 +2,7 @@
  * 
  */
 $(function(){
-	//$("#submit").attr("disabled", "disabled");
+	$("#submit").attr("disabled", "disabled");
 	
 	//이름 예외 처리
 	$("#memName").focusout(function(){
@@ -35,16 +35,13 @@ $(function(){
 			$.ajax({
 				url : "../log/idcheck.do",
 				data : {memId:val},
-				/*dataType :"JSON",*/
-				/*contentType: "application/json; charset=utf-8",*/
 				success : function(data){
-					alert(data);
 					console.log(data)
 					if(data=='success'){
 						$("#id_chek").text("");
 						$("#submit").removeAttr("disabled");
 					}else{
-						$("#id_chek").text("중복!!!");
+						$("#id_chek").text("중복되는 아이디 입니다.");
 						$("#submit").attr("disabled", "disabled");
 					}
 				},
@@ -52,21 +49,6 @@ $(function(){
 					alert(e);
 				}
 			});
-//			$.getJSON(
-//				"../log/idcheck.do",
-//				{memId:val},
-//				function(data){
-//					alert(data);
-//					console.log(data)
-//					if(data=='success'){
-//						$("#id_chek").text("");
-//						$("#submit").removeAttr("disabled");
-//					}else{
-//						$("#id_chek").text("중복!!!");
-//						$("#submit").attr("disabled", "disabled");
-//					}
-//				}
-//			);
 		}
 	});
 	
@@ -78,7 +60,7 @@ $(function(){
 			$("#phone_chek").text("전화번호를 작성하시오.");
 			$("#submit").attr("disabled", "disabled");
 		}else if(!regex.test(val)){
-			$("#phone_chek").text("ex)010XXXXXXXX");
+			$("#phone_chek").text("ex)01XXXXXXXXX");
 			$("#submit").attr("disabled", "disabled");
 		}else{
 			$("#phone_chek").text("");
@@ -153,97 +135,8 @@ $(function(){
 	$("#reset").click(function(){
 		$(".chek_font").text("");
 	});
+	
+	
 });
 
 
-
-/*
-function checkform() {
-	var getMail = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);
-	var getPhone = RegExp(/^01([0|1|6|7|8|9]?)?([0-9]{3,4})?([0-9]{4})$/);
-	var getName = RegExp(/^[a-zA-Z가-힣]{2,12}$/);
-	var getCheck = RegExp(/^[a-zA-Z0-9]{4,12}$/);
-	var fmt = RegExp(/^\d{6}-[1234]$/);
-
-	// 이름 빈칸
-	if ($("#memName").val() == "") {
-		alert("이름을 쓰시오.");
-		$("#memName").focus();
-		return false;
-	}
-	if (!getName.test($("#memName").val())) {
-		alert("2~12자리의 영문 대소문자  한글로만 입력.");
-		$("#memName").focus();
-		return false;
-	}
-
-	// 아이디 빈칸
-	if ($("#memId").val() == "") {
-		alert("아이디를 입력하시오.");
-		$("#memId").focus();
-		return false;
-	}
-	// 아이디 형식
-	if (!getCheck.test($("#memId").val())) {
-		alert("4~12자리의 영문 대소문자와 숫자로만 입력");
-		$("#memId").focus();
-		return false;
-	}
-	// 전화번호 빈칸
-	if ($("#memPhone").val() == "") {
-		alert("전화번호를 입력");
-		$("#memPhone").focus();
-		return false;
-	}
-	// 전화번호 숫자만 입력
-	if (!getPhone.test($("#memPhone").val())) {
-		alert("ex)010-0000-0000");
-		$("#memPhone").focus();
-		return false;
-	}
-	// 생일 빈칸
-	if ($("#birth").val() == "") {
-		alert("생년월일을 입력하세요");
-		$("#birth").focus();
-		return false;
-	}
-	// 생일 유형
-	if (!fmt.test($("#birth").val())) {
-		alert("(ex:000105-3)");
-		$("#birth").focus();
-		return false;
-	}
-	if ($("#passwd").val() == "") {
-		alert("비밀번호를 입력하세요");
-		$("#passwd").focus();
-		return false;
-	}
-	if ($("#memPwd").val() == "") {
-		alert("비밀번호를 입력하세요");
-		$("#memPwd").focus();
-		return false;
-	}
-	if ($("#passwd").val() != ($("#memPwd").val())) {
-		alert("비밀번호가 맞지 않습니다.");
-		$("#passwd").val("");
-		$("#memPwd").val("");
-		$("#passwd").focus();
-		return false;
-	}
-	if ($("#email").val() == "") {
-		alert("이메일을 입력하세요");
-		$("#email").focus();
-		return false;
-	}
-	if (!getMail.test($("#email").val())) {
-		alert("이메일형식에 맞게 입력해주세요")
-		$("#email").focus();
-		return false;
-	}
-	
-	return true;
-	
-	
-	
-}
-*/
