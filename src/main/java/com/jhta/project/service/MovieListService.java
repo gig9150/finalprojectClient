@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.jhta.project.dao.MovieListDao;
+import com.jhta.project.vo.AllByMRateVo;
 import com.jhta.project.vo.AllByMReviewVo;
 import com.jhta.project.vo.AllMoviesVo;
 import com.jhta.project.vo.MoviesInfoVo;
@@ -13,9 +14,15 @@ import com.jhta.project.vo.MoviesInfoVo;
 public class MovieListService {
 	@Autowired
 	MovieListDao mListDao;
+	//예매율순으로 상영 영화 불러오기
 	public List<AllMoviesVo> showAllMovies(){
 		System.out.println("SERVICE진입");
 		return mListDao.showAllMovies();
+	}
+	//평점순으로 상영 영화 불러오기
+	public List<AllByMRateVo> moviesByMRate(){
+		System.out.println("평점순 상영영화 service");
+		return mListDao.moviesByMRate();
 	}
 	
 	//관람평순으로 상영 영화 불러오기

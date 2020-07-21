@@ -39,8 +39,6 @@
 	text-align: center;
 	padding-left: 20px;
 }
-
-
 </style>
 <div class="container">
 	<div id="content_wrap">
@@ -54,27 +52,27 @@
 				<li><a href="#">관람평순</a></li>
 			</ul>
 		</div>
-		
-		<div id="movie_list" style="display:flex; position: relative; width:90%; background-color: orange;">
-					<ul>
-			<c:forEach var="movieList" items="${allMovieList }">
-	
-					<li class="screen_add_box" style="float:left;margin-right:20px">
-						<div >
-							<span><img
-								src="${movieList.movieImgUrl }" style="width: 150px;" /></span>
-							<div >
-								<strong class="tit_info" style="display:block;">${movieList.filmName }</strong> <span
-									class="sub_info"> <span class="rate_info">예매율 ${movieList.rRate}
-								</span> <span class="star_info"></span>
 
+		<div id="movie_list"
+			style="display: flex; position: relative; width: 90%; background-color: orange;">
+			<ul>
+				<c:forEach var="movieList" items="${allMovieList }" varStatus="i">
+
+					<li class="screen_add_box" style="float: left; margin-right: 20px;">
+						<div>
+							<span><img src="${movieList.movieImgUrl }"
+								style="width: 150px;" /></span>
+							<div>
+								<strong class="tit_info" style="display: block;">${movieList.filmName }</strong>
+								<span class="sub_info"> <span class="rate_info">예매율 ${movieList.rRate} </span> 
+								<span class="star_info">${moviesByMRate.get(i.index).mRate }</span>
 								</span>
 							</div>
 						</div>
 					</li>
 
-			</c:forEach>
-							</ul>
+				</c:forEach>
+			</ul>
 		</div>
 	</div>
 </div>

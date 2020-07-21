@@ -8,6 +8,7 @@
   	<typeAlias type="com.jhta.project.vo.MembersVo" alias="members"/>
   	<typeAlias type="com.jhta.project.vo.ActorVo" alias="actor"/>
   	<typeAlias type="com.jhta.project.vo.AllMoviesVo" alias="allmovies"/>
+    <typeAlias type="com.jhta.project.vo.AllByMRateVo" alias="allbymrate"/>
   	<typeAlias type="com.jhta.project.vo.AllByMReviewVo" alias="allbymreview"/>
   	<typeAlias type="com.jhta.project.vo.AskVo" alias="ask"/>
   	<typeAlias type="com.jhta.project.vo.BookVo" alias="book"/>

@@ -26,6 +26,19 @@
         order by totalPeople desc)bb
 	
 	</select>
+	
+	<!-- 평점별 영화명, 영화번호, 영화이미지,  -->
+	<select id="movieListMRate" parameterType="allbymrate">
+			select aa.*, m.movieimgUrl, trunc(nvl((select avg(mscore) from mreview mr where
+			aa.filmnum=mr.filmnum),0),1) mRate
+				from
+				(
+					select filmName, filmNum from film where filmend>=sysdate
+				)aa, movieimg m
+			where m.filmNum= aa.filmNum
+			order by mRate desc
+	</select>
+	
 	<!-- 누적관객수별 영화명, 영화이미지, 누적관객수 -->
 	<select id="showAllMovies" resultType="allmovies">
 		<![CDATA[

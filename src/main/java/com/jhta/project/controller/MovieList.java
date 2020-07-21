@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.jhta.project.service.MovieListService;
+import com.jhta.project.vo.AllByMRateVo;
 import com.jhta.project.vo.AllMoviesVo;
 import com.jhta.project.vo.MoviesInfoVo;
 
@@ -21,9 +22,12 @@ public class MovieList {
 	public String showAllMovies(Model model){
 		System.out.println("CONTROLLERź��");
 		List<AllMoviesVo> allMovieList=movieListService.showAllMovies();
-		System.out.println(allMovieList.get(0).getFilmName()+"11111111");
-		System.out.println(allMovieList.get(1).getFilmName()+"222222");
+		List<AllByMRateVo> moviesByMRate=movieListService.moviesByMRate();
+		System.out.println("여기까지오나??????????");
 		model.addAttribute("allMovieList", allMovieList);
+		model.addAttribute("moviesByMRate", moviesByMRate);
+		System.out.println(moviesByMRate+"평점순 vo에 담겨있는 값");
+		System.out.println(moviesByMRate.get(0).getmRate()+"3333333");
 		return ".movie.showMovies";
 	}
 	

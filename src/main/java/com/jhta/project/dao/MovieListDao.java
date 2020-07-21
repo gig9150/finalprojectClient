@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.jhta.project.vo.AllByMRateVo;
 import com.jhta.project.vo.AllByMReviewVo;
 import com.jhta.project.vo.AllMoviesVo;
 import com.jhta.project.vo.MoviesInfoVo;
@@ -20,6 +21,12 @@ public class MovieListDao {
 	public List<AllMoviesVo> showAllMovies(){
 		System.out.println("DAO진입");
 		return sqlSession.selectList(NAMESPACE+".movieListRrate");
+	}
+	
+	//평점순으로 상영 영화 불러오기
+	public List<AllByMRateVo> moviesByMRate(){
+		System.out.println("평점순 상영 dao");
+		return sqlSession.selectList(NAMESPACE+".movieListMRate");
 	}
 	
 	//관람평순으로 상영 영화 불러오기
