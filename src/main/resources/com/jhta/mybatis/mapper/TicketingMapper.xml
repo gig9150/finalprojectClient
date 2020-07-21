@@ -5,11 +5,11 @@
 <mapper namespace="com.jhta.mybatis.mapper.ticketing">
 	<select id="ticketingtList" resultType="ticketing" parameterType="int">
 		select * from
-		(select DISTINCT c.chargenum chargenum,ms.mstarttime mstarttime, br.brname brname, t.theathername theathername, c.chregdate chregdate, c.totalbill totalbill, nvl(cup.cuponrate, 0) cuponrate, nvl(cup.cname,0) cname,
+		(select DISTINCT c.chargenum chargenum,ms.mstarttime mstarttime, br.brname brname, t.theathername theathername, c.chregdate chregdate, c.totalbill totalbill, 
 		(SELECT LISTAGG(seatname, ',') WITHIN GROUP (ORDER BY boo.booknum) AS seatname FROM book boo,seat s where b.chargenum=boo.chargenum and boo.seatNum=s.seatnum) seatName,
 		(select nvl(count(*),0) from book boo where boo.chargenum=c.chargenum) userCount
-		from membership m left join cupon cup on m.memnum=cup.memnum, charge c, book b, mschedule ms, theather t , branch br , purchasefilm p, film f, movieimg mo
+		from  membership m, charge c, book b, mschedule ms, theather t , branch br , purchasefilm p, film f, movieimg mo
 		where m.memnum=c.memnum and c.chargenum=b.chargenum and b.mschedulenum=ms.mschedulenum and t.theathernum=ms.theathernum and
-		t.branchnum=br.branchnum and p.purchasefilmnum=ms.purchasefilmnum and p.filmnum=f.filmnum and f.filmnum=mo.filmnum and m.memnum=#{memNum})
+		t.branchnum=br.branchnum and p.purchasefilmnum=ms.purchasefilmnum and p.filmnum=f.filmnum and f.filmnum=mo.filmnum and m.memnum=1)
 	</select>
 </mapper>
