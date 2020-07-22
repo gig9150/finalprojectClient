@@ -6,13 +6,11 @@
 <head>
 <style>
 	#inquiry_wrap{
-		border: 1px solid gray;
 		width: 50%;
 		height: 100%;
 		margin: auto;
 	}
 	#mypage_moviesaw_wrap{
-		border: 1px solid red;
 		height: 100%;
 		width: 100%;
 	}
@@ -53,9 +51,9 @@
 	#review_box dt{
 		color: #FF7787;
 	}
-	#reviewBtn{
+	.reviewBtn{
 		border: 1px solid;
-		border-radius: 6px;
+		border-radius: 10px;
 		background-color:transparent;
 	}
 	#tit{
@@ -162,10 +160,10 @@
 					<div id="btn_box">
 						<c:choose>
 							<c:when test="${list.mreview == '관람평을 작성해보세요.'}">
-								<input type="button" value="관람평등록" data-toggle="modal" data-target="#review${i.index }">
+								<input type="button" value="관람평등록" data-toggle="modal" data-target="#review${i.index }" class="reviewBtn">
 							</c:when>
 							<c:otherwise>
-								<input type="button" value="관람평수정" data-toggle="modal" data-target="#review${i.index }">
+								<input type="button" value="관람평수정" data-toggle="modal" data-target="#review${i.index }" class="#eviewBtn">
 							</c:otherwise>
 						</c:choose>
 					</div>

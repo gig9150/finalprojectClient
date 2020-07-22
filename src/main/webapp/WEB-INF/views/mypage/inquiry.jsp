@@ -7,17 +7,21 @@
 <head>
 <style>
 	#inquiry_wrap{
-		border: 1px solid gray;
 		width: 50%;
 		height: 100%;
 		margin: auto;
+		margin-bottom: 50px;
 	}
 	#inquiry_page li{
 		text-align: center;
 		list-style: none;
+		display: inline-block;
+	}
+	#inquiry_page{
+		text-align: center;
 	}
 	#inquiry_page input{
-		text-align: right;
+		text-align: center;
 	}
 	#inquiry_div{
 		padding: 80px 0px;
@@ -29,6 +33,7 @@
 	}
 </style>
 <link rel="stylesheet" href="${cp }/resources/css/mypage/mypage_top_menu.css" type="text/css">
+<script type="text/javascript" src="${cp }/resources/js/jquery-3.5.1.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -43,8 +48,10 @@
 			<li><a href="${cp }/mypage/memberInfo.do"><span>회원정보관리</span></a></li>
 		</ul>
 	</div>
+	
 	<div>
-		<table class="table">
+	<h4>나의 문의내역</h4>
+		<table class="table table-bordered">
 		  <thead>
 			<tr>
 				<th>번호</th>
@@ -55,10 +62,9 @@
 		  </thead>
 		  <tbody>
 			<c:forEach items="${list }" var="vo">
-			<c:set var="count" value="${count + 1}" />
 				<tr>
-					<th>${count }</th>
-					<th><a href="#">${vo.qnaTitle }</a></th>
+					<th>${pu.totalRowCount - vo.rnum +1 }</th>
+					<th><a href="${cp }/mypage/inquiryDatail.do?askNum=${vo.askNum}">${vo.qnaTitle }</a></th>
 					<th>${vo.askRegdate }</th>
 					<th>${vo.response }</th>
 				</tr>
@@ -69,6 +75,7 @@
 						<div id="inquiry_div">
 							<img src="${cp }/resources/images/mypage/inquiry.png"/>
 							<p>문의 내역이 존재하지 않습니다.</p>
+							<input type="button" value="문의등록" onclick="location.href='#'" class="btn">
 						</div>
 					</td>
 				</tr>
@@ -80,10 +87,18 @@
 			<c:forEach var="i" begin="${pu.startPageNum }" end="${pu.endPageNum }">
 				<li><a href="${cp }/mypage/inquiry.do?pageNum=${i}">[${i }]</a></li>
 			</c:forEach>
-			<input type="button" value="문의등록" onclick="location.href='#'">
 		</div>
 	</div>
 </div>
 
+
+
+
 </body>
 </html>
+
+
+
+
+
+

@@ -62,18 +62,29 @@ public class MyPageController {
 		return ".mypage.moviesaw";
 	}
 	
-	//1:1문의
+	//1:1문의 리스트
 	@RequestMapping("/mypage/inquiry.do")
 	public String askList(@RequestParam(value="pageNum",defaultValue = "1")int pageNum,Model model) {
-		int totalRowCount=askService.count();
-		PageUtil pu=new PageUtil(pageNum, totalRowCount, 5, 5);
+		int totalRowCount=askService.count(1);//회원번호
+		PageUtil pu=new PageUtil(pageNum, totalRowCount, 10, 5);
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("startRow", pu.getStartRow());
 		map.put("endRow", pu.getEndRow());
-		List<AskVo> list=askService.askList(1); //memNum
+		map.put("memNum", 1);//회원번호
+		List<AskVo> list=askService.askList(map); //memNum
+		System.out.println(list.get(0).getRnum()+"-----------");
+		
+		
 		model.addAttribute("list", list);
 		model.addAttribute("pu",pu);
 		return ".mypage.inquiry";
+	}
+	//1:1문의 상세보기
+	@RequestMapping("/mypage/inquiryDatail.do")
+	public String askgetInfo(int askNum,Model model) {
+		AskVo vo=askService.askGetinfo(askNum);
+		model.addAttribute("vo",vo);
+		return ".mypage.inquiryDetail";
 	}
 	
 	//회원정보관리

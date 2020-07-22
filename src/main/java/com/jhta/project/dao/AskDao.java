@@ -1,5 +1,6 @@
 package com.jhta.project.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -14,11 +15,16 @@ public class AskDao {
 	private SqlSession session;
 	private final String NAMESPASE = "com.jhta.mybatis.mapper.ask";
 	
-	public List<AskVo> askList(int memNum){
-		return session.selectList(NAMESPASE+".askList",memNum);
+	public List<AskVo> askList(HashMap<String, Object> map){
+		return session.selectList(NAMESPASE+".askList",map);
 	}
 
-	public int count() {
-		return session.selectOne(NAMESPASE+".count");
+	public int count(int memNum) {
+		return session.selectOne(NAMESPASE+".count",memNum);
 	}
+	
+	public AskVo askGetinfo(int askNum) {
+		return session.selectOne(NAMESPASE+".getinfo",askNum);
+	}
+	
 }

@@ -3,16 +3,24 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jhta.mybatis.mapper.ask">
+	<select id="askList" parameterType="hashmap" resultType="ask">
+	<![CDATA[
+		select BB.* from(
+			SELECT AA.*,ROWNUM rnum FROM(
+			    select * from ask 
+			    WHERE MEMNUM=#{memNum}
+			    ORDER BY askregdate DESC
+			) AA
+	    )BB
+		WHERE rnum>=#{startRow} AND rnum<=#{endRow}
+	]]>
+	</select>
+	
+	<select id="count" resultType="int" parameterType="int">
+		select NVL(count(*),0) from ask where memnum=#{memNum}
+	</select>
 	<select id="getinfo" parameterType="int" resultType="ask">
-		select * from ask where askNum=#{askNum} 
-	</select>
-	
-	<select id="askList" parameterType="int" resultType="ask">
-		select * from ask where memNum=#{memNum}
-	</select>
-	
-	<select id="count" resultType="int">
-		select NVL(count(*),0) from ask
+		select a.*,m.memphone,m.email from ask a,membership m where a.memnum=m.memnum and a.asknum=#{askNum}
 	</select>
 	
 </mapper>

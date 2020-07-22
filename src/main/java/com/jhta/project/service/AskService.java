@@ -1,5 +1,6 @@
 package com.jhta.project.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,11 +16,16 @@ public class AskService {
 	@Autowired
 	private AskDao askDao;
 	
-	public List<AskVo> askList(int memNum){
-		return askDao.askList(memNum);
+	public List<AskVo> askList(HashMap<String, Object> map){
+		return askDao.askList(map);
 	}
 
-	public int count() {
-		return askDao.count();
+	public int count(int memNum) {
+		return askDao.count(memNum);
 	}
+	
+	public AskVo askGetinfo(int askNum) {
+		return askDao.askGetinfo(askNum);
+	}
+
 }
