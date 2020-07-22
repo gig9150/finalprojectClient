@@ -75,6 +75,7 @@ $(function(){
 	
 	$("#addr-choice").on('click',function(){
 		$("#addr-text").val(addr);
+		$("#city-addr").val(cityAddr[0]);
 		$("#addr-modal").modal('hide');
 	});
 	
@@ -82,12 +83,13 @@ $(function(){
         interval: 5000
     })
 	
-	setTimeout(function(){  
+	setTimeout(function(){
 		map.relayout();
 	},2000);
 	
 	/*/////////////////////////////////카카오 지도/////////////////////////////// */
 	var addr = '';
+	var cityAddr = '';
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 	
 	mapOption = {
@@ -127,6 +129,7 @@ $(function(){
 	                        '</div>';
 	            
 	            addr = result[0].address.address_name;
+	            cityAddr = addr.split(' ');
 	            
 	            // 마커를 클릭한 위치에 표시합니다 
 	            marker.setPosition(mouseEvent.latLng);
@@ -168,5 +171,4 @@ $(function(){
 	        }
 	    }
 	}
-
 });
