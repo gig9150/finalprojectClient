@@ -65,6 +65,7 @@
 			<h1 class="h1_tit">회원 정보 변경</h1>
 			<p class="h_desc">회원의 정보를 관리하세요.</p>
 		</div>
+		<form action="">
 		<div class="member_info">
 			<div class="table_header">
 				<h3 class="h3_tit">기본정보</h3>
@@ -126,6 +127,7 @@
 				</table>
 			</div>
 		</div>
+		</form>
 	</div>
 </body>
 </html>
