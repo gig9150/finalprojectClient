@@ -8,7 +8,7 @@ import com.jhta.project.dao.MovieListDao;
 import com.jhta.project.vo.AllByMRateVo;
 import com.jhta.project.vo.AllByMReviewVo;
 import com.jhta.project.vo.AllMoviesVo;
-import com.jhta.project.vo.MoviesInfoVo;
+import com.jhta.project.vo.MovieDetailVo;
 
 @Service
 public class MovieListService {
@@ -19,11 +19,12 @@ public class MovieListService {
 		System.out.println("SERVICE진입");
 		return mListDao.showAllMovies();
 	}
+	/*
 	//평점순으로 상영 영화 불러오기
-	public List<AllByMRateVo> moviesByMRate(){
+	public List<AllByMRateVo> moviesByMRate(int filmNum){
 		System.out.println("평점순 상영영화 service");
-		return mListDao.moviesByMRate();
-	}
+		return mListDao.moviesByMRate(filmNum);
+	}*/
 	
 	//관람평순으로 상영 영화 불러오기
 	public List<AllByMReviewVo> moviesByMReview() {
@@ -31,7 +32,7 @@ public class MovieListService {
 	}
 	
 	//영화 상세정보 클릭 시 장르,감독,개봉일,출연진,줄거리 가져오기
-	public List<MoviesInfoVo> moviesInfo(int filmNum) {
-		return mListDao.moviesInfo(filmNum);
+	public MovieDetailVo showMovieDetailInfo(int filmNum) {
+		return mListDao.showMovieDetailInfo(filmNum);
 	}
 }

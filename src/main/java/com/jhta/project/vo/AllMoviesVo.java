@@ -8,18 +8,20 @@ public class AllMoviesVo {
 	private int totalPeople; //관람객수
 	private float rRate; //예매율
 	private int totalSum; //총관람객수
+	private float mRate; //평점
 	
 	public AllMoviesVo() {}
 
-	public AllMoviesVo(String filmName, int filmNum, String movieImgUrl, int totalPeople, float rRate, int totalSum) {
+	public AllMoviesVo(String filmName, int filmNum, String movieImgUrl, int totalPeople, float rRate, int totalSum, float mRate) {
 		this.filmName = filmName;
 		this.filmNum = filmNum;
 		this.movieImgUrl = movieImgUrl;
 		this.totalPeople = totalPeople;
 		this.rRate = rRate;
 		this.totalSum = totalSum;
+		this.mRate=mRate;
 	}
-	
+
 	public float getrRate() {
 		return rRate;
 	}
@@ -41,6 +43,11 @@ public class AllMoviesVo {
 	public int getFilmNum() {
 		return filmNum;
 	}
+	
+	public float getmRate() {
+		return mRate;
+	}
+
 	public void setFilmNum(int filmNum) {
 		this.filmNum = filmNum;
 	}
@@ -55,5 +62,8 @@ public class AllMoviesVo {
 	}
 	public void setTotalPeople(int totalPeople) {
 		this.totalPeople = totalPeople;
+	}
+	public void setmRate(float mRate) {
+		this.mRate = mRate;
 	}
 }

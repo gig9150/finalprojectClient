@@ -10,25 +10,26 @@
 	
 	<!-- 예매율별 영화명,영화이미지, 예매율  -->
 	<select id="movieListRrate" resultType="allmovies">
-	select trunc(totalpeople/totalSum*100,1) rRate,bb.* from     
-		(select aa.*, m.movieimgUrl, nvl((select sum(totalpeople)from total t where aa.filmnum=t.filmnum),0) totalPeople, 
-		(select sum(totalCount) from (select (select sum(totalpeople) total from total t where aa.filmnum=t.filmnum) totalCount
-			from 
-			(
+		select trunc(totalpeople/totalSum*100,1) rRate,bb.*,trunc(nvl((select avg(mscore) from mreview mr where	bb.filmnum=mr.filmnum),0),1) mRate
+		from     (select aa.*, m.movieimgUrl, nvl((select sum(totalpeople)from total t where aa.filmnum=t.filmnum),0) totalPeople, 
+			(select sum(totalCount) from
+				(select (select sum(totalpeople) total from total t where aa.filmnum=t.filmnum) totalCount
+		from 
+		(
 			select filmName, filmNum from film where filmend>=sysdate
-			)aa, movieimg m
-			where m.filmNum= aa.filmNum)) totalSum
-            	from 
-            (
-                select filmName, filmNum from film where filmend>=sysdate
-            )aa, movieimg m
-        where m.filmNum= aa.filmNum
-        order by totalPeople desc)bb
-	
+		)aa, movieimg m
+		where m.filmNum= aa.filmNum)) totalSum
+		            from 
+		            (
+		                select filmName, filmNum from film where filmend>=sysdate
+		            )aa, movieimg m
+		        where m.filmNum= aa.filmNum
+		        order by totalPeople desc)bb
 	</select>
 	
-	<!-- 평점별 영화명, 영화번호, 영화이미지,  -->
-	<select id="movieListMRate" parameterType="allbymrate">
+	<!-- 평점별 영화명, 영화번호, 영화이미지 
+	<select id="movieListMRate" resultType="allbymrate" parameterType="int">
+		<![CDATA[
 			select aa.*, m.movieimgUrl, trunc(nvl((select avg(mscore) from mreview mr where
 			aa.filmnum=mr.filmnum),0),1) mRate
 				from
@@ -36,8 +37,9 @@
 					select filmName, filmNum from film where filmend>=sysdate
 				)aa, movieimg m
 			where m.filmNum= aa.filmNum
-			order by mRate desc
+		]]>
 	</select>
+	-->
 	
 	<!-- 누적관객수별 영화명, 영화이미지, 누적관객수 -->
 	<select id="showAllMovies" resultType="allmovies">
@@ -66,9 +68,10 @@
 		]]>
 	</select>
 	
-	<select id="moviesInfo" resultType="film" parameterType="int">
-		select f.filmhead, g.genrename, f.filmstory, f.filmstart, c.castname 
+	<!-- 영화디테일정보 -->
+	<select id="showMovieDetailInfo" resultType="moviedetail" parameterType="int">
+		select f.filmhead, f.filmName,g.genrename, f.filmstory, f.filmstart, c.castname 
 			from film f, genre g, cast c 
-		where f.genrenum=g.genrenum and c.filmnum=f.filmnum
+		where f.genrenum=g.genrenum and c.filmnum=f.filmnum and f.filmnum=#{filmNum}
 	</select>
 </mapper>
