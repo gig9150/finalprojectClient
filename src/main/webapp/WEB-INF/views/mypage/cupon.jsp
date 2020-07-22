@@ -10,6 +10,7 @@
 		width: 50%;
 		height: 100%;
 		margin: auto;
+		margin-bottom: 50px;
 	}
 	#cupon_div{
 		padding: 80px 0px;

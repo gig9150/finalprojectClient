@@ -3,6 +3,8 @@ package com.jhta.project.controller;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.jws.WebParam.Mode;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -14,11 +16,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.jhta.project.service.AskService;
 import com.jhta.project.service.CuponService;
 import com.jhta.project.service.MReviewService;
+import com.jhta.project.service.MembershipService;
 import com.jhta.project.service.MovieSawService;
 import com.jhta.project.service.TicketingService;
 import com.jhta.project.vo.AskVo;
 import com.jhta.project.vo.CuponVo;
 import com.jhta.project.vo.MReviewVo;
+import com.jhta.project.vo.MembershipVo;
 import com.jhta.project.vo.MovieSawVo;
 import com.jhta.project.vo.TicketingVo;
 import com.jtha.util.PageUtil;
@@ -35,6 +39,8 @@ public class MyPageController {
 	private MReviewService mreviewServie;
 	@Autowired
 	private TicketingService ticketingService;
+	@Autowired
+	private MembershipService membershipService;
 	
 	//결제 내역,예매 내역
 	@RequestMapping("/mypage/payment.do")
@@ -72,8 +78,6 @@ public class MyPageController {
 		map.put("endRow", pu.getEndRow());
 		map.put("memNum", 1);//회원번호
 		List<AskVo> list=askService.askList(map); //memNum
-		System.out.println(list.get(0).getRnum()+"-----------");
-		
 		
 		model.addAttribute("list", list);
 		model.addAttribute("pu",pu);
@@ -85,6 +89,13 @@ public class MyPageController {
 		AskVo vo=askService.askGetinfo(askNum);
 		model.addAttribute("vo",vo);
 		return ".mypage.inquiryDetail";
+	}
+	//1:1문의하기
+	@RequestMapping("/mypage/inquiryInsert.do")
+	public String askInsert(Model model) {
+		MembershipVo vo=membershipService.memGetinfo(1);
+		model.addAttribute("vo",vo);
+		return ".mypage.inquiryInsert";
 	}
 	
 	//회원정보관리

@@ -10,13 +10,14 @@ public class AskVo {
 	private String rnum;
 	private String memPhone;
 	private String email;
+	private String memName;
 	
 	public AskVo() {
 		super();
 	}
 
 	public AskVo(int askNum, int memNum, String qnaTitle, String askContent, String askRegdate, String response,
-			String rnum, String memPhone, String email) {
+			String rnum, String memPhone, String email, String memName) {
 		super();
 		this.askNum = askNum;
 		this.memNum = memNum;
@@ -27,6 +28,7 @@ public class AskVo {
 		this.rnum = rnum;
 		this.memPhone = memPhone;
 		this.email = email;
+		this.memName = memName;
 	}
 
 	public int getAskNum() {
@@ -101,5 +103,12 @@ public class AskVo {
 		this.email = email;
 	}
 
-	
+	public String getMemName() {
+		return memName;
+	}
+
+	public void setMemName(String memName) {
+		this.memName = memName;
+	}
+
 }

@@ -75,7 +75,7 @@
 						<div id="inquiry_div">
 							<img src="${cp }/resources/images/mypage/inquiry.png"/>
 							<p>문의 내역이 존재하지 않습니다.</p>
-							<input type="button" value="문의등록" onclick="location.href='#'" class="btn">
+							<input type="button" value="문의등록" onclick="location.href='${cp}/mypage/inquiryInsert.do'" class="btn">
 						</div>
 					</td>
 				</tr>
