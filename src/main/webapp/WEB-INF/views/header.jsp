@@ -35,6 +35,10 @@
 
         <div class='menu-group'>
           <a href="#">예매</a>
+          <div class="sub-menu">
+            <a href="#">예매하기</a>
+            <a href="${cp }/show/showTimeList.do">상영 시간표</a>
+          </div>
         </div>
         <div class='menu-group'>
           <a href="#">영화</a>

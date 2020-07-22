@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jhta.mybatis.mapper.locationlist">
+	<select id="citylist" parameterType="string" resultType="locationlist">
+		select p.cityAddr, listagg (b.brName||',') within GROUP (order by b.brName)as citys
+		from proposal p join branch b on p.proNum=b.proNum
+		where cityAddr=#{cityAddr}
+		group by cityAddr
+		order by cityAddr
+	</select>
+	<select id="list" resultType="proposal">
+		select distinct cityAddr from proposal
+	</select>
+</mapper>

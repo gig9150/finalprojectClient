@@ -10,8 +10,9 @@ public class ProposalVo {
 	private String proScale;
 	private String proStatus;
 	private Date proRegdate;
+	private String cityAddr;
 	public ProposalVo(int proNum, String memberId, String proAddr, String proGoal, String proScale, String proStatus,
-			Date proRegdate) {
+			Date proRegdate, String cityAddr) {
 		super();
 		this.proNum = proNum;
 		this.memberId = memberId;
@@ -20,6 +21,7 @@ public class ProposalVo {
 		this.proScale = proScale;
 		this.proStatus = proStatus;
 		this.proRegdate = proRegdate;
+		this.cityAddr = cityAddr;
 	}
 	public ProposalVo() {
 		super();
@@ -65,6 +67,12 @@ public class ProposalVo {
 	}
 	public void setProRegdate(Date proRegdate) {
 		this.proRegdate = proRegdate;
+	}
+	public String getCityAddr() {
+		return cityAddr;
+	}
+	public void setCityAddr(String cityAddr) {
+		this.cityAddr = cityAddr;
 	}
 	
 }
