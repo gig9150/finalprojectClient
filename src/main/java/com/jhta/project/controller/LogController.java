@@ -80,10 +80,24 @@ public class LogController {
 		System.out.println("나 여기");
 		System.out.println(memId);
 		System.out.println(memPwd);
-		String url="http://localhost:9090/projectdb/log/loging.do?memId="+memId+",memPwd="+memPwd;
+		String url="http://localhost:9090/projectdb/log/loging.do?memId="+memId+"&memPwd="+memPwd;
 		String code = service.get(url).trim();
+		System.out.println("code[]:"+code);
 		Gson gson = new Gson();
-		
-		return gson.toJson(code);
+		if(code.equals("")||code.equals(null)) {
+			return "error";
+		}else {
+			MembershipVo vo =  gson.fromJson(code, MembershipVo.class);
+			session.getServletContext().setAttribute("memNum",vo.getMemNum());
+			session.getServletContext().setAttribute("memName",vo.getMemName());
+			session.getServletContext().setAttribute("memId",vo.getMemId());
+			session.getServletContext().setAttribute("memPwd",vo.getMemPwd());
+			session.getServletContext().setAttribute("memPhone",vo.getMemPhone());
+			session.getServletContext().setAttribute("birth",vo.getBirth());
+			session.getServletContext().setAttribute("email",vo.getEmail());
+			session.getServletContext().setAttribute("grade",vo.getGrade());
+			session.getServletContext().setAttribute("memRegdate",vo.getMemRegdate());
+			return ".main";
+		}
 	}
 }
