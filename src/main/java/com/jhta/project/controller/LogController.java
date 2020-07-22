@@ -1,5 +1,7 @@
 package com.jhta.project.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -30,6 +32,24 @@ public class LogController {
 		return ".log.login";
 	}
 	
+	//회원 정보 변경
+	@RequestMapping("/log/memuser.do")
+	public String memuser() {
+		return ".log.memuser";
+	}
+	//비밀번호 변경
+	@RequestMapping("/log/mempwd.do")
+	public String mempwd() {
+		return ".log.mempwd";
+	}
+	//회원 탈퇴
+	@RequestMapping("/log/memsecession.do")
+	public String memsecession() {
+		return ".log.memsecession";
+	}
+	
+	
+	
 	@RequestMapping(value="/log/idcheck.do",produces={MediaType.APPLICATION_JSON_UTF8_VALUE,MediaType.APPLICATION_XML_VALUE})
 	@ResponseBody
 	public String idcheck(String memId) {
@@ -52,5 +72,18 @@ public class LogController {
 		}else {
 			return "error";
 		}
+	}
+	@RequestMapping(value="/log/loging.do")
+	public String loging(HttpSession session, String email, String pass) {
+		String memId = email;
+		String memPwd = pass;
+		System.out.println("나 여기");
+		System.out.println(memId);
+		System.out.println(memPwd);
+		String url="http://localhost:9090/projectdb/log/loging.do?memId="+memId+",memPwd="+memPwd;
+		String code = service.get(url).trim();
+		Gson gson = new Gson();
+		
+		return gson.toJson(code);
 	}
 }

@@ -1,0 +1,64 @@
+body, input, textarea, select, button, table {
+    color: #555;
+    font-size: 14px;
+    font-family: Arial, nbgr, '나눔바른고딕', '돋음';
+    *font-family: nbgr;
+    line-height: 24px;
+}
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+table th {
+    color: #222;
+    font-weight: normal;
+}
+table {
+    border-collapse: separate;
+    border-spacing: 2px;
+}
+.table_row table, .table_col table, .board_list table {
+    width: 100%;
+    border: 0 none;
+    border-collapse: collapse;
+}
+.table_row th, .table_row td, .table_col th, .table_col td, .board_list th, .board_list td {
+    vertical-align: top;
+}
+.cont_header {
+    padding-top: 10px;
+    text-align: center;
+}
+.h1_tit, h3_tit{
+	margin:0;
+	color:#222;
+	font-weight: normal;
+}
+.table_header {
+    position: relative;
+    padding-bottom: 20px;
+}
+colgroup {
+    display: table-column-group;
+}
+.table_col {
+    border-top: 1px solid #222;
+}
+.table_row .input td, .table_col .input td {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.table_col th, .table_col td {
+    padding: 23px 20px 21px 20px;
+    border-bottom: 1px solid #ddd;
+}
+.table_col th {
+    padding-left: 40px;
+    background-color: #f8f8f8;
+    color: #222;
+    text-align: left;
+}
+.member_info{
+    margin-bottom: 50px;
+}

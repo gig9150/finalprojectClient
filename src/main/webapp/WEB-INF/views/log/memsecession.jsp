@@ -61,7 +61,9 @@
 			</li>
 		</ul>
 	</div>
-	
+	<div>
+		<h1>회원 탈퇴</h1>
+	</div>
 </div>
 </body>
 </html>

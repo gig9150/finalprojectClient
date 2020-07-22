@@ -20,7 +20,7 @@
 <div class="limiter">
 	<div class="container-login100">
 		<div class="wrap-login100">
-			<form class="login100-form validate-form" action="" method="post" id="logingo">
+			<form class="login100-form validate-form" action="${cp }/log/loging.do" method="post" id="loging">
 				<span class="login100-form-title p-b-26"> 로 그 인 </span> <span
 					class="login100-form-title p-b-48"> 
 					<img src="${cp}/resources/img/smile.png" alt="smile" style="width:75px"/>
