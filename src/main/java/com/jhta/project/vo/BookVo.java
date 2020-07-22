@@ -5,12 +5,14 @@ public class BookVo {
 	private String bookStatus;
 	private int seatNum;
 	private int mScheduleNum;
-	public BookVo(int bookNum, String bookStatus, int seatNum, int mScheduleNum) {
+	private int chargeNum;
+	public BookVo(int bookNum, String bookStatus, int seatNum, int mScheduleNum, int chargeNum) {
 		super();
 		this.bookNum = bookNum;
 		this.bookStatus = bookStatus;
 		this.seatNum = seatNum;
 		this.mScheduleNum = mScheduleNum;
+		this.chargeNum = chargeNum;
 	}
 	public BookVo() {
 		super();
@@ -38,6 +40,12 @@ public class BookVo {
 	}
 	public void setmScheduleNum(int mScheduleNum) {
 		this.mScheduleNum = mScheduleNum;
+	}
+	public int getChargeNum() {
+		return chargeNum;
+	}
+	public void setChargeNum(int chargeNum) {
+		this.chargeNum = chargeNum;
 	}
 	
 }

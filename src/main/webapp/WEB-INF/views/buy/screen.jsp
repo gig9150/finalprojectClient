@@ -77,9 +77,9 @@ li {
 				<div class="btn-group">
 					<h2>인원선택</h2>
 					<ul>
-					<c:forEach var="i" begin="0" end="7">
-						<li><button type="button" class="btns" value="${i }" id="btns${i }">${i }</button></li>
-					</c:forEach>
+						<c:forEach var="i" begin="0" end="7">
+							<li><button type="button" class="btns" value="${i }" id="btns${i }">${i }</button></li>
+						</c:forEach>
 					</ul>
 					<div>
 						<span id="seatName" style="font-size: 40px">좌석선택</span>

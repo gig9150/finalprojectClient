@@ -9,24 +9,30 @@
     String phone = "이것도 세션";
     String address = "이것도 세션";
 %>
-<div>
-	<form action="${cp }/buy/screen/insert.do" id="insert" method="post">
-		<h1>영화정보가 담겨있을꺼임..</h1>
-		<h2>${seatMoney }</h2>
-		<input type="hidden" name="seatMoney" value="${seatMoney }">
-		<c:forEach var="num" items="${seatNum }">
-			<h2>${num }</h2>
-			<input type="hidden" name="seatNum" value="${num }">
-		</c:forEach>
-		<c:forEach var="name" items="${seatName }">
-			<h2>${name }</h2>
-			<input type="hidden" name="seatName" value="${seatName }">
-		</c:forEach>
-	</form>
-</div>
-<div>
-	<input type="button" value="좌석 다시선택하기" id="btn1">	
-	<input type="button" value="구매하기" id="btn2">
+<div style="margin: 0px auto;disalign-items: center;width: 90%;height: 700px;display: flex;">
+	<div>
+		<form action="${cp }/buy/screen/insert.do" id="insert" method="post">
+			<div>
+				<h1>영화정보가 담겨있을꺼임..</h1>
+			</div>
+			<div>
+				<h2>총 결제금액 : ${seatMoney }</h2>
+				<input type="hidden" name="seatMoney" value="${seatMoney }">
+				<c:forEach var="num" items="${seatNum }">
+					<input type="hidden" name="seatNum" value="${num }">
+				</c:forEach>
+				<span>좌석정보 : </span>
+				<c:forEach var="name" items="${seatName }" varStatus="i">
+					<span>${name }<c:if test="${not i.last }">,</c:if></span>
+					<input type="hidden" name="seatName" value="${seatName }">
+				</c:forEach>
+			</div>
+		</form>
+		<div>
+			<input type="button" value="좌석 다시선택하기" class="btn btn-success" id="btn1">	
+			<input type="button" value="구매하기" class="btn btn-success" id="btn2">
+		</div>
+	</div>
 </div>
 <script>
 	$("#btn1").on('click',function(){

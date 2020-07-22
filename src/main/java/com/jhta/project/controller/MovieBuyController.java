@@ -5,7 +5,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -53,11 +52,11 @@ public class MovieBuyController {
 	@RequestMapping("/buy/screen/insert.do")
 	public String completa(String[] seatName,int[] seatNum,int seatMoney,String msg,Model model) {
 		System.out.println("결제 완료쪽 컨트롤러다..."+seatMoney);
-		String url="http://localhost:9090/projectdb/buy/screen/insert.do?seatMoney="+seatMoney;
+		String url="http://localhost:9090/projectdb/buy/screen/insert.do?seatMoney="+seatMoney+"&memNum=1";
 		Gson gson=new Gson();
 		List<BookVo> list=new ArrayList<BookVo>();
 		for(int i=0;i<seatName.length;i++) {
-			list.add(new BookVo(0, "결제완료", seatNum[i], 1));
+			list.add(new BookVo(0, "결제완료", seatNum[i], 1, 1));
 		}
 		String jsonString=gson.toJson(list);
 		String code="error";
@@ -66,8 +65,6 @@ public class MovieBuyController {
 		}catch(Exception e) {
 			return code;
 		}
-		System.out.println(msg);
-		model.addAttribute("msg",msg);
 		model.addAttribute("code",code);
 		return ".buy.checked";
 	}
