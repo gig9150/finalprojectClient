@@ -63,14 +63,11 @@
 		</ul>
 	</div>
 	<div class="cont_header">
-			<h1 class="h1_tit">비밀번호 변경</h1>
-			<p class="h_desc">비밀번호는 2-3개월에 한 번씩 바꿔주시면 까먹습니다. </p>
+			<h1 class="h1_tit">보안 비밀 번호 입력</h1>
+			<p class="h_desc">온라인 고객 정보보호를 위한 본인 확인 절차 입니다.<br> MegaCinema 로그인시 사용하는 비밀번호를 입력해 주세요. </p>
 	</div>
 	<form action="">
 		<div class="member_info">
-			<div class="table_header">
-				<h3 class="h3_tit">비밀번호 변경</h3>
-			</div>
 			<div class="table_col">
 				<table>
 					<colgroup>
@@ -98,8 +95,7 @@
 			</div>
 		</div>
 		<div class="btn_sec btn_center">
-			<button type="button" class="btn" id="btn_cancel" onclick = "location.href = '${cp}/' ">취소</button>
-			<button type="button" class="btn btn_em" id="btn_submit">수정</button>
+			<button type="button" class="btn btn_em" id="btn_submit">확인</button>
 		</div>
 		</form>
 	

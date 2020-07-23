@@ -97,70 +97,56 @@
 			</ul>
 		</div>
 		<div class="cont_header">
-			<h1 class="h1_tit">회원 탈퇴</h1>
-			<p class="h_desc">탈퇴해도 DB에는 저장되어 있어서 삭제가 되지 않습니다.</p>
+			<h1 class="h1_tit">약관동의 철회</h1>
+			<p class="h_desc">한번만 더 생각해보고 철회 하시면 안될까요? 살려줘요...</p>
 		</div>
-		<div class="box_btm box_whtie">
-			<div class="regi_complete">
-				<h2 class="h2_tit">약관동의 철회 전 꼭 읽어주세요!</h2>
-				<p class="h_desc">
-					<span class="multi_line">MegaCinema 웹사이트 약관 동의를 철회 하시면
-						MegaCinema 웹사이트 약관 동의 및 개인정보 제공, 활용 동의가 철회됩니다.</span><br> <span
-						class="multi_line">MegaCinema 웹사이트의 이용이 제한되며, 웹사이트 약관 동의를
-						철회하지 않은 타 MegaCinema 제휴 브랜드는 계속 이용 가능합니다.</span>
-				</p>
-				<div class="btn_center">
-					<button id="myBtn" class="btn btn_sm">MegaCinema 서비스 이용약관
-						전문</button>
-				</div>
-			</div>
-			<div id="myModal" class="modal">
+		<div class="cont_area">
+			<div class="mypage_sec">
 
-				<!-- Modal content -->
-				<div class="modal-content">
-					<span class="close">&times;</span>
-					<p>
-						<strong>제1장 총칙</strong><br> <br> 
-						<strong>제1조(목적)</strong><br> <br> 
-						본 약관은 메가시네마(주)(이하 "당사"라 함)가 제공하는 MegaCinema
-						ONE(이하 "Mega"라 함) 서비스 이용과 관련하여 당사와 회원의 제반 권리, 의무, 관련 절차 등을
-						규정하는데 그 목적이 있습니다.
+				<div class="regi_complete">
+					<span class="bg bg face_type2"></span>
+					<p class="h2_tit">
+						<strong class="em">MegaCinema</strong>웹사이트 약관 동의 철회를 하시겠습니까?
 					</p>
-					<p>
-						<br><strong>제2조(약관의 효력과 개정)</strong><br> <br> 
-						본 당직관이 알려드립니다. 현 시간부로 대청소가 있을 예정이니 각 분대장들은 막사 내의 인원을 체크하기 바라며
-						청소를 마친 다음 당직관에게 보고 및 검사를 받기 바랍니다. 이상.
-					</p>
+					<p class="h_desc">MegaCinema 회원 탈퇴하시면 해당 웹사이트의 이용이 중지됩니다.</p>
+					<div class="member_data box_white">
+						MegaCinema 아이디 : <strong class="em">zaqqz31</strong>
+					</div>
+					<div class="btn_center">
+						<button type="button" id="btn_cancel" class="btn">취소</button>
+						<button type="button" id="btn_ok" class="btn btn_em" onclick = "location.href = '${cp }/log/memsecession3.do' ">약관철회
+							동의</button>
+					</div>
 				</div>
 
+				<div class="box_gray box_btm">
+					<dl class="box_info">
+						<dt>약관 철회 시 유의사항</dt>
+						<dd>
+							<ul class="bul_list">
+								<li class="dot_arr"><strong class="em">MegaCinema
+								</strong> 웹사이트 약관 동의 철회 시에도 MegaCinema 멤버십 서비스 및 타 제휴 브랜드의 이용을 위해 회원님의
+									개인정보 및 거래정보는 MegaCinema 회원 탈퇴 시까지 보존됩니다.</li>
+								<li class="dot_arr"><strong class="em">MegaCinema</strong>
+									웹사이트 약관 동의 철회 후에도, 다시 약관 동의를 거치면 해당 웹사이트를 이용할 수 있습니다.</li>
+							</ul>
+						</dd>
+					</dl>
+				</div>
+
 			</div>
-		</div>
-		<div class="btn_sec btn_center">
-			<button type="button" class="btn" id="btn_cancel" onclick = "location.href = '${cp}/' ">취소</button>
-			<button type="button" class="btn btn_em" id="btn_submit" onclick = "location.href = '${cp }/log/memsecession2.do' ">약관동의
-				철회</button>
 		</div>
 	</div>
 </body>
 <script>
-	var modal = document.getElementById('myModal');
+	$(function() {
+		$("#btn_cancel").click(goCancel);
 
-	var btn = document.getElementById("myBtn");
-
-	var span = document.getElementsByClassName("close")[0];
-
-	btn.onclick = function() {
-		modal.style.display = "block";
-	}
-
-	span.onclick = function() {
-		modal.style.display = "none";
-	}
-
-	window.onclick = function(event) {
-		if (event.target == modal) {
-			modal.style.display = "none";
+		function goCancel() {
+			if (!confirm('취소하시겠습니까?'))
+				return;
+			history.back();
 		}
-	}
+	});
 </script>
 </html>

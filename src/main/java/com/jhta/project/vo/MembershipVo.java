@@ -1,7 +1,5 @@
 package com.jhta.project.vo;
 
-import java.util.Date;
-
 public class MembershipVo {
 	private int memNum;
 	private String memName;
@@ -11,10 +9,10 @@ public class MembershipVo {
 	private String birth;
 	private String email;
 	private String grade;
-	private Date memRegdate;
+	private String memRegdate;
 	private int money;
 	public MembershipVo(int memNum, String memName, String memId, String memPwd, String memPhone, String birth,
-			String email, String grade, Date memRegdate, int money) {
+			String email, String grade, String memRegdate, int money) {
 		super();
 		this.memNum = memNum;
 		this.memName = memName;
@@ -78,10 +76,10 @@ public class MembershipVo {
 	public void setGrade(String grade) {
 		this.grade = grade;
 	}
-	public Date getMemRegdate() {
+	public String getMemRegdate() {
 		return memRegdate;
 	}
-	public void setMemRegdate(Date memRegdate) {
+	public void setMemRegdate(String memRegdate) {
 		this.memRegdate = memRegdate;
 	}
 	public int getMoney() {

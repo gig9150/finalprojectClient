@@ -63,7 +63,7 @@
 		</div>
 		<div class="cont_header">
 			<h1 class="h1_tit">회원 정보 변경</h1>
-			<p class="h_desc">회원의 정보를 관리하세요.</p>
+			<p class="h_desc">정보를 관리해도 개인정보들은 이미 중국에 가 있습니다.</p>
 		</div>
 		<form action="">
 		<div class="member_info">
@@ -90,7 +90,7 @@
 							<td><span id="mbr_id_area">za*****</span></td>
 						</tr>
 						<tr class="input">
-							<th scope="row"><label for="birth_yy">생년월일</label></th>
+							<th scope="row">생년월일</th>
 							<td>
 								<div class="birthday_select" id="birthday_select"
 									style="display: none"></div>
@@ -126,6 +126,10 @@
 					</tbody>
 				</table>
 			</div>
+		</div>
+		<div class="btn_sec btn_center">
+			<button type="button" class="btn" id="btn_cancel" onclick = "location.href = '${cp}/' ">취소</button>
+			<button type="button" class="btn btn_em" id="btn_submit">수정</button>
 		</div>
 		</form>
 	</div>

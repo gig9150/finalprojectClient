@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.jhta.project.service.RestService;
 import com.jhta.project.vo.MembershipVo;
 
@@ -47,6 +48,14 @@ public class LogController {
 	public String memsecession() {
 		return ".log.memsecession";
 	}
+	@RequestMapping("/log/memsecession2.do")
+	public String memsecession2() {
+		return ".log.memsecession2";
+	}
+	@RequestMapping("/log/memsecession3.do")
+	public String memsecession3() {
+		return ".log.memsecession3";
+	}
 	
 	
 	
@@ -83,11 +92,12 @@ public class LogController {
 		String url="http://localhost:9090/projectdb/log/loging.do?memId="+memId+"&memPwd="+memPwd;
 		String code = service.get(url).trim();
 		System.out.println("code[]:"+code);
-		Gson gson = new Gson();
+		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").create();
 		if(code.equals("")||code.equals(null)) {
 			return "error";
 		}else {
 			MembershipVo vo =  gson.fromJson(code, MembershipVo.class);
+			System.out.println(vo);
 			session.getServletContext().setAttribute("memNum",vo.getMemNum());
 			session.getServletContext().setAttribute("memName",vo.getMemName());
 			session.getServletContext().setAttribute("memId",vo.getMemId());
@@ -97,6 +107,7 @@ public class LogController {
 			session.getServletContext().setAttribute("email",vo.getEmail());
 			session.getServletContext().setAttribute("grade",vo.getGrade());
 			session.getServletContext().setAttribute("memRegdate",vo.getMemRegdate());
+			session.getServletContext().setAttribute("money",vo.getMoney());
 			return ".main";
 		}
 	}
