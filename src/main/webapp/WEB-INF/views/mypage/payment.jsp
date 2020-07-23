@@ -23,7 +23,6 @@
 #inquiry_div{ padding: 80px 0px; width: 100%;	text-align: center;	}
 	#inquiry_div p{	font-size: 24px; }
 </style>
-<link rel="stylesheet" href="${cp }/resources/css/mypage/mypage_top_menu.css" type="text/css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -32,15 +31,8 @@
 </head>
 <body>
 	<div id="inquiry_wrap">
-		<div id="mypage_top_menu">
-			<ul>
-				<li><a href="${cp }/mypage/payment.do"><span>결제내역</span></a></li>
-				<li><a href="${cp }/mypage/cupon.do"><span>쿠폰함</span></a></li>
-				<li><a href="${cp }/mypage/moviesaw.do"><span>내가 본	영화</span></a></li>
-				<li><a href="${cp }/mypage/inquiry.do"><span>1:1문의</span></a></li>
-				<li><a href="${cp }/mypage/memberInfo.do"><span>회원정보관리</span></a></li>
-			</ul>
-		</div>
+	<%@include file="mypageInfo.jsp" %>
+	<%@include file="mypage_top_menu.jsp" %>
 		<div id="ticketing_box">
 			<h3>MY 예매내역</h3>
 			<c:if test="${empty list}">

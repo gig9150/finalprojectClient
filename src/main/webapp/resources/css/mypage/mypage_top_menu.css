@@ -1,9 +1,6 @@
 @charset "utf-8";
-#mypage_wrap{
-	border: 1px solid red;
-	width: 50%;
-	height: 100%;
-	margin: auto;
+#mypage_top_menu{
+	margin-bottom: 30px;
 }
 #mypage_top_menu ul{
 	margin: 0;

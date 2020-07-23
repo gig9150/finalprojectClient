@@ -46,7 +46,9 @@ public class MyPageController {
 	@RequestMapping("/mypage/payment.do")
 	public String payment(Model model) {
 		List<TicketingVo> list=ticketingService.ticketingtList(1);
+		MembershipVo membershipVo=membershipService.memGetinfo(1);
 		model.addAttribute("list",list);
+		model.addAttribute("membershipVo",membershipVo);
 		return ".mypage.payment";
 	}
 	
