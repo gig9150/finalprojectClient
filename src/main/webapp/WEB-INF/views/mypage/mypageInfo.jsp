@@ -151,7 +151,7 @@
 				</div>
 			</div>
 			<div class="grade">
-				<p class="name">회원님은<br>일반등급입니다.</p>
+				<p class="name">회원(세션받음)님은<br>일반등급(세션받음)입니다.</p>
 				<div class="link">
 					<a href="#" title="개인정보수정 페이지로 이동">개인정보수정 > <i class="iconset ico-arr-right-reverse"></i></a>
 					<a href="#" title="개인정보수정 페이지로 이동">로그아웃  ><i class="iconset ico-arr-right-reverse"></i></a>

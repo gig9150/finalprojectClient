@@ -3,8 +3,6 @@ package com.jhta.project.controller;
 import java.util.HashMap;
 import java.util.List;
 
-import javax.jws.WebParam.Mode;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -46,9 +44,7 @@ public class MyPageController {
 	@RequestMapping("/mypage/payment.do")
 	public String payment(Model model) {
 		List<TicketingVo> list=ticketingService.ticketingtList(1);
-		MembershipVo membershipVo=membershipService.memGetinfo(1);
 		model.addAttribute("list",list);
-		model.addAttribute("membershipVo",membershipVo);
 		return ".mypage.payment";
 	}
 	

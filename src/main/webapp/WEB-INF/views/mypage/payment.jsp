@@ -48,7 +48,7 @@
 			<c:forEach items="${list }" var="list" varStatus="i">
 				<div id="ticketing_info">
 					<div id="ticketing_poster">
-						<img src="${cp }/resources/images/images/00${i.index+1 }.jpg" />
+						<img src="${list.movieimgurl }" />
 					</div>
 					<div id="ticketing_detail_box">
 						<div id="ticketing_detail">

@@ -12,13 +12,15 @@ public class TicketingVo {
 	private int usercount;//관람인원
 	private String filmname;//영화명
 	private String payment;//결제수단
+	private String movieimgurl;//영화이미지
 	
 	public TicketingVo() {
 		super();
 	}
 
 	public TicketingVo(String mstarttime, String brname, String theathername, String chregdate, int totalbill,
-			int cuponrate, String cname, String seatname, int usercount, String filmname, String payment) {
+			int cuponrate, String cname, String seatname, int usercount, String filmname, String payment,
+			String movieimgurl) {
 		super();
 		this.mstarttime = mstarttime;
 		this.brname = brname;
@@ -31,6 +33,7 @@ public class TicketingVo {
 		this.usercount = usercount;
 		this.filmname = filmname;
 		this.payment = payment;
+		this.movieimgurl = movieimgurl;
 	}
 
 	public String getMstarttime() {
@@ -119,6 +122,14 @@ public class TicketingVo {
 
 	public void setPayment(String payment) {
 		this.payment = payment;
+	}
+
+	public String getMovieimgurl() {
+		return movieimgurl;
+	}
+
+	public void setMovieimgurl(String movieimgurl) {
+		this.movieimgurl = movieimgurl;
 	}
 
 }

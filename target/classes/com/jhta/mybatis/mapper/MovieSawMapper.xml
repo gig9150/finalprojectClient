@@ -12,7 +12,7 @@
 	        from membership m, charge c, book b, mschedule ms, theather t , branch br , purchasefilm p, film f, movieimg mo
 	        where m.memnum=c.memnum and c.chargenum=b.chargenum and b.mschedulenum=ms.mschedulenum and t.theathernum=ms.theathernum and
 	        t.branchnum=br.branchnum and p.purchasefilmnum=ms.purchasefilmnum and p.filmnum=f.filmnum and f.filmnum=mo.filmnum and
-	        m.memnum=#{memNum} ORDER BY c.chregdate desc) pp
+	        m.memnum=#{memNum} ORDER BY c.chregdate desc) pp order by pp.chargenum desc
 	</select>
 	<select id="movieCount" resultType="int" parameterType="int">
 		select count(*)

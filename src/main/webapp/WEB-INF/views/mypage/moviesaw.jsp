@@ -7,7 +7,7 @@
 <style>
 	#inquiry_wrap{width: 50%;height: 100%;	margin: auto;}
 	#mypage_moviesaw_wrap{		height: 100%;		width: 100%;	}
-	#my_movie_list li { list-style: none;width: 49%; display: inline-block; border: 1px solid #ccc;}
+	#my_movie_list li { list-style: none;width: 49%; display: inline-block; border: 1px solid #ccc; margin-bottom: 10px;}
 	#poster{		display: inline-block;		float: left;		padding: 10px;		width: 210px;	}
 	#detail_info{		display: inline-block;		padding-top: 10px;    	padding-bottom: 10px;		clear: both;		width: 50%;	}
 	#poster img{border-radius: 10px;		width: 184px;		height: 262px;	}
@@ -82,10 +82,10 @@
 					<div id="btn_box">
 						<c:choose>
 							<c:when test="${list.mreview == '관람평을 작성해보세요.'}">
-								<input type="button" value="관람평등록" data-toggle="modal" data-target="#reviewInsert${i.index }" class="reviewBtn">
+								<input type="button" value="관람평등록" data-toggle="modal" data-target="#reviewInsert${i.index }">
 							</c:when>
 							<c:otherwise>
-								<input type="button" value="관람평수정" data-toggle="modal" data-target="#reviewUpdate${i.index }" class="#reviewBtn">
+								<input type="button" value="관람평수정" data-toggle="modal" data-target="#reviewUpdate${i.index }">
 							</c:otherwise>
 						</c:choose>
 					</div>
