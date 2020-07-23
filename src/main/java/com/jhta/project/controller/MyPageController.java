@@ -122,7 +122,9 @@ public class MyPageController {
 	@ResponseBody
 	public String reviewUpdate(String rContent,int mScore,int filmNum, int chargeNum) {
 								 //시퀀스     리뷰내용 좋아요수 평점  회원번호 영화번호        예약번호      작성일
+		System.out.println(rContent+","+mScore+","+filmNum+","+chargeNum);
 		MReviewVo vo=new MReviewVo(0, rContent, 0, mScore, 1, filmNum, chargeNum, null);
+		
 		int n=mreviewServie.mreviewUpdate(vo);
 		System.out.println(n+"ffffffffffffff");
 		if(n>0) {

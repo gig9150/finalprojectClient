@@ -5,81 +5,22 @@
 <html>
 <head>
 <style>
-	#inquiry_wrap{
-		width: 50%;
-		height: 100%;
-		margin: auto;
-	}
-	#mypage_moviesaw_wrap{
-		height: 100%;
-		width: 100%;
-	}
-	#my_movie_list{
-		/* border: 1px solid blue; */
-	}
+	#inquiry_wrap{width: 50%;height: 100%;	margin: auto;}
+	#mypage_moviesaw_wrap{		height: 100%;		width: 100%;	}
 	#my_movie_list li { list-style: none;width: 49%; display: inline-block; border: 1px solid pink;}
-	#poster{
-		display: inline-block;
-		/* border: 3px solid orange; */
-		float: left;
-		padding: 10px;
-		width: 210px;
-	}
-	#detail_info{
-		display: inline-block;
-		padding-top: 10px;
-    	padding-bottom: 10px;
-		/* border: 1px solid purple; */
-		clear: both;
-		width: 50%;
-	}
-	#poster img{
-		/* border: 1px solid green; */
-		border-radius: 10px;
-		width: 184px;
-		height: 262px;
-	}
-	#review_box{
-		/* border: 1px solid red; */
-		display: inline-block;
-		width: 50%;
-	}
-	#review_box dd{
-		/* border: 1px solid; */
-		height: 90px;
-	}
-	#review_box dt{
-		color: #FF7787;
-	}
-	.reviewBtn{
-		border: 1px solid;
-		border-radius: 10px;
-		background-color:transparent;
-	}
-	#tit{
-   		font-size: 22px;
-	}
-	#movieContent{
-		padding: 10px;
-	}
-	#movieCount{
-		color: #FF243E;
-	    font-size: 21px;
-	    font-family: 'Roboto';
-	    text-decoration: underline;
-	}
-	#mypageTit{
-		padding: 10px;
-	    font-size: 26px;
-	}
-	.modal-header .modal-title{
-		text-align: center;
-		display: inline-block;
-	}
-	.modal-header .cloas{
-		display: inline-block;
-		text-align: right;
-	}
+	#poster{		display: inline-block;		float: left;		padding: 10px;		width: 210px;	}
+	#detail_info{		display: inline-block;		padding-top: 10px;    	padding-bottom: 10px;		clear: both;		width: 50%;	}
+	#poster img{border-radius: 10px;		width: 184px;		height: 262px;	}
+	#review_box{		display: inline-block;		width: 50%;	}
+	#review_box dd{		height: 90px;	}
+	#review_box dt{		color: #FF7787;	}
+	.reviewBtn{		border: 1px solid;		border-radius: 10px;		background-color:transparent;	}
+	#tit{   		font-size: 22px;	}
+	#movieContent{		padding: 10px;	}
+	#movieCount{		color: #FF243E;	    font-size: 21px;	    font-family: 'Roboto';	    text-decoration: underline;	}
+	#mypageTit{		padding: 10px;	    font-size: 26px;	}
+	.modal-header .modal-title{		text-align: center;		display: inline-block;	}
+	.modal-header .cloas{		display: inline-block;		text-align: right;	}
 	.starR{
 	  background: url('http://miuu227.godohosting.com/images/icon/ico_review.png') no-repeat right 0;
 	  background-size: auto 100%;
@@ -90,13 +31,8 @@
 	  cursor: pointer;
 	}
 	.starR.on{background-position:0 0;}
-	.starRev{
-		text-align: center;
-		padding: 10px 0 15px;
-	}
-	.modal-body{
-		text-align: center;
-	}
+	.starRev{		text-align: center;		padding: 10px 0 15px;	}
+	.modal-body{		text-align: center;	}
 	.modal-body .review_content{
 		width: 100%;
 	    box-sizing: border-box;
@@ -106,17 +42,27 @@
 	    border-radius: 4px;
 	    padding: 13px 18px;
 	}
-	.modal-body #score{
-		margin-right: 5px;
-    	font-size: 38px;
-	}
-	.modal-body #score span{
-		font-size: 17px;
-	}
-	#modal-movie-tit{
-		font-size: 22px;
-	}
+	.modal-body #score{		margin-right: 5px;    	font-size: 38px;	}
+	.modal-body #score span{		font-size: 17px;	}
+	#modal-movie-tit{		font-size: 22px;	}
 	
+	/* 내 정보 */
+	.mypage_top_infor {
+	    position: relative;
+	    margin: 0 auto 35px;
+	    border-radius: 10px;
+	    box-shadow: 0 3px 15px rgba(0, 0, 0, .1);
+	    background-color: #FFF;
+	    border: 1px solid red;
+	    height: 355px;
+	    width: 100%;
+	}
+	.mypage_box {
+	    position: relative;
+	    float: left;
+	    width: 597px;
+	    min-height: 355px;
+	}
 </style>
 <link rel="stylesheet" href="${cp }/resources/css/mypage/mypage_top_menu.css" type="text/css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -127,6 +73,29 @@
 </head>
 <body>
 <div id="inquiry_wrap">
+	<div class="mypage_top_infor" id="mypage_top_infor">
+		<div class="mypage_box">
+			<h3 class="hidden">회원 등급 및 포인트</h3>
+		</div>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	<div id="mypage_top_menu">
 		<ul>
 			<li><a href="${cp }/mypage/payment.do"><span>결제내역</span></a></li>
@@ -144,7 +113,7 @@
 		<c:forEach items="${list }" var="list" varStatus="i">
 			<li>
 				<div id="poster">
-					<img src="${cp }/resources/images/images/00${i.index+1 }.jpg" />
+					<img src="${list.movieimgurl }" />
 				</div>
 				<div id="movieContent">
 					<strong id="tit">${list.filmname }</strong><br>
@@ -160,10 +129,10 @@
 					<div id="btn_box">
 						<c:choose>
 							<c:when test="${list.mreview == '관람평을 작성해보세요.'}">
-								<input type="button" value="관람평등록" data-toggle="modal" data-target="#review${i.index }" class="reviewBtn">
+								<input type="button" value="관람평등록" data-toggle="modal" data-target="#reviewInsert${i.index }" class="reviewBtn">
 							</c:when>
 							<c:otherwise>
-								<input type="button" value="관람평수정" data-toggle="modal" data-target="#review${i.index }" class="#eviewBtn">
+								<input type="button" value="관람평수정" data-toggle="modal" data-target="#reviewUpdate${i.index }" class="#reviewBtn">
 							</c:otherwise>
 						</c:choose>
 					</div>
@@ -173,17 +142,15 @@
 			
 		<!-- Modal -->
 		<!-- 리뷰 등록 -->
-		<div class="modal fade" id="review${i.index }" role="dialog">
-			<input type="text" value="${list.filmnum }" id="modal_filmnum">
-			<input type="text" value="${list.chargenum }" id="modal_chargenum">
+		<div class="modal fade" id="reviewInsert${i.index }" role="dialog">
+			<input type="text" value="${list.filmnum }" id="review_insert_filmnum${i.index }">
+			<input type="text" value="${list.chargenum }" id="review_insert_chargenum${i.index }">
 		  <div class="modal-dialog">
-		  
-			
 						
 		    <!-- Modal content-->
 		    <div class="modal-content">
 		      <div class="modal-header">
-		        <h4 class="modal-title">관람평 등록/수정</h4>
+		        <h4 class="modal-title">관람평 등록</h4>
 		        <button type="button" class="close" data-dismiss="modal">&times;</button>
 		      </div>
 		      <div class="modal-body">
@@ -201,11 +168,14 @@
 				  <span class="starR on">9</span>
 				  <span class="starR on">10</span>
 				</div>
-		      	<textarea rows="5" cols="20" class="review_content" id="review_insert" placeholder="평점 및 영화 리뷰를 작성해주세요.">${list.mreview }</textarea>
+		      	<textarea rows="5" cols="20" class="review_content" id="review_insert_content${i.index }" placeholder="평점 및 영화 리뷰를 작성해주세요."></textarea>
 		      </div>
 		      <div class="modal-footer">
-		        <button type="button" class="btn btn-default" data-dismiss="modal" id="reviewInsert">확인</button>
-		        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+		      	<div class="btn_insert">
+			        <button type="button" class="btn btn-default" data-dismiss="modal">확인</button>
+			        <input type="hidden" value="${i.index }">
+			        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+		        </div>
 		      </div>
 		    </div>
 		  </div>
@@ -215,11 +185,11 @@
 		
 		 </div>
 		 <!-- //////////////////////////////////////////////////////////////////////////////////  -->
-		<%-- <!-- Modal -->
+		<!-- Modal -->
 		<!-- 리뷰 수정 -->
 		<div class="modal fade" id="reviewUpdate${i.index }" role="dialog">
-			<input type="text" value="${list.filmnum }" id="modal_filmnum">
-			<input type="text" value="${list.chargenum }" id="modal_chargenum">
+			<input type="text" value="${list.filmnum }" id="review_update_filmnum${i.index }">
+			<input type="text" value="${list.chargenum }" id="review_update_chargenum${i.index }">
 		 <div class="modal-dialog">
 		   <!-- Modal content-->
 		   <div class="modal-content">
@@ -242,16 +212,19 @@
 			  <span class="starR on">9</span>
 			  <span class="starR on">10</span>
 			</div>
-		     	<textarea rows="5" cols="20" class="review_content" id="review_Update">${list.mreview }</textarea>
+		     	<textarea rows="5" cols="20" class="review_content" id="review_update_content${i.index }">${list.mreview }</textarea>
 		     </div>
 		     <div class="modal-footer">
-		       <button type="button" class="btn btn-default" data-dismiss="modal" id="reviewUpdate">확인</button>
-		       <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+		     	<div class="btn_update">
+			       <button type="button" class="btn btn-default" data-dismiss="modal">확인</button>
+			       <input type="hidden" value="${i.index }">
+			       <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+		       </div>
 		     </div>
 		   </div>
 		 </div>
 		</div>
-		<!-- //////////////////////////////////////////////////////////////////////////////////  --> --%>
+		<!-- //////////////////////////////////////////////////////////////////////////////////  -->
 			
 		</c:forEach>
 		</ul>
@@ -270,12 +243,14 @@
 		  $("#score").text($(this).text());
 		  return false;
 		});
+		
 		//리뷰 등록
-		$('#reviewInsert').click(function(){
+		$('.btn_insert .btn').click(function(){
+			var index=$(this).next().val();
 			var mScore=$("#score").text();
-			var rContent=$("#review_insert").val();
-			var filmnum=$("#modal_filmnum").val();
-			var chargenum=$("#modal_chargenum").val();
+			var rContent=$("#review_insert_content"+index).val();
+			var filmnum=$("#review_insert_filmnum"+index).val();
+			var chargenum=$("#review_insert_chargenum"+index).val();
 			$.ajax({
 				url:"${cp}/mypage/reviewInsert.do",
 				data : {"mScore":mScore,"rContent":rContent,"filmNum":filmnum,"chargeNum":chargenum},
@@ -288,11 +263,13 @@
 			});
 		});
 		//리뷰 수정
-		$('#reviewUpdate').click(function(){
+		$('.btn_update .btn').click(function(){
+			var index=$(this).next().val();
 			var mScore=$("#score").text();
-			var rContent=$("#review_Update").val();
-			var filmnum=$("#modal_filmnum").val();
-			var chargenum=$("#modal_chargenum").val();
+			var rContent=$("#review_update_content"+index).val();
+			var filmnum=$("#review_update_filmnum"+index).val();
+			var chargenum=$("#review_update_chargenum"+index).val();
+			alert(mScore+","+rContent+","+filmnum+","+chargenum);
 			$.ajax({
 				url:"${cp}/mypage/reviewUpdate.do",
 				data : {"mScore":mScore,"rContent":rContent,"filmNum":filmnum,"chargeNum":chargenum},
@@ -300,11 +277,17 @@
 				method: 'POST',
 				dataType : 'JSON',
 				success : function(data){
-					alert('관람평이 수정 완료되었습니다');
+					
 				}
 			});
 		});
 		
+// 		$('.btn_insert .btn').on('click',function(){
+// 			$('#score').text('');
+// 			$("#review_Update").val('');
+// 			$("#review_insert").val('');
+// 			console.log('클래스 지정 접근');
+// 		});
 		
 	});
 	
