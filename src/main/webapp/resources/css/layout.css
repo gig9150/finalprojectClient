@@ -63,9 +63,11 @@ button:hover {
   max-width: 1300px;
   width: 100%;
 }
+
 #content{
 	height:auto;
 }
+
 /* ///////////////////////////////header//////////////////////////////////////// */
 #header{
 	margin:0 0 0 0;
@@ -191,15 +193,15 @@ header > .container{
 .top-menu-one{
 	list-style-type: none;
     position: relative;
-    left: 332px;
-    top: -10px;
+    left: 328px;
+    top: -5px;
     display: inline;
 }
 .top-menu-two{
 	list-style-type: none;
     position: relative;
-    right: 300px;
-    top: -10px;
+    right: 290px;
+    top: -5px;
     display: inline;
 }
 .top-menu-one > li{
@@ -442,7 +444,7 @@ header > .container .search-box input[type="submit"] {
     top: 1378px;
     display: block;
     width: 100%;
-    height: 80%;
+    height: 92%;
     background-color: #503396;
 }
 .main-grid h2{
@@ -460,14 +462,15 @@ header > .container .search-box input[type="submit"] {
 /*////////////*/
 /*home.jsp grid 밑에*/
 .menu-link{
+	padding-top: 100px;
 	float: left;
 	width: 20%;
 	text-align: center;
 }
 .menu-link > span{
-	font-size: 90px;
 	left:5px;
 	color: #ffffff;
+	font-size: 110px;
 }
 
 .menu-link > a{
@@ -488,8 +491,8 @@ header > .container .search-box input[type="submit"] {
     margin: 0;
 }
 .row.col-sm-8 > .col-xs-6>img{
-	width: 420px;
-	height: fit-content;
+	width: 100%;
+    height: 282px;
     margin: 0;
 }
 
@@ -505,30 +508,248 @@ header > .container .search-box input[type="submit"] {
 }
 .container.main-grid .row {
 	border-bottom:none;
-	
+}
+
+.new-branch-info{
+	margin-right: 70px; 
+	margin-left: 25px;
+}
+
+.new-branch-info > a > p{
+	color: #ffffff;
+	z-index: 10; 
+	position: relative; 
+	top: 85px; 
+	text-align: center;
+}
+
+.new-branch-info > a > p > span{
+	font-size: 1.3em;
+	display: block
+}
+
+.new-branch-info > a > p > strong{
+	font-size: 2em;
+}
+
+.new-branch-info > a > img{
+	border:1px solid #503396; 
+	border-radius: 50%; 
+	opacity: 0.5; 
+	box-shadow: 2px 2px 5px #999; 
+	width: 290px;
+    height: 250px;
+	position: absolute; 
+	left: 0; 
+	top: 0; 
+	z-index: 1;
 }
 
 .
 /*//////////////*/
 /*main-section3*/
 .main-section3{
-	height:1000px
+	height:1000px;
 }
 .main-section3::before{
 	position: absolute;
     left: 0;
-    top: 2300px;
+    top: 2268px;
     display: block;
     width: 100%;
-    height: 20%;
+    height: 92%;
     background-color: #252451;
 }
-.main-section3 > .col-md-2{
-	background-image: url("../logo/clock.png");
-	background-repeat:no-repeat;
+
+.container.main-section3{
+	padding-top: 157px;
 }
 
-/*//////////////////*/
+.container.main-section3 > div > .col-lg-4 > img{
+	margin-top: 50px;
+	width: 100%;
+    border: 1px solid black;
+    height:600px;
+    border-radius: 15px;
+}
+
+.section3-button-one{
+	width:34%;
+	height:40px;
+	background: #252451;
+    border: 1px solid #ffffff;
+}
+.section3-button-two{
+	width:64%;
+	height:40px;
+}
+
+.container.main-section3 > div > .col-lg-4 > ul{
+	list-style: none;
+}
+
+.container.main-section3 > div > .col-lg-4 > ul > li{
+	display
+}
+
+.container.main-section3 > div > .col-lg-8{
+	padding-left: 160px;
+}
+.container.main-section3 > div > .col-lg-8 > div{
+	margin-top:10px;
+}
+/*review*/
+.timeline {
+    position: relative;
+    padding:4px 0 0 0;
+    margin-top:22px;
+    list-style: none;
+}
+
+.timeline>li:nth-child(even) {
+    position: relative;
+    margin-bottom: 50px;
+    height: 194px;
+    right: -96px;
+}
+
+.timeline>li:nth-child(odd) {
+    position: relative;
+    margin-bottom: 50px;
+    height: 193px;
+    left: -142px;
+}
+
+.timeline>li:before,
+.timeline>li:after {
+    content: " ";
+    display: table;
+}
+
+.timeline>li:after {
+    clear: both;
+    min-height: 170px;
+}
+
+.timeline > li .timeline-panel {
+  position: relative;
+  float: left;
+  left: 167px;
+  width: 41%;
+  padding: 0 52px 20px 30px;
+  text-align: right;
+}
+
+.timeline>li .timeline-panel:before {
+    right: auto;
+    left: -15px;
+    border-right-width: 15px;
+    border-left-width: 0;
+}
+
+.timeline>li .timeline-panel:after {
+    right: auto;
+    left: -14px;
+    border-right-width: 14px;
+    border-left-width: 0;
+}
+
+.timeline>li .timeline-image {
+    z-index: 100;
+    position: absolute;
+    left: 50%;
+    border: 7px solid #3b5998;
+    border-radius: 100%;
+    background-color: #3b5998;
+    box-shadow: 0 0 5px #4582ec;
+    width: 200px;
+    height: 200px;
+    margin-left: 80px;
+}
+
+.timeline>li .timeline-image h4 {
+    margin-top: 12px;
+    font-size: 10px;
+    line-height: 14px;
+}
+
+.timeline>li.timeline-inverted>.timeline-panel {
+    float: right;
+    padding: 0 30px 20px 58px;
+    text-align: left;
+}
+
+.timeline>li.timeline-inverted>.timeline-panel:before {
+    right: auto;
+    left: -15px;
+    border-right-width: 15px;
+    border-left-width: 0;
+}
+
+.timeline>li.timeline-inverted>.timeline-panel:after {
+    right: auto;
+    left: -14px;
+    border-right-width: 14px;
+    border-left-width: 0;
+}
+
+.timeline>li:last-child {
+    margin-bottom: 0;
+}
+
+.timeline .timeline-heading h4 {
+  margin-top:22px;
+    margin-bottom: 4px;
+    padding:0;
+    color: #b3b3b3;
+}
+
+.timeline .timeline-heading h4.subheading {
+  margin:0;
+  padding:0;
+    text-transform: none;
+    font-size:18px;
+    color:#333333;
+}
+
+.timeline .timeline-body>p,
+.timeline .timeline-body>ul {
+	
+    margin-bottom: 0;
+    color:#808080;
+}
+/*Style for even div.line*/
+.timeline>li:nth-child(odd) .line:before {
+    content: "";
+    position: absolute;
+    top: 60px;
+    bottom: 0;
+    left: 690px;
+    width: 4px;
+    height:340px;
+    background-color: #3b5998;
+    -ms-transform: rotate(-44deg); /* IE 9 */
+    -webkit-transform: rotate(-44deg); /* Safari */
+    transform: rotate(-44deg);
+    box-shadow: 0 0 5px #4582ec;
+}
+/*Style for odd div.line*/
+.timeline>li:nth-child(even) .line:before  {
+    content: "";
+    position: absolute;
+    top: 60px;
+    bottom: 0;
+    left: 450px;
+    width: 4px;
+    height:340px;
+    background-color: #3b5998;
+    -ms-transform: rotate(44deg); /* IE 9 */
+    -webkit-transform: rotate(44deg); /* Safari */
+    transform: rotate(44deg);
+    box-shadow: 0 0 5px #4582ec;
+}
+/*//////////////*/
+
 
 /* /////////////////////////////////////////////////////////////// */
 /* FOOTER.SCSS */

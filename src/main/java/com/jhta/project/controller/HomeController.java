@@ -30,11 +30,16 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(HttpSession session,Model model) {
 		String thumbnailMovieUrl ="http://localhost:9090/projectdb/getThumbnailMovie.do";
+		String newBranchUrl = "http://localhost:9090/projectdb/getNewBranch.do";
 		String ThumbnailMovie = service.get(thumbnailMovieUrl).trim();
+		//String newBranch = service.get(newBranchUrl).trim();
 		Gson gson = new Gson();
 		HashMap<String,Object>[] map = gson.fromJson(ThumbnailMovie, HashMap[].class);
 		List<HashMap<String,Object>> list=Arrays.asList(map);
+		//HashMap<String,Object>[] branchMap = gson.fromJson(newBranch,HashMap[].class);
+		//List<HashMap<String,Object>> branchList = Arrays.asList(branchMap);
 		model.addAttribute("list",list);
+		//model.addAttribute("branchList",branchList);
 		String cp=session.getServletContext().getContextPath();
 		session.getServletContext().setAttribute("cp",cp);
 		return ".main";

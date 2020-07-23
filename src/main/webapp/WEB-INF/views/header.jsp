@@ -49,7 +49,7 @@
 	          </div>
 	        </div>
 	        <div class='menu-group'>
-	          <a href="#">스토어</a>
+	          <a href="${cp}/store/store.do">스토어</a>
 	        </div>
 	        <div class='menu-group'>
 	          <a href="#">혜택</a>

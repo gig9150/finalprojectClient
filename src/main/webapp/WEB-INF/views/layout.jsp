@@ -14,6 +14,7 @@
 <link href="${cp}/resources/css/layout.css" rel="stylesheet">
 <link href="${cp}/resources/css/service.css" rel="stylesheet">
 <link href="${cp}/resources/css/question.css" rel="stylesheet">
+<link href="${cp}/resources/css/store.css" rel="stylesheet">
 <script src="${cp}/resources/js/main.js"></script>
 <script src="${cp}/resources/js/service.js"></script>
 <meta charset="UTF-8">

@@ -156,33 +156,118 @@
 						</strong>
 					</p>
 				</div>
-				<div class="col-md-2" style="margin-right: 26px;margin-left: 25px;">
+				<!-- for문돌려서 3개출력  -->
+				<div class="col-md-2 new-branch-info">
 					<a>
-						<img src="${cp}/resources/images/3.png"
-							style="border: 1px solid #503396; border-radius: 50%; 
-							opacity: 0.5; box-shadow: 2px 2px 5px #999;width: 230px;">
-						<p style="color:#ffffff">
-							<span>부산</span>
-							<strong>창원</strong>
-						</p>
+						<p>
+							<span>부산/창원/서울<br>2020/06/24
+							</span> <strong>창원</strong>
+						</p> <img src="${cp}/resources/logo/MovieTheaters.jpg">
 					</a>
 				</div>
-				<div class="col-md-2" style="margin-right: 26px;margin-left: 25px;">
-					<img src="${cp}/resources/images/3.png"
-						style="border: 1px solid #503396; border-radius: 50%; 
-						opacity: 0.5; box-shadow: 2px 2px 5px #999;width: 230px;">
+				<div class="col-md-2 new-branch-info">
+					<a>
+						<p>
+							<span>부산/창원/서울<br>2020/06/24
+							</span> <strong>창원</strong>
+						</p> <img src="${cp}/resources/logo/MovieTheaters.jpg">
+					</a>
 				</div>
-				<div class="col-md-2" style="margin-right: 26px;margin-left: 25px;">
-					<img src="${cp}/resources/images/3.png"
-						style="border: 1px solid #503396; border-radius: 50%; 
-						opacity: 0.5; box-shadow: 2px 2px 5px #999;width: 230px;">
+				<div class="col-md-2 new-branch-info">
+					<a>
+						<p>
+							<span>부산/창원/서울<br>2020/06/24
+							</span> <strong>창원</strong>
+						</p> <img src="${cp}/resources/logo/MovieTheaters.jpg">
+					</a>
 				</div>
 			</div>
 		</div>
 	</div>
 </section>
 <section>
-	<div class="container main-section3"></div>
+	<div class="container main-section3">
+		<h2>영화평</h2>
+		<div class="row">
+			<div class="col-lg-4">
+				<img src="${cp}/resources/images/1.png">
+				<div>
+					<button class="section3-button-one">상세정보</button>
+					<button class="section3-button-two">예매하러가기</button>
+				</div>
+				<ul>
+					<li><img src="${cp}/resources/images/1.png"></li>
+					<li><img src="${cp}/resources/images/2.png"></li>
+				</ul>
+			</div>
+			<div class="col-lg-8">
+				<h3 class="text-center">Zigzag Timeline Layout (and Cats)</h3>
+				<ul class="timeline">
+					<li>
+						<div class="timeline-image">
+							<img class="img-circle img-responsive"
+								src="http://lorempixel.com/250/250/cats/1" alt="">
+						</div>
+						<div class="timeline-panel">
+							<div class="timeline-heading">
+								<h4>Step One</h4>
+								<h4 class="subheading">Subtitle</h4>
+							</div>
+							<div class="timeline-body">
+								<p class="text-muted">Lorem ipsum dolor sit amet,
+									consectetur adipisicing elit, sed do eiusmod tempor incididunt
+									ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+									nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+									commodo consequat.</p>
+							</div>
+						</div>
+						<div class="line"></div>
+					</li>
+					<li class="timeline-inverted">
+						<div class="timeline-image">
+							<img class="img-circle img-responsive"
+								src="http://lorempixel.com/250/250/cats/2" alt="">
+						</div>
+						<div class="timeline-panel">
+							<div class="timeline-heading">
+								<h4>Step Two</h4>
+								<h4 class="subheading">Subtitle</h4>
+							</div>
+							<div class="timeline-body">
+								<p class="text-muted">Lorem ipsum dolor sit amet,
+									consectetur adipisicing elit, sed do eiusmod tempor incididunt
+									ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+									nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+									commodo consequat.</p>
+							</div>
+						</div>
+						<div class="line"></div>
+					</li>
+					
+
+					<li>
+						<div class="timeline-image">
+							<img class="img-circle img-responsive"
+								src="http://lorempixel.com/250/250/cats/5" alt="">
+						</div>
+						<div class="timeline-panel">
+							<div class="timeline-heading">
+								<h4>Bonus Step</h4>
+								<h4 class="subheading">Subtitle</h4>
+							</div>
+							<div class="timeline-body">
+								<p class="text-muted">Lorem ipsum dolor sit amet,
+									consectetur adipisicing elit, sed do eiusmod tempor incididunt
+									ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+									nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+									commodo consequat.</p>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
 </section>
 <section>
 	<div class="container main-section4"></div>
