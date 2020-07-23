@@ -2,12 +2,15 @@ package com.jhta.project.vo;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class BranchVo {
 	private int branchNum;
 	private int proNum;
 	private String brName;
 	private String memId;
 	private String brStatus;
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
 	private Date brRegdate;
 	public BranchVo(int branchNum, int proNum, String brName, String memId, String brStatus, Date brRegdate) {
 		super();

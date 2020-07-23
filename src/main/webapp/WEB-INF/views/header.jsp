@@ -37,6 +37,7 @@
           <a href="#">예매</a>
            <div class="sub-menu">
 	          <a href="${cp }/buy/screen/selected.do">테스트용</a>
+	          <a href="${cp }/buy/ticket.do">빠른예매</a>
           </div>
         </div>
         <div class='menu-group'>
