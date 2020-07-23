@@ -68,10 +68,34 @@
 		]]>
 	</select>
 	
-	<!-- 영화디테일정보 -->
+	<!-- 영화디테일정보1 -->
 	<select id="showMovieDetailInfo" resultType="moviedetail" parameterType="int">
 		select f.filmhead, f.filmName,g.genrename, f.filmstory, f.filmstart, c.castname 
 			from film f, genre g, cast c 
 		where f.genrenum=g.genrenum and c.filmnum=f.filmnum and f.filmnum=#{filmNum}
 	</select>
+	
+	<!-- 영화디테일정보2 : 영화번호에 따른 영화이미지, 예매율 등 가져오기-->
+	
+	<select id="showMovieDetailRate" resultType="allmovies" parameterType="int">
+			select trunc(totalpeople/totalSum*100,1) rRate,bb.*,trunc(nvl((select avg(mscore) from mreview mr where	bb.filmnum=mr.filmnum),0),1) mRate
+		from     (select aa.*, m.movieimgUrl, nvl((select sum(totalpeople)from total t where aa.filmnum=t.filmnum),0) totalPeople, 
+			(select sum(totalCount) from
+				(select (select sum(totalpeople) total from total t where aa.filmnum=t.filmnum) totalCount
+		from 
+		(
+			select filmName, filmNum from film where filmend>=sysdate
+		)aa, movieimg m
+		where m.filmNum= aa.filmNum)) totalSum
+		            from 
+		            (
+		                select filmName, filmNum from film where filmend>=sysdate
+		            )aa, movieimg m
+		        where m.filmNum= aa.filmNum
+		        order by totalPeople desc)bb
+                where filmNum=#{filmNum}
+	
+	</select>
+	
+	
 </mapper>

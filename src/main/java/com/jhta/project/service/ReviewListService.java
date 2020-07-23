@@ -12,8 +12,8 @@ import com.jhta.project.vo.ReviewBoardVo;
 public class ReviewListService {
 	@Autowired
 	private ReviewListDao reviewDao;
-	public List<ReviewBoardVo> showReviews(){
+	public List<ReviewBoardVo> showReviews(int filmNum){
 		System.out.println("service진입");
-		return reviewDao.showReviews();
+		return reviewDao.showReviews(filmNum);
 	}
 }

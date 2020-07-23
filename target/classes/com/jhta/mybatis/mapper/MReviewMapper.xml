@@ -7,9 +7,9 @@
 		select * from mreview where mReviewNum=#{mReviewNum}
 	</select>
 	
-	<select id="reviewList" resultType="reviewBoard">
+	<select id="reviewList" resultType="reviewBoard" parameterType="int">
 		select mem.memName, mr.mscore, mr.rcontent, mr.liketotal, mr.mreviewdate 
 			from membership mem, mreview mr 
-		where mem.memNum=mr.memNum
+		where mem.memNum=mr.memNum and mr.filmNum=#{filmNum}
 	</select>
 </mapper>

@@ -114,7 +114,7 @@
 			<ul>
 				<c:forEach var="movieList" items="${allMovieList }">
 						<li class="screen_add_box"
-						style="float: left; margin-right: 15px; margin-bottom: 40px;">
+						style="float: right; margin-right: 15px; margin-bottom: 40px;">
 						<div>
 								<div class="container"><img src="${movieList.movieImgUrl }"
 									style="width: 170px;" /> 

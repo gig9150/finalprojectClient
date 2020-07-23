@@ -35,4 +35,9 @@ public class MovieListService {
 	public MovieDetailVo showMovieDetailInfo(int filmNum) {
 		return mListDao.showMovieDetailInfo(filmNum);
 	}
+	
+	//영화 상세정보 클릭 시 영화포스터, 제목, 예매율, 누적관객수 가져오기
+	public AllMoviesVo showMovieDetailRate(int filmNum){
+		return mListDao.showMovieDetailRate(filmNum);
+	}
 }

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.jhta.project.service.ReviewListService;
 import com.jhta.project.vo.ReviewBoardVo;
@@ -15,14 +16,14 @@ import com.jhta.project.vo.ReviewBoardVo;
 public class MovieReviews {
 	@Autowired
 	private ReviewListService reviewService;
+
 	@RequestMapping("/movie/showMovieReviews.do")
-	public String showReviews(Model model) {
+	@ResponseBody
+	public List<ReviewBoardVo> showReviews(Model model, int filmNum) {
 		System.out.println("con진입");
-		List<ReviewBoardVo> reviewListVo=reviewService.showReviews();
-		System.out.println(reviewListVo.get(0).getMemName()+"11111");
-		
-		System.out.println(reviewListVo.get(0).getrContent()+"22222");	
-		model.addAttribute("reviewListVo",reviewListVo);
-		return ".review.showReviews";
+		List<ReviewBoardVo> reviewListVo=reviewService.showReviews(filmNum);
+		System.out.println("ajax11111"+reviewListVo);
+		System.out.println(reviewListVo.get(0).getMemName());
+		return reviewListVo;
 	}
 }

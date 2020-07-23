@@ -37,8 +37,15 @@ public class MovieList {
 	//영화 상세정보 클릭 시 장르,감독,개봉일,출연진,줄거리 가져오기
 	@RequestMapping("/movie/movieDetailView.do")
 	public String showMovieDetailInfo(Model model,int filmNum) {
+		//영화디테일정보vo
 		MovieDetailVo movieDetailVo=movieListService.showMovieDetailInfo(filmNum);
+		//영화예매율디테일정보vo
+		AllMoviesVo movieDetailRate=movieListService.showMovieDetailRate(filmNum);
+		AllMoviesVo allMoviesVo= new AllMoviesVo();
+		
 		model.addAttribute("movieDetailVo",movieDetailVo);
+		model.addAttribute("movieDetailRate",movieDetailRate);
+		
 		System.out.println("detailvo에 담긴 값"+movieDetailVo);
 		System.out.println("detail중 filmname뽑기"+ movieDetailVo.getFilmName());
 		return ".movie.movieDetailView";

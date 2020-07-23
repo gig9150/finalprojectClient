@@ -13,8 +13,8 @@ public class ReviewListDao {
 	@Autowired
 	private SqlSession sqlSession;
 	private final String NAMESPACE="com.jhta.mybatis.mapper.mreview";
-	public List<ReviewBoardVo> showReviews(){
+	public List<ReviewBoardVo> showReviews(int filmNum){
 		System.out.println("dao진입");
-		return sqlSession.selectList(NAMESPACE+".reviewList");
+		return sqlSession.selectList(NAMESPACE+".reviewList",filmNum);
 	}
 }
