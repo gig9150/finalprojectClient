@@ -7,7 +7,7 @@
 <style>
 	#inquiry_wrap{width: 50%;height: 100%;	margin: auto;}
 	#mypage_moviesaw_wrap{		height: 100%;		width: 100%;	}
-	#my_movie_list li { list-style: none;width: 49%; display: inline-block; border: 1px solid pink;}
+	#my_movie_list li { list-style: none;width: 49%; display: inline-block; border: 1px solid #ccc;}
 	#poster{		display: inline-block;		float: left;		padding: 10px;		width: 210px;	}
 	#detail_info{		display: inline-block;		padding-top: 10px;    	padding-bottom: 10px;		clear: both;		width: 50%;	}
 	#poster img{border-radius: 10px;		width: 184px;		height: 262px;	}
@@ -53,16 +53,132 @@
 	    border-radius: 10px;
 	    box-shadow: 0 3px 15px rgba(0, 0, 0, .1);
 	    background-color: #FFF;
-	    border: 1px solid red;
 	    height: 355px;
 	    width: 100%;
 	}
-	.mypage_box {
-	    position: relative;
-	    float: left;
-	    width: 597px;
-	    min-height: 355px;
-	}
+	.mypage_top_infor .top {
+    position: relative;
+    height: 198px;
+    padding: 30px 30px 0 0;
+    background-color: #f6f7f8;
+}
+
+.mypage_top_infor .bottom {
+    overflow: hidden;
+    height: calc(100% - 198px);
+    padding: 26px 30px 29px 30px;
+    background-color: #eaebed;
+    border: 1px solid blue;
+}
+
+.mypage_top_infor .top .photo {
+    float: left;
+    width: 200px;
+    padding: 20px 0 0 60px;
+}
+
+.mypage_top_infor .top .photo .wrap {
+    position: relative;
+    width: 93px;
+    margin: 0;
+    padding: 0 0 7px 0;
+}
+
+.mypage_top_infor .top .photo .wrap .img {
+    overflow: hidden;
+    display: block;
+    width: 93px;
+    height: 93px;
+    border-radius: 93px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 0;
+    line-height: 0;
+    background-color: transparent;
+    box-shadow: 0 5px 5px 0 rgba(45,45,45,.2);
+}
+
+.photo .wrap .img img {
+    width: 100%;
+    height: 100%;
+    border-radius: 93px;
+}
+
+.mypage_top_infor .top .grade {
+    float: left;
+    padding-top: 20px;
+}
+
+.mypage_top_infor .top .grade .name {
+    font-size: 1.8666em;
+    line-height: 1.3;
+    color: #222;
+}
+
+.mypage_top_infor .top .grade .link a {
+    margin-right: 10px;
+    color: #666;
+}
+
+
+
+/* bottom */
+.mypage_top_infor .bottom .point {
+    float: left;
+    width: 280px;
+    min-height: 116px;
+    border-right: 1px solid #ccc;
+}
+.mypage_top_infor .bottom .point .tit-area .tit {
+    font-size: 1.2em;
+    color: #222;
+}
+
+.mypage_top_infor .bottom .point .tit-area {
+    padding-right: 30px;
+}
+.mypage_top_infor .bottom .point .cont-area .total .now {
+    overflow: hidden;
+    display: block;
+    float: left;
+    width: 140px;
+    height: 44px;
+    line-height: 48px;
+    color: #339eb2;
+    font-weight: 400;
+    font-size: 1.8em;
+    vertical-align: middle;
+    letter-spacing: -1px;
+}
+
+
+.mypage_top_infor .bottom .cupon {
+    float: left;
+    width: 280px;
+    min-height: 116px;
+    border-right: 1px solid #ccc;
+    margin-left: 20px;
+}
+
+.mypage_top_infor .bottom .cupon .cont-area .tit{
+	font-size: 1.2em;
+	color: #222;
+}
+
+
+.mypage_top_infor .bottom .ddd {
+    float: left;
+    width: 280px;
+    min-height: 116px;
+    margin-left: 20px;
+}
+
+.mypage_top_infor .bottom .cupon .cont-area .tit{
+	font-size: 1.2em;
+	color: #222;
+} 
+
 </style>
 <link rel="stylesheet" href="${cp }/resources/css/mypage/mypage_top_menu.css" type="text/css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -74,11 +190,63 @@
 <body>
 <div id="inquiry_wrap">
 	<div class="mypage_top_infor" id="mypage_top_infor">
-		<div class="mypage_box">
-			<h3 class="hidden">회원 등급 및 포인트</h3>
+		<div class="top">
+			<div class="photo" id="myPhoto">
+				<div class="wrap">
+					<div class="img">
+						<img src="${cp }/resources/images/images/001.jpg">
+					</div>
+				</div>
+			</div>
+			<div class="grade">
+				<p class="name">회원님은<br>일반등급입니다.</p>
+				<div class="link">
+					<a href="/mypage/myinfo?returnURL=info" title="개인정보수정 페이지로 이동">개인정보수정 <i class="iconset ico-arr-right-reverse"></i></a>
+				</div>
+			</div>
+		</div>
+		<div class="bottom">
+			<div class="point" id="myPoint">
+				
+				<div class="tit-area">
+					<p class="tit">총 보유 포인트</p>
+				</div>
+
+				<div class="cont-area">
+					<div class="total">
+						<p class="now">0 P</p>
+					</div>
+				</div>
+				
+			</div>
+			
+			<div class="cupon">
+				<div class="cont-area">
+					<p class="tit">관람권 / 쿠폰</p>
+				</div>
+				
+				<div class="cont-area">
+					<div class="total">
+						<p class="now">dddddd</p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="ddd">
+				<div class="cont-area">
+					<p class="tit">??? / ???</p>
+				</div>
+				
+				<div class="cont-area">
+					<div class="total">
+						<p class="now">dddddd</p>
+					</div>
+				</div>
+			</div>
+			
+			
 		</div>
 	</div>
-	
 	
 	
 	
