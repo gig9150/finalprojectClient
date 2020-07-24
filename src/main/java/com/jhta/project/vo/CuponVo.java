@@ -1,7 +1,5 @@
 package com.jhta.project.vo;
 
-import java.util.Date;
-
 public class CuponVo {
 	private int cuponNum;
 	private String cuponStatus;
