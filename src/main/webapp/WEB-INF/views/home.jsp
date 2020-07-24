@@ -10,14 +10,29 @@
 			</h2>
 		</div>
 		<div class="flexslider">
-			<c:forEach var="map" items="${list}">
+			<c:forEach var="map" items="${list}" varStatus="status">
 				<div class="col-xs-6 col-md-3">
-					<a href="#" class="thumbnail"> <img src="${map.MOVIEIMGURL}"></a>
+					<a class="thumbnail"> <img src="${map.MOVIEIMGURL}"
+						data-toggle="modal" class="modaldata" data-target="#foo${status.count}"></a>
 					<div>
 						<button type="button" class="btn btn-default home-movie-btn1">
 							<span class="glyphicon glyphicon-heart"></span>&nbsp;<a>${map.VG}</a>
 						</button>
 						<button type="button" class="btn btn-primary home-movie-btn2">예매</button>
+					</div>
+				</div>
+				<div class="modal fade" id="foo${status.count}">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+						<div class="modal-body">${map.MOVIEURL}</div>
+						<div class="modal-footer">${map.FILMSTORY}</div>
+						</div>
 					</div>
 				</div>
 			</c:forEach>
@@ -243,7 +258,7 @@
 						</div>
 						<div class="line"></div>
 					</li>
-					
+
 
 					<li>
 						<div class="timeline-image">

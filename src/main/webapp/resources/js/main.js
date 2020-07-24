@@ -30,3 +30,11 @@ $(window).load(function() {
 	    search.className = ""
 	  }
 	}
+	
+	// 썸네일 모달 
+	$("#foo").on('shown.bs.modal',function(event){
+		console.log('ddd');
+		var modalData = $(event.relatedTarget);
+		$(".modal-body").html(modalData.data('url'));
+		$(".modal-footer").html(modalData.data('story'));
+	});

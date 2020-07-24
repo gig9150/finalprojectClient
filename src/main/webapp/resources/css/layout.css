@@ -430,10 +430,28 @@ header > .container .search-box input[type="submit"] {
     bottom: 5px;
     margin: 0;
 }
-
 .movie-search-row > .col-md-3:first-child{
 	height: 38px;
 }
+/* 모달 */
+
+.modal-content{
+	width: fit-content;
+    height: fit-content;
+    margin: 15% -40%;
+}
+
+.modal-body{
+	width: fit-content !important;
+    height: fit-content !important;
+}
+
+.modal-footer{
+	text-align:left;
+}
+
+/*///*/
+
 /*home.jsp grid*/
 .main-grid .img-responsive {
     margin-bottom: 30px;
