@@ -29,17 +29,27 @@ public class HomeController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(HttpSession session,Model model) {
-		String thumbnailMovieUrl ="http://localhost:9090/projectdb/getThumbnailMovie.do";
-		String newBranchUrl = "http://localhost:9090/projectdb/getNewBranch.do";
-		String ThumbnailMovie = service.get(thumbnailMovieUrl).trim();
-		//String newBranch = service.get(newBranchUrl).trim();
 		Gson gson = new Gson();
+		
+		//지점 정보 얻어오기
+//		String newBranchUrl = "http://localhost:9090/projectdb/getNewBranch.do";
+//		//String newBranch = service.get(newBranchUrl).trim();
+//		//HashMap<String,Object>[] branchMap = gson.fromJson(newBranch,HashMap[].class);
+//		//List<HashMap<String,Object>> branchList = Arrays.asList(branchMap);
+//		//model.addAttribute("branchList",branchList);
+		
+		//오늘의 영화 얻어오기
+//		String todayMovieUrl = "http://localhost:9090/projectdb/getTodayMoive.do";
+//		String todayMoive = service.get(todayMovieUrl).trim();
+//		HashMap<String,Object> movieMap = gson.fromJson(todayMovieUrl,HashMap.class);
+//		model.addAttribute("movieMap",movieMap);
+		
+		
+		String thumbnailMovieUrl ="http://localhost:9090/projectdb/getThumbnailMovie.do";
+		String ThumbnailMovie = service.get(thumbnailMovieUrl).trim();
 		HashMap<String,Object>[] map = gson.fromJson(ThumbnailMovie, HashMap[].class);
 		List<HashMap<String,Object>> list=Arrays.asList(map);
-		//HashMap<String,Object>[] branchMap = gson.fromJson(newBranch,HashMap[].class);
-		//List<HashMap<String,Object>> branchList = Arrays.asList(branchMap);
 		model.addAttribute("list",list);
-		//model.addAttribute("branchList",branchList);
 		String cp=session.getServletContext().getContextPath();
 		session.getServletContext().setAttribute("cp",cp);
 		return ".main";

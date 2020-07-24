@@ -453,6 +453,11 @@ header > .container .search-box input[type="submit"] {
 /*///*/
 
 /*home.jsp grid*/
+
+.carousel-control{
+	background-image:none !important;
+}
+
 .main-grid .img-responsive {
     margin-bottom: 30px;
 }
@@ -480,7 +485,7 @@ header > .container .search-box input[type="submit"] {
 /*////////////*/
 /*home.jsp grid 밑에*/
 .menu-link{
-	padding-top: 100px;
+	padding-top: 40px;
 	float: left;
 	width: 20%;
 	text-align: center;
@@ -572,7 +577,7 @@ header > .container .search-box input[type="submit"] {
 .main-section3::before{
 	position: absolute;
     left: 0;
-    top: 2268px;
+    top: 2224px;
     display: block;
     width: 100%;
     height: 92%;
@@ -611,7 +616,7 @@ header > .container .search-box input[type="submit"] {
 }
 
 .container.main-section3 > div > .col-lg-8{
-	padding-left: 160px;
+	
 }
 .container.main-section3 > div > .col-lg-8 > div{
 	margin-top:10px;

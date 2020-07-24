@@ -84,9 +84,9 @@
 		<h2>혜택</h2>
 		<hr>
 		<div class="row">
-			<div class="col-sm-4" style="top: 10px;">
+			<div class="col-sm-4" style="top: 40px;">
 				<div id="carousel-example-generic" class="carousel slide"
-					data-ride="carousel">
+					data-ride="carousel" style="height: 542px;">
 					<!-- Indicators -->
 					<ol class="carousel-indicators">
 						<li data-target="#carousel-example-generic" data-slide-to="0"
@@ -98,11 +98,15 @@
 					<!-- Wrapper for slides -->
 					<div class="carousel-inner" role="listbox">
 						<div class="item active">
-							<img src="${cp}/resources/images/1.png">
+							<img src="${cp}/resources/logo/혜택1.jpg" style="width: 403px;height: 542px;">
 							<div class="carousel-caption">...</div>
 						</div>
 						<div class="item">
-							<img src="${cp}/resources/images/1.png">
+							<img src="${cp}/resources/logo/혜택1.jpg" style="width: 403px;height: 542px;">
+							<div class="carousel-caption">...</div>
+						</div>
+						<div class="item">
+							<img src="${cp}/resources/logo/혜택1.jpg" style="width: 403px;height: 542px;">
 							<div class="carousel-caption">...</div>
 						</div>
 					</div>
@@ -163,7 +167,7 @@
 		</div>
 		<hr>
 		<div class="container">
-			<div class="row" style="margin-top: 90px; color: #ffffff">
+			<div class="row" style="margin-top:40px; color: #ffffff">
 				<div class="col-md-3">
 					<p>
 						<span style="display: block;"> LIFE THEATER MEGABOX </span> <strong
@@ -202,7 +206,7 @@
 </section>
 <section>
 	<div class="container main-section3">
-		<h2>영화평</h2>
+		<h1 style="position:absolute;color:#ffffff;margin-bottom:20px;">오늘의 영화</h1>
 		<div class="row">
 			<div class="col-lg-4">
 				<img src="${cp}/resources/images/1.png">
@@ -210,13 +214,9 @@
 					<button class="section3-button-one">상세정보</button>
 					<button class="section3-button-two">예매하러가기</button>
 				</div>
-				<ul>
-					<li><img src="${cp}/resources/images/1.png"></li>
-					<li><img src="${cp}/resources/images/2.png"></li>
-				</ul>
 			</div>
 			<div class="col-lg-8">
-				<h3 class="text-center">Zigzag Timeline Layout (and Cats)</h3>
+				<h3 class="text-center">영화 리뷰</h3>
 				<ul class="timeline">
 					<li>
 						<div class="timeline-image">
@@ -225,59 +225,70 @@
 						</div>
 						<div class="timeline-panel">
 							<div class="timeline-heading">
-								<h4>Step One</h4>
-								<h4 class="subheading">Subtitle</h4>
+								<h4>이름+님</h4>
+								<h4 class="subheading">아이디</h4>
 							</div>
 							<div class="timeline-body">
-								<p class="text-muted">Lorem ipsum dolor sit amet,
-									consectetur adipisicing elit, sed do eiusmod tempor incididunt
-									ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-									nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-									commodo consequat.</p>
+								<p class="text-muted">리뷰</p><br>
+								<p class="text-muted">평점</p>
+								<small>좋아요 갯수 + 개</small>
 							</div>
 						</div>
 						<div class="line"></div>
 					</li>
-					<li class="timeline-inverted">
-						<div class="timeline-image">
-							<img class="img-circle img-responsive"
-								src="http://lorempixel.com/250/250/cats/2" alt="">
-						</div>
-						<div class="timeline-panel">
-							<div class="timeline-heading">
-								<h4>Step Two</h4>
-								<h4 class="subheading">Subtitle</h4>
-							</div>
-							<div class="timeline-body">
-								<p class="text-muted">Lorem ipsum dolor sit amet,
-									consectetur adipisicing elit, sed do eiusmod tempor incididunt
-									ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-									nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-									commodo consequat.</p>
-							</div>
-						</div>
-						<div class="line"></div>
-					</li>
-
-
 					<li>
 						<div class="timeline-image">
 							<img class="img-circle img-responsive"
-								src="http://lorempixel.com/250/250/cats/5" alt="">
+								src="http://lorempixel.com/250/250/cats/1" alt="">
 						</div>
 						<div class="timeline-panel">
 							<div class="timeline-heading">
-								<h4>Bonus Step</h4>
-								<h4 class="subheading">Subtitle</h4>
+								<h4>이름+님</h4>
+								<h4 class="subheading">아이디</h4>
 							</div>
 							<div class="timeline-body">
-								<p class="text-muted">Lorem ipsum dolor sit amet,
-									consectetur adipisicing elit, sed do eiusmod tempor incididunt
-									ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-									nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-									commodo consequat.</p>
+								<p class="text-muted">리뷰</p><br>
+								<p class="text-muted">평점</p>
+								<small>좋아요 갯수 + 개</small>
 							</div>
 						</div>
+						<div class="line"></div>
+					</li>
+					<li>
+						<div class="timeline-image">
+							<img class="img-circle img-responsive"
+								src="http://lorempixel.com/250/250/cats/1" alt="">
+						</div>
+						<div class="timeline-panel">
+							<div class="timeline-heading">
+								<h4>이름+님</h4>
+								<h4 class="subheading">아이디</h4>
+							</div>
+							<div class="timeline-body">
+								<p class="text-muted">리뷰</p><br>
+								<p class="text-muted">평점</p>
+								<small>좋아요 갯수 + 개</small>
+							</div>
+						</div>
+						<div class="line"></div>
+					</li>
+					<li>
+						<div class="timeline-image">
+							<img class="img-circle img-responsive"
+								src="http://lorempixel.com/250/250/cats/1" alt="">
+						</div>
+						<div class="timeline-panel">
+							<div class="timeline-heading">
+								<h4>이름+님</h4>
+								<h4 class="subheading">아이디</h4>
+							</div>
+							<div class="timeline-body">
+								<p class="text-muted">리뷰</p><br>
+								<p class="text-muted">평점</p>
+								<small>좋아요 갯수 + 개</small>
+							</div>
+						</div>
+						<div class="line"></div>
 					</li>
 				</ul>
 			</div>
