@@ -30,6 +30,7 @@
 	href="${cp }/resources/css/mypage/mypage_top_menu.css" type="text/css">
 <link rel="stylesheet" href="${cp }/resources/css/log/memuser.css"
 	type="text/css">
+<script src="${cp }/resources/js/log/memuser.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -65,7 +66,7 @@
 			<h1 class="h1_tit">회원 정보 변경</h1>
 			<p class="h_desc">정보를 관리해도 개인정보들은 이미 중국에 가 있습니다.</p>
 		</div>
-		<form action="">
+		<form action="${cp }/log/memuserok.do" method="post" id="memuser">
 		<div class="member_info">
 			<div class="table_header">
 				<h3 class="h3_tit">기본정보</h3>
@@ -81,24 +82,20 @@
 							<th scope="row">이름</th>
 							<td>
 								<div class="input_group">
-									<span id="hg_nm_area">정*웅</span>
+									<span id="hg_nm_area">${memName}</span>
 								</div>
 							</td>
 						</tr>
 						<tr>
 							<th scope="row">아이디</th>
-							<td><span id="mbr_id_area">za*****</span></td>
+							<td><span id="mbr_id_area">${memId }</span>
+							<input type="hidden" name="memId" value="${memId }">
+							</td>
 						</tr>
 						<tr class="input">
 							<th scope="row">생년월일</th>
 							<td>
-								<div class="birthday_select" id="birthday_select"
-									style="display: none"></div>
-								<div class="birthday_select" id="birthday_default"
-									style="display: block">
-									****<span class="symbol">년</span> **<span class="symbol">월</span>
-									**<span class="symbol">일</span>
-								</div>
+								<span id="mbr_id_area">${birth }</span>
 								<p class="msg_desc">
 									설정하신 생일을 기준으로 <em class="em">15일 전</em> 생일쿠폰이 발행됩니다.<br>
 								</p>
@@ -106,21 +103,27 @@
 						</tr>
 						<tr class="input">
 							<th scope="row"><label for="mob_no_1">휴대전화</label></th>
-							<td><span class="input_txt w100"> <input type="text"
+							<td>
+							<span id="mbr_id_area"><label for="mob_no_1">현재 전화 번호</label> : ${memPhone }</span><br>
+							<span class="input_txt w100"> <input type="text" name="memPhone"
 									class="text narrow" title="전화번호 입력" data-format="num"
-									name="mob_no_2" id="mob_no_2" maxlength="4" autocomplete="off">
+									name="mob_no_2" id="mob_no_2" autocomplete="off">
 							</span>
 								<div class="phon_write" style="width: 326px"></div>
-								<p class="msg_desc">주문 및 배송, 쿠폰, 이벤트 정보 등을 제공 받으실 수 있습니다.</p></td>
+								<p class="msg_desc">주문 및 배송, 쿠폰, 이벤트 정보 등을 제공 받으실 수 있습니다.</p>
+								<div class="chek_font" id="phone_chek"></div>
+								</td>
 						</tr>
 						<tr class="input">
 							<th scope="row"><label for="email_addr1">이메일</label></th>
 							<td>
+							<span id="mbr_id_area"><label for="mob_no_1">현재 이메일</label> : ${email }</span><br>
 								<input type="text"
-									class="text narrow" title="이메일 입력" data-format="num"
-									name="mob_no_2" id="mob_no_2" maxlength="4" autocomplete="off">
+									class="text narrow" title="이메일 입력" data-format="num" name="email"
+									name="mob_no_2" id="mob_no_3" autocomplete="off">
 								<div class="email_write" style="width: 415px"></div>
 								<p class="msg_desc">이메일 주소 입력 시 사용 가능 특수 문자 : - . _</p>
+								<div class="chek_font" id="email_chek"></div>
 							</td>
 						</tr>
 					</tbody>
@@ -129,7 +132,7 @@
 		</div>
 		<div class="btn_sec btn_center">
 			<button type="button" class="btn" id="btn_cancel" onclick = "location.href = '${cp}/' ">취소</button>
-			<button type="button" class="btn btn_em" id="btn_submit">수정</button>
+			<button type="submit" class="btn btn_em" id="btn_submit">수정</button>
 		</div>
 		</form>
 	</div>

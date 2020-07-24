@@ -38,6 +38,23 @@ public class LogController {
 	public String memuser() {
 		return ".log.memuser";
 	}
+//	@RequestMapping("/log/memuserok.do")
+//	public String memuserok(String memId, String memPhone, String email) {
+//		String url="http://localhost:9090/projectdb/log/memuser.do?memId="+memId+"&memPhone="+memPhone+"&email="+email;
+//		System.out.println(memId);
+//		System.out.println(memPhone);
+//		System.out.println(email);
+//		Gson gson = new Gson();
+//		String jsonString = gson.toJson(vo);
+//		System.out.println(jsonString);
+//		String code=service.post(url, jsonString).trim();
+//		if(code.equals("success")) {
+//			return ".main";
+//		}else {
+//			return "error";
+//		}
+//	}
+	
 	//비밀번호 변경
 	@RequestMapping("/log/mempwd.do")
 	public String mempwd() {
@@ -108,6 +125,7 @@ public class LogController {
 			session.getServletContext().setAttribute("grade",vo.getGrade());
 			session.getServletContext().setAttribute("memRegdate",vo.getMemRegdate());
 			session.getServletContext().setAttribute("money",vo.getMoney());
+			System.out.println(vo.getMemName());
 			return ".main";
 		}
 	}

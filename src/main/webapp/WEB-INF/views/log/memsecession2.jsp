@@ -110,7 +110,7 @@
 					</p>
 					<p class="h_desc">MegaCinema 회원 탈퇴하시면 해당 웹사이트의 이용이 중지됩니다.</p>
 					<div class="member_data box_white">
-						MegaCinema 아이디 : <strong class="em">zaqqz31</strong>
+						MegaCinema 아이디 : <strong class="em">${memId }</strong>
 					</div>
 					<div class="btn_center">
 						<button type="button" id="btn_cancel" class="btn">취소</button>
