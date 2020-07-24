@@ -88,7 +88,7 @@
 				<c:forEach var="vo" items="${monthDay }">
 					<c:choose>
 						<c:when test="${fn:contains(vo,'-') }">
-							<input type="text" value="${vo }">
+							<c:set var="daliy" value="${vo }"/>
 							<div>
 								<c:set var="years" value="${fn:split(vo,'-')}" />
 								<c:forEach var="year" items="${years}" varStatus="g">
@@ -98,9 +98,14 @@
 							</div> 
 						</c:when>
 						<c:otherwise>
-							<div class="hover" onclick="theatherList('${vo}')">
-								${vo }일
-							</div>
+							<c:set var="days" value="${fn:split(vo,' ')}" />
+							<c:forEach var="day" items="${days}" varStatus="g">
+								<c:if test="${g.index == 1 }">
+									<div class="hover" onclick="theatherList('${daliy}-${day }')">
+										${vo }일
+									</div>
+								</c:if>
+							</c:forEach>
 						</c:otherwise>
 					</c:choose>
 				</c:forEach>
