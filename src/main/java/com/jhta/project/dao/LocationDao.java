@@ -1,5 +1,6 @@
 package com.jhta.project.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -10,7 +11,7 @@ import com.jhta.project.vo.LocationListVo;
 import com.jhta.project.vo.ProposalVo;
 
 @Repository
-public class LocationListDao {
+public class LocationDao {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	private final String NAMESPACE = "com.jhta.mybatis.mapper.locationlist";
@@ -21,6 +22,10 @@ public class LocationListDao {
 	
 	public List<ProposalVo> list() {
 		return sqlSession.selectList(NAMESPACE+".list");
+	}
+	
+	public List<LocationListVo> locMovieList(HashMap<String,Object> map) {
+		return sqlSession.selectList(NAMESPACE+".locmovielist", map);
 	}
 	
 }
