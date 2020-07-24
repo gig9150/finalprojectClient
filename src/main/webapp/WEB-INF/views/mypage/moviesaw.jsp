@@ -109,17 +109,17 @@
 		      <div class="modal-body">
 		      	<strong id="modal-movie-tit">${list.filmname }</strong>
 		       	<div class="starRev">
-		      		 <h4 id="score">10<span></span></h4>
-				  <span class="starR on">1</span>
-				  <span class="starR on">2</span>
-				  <span class="starR on">3</span>
-				  <span class="starR on">4</span>
-				  <span class="starR on">5</span>
-				  <span class="starR on">6</span>
-				  <span class="starR on">7</span>
-				  <span class="starR on">8</span>
-				  <span class="starR on">9</span>
-				  <span class="starR on">10</span>
+		      		<h4 id="score${i.index }">10</h4>
+					  <span class="starR on">1</span>
+					  <span class="starR on">2</span>
+					  <span class="starR on">3</span>
+					  <span class="starR on">4</span>
+					  <span class="starR on">5</span>
+					  <span class="starR on">6</span>
+					  <span class="starR on">7</span>
+					  <span class="starR on">8</span>
+					  <span class="starR on">9</span>
+					  <span class="starR on">10</span>
 				</div>
 		      	<textarea rows="5" cols="20" class="review_content" id="review_insert_content${i.index }" placeholder="평점 및 영화 리뷰를 작성해주세요."></textarea>
 		      </div>
@@ -153,17 +153,17 @@
 		     <div class="modal-body">
 		     	<strong id="modal-movie-tit">${list.filmname }</strong>
 		      	<div class="starRev">
-		     		 <h4 id="score">10<span></span></h4>
-			  <span class="starR on">1</span>
-			  <span class="starR on">2</span>
-			  <span class="starR on">3</span>
-			  <span class="starR on">4</span>
-			  <span class="starR on">5</span>
-			  <span class="starR on">6</span>
-			  <span class="starR on">7</span>
-			  <span class="starR on">8</span>
-			  <span class="starR on">9</span>
-			  <span class="starR on">10</span>
+		     		 <h4 id="score${i.index }">10</h4>
+					  <span class="starR on">1</span>
+					  <span class="starR on">2</span>
+					  <span class="starR on">3</span>
+					  <span class="starR on">4</span>
+					  <span class="starR on">5</span>
+					  <span class="starR on">6</span>
+					  <span class="starR on">7</span>
+					  <span class="starR on">8</span>
+					  <span class="starR on">9</span>
+					  <span class="starR on">10</span>
 			</div>
 		     	<textarea rows="5" cols="20" class="review_content" id="review_update_content${i.index }">${list.mreview }</textarea>
 		     </div>
@@ -185,7 +185,6 @@
 </div>
 
 
-
 </body>
 <script type="text/javascript" src="${cp }/resources/js/jquery-3.5.1.js"></script>
 <script type="text/javascript">
@@ -193,17 +192,19 @@
 		$('.starRev span').click(function(){
 		  $(this).parent().children('span').removeClass('on');
 		  $(this).addClass('on').prevAll('span').addClass('on');
-		  $("#score").text($(this).text());
+		  var score=$(this).text();
+		  $(".score").text(score);
 		  return false;
 		});
 		
 		//리뷰 등록
 		$('.btn_insert .btn').click(function(){
 			var index=$(this).next().val();
-			var mScore=$("#score").text();
+			var mScore=$(".score").text();
 			var rContent=$("#review_insert_content"+index).val();
 			var filmnum=$("#review_insert_filmnum"+index).val();
 			var chargenum=$("#review_insert_chargenum"+index).val();
+			alert(mScore+","+rContent+","+filmnum+","+chargenum);
 			$.ajax({
 				url:"${cp}/mypage/reviewInsert.do",
 				data : {"mScore":mScore,"rContent":rContent,"filmNum":filmnum,"chargeNum":chargenum},
@@ -211,14 +212,18 @@
 				method: 'POST',
 				dataType : 'JSON',
 				success : function(data){
-					alert('관람평이 저장되었습니다.');
+					if(data=='success'){
+						alert('관람평이 저장되었습니다.');
+					}else{
+						alert('오류발생!');
+					}
 				}
 			});
 		});
 		//리뷰 수정
 		$('.btn_update .btn').click(function(){
 			var index=$(this).next().val();
-			var mScore=$("#score").text();
+			var mScore=$(".score").text();
 			var rContent=$("#review_update_content"+index).val();
 			var filmnum=$("#review_update_filmnum"+index).val();
 			var chargenum=$("#review_update_chargenum"+index).val();
@@ -230,7 +235,11 @@
 				method: 'POST',
 				dataType : 'JSON',
 				success : function(data){
-					
+					if(data=='success'){
+						alert('관람평이 저장되었습니다.');
+					}else{
+						alert('오류발생!');
+					}
 				}
 			});
 		});

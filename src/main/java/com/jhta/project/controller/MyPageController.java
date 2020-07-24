@@ -5,15 +5,18 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
 import com.jhta.project.service.RestService;
 import com.jhta.project.vo.AskVo;
 import com.jhta.project.vo.CuponVo;
+import com.jhta.project.vo.MReviewVo;
 import com.jhta.project.vo.MovieSawVo;
 import com.jhta.project.vo.TicketingVo;
 import com.jtha.util.PageUtil;
@@ -127,57 +130,42 @@ public class MyPageController {
 		return ".mypage.memberInfo";
 	}
 	
-//	//평점/리뷰 작성
-//	@RequestMapping(value="/mypage/reviewInsert.do",produces = {MediaType.APPLICATION_JSON_UTF8_VALUE,MediaType.APPLICATION_XML_VALUE})
-//	@ResponseBody
-//	public String reviewInsert(String rContent,int mScore,int filmNum, int chargeNum) {
-//		 						//시퀀스     리뷰내용 좋아요수 평점  회원번호 영화번호        예약번호      작성일
-//		MReviewVo vo=new MReviewVo(0, rContent, 0, mScore, 1, filmNum, chargeNum, null);
-//		
-//		String url = "http://192.168.0.9:9090/projectdb/mypage/inquiry.do";
-//		Gson gson=new Gson();
-//		String jsonString=gson.toJson(vo);
-//		String code=service.post(url,jsonString).trim();
-//		
-////		AskVo[] arrays=gson.fromJson(code, AskVo[].class);
-////		List<AskVo> list=Arrays.asList(arrays);
-//		
-//		
-//		
-//		int n=mreviewServie.mreviewInsert(vo);
-//		if(n>0) {
-//			return "success";
-//		}else {
-//			return "error";
-//		}
-//	}
-//	//평점/리뷰 수정
-//	@RequestMapping(value="/mypage/reviewUpdate.do",produces = {MediaType.APPLICATION_JSON_UTF8_VALUE,MediaType.APPLICATION_XML_VALUE})
-//	@ResponseBody
-//	public String reviewUpdate(String rContent,int mScore,int filmNum, int chargeNum) {
-//								 //시퀀스     리뷰내용 좋아요수 평점  회원번호 영화번호        예약번호      작성일
-//		System.out.println(rContent+","+mScore+","+filmNum+","+chargeNum);
-//		MReviewVo vo=new MReviewVo(0, rContent, 0, mScore, 1, filmNum, chargeNum, null);
-//		int n=mreviewServie.mreviewUpdate(vo);
-//		if(n>0) {
-//			return "success";
-//		}else {
-//			return "error";
-//		}
-//	}
-//	@RequestMapping(value="/mypage/reviewDelete.do",produces = {MediaType.APPLICATION_JSON_UTF8_VALUE,MediaType.APPLICATION_XML_VALUE})
-//	@ResponseBody
-//	public String reviewUpdate(int filmNum, int bookNum) {
-//								 //시퀀스     리뷰내용 좋아요수 평점  회원번호 영화번호        예약번호      작성일
-//		MReviewVo vo=new MReviewVo(0, null, 0, 0, 1, filmNum, bookNum, null);
-//		int n=mreviewServie.mreviewDelete(vo);
-//		if(n>0) {
-//			return "success";
-//		}else {
-//			return "error";
-//		}
-//	}
+	//평점/리뷰 작성
+	@RequestMapping(value="/mypage/reviewInsert.do",produces = {MediaType.APPLICATION_JSON_UTF8_VALUE,MediaType.APPLICATION_XML_VALUE})
+	@ResponseBody
+	public String reviewInsert(String rContent,int mScore,int filmNum, int chargeNum) {
+		 						//시퀀스     리뷰내용 좋아요수 평점  회원번호 영화번호        예약번호      작성일
+		MReviewVo vo=new MReviewVo(0, rContent, 0, mScore, 1, filmNum, chargeNum, null);
+		System.out.println("리뷰 컨트롤러");
+		String url = "http://192.168.0.9:9090/projectdb/mypage/reviewInsert.do";
+		Gson gson=new Gson();
+		String jsonString=gson.toJson(vo);
+		String code=service.post(url,jsonString).trim();
+		int result=Integer.parseInt(code);
+		if(result>0) {
+			return "success";
+		}else {
+			return "fail";
+		}
+	}
 	
+	//평점/리뷰 수정
+	@RequestMapping(value="/mypage/reviewUpdate.do",produces = {MediaType.APPLICATION_JSON_UTF8_VALUE,MediaType.APPLICATION_XML_VALUE})
+	@ResponseBody
+	public String reviewUpdate(String rContent,int mScore,int filmNum, int chargeNum) {
+								 //시퀀스     리뷰내용 좋아요수 평점  회원번호 영화번호        예약번호      작성일
+		MReviewVo vo=new MReviewVo(0, rContent, 0, mScore, 1, filmNum, chargeNum, null);
+		String url = "http://192.168.0.9:9090/projectdb/mypage/reviewUpdate.do";
+		Gson gson=new Gson();
+		String jsonString=gson.toJson(vo);
+		String code=service.post(url,jsonString).trim();
+		int result=Integer.parseInt(code);
+		if(result>0) {
+			return "success";
+		}else {
+			return "error";
+		}
+	}
 	
 	
 }
