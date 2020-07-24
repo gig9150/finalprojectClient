@@ -7,9 +7,21 @@
 		select * from mreview where mReviewNum=#{mReviewNum}
 	</select>
 	
-	<select id="reviewList" resultType="reviewBoard" parameterType="int">
-		select mem.memName, mr.mscore, mr.rcontent, mr.liketotal, mr.mreviewdate 
-			from membership mem, mreview mr 
-		where mem.memNum=mr.memNum and mr.filmNum=#{filmNum}
+	<select id="reviewList" resultType="reviewBoard" parameterType="hashmap">
+	<![CDATA[
+		select * from(
+		    select aa.*,rownum rnum from (
+		        select mem.memName, mr.mscore, mr.rcontent, mr.liketotal, mr.mreviewdate
+		        from membership mem, mreview mr 
+		        where mem.memNum=mr.memNum and mr.filmNum=#{filmNum} order by mreviewdate desc
+		    )aa
+		)where rnum<=#{rowCount}
+	]]>
+	</select>
+	
+	<select id="count" parameterType="int" resultType="int">
+		select nvl(count(*),0) from
+        mreview where filmnum=#{filmnum}
+		order by mreviewdate desc
 	</select>
 </mapper>
