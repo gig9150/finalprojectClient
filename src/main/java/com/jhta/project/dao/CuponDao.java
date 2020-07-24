@@ -15,8 +15,8 @@ public class CuponDao {
 	private SqlSession session;
 	private final String NAMESPASE = "com.jhta.mybatis.mapper.cupon";
 	
-	public List<CuponVo> cuponList(){
-		return session.selectList(NAMESPASE+".list");
+	public List<CuponVo> cuponList(int memNum){
+		return session.selectList(NAMESPASE+".list",memNum);
 	}
 	
 }

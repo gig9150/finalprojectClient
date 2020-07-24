@@ -15,12 +15,13 @@
 		WHERE rnum>=#{startRow} AND rnum<=#{endRow}
 	]]>
 	</select>
-	
-	<select id="count" resultType="int" parameterType="int">
+	<!-- 		count -> askCount 수정 -->	
+	<select id="askCount" resultType="int" parameterType="int">
 		select NVL(count(*),0) from ask where memnum=#{memNum}
 	</select>
-	<select id="getinfo" parameterType="int" resultType="ask">
-		select a.*,m.memphone,m.email,m.memname from ask a,membership m where a.memnum=m.memnum and a.asknum=#{askNum}
+	<!-- 		getinfo -> askGetinfo 수정 -->
+	<select id="askGetinfoClient" parameterType="int" resultType="ask">
+		select a.*,m.memphone,m.email,m.memname from ask a,membership m 
+		where a.memnum=m.memnum and a.asknum=#{askNum}
 	</select>
-	
 </mapper>

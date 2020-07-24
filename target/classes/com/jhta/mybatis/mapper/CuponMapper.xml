@@ -6,7 +6,7 @@
 	<select id="getinfo" parameterType="int" resultType="cupon">
 		select * from cupon where cuponNum=#{cuponNum} 
 	</select>
-	<select id="list" resultType="cupon">
+	<select id="list" resultType="cupon" parameterType="int">
 	<![CDATA[
 		select * from (
 		    select aa.*,rownum from(
@@ -15,7 +15,7 @@
 		        ORDER BY cuponstart DESC,cuponend ASC,cuponstatus ASC
 		    )aa
 		)
-		where rownum<11
+		where rownum<11 and memnum=#{memNum}
 	]]>
 	</select>
 </mapper>

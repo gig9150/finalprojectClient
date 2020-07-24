@@ -1,26 +1,19 @@
 package com.jhta.project.controller;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.jhta.project.service.AskService;
-import com.jhta.project.service.CuponService;
-import com.jhta.project.service.MReviewService;
-import com.jhta.project.service.MembershipService;
-import com.jhta.project.service.MovieSawService;
-import com.jhta.project.service.TicketingService;
+import com.google.gson.Gson;
+import com.jhta.project.service.RestService;
 import com.jhta.project.vo.AskVo;
 import com.jhta.project.vo.CuponVo;
-import com.jhta.project.vo.MReviewVo;
-import com.jhta.project.vo.MembershipVo;
 import com.jhta.project.vo.MovieSawVo;
 import com.jhta.project.vo.TicketingVo;
 import com.jtha.util.PageUtil;
@@ -28,22 +21,18 @@ import com.jtha.util.PageUtil;
 @Controller
 public class MyPageController {
 	@Autowired
-	private AskService askService;
-	@Autowired
-	private MovieSawService movieSawService;
-	@Autowired
-	private CuponService cuponService;
-	@Autowired
-	private MReviewService mreviewServie;
-	@Autowired
-	private TicketingService ticketingService;
-	@Autowired
-	private MembershipService membershipService;
+	private RestService service;
 	
 	//결제 내역,예매 내역
 	@RequestMapping("/mypage/payment.do")
 	public String payment(Model model) {
-		List<TicketingVo> list=ticketingService.ticketingtList(1);
+		int memNum=1;
+		String url = "http://localhost:9090/projectdb/mypage/payment.do?memNum="+memNum;
+		String code=service.get(url).trim();
+		System.out.println("code-------"+code);
+		Gson gson=new Gson();
+		TicketingVo[] arrays=gson.fromJson(code, TicketingVo[].class);
+		List<TicketingVo> list=Arrays.asList(arrays);
 		model.addAttribute("list",list);
 		return ".mypage.payment";
 	}
@@ -51,7 +40,12 @@ public class MyPageController {
 	//쿠폰함
 	@RequestMapping("/mypage/cupon.do")
 	public String cupon(Model model) {
-		List<CuponVo> list=cuponService.cuponList();
+		int memNum=1;
+		String url = "http://192.168.0.9:9090/projectdb/mypage/cupon.do?memNum="+memNum;
+		String code=service.get(url).trim();
+		Gson gson=new Gson();
+		CuponVo[] arrays=gson.fromJson(code, CuponVo[].class);
+		List<CuponVo> list=Arrays.asList(arrays);
 		model.addAttribute("list",list);
 		return ".mypage.cupon";
 	}
@@ -59,39 +53,70 @@ public class MyPageController {
 	//내가 본 영화
 	@RequestMapping("/mypage/moviesaw.do")
 	public String moviesaw(Model model) {
-		List<MovieSawVo> list=movieSawService.moviesawList(1);//memNum
-		int movieCount=movieSawService.movieCount(1);//memNum
+		int memNum=1;
+		String url = "http://192.168.0.9:9090/projectdb/mypage/moviesaw.do?memNum="+memNum;
+		String code=service.get(url).trim();
+		Gson gson=new Gson();
+		MovieSawVo[] arrays=gson.fromJson(code, MovieSawVo[].class);
+		List<MovieSawVo> list=Arrays.asList(arrays);
 		model.addAttribute("list",list);
+		
+		String countUrl = "http://192.168.0.9:9090/projectdb/mypage/movieCount.do?memNum="+memNum;
+		String countCode=service.get(countUrl).trim();
+		int movieCount = Integer.parseInt(countCode);
 		model.addAttribute("movieCount",movieCount);
+		
 		return ".mypage.moviesaw";
 	}
+	
 	
 	//1:1문의 리스트
 	@RequestMapping("/mypage/inquiry.do")
 	public String askList(@RequestParam(value="pageNum",defaultValue = "1")int pageNum,Model model) {
-		int totalRowCount=askService.count(1);//회원번호
+		int memNum=1;
+		String countUrl = "http://192.168.0.9:9090/projectdb/mypage/askCount.do?memNum="+memNum;
+		String countCode=service.get(countUrl).trim();
+		int totalRowCount = Integer.parseInt(countCode);
+		
 		PageUtil pu=new PageUtil(pageNum, totalRowCount, 10, 5);
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("startRow", pu.getStartRow());
 		map.put("endRow", pu.getEndRow());
 		map.put("memNum", 1);//회원번호
-		List<AskVo> list=askService.askList(map); //memNum
+		model.addAttribute("pu",pu);
+		
+		String url = "http://192.168.0.9:9090/projectdb/mypage/inquiry.do";
+		Gson gson=new Gson();
+		String jsonString=gson.toJson(map);
+		String code=service.post(url,jsonString).trim();
+		AskVo[] arrays=gson.fromJson(code, AskVo[].class);
+		List<AskVo> list=Arrays.asList(arrays);
 		
 		model.addAttribute("list", list);
-		model.addAttribute("pu",pu);
 		return ".mypage.inquiry";
 	}
+	
 	//1:1문의 상세보기
 	@RequestMapping("/mypage/inquiryDatail.do")
 	public String askgetInfo(int askNum,Model model) {
-		AskVo vo=askService.askGetinfo(askNum);
+		
+		String url = "http://192.168.0.9:9090/projectdb/mypage/inquiryDatail.do?askNum="+askNum;
+		String code=service.get(url).trim();
+		Gson gson=new Gson();
+		AskVo vo=gson.fromJson(code, AskVo.class);
 		model.addAttribute("vo",vo);
 		return ".mypage.inquiryDetail";
 	}
+	
 	//1:1문의하기
 	@RequestMapping("/mypage/inquiryInsert.do")
 	public String askInsert(Model model) {
-		MembershipVo vo=membershipService.memGetinfo(1);
+		int memNum=1;
+		
+		String url = "http://192.168.0.9:9090/projectdb/mypage/inquiryInsert.do?memNum="+memNum;
+		String code=service.get(url).trim();
+		Gson gson=new Gson();
+		AskVo vo=gson.fromJson(code, AskVo.class);
 		model.addAttribute("vo",vo);
 		return ".mypage.inquiryInsert";
 	}
@@ -102,51 +127,61 @@ public class MyPageController {
 		return ".mypage.memberInfo";
 	}
 	
-	//평점/리뷰 작성
-	@RequestMapping(value="/mypage/reviewInsert.do",produces = {MediaType.APPLICATION_JSON_UTF8_VALUE,MediaType.APPLICATION_XML_VALUE})
-	@ResponseBody
-	public String reviewInsert(String rContent,int mScore,int filmNum, int chargeNum) {
-		 						//시퀀스     리뷰내용 좋아요수 평점  회원번호 영화번호        예약번호      작성일
-		MReviewVo vo=new MReviewVo(0, rContent, 0, mScore, 1, filmNum, chargeNum, null);
-		int n=mreviewServie.mreviewInsert(vo);
-		if(n>0) {
-			return "success";
-		}else {
-			return "error";
-		}
-	}
-	//평점/리뷰 수정
-	@RequestMapping(value="/mypage/reviewUpdate.do",produces = {MediaType.APPLICATION_JSON_UTF8_VALUE,MediaType.APPLICATION_XML_VALUE})
-	@ResponseBody
-	public String reviewUpdate(String rContent,int mScore,int filmNum, int chargeNum) {
-								 //시퀀스     리뷰내용 좋아요수 평점  회원번호 영화번호        예약번호      작성일
-		System.out.println(rContent+","+mScore+","+filmNum+","+chargeNum);
-		MReviewVo vo=new MReviewVo(0, rContent, 0, mScore, 1, filmNum, chargeNum, null);
-		
-		int n=mreviewServie.mreviewUpdate(vo);
-		System.out.println(n+"ffffffffffffff");
-		if(n>0) {
-			return "success";
-		}else {
-			return "error";
-		}
-	}
-	@RequestMapping(value="/mypage/reviewDelete.do",produces = {MediaType.APPLICATION_JSON_UTF8_VALUE,MediaType.APPLICATION_XML_VALUE})
-	@ResponseBody
-	public String reviewUpdate(int filmNum, int bookNum) {
-								 //시퀀스     리뷰내용 좋아요수 평점  회원번호 영화번호        예약번호      작성일
-		MReviewVo vo=new MReviewVo(0, null, 0, 0, 1, filmNum, bookNum, null);
-		int n=mreviewServie.mreviewDelete(vo);
-		if(n>0) {
-			return "success";
-		}else {
-			return "error";
-		}
-	}
+//	//평점/리뷰 작성
+//	@RequestMapping(value="/mypage/reviewInsert.do",produces = {MediaType.APPLICATION_JSON_UTF8_VALUE,MediaType.APPLICATION_XML_VALUE})
+//	@ResponseBody
+//	public String reviewInsert(String rContent,int mScore,int filmNum, int chargeNum) {
+//		 						//시퀀스     리뷰내용 좋아요수 평점  회원번호 영화번호        예약번호      작성일
+//		MReviewVo vo=new MReviewVo(0, rContent, 0, mScore, 1, filmNum, chargeNum, null);
+//		
+//		String url = "http://192.168.0.9:9090/projectdb/mypage/inquiry.do";
+//		Gson gson=new Gson();
+//		String jsonString=gson.toJson(vo);
+//		String code=service.post(url,jsonString).trim();
+//		
+////		AskVo[] arrays=gson.fromJson(code, AskVo[].class);
+////		List<AskVo> list=Arrays.asList(arrays);
+//		
+//		
+//		
+//		int n=mreviewServie.mreviewInsert(vo);
+//		if(n>0) {
+//			return "success";
+//		}else {
+//			return "error";
+//		}
+//	}
+//	//평점/리뷰 수정
+//	@RequestMapping(value="/mypage/reviewUpdate.do",produces = {MediaType.APPLICATION_JSON_UTF8_VALUE,MediaType.APPLICATION_XML_VALUE})
+//	@ResponseBody
+//	public String reviewUpdate(String rContent,int mScore,int filmNum, int chargeNum) {
+//								 //시퀀스     리뷰내용 좋아요수 평점  회원번호 영화번호        예약번호      작성일
+//		System.out.println(rContent+","+mScore+","+filmNum+","+chargeNum);
+//		MReviewVo vo=new MReviewVo(0, rContent, 0, mScore, 1, filmNum, chargeNum, null);
+//		int n=mreviewServie.mreviewUpdate(vo);
+//		if(n>0) {
+//			return "success";
+//		}else {
+//			return "error";
+//		}
+//	}
+//	@RequestMapping(value="/mypage/reviewDelete.do",produces = {MediaType.APPLICATION_JSON_UTF8_VALUE,MediaType.APPLICATION_XML_VALUE})
+//	@ResponseBody
+//	public String reviewUpdate(int filmNum, int bookNum) {
+//								 //시퀀스     리뷰내용 좋아요수 평점  회원번호 영화번호        예약번호      작성일
+//		MReviewVo vo=new MReviewVo(0, null, 0, 0, 1, filmNum, bookNum, null);
+//		int n=mreviewServie.mreviewDelete(vo);
+//		if(n>0) {
+//			return "success";
+//		}else {
+//			return "error";
+//		}
+//	}
 	
 	
 	
 }
+
 
 
 

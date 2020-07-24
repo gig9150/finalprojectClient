@@ -19,12 +19,12 @@ public class AskDao {
 		return session.selectList(NAMESPASE+".askList",map);
 	}
 
-	public int count(int memNum) {
+	public int askCount(int memNum) {
 		return session.selectOne(NAMESPASE+".count",memNum);
 	}
 	
 	public AskVo askGetinfo(int askNum) {
-		return session.selectOne(NAMESPASE+".getinfo",askNum);
+		return session.selectOne(NAMESPASE+".askGetinfo",askNum);
 	}
 	
 }

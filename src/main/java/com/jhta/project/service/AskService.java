@@ -20,8 +20,8 @@ public class AskService {
 		return askDao.askList(map);
 	}
 
-	public int count(int memNum) {
-		return askDao.count(memNum);
+	public int askCount(int memNum) {
+		return askDao.askCount(memNum);
 	}
 	
 	public AskVo askGetinfo(int askNum) {

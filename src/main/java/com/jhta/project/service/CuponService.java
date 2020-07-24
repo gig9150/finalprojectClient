@@ -17,8 +17,8 @@ public class CuponService {
 	@Autowired
 	private CuponDao cuponDao;
 	
-	public List<CuponVo> cuponList(){
-		return cuponDao.cuponList();
+	public List<CuponVo> cuponList(int memNum){
+		return cuponDao.cuponList(memNum);
 	}
 
 }
