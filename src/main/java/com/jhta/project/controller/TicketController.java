@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.jhta.project.service.RestService;
 import com.jhta.project.vo.BranchVo;
@@ -25,12 +30,12 @@ public class TicketController {
 	
 	@RequestMapping("/buy/ticket.do")
 	public String ticket(Model model,@RequestParam(value="cityaddr",defaultValue = "서울") String cityaddr,
-			String regDate) throws ParseException {
+			String regDate,@RequestParam(value="branchNum",defaultValue = "1") int branchNum) throws ParseException, JsonMappingException, JsonProcessingException {
 		String url="http://localhost:9090/projectdb/buy/citylist.do";
 		String code=service.get(url).trim();
 		Gson gson=new Gson();
 		CityListVo[] array=gson.fromJson(code, CityListVo[].class);
-		List<CityListVo> list=Arrays.asList(array);
+		List<CityListVo> mainCityList=Arrays.asList(array);
 		
 		String searchCityUrl="http://localhost:9090/projectdb/buy/searchCity.do?cityaddr="+cityaddr;
 		String cityCode=service.get(searchCityUrl).trim();
@@ -60,8 +65,20 @@ public class TicketController {
 			String oneDay=sdf1.format(i);
 			monthDay.add(oneDay);
 		}
+		String listUrl="http://localhost:9090/projectdb/schedule/list.do?branchNum="+branchNum+"&date="+regDate;
+		String code1=service.get(listUrl).trim();
+		ObjectMapper mapper = new ObjectMapper();
+		TypeReference<List<HashMap<String, Object>>> typeRef = new TypeReference<List<HashMap<String, Object>>>() {};
+		List<HashMap<String, Object>> list = mapper.readValue(code1, typeRef);
+		String scountUrl="http://localhost:9090/projectdb/schedule/scount.do?branchNum="+branchNum;
+		String code2=service.get(scountUrl).trim();
+		List<HashMap<String, Object>> sCount = mapper.readValue(code2, typeRef);
+		model.addAttribute("scount", sCount);
+		model.addAttribute("list", list);
+		
+		
 		System.out.println(monthDay.toString());
-		model.addAttribute("list",list);
+		model.addAttribute("mainCityList",mainCityList);
 		model.addAttribute("cityList",cityList);
 		model.addAttribute("monthDay",monthDay);
 		return ".buy.ticket";
