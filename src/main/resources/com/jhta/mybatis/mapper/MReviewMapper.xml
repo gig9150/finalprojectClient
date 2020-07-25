@@ -13,7 +13,4 @@
 	<update id="update" parameterType="mreview">
 		update mreview set rcontent=#{rContent}, mscore=#{mScore} where memnum=#{memNum} and filmnum=#{filmNum} and chargenum=#{chargeNum}
 	</update>
-	<delete id="delete" parameterType="mreview">
-		delete from mreview where memnum=#{memNum} and filmnum=#{filmNum} and chargeNum=#{chargeNum}
-	</delete>
 </mapper>

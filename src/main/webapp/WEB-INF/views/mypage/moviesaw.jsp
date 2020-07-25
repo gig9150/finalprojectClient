@@ -46,7 +46,6 @@
 	.modal-body #score span{		font-size: 17px;	}
 	#modal-movie-tit{		font-size: 22px;	}
 	
-
 </style>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -109,17 +108,14 @@
 		      <div class="modal-body">
 		      	<strong id="modal-movie-tit">${list.filmname }</strong>
 		       	<div class="starRev">
-		      		<h4 id="score${i.index }">10</h4>
-					  <span class="starR on">1</span>
-					  <span class="starR on">2</span>
-					  <span class="starR on">3</span>
-					  <span class="starR on">4</span>
-					  <span class="starR on">5</span>
-					  <span class="starR on">6</span>
-					  <span class="starR on">7</span>
-					  <span class="starR on">8</span>
-					  <span class="starR on">9</span>
-					  <span class="starR on">10</span>
+				  <c:forEach var="z" begin="1" end="${list.mScore }">
+		       	  	<span class="starR on">${z }</span>
+		       	  </c:forEach>
+		       	  <c:if test="${list.mScore!=10 }">
+			       	  <c:forEach var="j" begin="${list.mScore }" end="10">
+						  <span class="starR">${j }</span>
+			       	  </c:forEach>
+		       	  </c:if>
 				</div>
 		      	<textarea rows="5" cols="20" class="review_content" id="review_insert_content${i.index }" placeholder="평점 및 영화 리뷰를 작성해주세요."></textarea>
 		      </div>
@@ -153,24 +149,21 @@
 		     <div class="modal-body">
 		     	<strong id="modal-movie-tit">${list.filmname }</strong>
 		      	<div class="starRev">
-		     		 <h4 id="score${i.index }">10</h4>
-					  <span class="starR on">1</span>
-					  <span class="starR on">2</span>
-					  <span class="starR on">3</span>
-					  <span class="starR on">4</span>
-					  <span class="starR on">5</span>
-					  <span class="starR on">6</span>
-					  <span class="starR on">7</span>
-					  <span class="starR on">8</span>
-					  <span class="starR on">9</span>
-					  <span class="starR on">10</span>
-			</div>
+				  <c:forEach var="z" begin="1" end="${list.mScore }">
+		       	  	<span class="starR on">${z }</span>
+		       	  </c:forEach>
+		       	  <c:if test="${list.mScore!=10 }">
+			       	  <c:forEach var="j" begin="${list.mScore }" end="10">
+						  <span class="starR">${j }</span>
+			       	  </c:forEach>
+		       	  </c:if>
+				</div>
 		     	<textarea rows="5" cols="20" class="review_content" id="review_update_content${i.index }">${list.mreview }</textarea>
 		     </div>
 		     <div class="modal-footer">
 		     	<div class="btn_update">
 			       <button type="button" class="btn btn-default" data-dismiss="modal">확인</button>
-			       <input type="hidden" value="${i.index }">
+			        <input type="hidden" value="${i.index }">
 			       <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
 		       </div>
 		     </div>
@@ -192,8 +185,6 @@
 		$('.starRev span').click(function(){
 		  $(this).parent().children('span').removeClass('on');
 		  $(this).addClass('on').prevAll('span').addClass('on');
-		  var score=$(this).text();
-		  $(".score").text(score);
 		  return false;
 		});
 		
@@ -207,7 +198,7 @@
 			alert(mScore+","+rContent+","+filmnum+","+chargenum);
 			$.ajax({
 				url:"${cp}/mypage/reviewInsert.do",
-				data : {"mScore":mScore,"rContent":rContent,"filmNum":filmnum,"chargeNum":chargenum},
+				data : {"mScore":5,"rContent":rContent,"filmNum":filmnum,"chargeNum":chargenum},
 				contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 				method: 'POST',
 				dataType : 'JSON',
@@ -223,6 +214,7 @@
 		//리뷰 수정
 		$('.btn_update .btn').click(function(){
 			var index=$(this).next().val();
+			alert(index);
 			var mScore=$(".score").text();
 			var rContent=$("#review_update_content"+index).val();
 			var filmnum=$("#review_update_filmnum"+index).val();
@@ -230,7 +222,7 @@
 			alert(mScore+","+rContent+","+filmnum+","+chargenum);
 			$.ajax({
 				url:"${cp}/mypage/reviewUpdate.do",
-				data : {"mScore":mScore,"rContent":rContent,"filmNum":filmnum,"chargeNum":chargenum},
+				data : {"mScore":5,"rContent":rContent,"filmNum":filmnum,"chargeNum":chargenum},
 				contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 				method: 'POST',
 				dataType : 'JSON',
@@ -257,21 +249,4 @@
 	
 </script>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

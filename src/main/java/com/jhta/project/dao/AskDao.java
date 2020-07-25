@@ -13,18 +13,18 @@ import com.jhta.project.vo.AskVo;
 public class AskDao {
 	@Autowired
 	private SqlSession session;
-	private final String NAMESPASE = "com.jhta.mybatis.mapper.ask";
+	private final String NAMESPACE = "com.jhta.mybatis.mapper.ask";
 	
 	public List<AskVo> askList(HashMap<String, Object> map){
-		return session.selectList(NAMESPASE+".askList",map);
+		return session.selectList(NAMESPACE+".askList",map);
 	}
 
 	public int askCount(int memNum) {
-		return session.selectOne(NAMESPASE+".count",memNum);
+		return session.selectOne(NAMESPACE+".count",memNum);
 	}
 	
 	public AskVo askGetinfo(int askNum) {
-		return session.selectOne(NAMESPASE+".askGetinfo",askNum);
+		return session.selectOne(NAMESPACE+".askGetinfoClient",askNum);
 	}
 	
 }

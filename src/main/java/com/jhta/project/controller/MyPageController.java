@@ -32,7 +32,6 @@ public class MyPageController {
 		int memNum=1;
 		String url = "http://localhost:9090/projectdb/mypage/payment.do?memNum="+memNum;
 		String code=service.get(url).trim();
-		System.out.println("code-------"+code);
 		Gson gson=new Gson();
 		TicketingVo[] arrays=gson.fromJson(code, TicketingVo[].class);
 		List<TicketingVo> list=Arrays.asList(arrays);
@@ -44,7 +43,7 @@ public class MyPageController {
 	@RequestMapping("/mypage/cupon.do")
 	public String cupon(Model model) {
 		int memNum=1;
-		String url = "http://192.168.0.9:9090/projectdb/mypage/cupon.do?memNum="+memNum;
+		String url = "http://localhost:9090/projectdb/mypage/cupon.do?memNum="+memNum;
 		String code=service.get(url).trim();
 		Gson gson=new Gson();
 		CuponVo[] arrays=gson.fromJson(code, CuponVo[].class);
@@ -57,14 +56,14 @@ public class MyPageController {
 	@RequestMapping("/mypage/moviesaw.do")
 	public String moviesaw(Model model) {
 		int memNum=1;
-		String url = "http://192.168.0.9:9090/projectdb/mypage/moviesaw.do?memNum="+memNum;
+		String url = "http://localhost:9090/projectdb/mypage/moviesaw.do?memNum="+memNum;
 		String code=service.get(url).trim();
 		Gson gson=new Gson();
 		MovieSawVo[] arrays=gson.fromJson(code, MovieSawVo[].class);
 		List<MovieSawVo> list=Arrays.asList(arrays);
 		model.addAttribute("list",list);
 		
-		String countUrl = "http://192.168.0.9:9090/projectdb/mypage/movieCount.do?memNum="+memNum;
+		String countUrl = "http://localhost:9090/projectdb/mypage/movieCount.do?memNum="+memNum;
 		String countCode=service.get(countUrl).trim();
 		int movieCount = Integer.parseInt(countCode);
 		model.addAttribute("movieCount",movieCount);
@@ -77,7 +76,7 @@ public class MyPageController {
 	@RequestMapping("/mypage/inquiry.do")
 	public String askList(@RequestParam(value="pageNum",defaultValue = "1")int pageNum,Model model) {
 		int memNum=1;
-		String countUrl = "http://192.168.0.9:9090/projectdb/mypage/askCount.do?memNum="+memNum;
+		String countUrl = "http://localhost:9090/projectdb/mypage/askCount.do?memNum="+memNum;
 		String countCode=service.get(countUrl).trim();
 		int totalRowCount = Integer.parseInt(countCode);
 		
@@ -88,7 +87,7 @@ public class MyPageController {
 		map.put("memNum", 1);//회원번호
 		model.addAttribute("pu",pu);
 		
-		String url = "http://192.168.0.9:9090/projectdb/mypage/inquiry.do";
+		String url = "http://localhost:9090/projectdb/mypage/inquiry.do";
 		Gson gson=new Gson();
 		String jsonString=gson.toJson(map);
 		String code=service.post(url,jsonString).trim();
@@ -103,7 +102,7 @@ public class MyPageController {
 	@RequestMapping("/mypage/inquiryDatail.do")
 	public String askgetInfo(int askNum,Model model) {
 		
-		String url = "http://192.168.0.9:9090/projectdb/mypage/inquiryDatail.do?askNum="+askNum;
+		String url = "http://localhost:9090/projectdb/mypage/inquiryDatail.do?askNum="+askNum;
 		String code=service.get(url).trim();
 		Gson gson=new Gson();
 		AskVo vo=gson.fromJson(code, AskVo.class);
@@ -116,7 +115,7 @@ public class MyPageController {
 	public String askInsert(Model model) {
 		int memNum=1;
 		
-		String url = "http://192.168.0.9:9090/projectdb/mypage/inquiryInsert.do?memNum="+memNum;
+		String url = "http://localhost:9090/projectdb/mypage/inquiryInsert.do?memNum="+memNum;
 		String code=service.get(url).trim();
 		Gson gson=new Gson();
 		AskVo vo=gson.fromJson(code, AskVo.class);
@@ -136,8 +135,7 @@ public class MyPageController {
 	public String reviewInsert(String rContent,int mScore,int filmNum, int chargeNum) {
 		 						//시퀀스     리뷰내용 좋아요수 평점  회원번호 영화번호        예약번호      작성일
 		MReviewVo vo=new MReviewVo(0, rContent, 0, mScore, 1, filmNum, chargeNum, null);
-		System.out.println("리뷰 컨트롤러");
-		String url = "http://192.168.0.9:9090/projectdb/mypage/reviewInsert.do";
+		String url = "http://localhost:9090/projectdb/mypage/reviewInsert.do";
 		Gson gson=new Gson();
 		String jsonString=gson.toJson(vo);
 		String code=service.post(url,jsonString).trim();
@@ -155,7 +153,7 @@ public class MyPageController {
 	public String reviewUpdate(String rContent,int mScore,int filmNum, int chargeNum) {
 								 //시퀀스     리뷰내용 좋아요수 평점  회원번호 영화번호        예약번호      작성일
 		MReviewVo vo=new MReviewVo(0, rContent, 0, mScore, 1, filmNum, chargeNum, null);
-		String url = "http://192.168.0.9:9090/projectdb/mypage/reviewUpdate.do";
+		String url = "http://localhost:9090/projectdb/mypage/reviewUpdate.do";
 		Gson gson=new Gson();
 		String jsonString=gson.toJson(vo);
 		String code=service.post(url,jsonString).trim();
