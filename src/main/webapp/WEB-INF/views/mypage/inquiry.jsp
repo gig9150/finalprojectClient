@@ -17,9 +17,6 @@
 		list-style: none;
 		display: inline-block;
 	}
-	#inquiry_page{
-		text-align: center;
-	}
 	#inquiry_page input{
 		text-align: center;
 	}
@@ -74,11 +71,15 @@
 			</c:if>	
 		  </tbody>
 		</table>
-		
 		<div id="inquiry_page">
-			<c:forEach var="i" begin="${pu.startPageNum }" end="${pu.endPageNum }">
-				<li><a href="${cp }/mypage/inquiry.do?pageNum=${i}">[${i }]</a></li>
-			</c:forEach>
+			<div style="text-align: center;">
+				<c:forEach var="i" begin="${pu.startPageNum }" end="${pu.endPageNum }">
+					<li style="text-align: center;"><a href="${cp }/mypage/inquiry.do?pageNum=${i}">[${i }]</a></li>
+				</c:forEach>
+			</div>
+			<div style="text-align: right;">
+				<button style="background-color: orange; width: 138px; height: 30px" onclick="location.href='${cp}/mypage/inquiryInsert.do'">문의등록</button>
+			</div>
 		</div>
 	</div>
 </div>

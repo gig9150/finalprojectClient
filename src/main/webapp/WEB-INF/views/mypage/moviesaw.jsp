@@ -94,7 +94,7 @@
 			
 		<!-- Modal -->
 		<!-- 리뷰 등록 -->
-		<div class="modal fade" id="reviewInsert${i.index }" role="dialog">
+		<div class="modal fade" id="reviewInsert${i.index }" role="dialog" class="modalTest">
 			<input type="text" value="${list.filmnum }" id="review_insert_filmnum${i.index }">
 			<input type="text" value="${list.chargenum }" id="review_insert_chargenum${i.index }">
 		  <div class="modal-dialog">
@@ -108,6 +108,7 @@
 		      <div class="modal-body">
 		      	<strong id="modal-movie-tit">${list.filmname }</strong>
 		       	<div class="starRev">
+		       	 <h4 style="display: inline-block;" class="starScore">10</h4><span>점</span><br>
 				  <c:forEach var="z" begin="1" end="${list.mScore }">
 		       	  	<span class="starR on">${z }</span>
 		       	  </c:forEach>
@@ -136,7 +137,7 @@
 		 <!-- //////////////////////////////////////////////////////////////////////////////////  -->
 		<!-- Modal -->
 		<!-- 리뷰 수정 -->
-		<div class="modal fade" id="reviewUpdate${i.index }" role="dialog">
+		<div class="modal fade" id="reviewUpdate${i.index }" role="dialog" class="modalTest">
 			<input type="text" value="${list.filmnum }" id="review_update_filmnum${i.index }">
 			<input type="text" value="${list.chargenum }" id="review_update_chargenum${i.index }">
 		 <div class="modal-dialog">
@@ -149,6 +150,7 @@
 		     <div class="modal-body">
 		     	<strong id="modal-movie-tit">${list.filmname }</strong>
 		      	<div class="starRev">
+		      	 <h4 style="display: inline-block;" class="starScore">${list.mScore }</h4><span>점</span><br>
 				  <c:forEach var="z" begin="1" end="${list.mScore }">
 		       	  	<span class="starR on">${z }</span>
 		       	  </c:forEach>
@@ -182,7 +184,10 @@
 <script type="text/javascript" src="${cp }/resources/js/jquery-3.5.1.js"></script>
 <script type="text/javascript">
 	$(function(){
+		var index=0;
 		$('.starRev span').click(function(){
+			var starScore=$(this).text();
+			$('.starScore').text(starScore);
 		  $(this).parent().children('span').removeClass('on');
 		  $(this).addClass('on').prevAll('span').addClass('on');
 		  return false;
@@ -190,7 +195,7 @@
 		
 		//리뷰 등록
 		$('.btn_insert .btn').click(function(){
-			var index=$(this).next().val();
+			index=$(this).next().val();
 			var mScore=$(".score").text();
 			var rContent=$("#review_insert_content"+index).val();
 			var filmnum=$("#review_insert_filmnum"+index).val();
@@ -199,49 +204,38 @@
 			$.ajax({
 				url:"${cp}/mypage/reviewInsert.do",
 				data : {"mScore":5,"rContent":rContent,"filmNum":filmnum,"chargeNum":chargenum},
-				contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-				method: 'POST',
+				type: 'POST',
 				dataType : 'JSON',
 				success : function(data){
-					if(data=='success'){
-						alert('관람평이 저장되었습니다.');
-					}else{
-						alert('오류발생!');
-					}
+					console.log('등록 성공');
+				},
+				error: function(data){
+					console.log('에러입니다');
 				}
 			});
 		});
 		//리뷰 수정
 		$('.btn_update .btn').click(function(){
-			var index=$(this).next().val();
-			alert(index);
+			index=$(this).next().val();
 			var mScore=$(".score").text();
 			var rContent=$("#review_update_content"+index).val();
 			var filmnum=$("#review_update_filmnum"+index).val();
 			var chargenum=$("#review_update_chargenum"+index).val();
 			alert(mScore+","+rContent+","+filmnum+","+chargenum);
+			console.log(rContent);
 			$.ajax({
 				url:"${cp}/mypage/reviewUpdate.do",
 				data : {"mScore":5,"rContent":rContent,"filmNum":filmnum,"chargeNum":chargenum},
-				contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-				method: 'POST',
+				type: 'POST',
 				dataType : 'JSON',
 				success : function(data){
-					if(data=='success'){
-						alert('관람평이 저장되었습니다.');
-					}else{
-						alert('오류발생!');
-					}
+					console.log('수정 성공');
+				},
+				error: function(data){
+					console.log('에러입니다');
 				}
 			});
 		});
-		
-// 		$('.btn_insert .btn').on('click',function(){
-// 			$('#score').text('');
-// 			$("#review_Update").val('');
-// 			$("#review_insert").val('');
-// 			console.log('클래스 지정 접근');
-// 		});
 		
 	});
 	

@@ -17,7 +17,7 @@
 #payment_box_total span {	color: #737ce2;	font-size: 20px;}
 #ticketing_brname {	font-size: 25px;}
 #ticketing_tit {	margin-left: 10px;	margin-top: 10px;	margin-bottom: 10px;}
-#ticketing_box h3 {	margin-left: 45px;}
+#ticketing_box h3 {	margin-left: 20px;}
 .ticketing_contents {	margin-left: 10px;}
 .ticketing_contents label {	width: 80px;}
 #inquiry_div{ padding: 80px 0px; width: 100%;	text-align: center;	}

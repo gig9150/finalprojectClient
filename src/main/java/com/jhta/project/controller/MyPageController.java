@@ -41,11 +41,27 @@ public class MyPageController {
 	
 	//쿠폰함
 	@RequestMapping("/mypage/cupon.do")
-	public String cupon(Model model) {
+	public String cupon(@RequestParam(value="pageNum",defaultValue = "1")int pageNum,Model model) {
 		int memNum=1;
-		String url = "http://localhost:9090/projectdb/mypage/cupon.do?memNum="+memNum;
-		String code=service.get(url).trim();
+		String countUrl = "http://localhost:9090/projectdb/mypage/cuponCount.do?memNum="+memNum;
+		String countCode=service.get(countUrl).trim();
+		int totalRowCount = Integer.parseInt(countCode);
+		
+		PageUtil pu=new PageUtil(pageNum, totalRowCount, 10, 5);
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		System.out.println(pu.getStartRow() +"-------------------");
+		System.out.println(pu.getEndRow()+"222222222222222222");
+		
+		map.put("startRow", pu.getStartRow());
+		map.put("endRow", pu.getEndRow());
+		map.put("memNum", memNum);//회원번호
+		model.addAttribute("pu",pu);
+		
+		String url = "http://localhost:9090/projectdb/mypage/cupon.do";
 		Gson gson=new Gson();
+		String jsonString=gson.toJson(map);
+		String code=service.post(url,jsonString).trim();
 		CuponVo[] arrays=gson.fromJson(code, CuponVo[].class);
 		List<CuponVo> list=Arrays.asList(arrays);
 		model.addAttribute("list",list);
@@ -84,7 +100,7 @@ public class MyPageController {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("startRow", pu.getStartRow());
 		map.put("endRow", pu.getEndRow());
-		map.put("memNum", 1);//회원번호
+		map.put("memNum", memNum);//회원번호
 		model.addAttribute("pu",pu);
 		
 		String url = "http://localhost:9090/projectdb/mypage/inquiry.do";
@@ -109,10 +125,14 @@ public class MyPageController {
 		model.addAttribute("vo",vo);
 		return ".mypage.inquiryDetail";
 	}
-	
-	//1:1문의하기
+	//문의 작성
 	@RequestMapping("/mypage/inquiryInsert.do")
 	public String askInsert(Model model) {
+		return ".mypage.inquiryInsert";
+	}
+	//문의 등록
+	@RequestMapping("/mypage/inquiryInsertOk.do")
+	public String askInsertOk(Model model) {
 		int memNum=1;
 		
 		String url = "http://localhost:9090/projectdb/mypage/inquiryInsert.do?memNum="+memNum;
