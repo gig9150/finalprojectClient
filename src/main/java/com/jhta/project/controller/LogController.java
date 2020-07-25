@@ -91,7 +91,7 @@ public class LogController {
 		String url="http://localhost:9090/projectdb/log/signmake.do";
 		Gson gson = new Gson();
 		String jsonString = gson.toJson(vo);
-		System.out.println(jsonString);
+		System.out.println("이거 제이슨 스트링 " +jsonString);
 		String code=service.post(url, jsonString).trim();
 		if(code.equals("success")) {
 			return ".main";
@@ -124,7 +124,6 @@ public class LogController {
 			session.getServletContext().setAttribute("email",vo.getEmail());
 			session.getServletContext().setAttribute("grade",vo.getGrade());
 			session.getServletContext().setAttribute("memRegdate",vo.getMemRegdate());
-			session.getServletContext().setAttribute("money",vo.getMoney());
 			System.out.println(vo.getMemName());
 			return ".main";
 		}

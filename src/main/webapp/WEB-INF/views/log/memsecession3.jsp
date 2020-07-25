@@ -26,6 +26,7 @@
 </style>
 <link rel="stylesheet" href="${cp }/resources/css/mypage/mypage_top_menu.css" type="text/css">
 <link rel="stylesheet" href="${cp }/resources/css/log/memuser.css" type="text/css">
+<script src="${cp }/resources/js/log/mempwd.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -77,17 +78,21 @@
 					<tbody>
 						<tr class="input">
 							<th scope="row"><label for="mob_no_1">비밀번호</label></th>
-							<td><span class="input_txt w100"> <input type="text"
-									class="text narrow" title="전화번호 입력" data-format="num"
-									name="mob_no_2" id="mob_no_2" maxlength="4" autocomplete="off">
+							<td>
+							<span class="input_txt w100"> <input type="password"
+									class="text narrow" title="비밀번호 입력" data-format="num"
+									name="passwd" id="passwd" autocomplete="off">
 							</span>
+							<div class="chek_font" id="passwd_chek"></div>
+							</td>
 						</tr>
 						<tr class="input">
 							<th scope="row"><label for="email_addr1">비밀번호 확인</label></th>
 							<td>
-								<input type="text"
-									class="text narrow" title="이메일 입력" data-format="num"
-									name="mob_no_2" id="mob_no_2" maxlength="4" autocomplete="off">
+								<input type="password"
+									class="text narrow" title="비밀번호 다시 입력" data-format="num"
+									name="memPwd" id="memPwd" autocomplete="off">
+									<div class="chek_font" id="memPwd_chek"></div>
 							</td>
 						</tr>
 					</tbody>
@@ -98,7 +103,6 @@
 			<button type="button" class="btn btn_em" id="btn_submit">확인</button>
 		</div>
 		</form>
-	
 </div>
 </body>
 </html>

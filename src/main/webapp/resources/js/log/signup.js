@@ -16,7 +16,7 @@ $(function(){
 			$("#submit").attr("disabled", "disabled");
 		}else{
 			$("#name_chek").text("");
-			$("#submit").removeAttr("disabled");
+			$("#submit").attr("disabled", "disabled");
 		}
 	});
 	
@@ -39,7 +39,7 @@ $(function(){
 					console.log(data)
 					if(data=='success'){
 						$("#id_chek").text("");
-						$("#submit").removeAttr("disabled");
+						$("#submit").attr("disabled", "disabled");
 					}else{
 						$("#id_chek").text("중복되는 아이디 입니다.");
 						$("#submit").attr("disabled", "disabled");
@@ -64,7 +64,7 @@ $(function(){
 			$("#submit").attr("disabled", "disabled");
 		}else{
 			$("#phone_chek").text("");
-			$("#submit").removeAttr("disabled");
+			$("#submit").attr("disabled", "disabled");
 		}
 	});
 	
@@ -80,7 +80,7 @@ $(function(){
 			$("#submit").attr("disabled", "disabled");
 		}else{
 			$("#birth_chek").text("");
-			$("#submit").removeAttr("disabled");
+			$("#submit").attr("disabled", "disabled");
 		}
 	});
 	
@@ -96,7 +96,7 @@ $(function(){
 			$("#submit").attr("disabled", "disabled");
 		}else{
 			$("#passwd_chek").text("");
-			$("#submit").removeAttr("disabled");
+			$("#submit").attr("disabled", "disabled");
 		}
 	});
 	
@@ -112,7 +112,7 @@ $(function(){
 			$("#submit").attr("disabled", "disabled");
 		}else{
 			$("#memPwd_chek").text("");
-			$("#submit").removeAttr("disabled");
+			$("#submit").attr("disabled", "disabled");
 		}
 	});
 	
