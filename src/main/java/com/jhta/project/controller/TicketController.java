@@ -88,8 +88,9 @@ public class TicketController {
 		return ".buy.ticket";
 	}
 	
-	@RequestMapping(value="/buy/ticketing.do")
-	public String ticketing(Model model,@RequestParam(value="cityaddr",defaultValue = "서울") String cityaddr,
+	@RequestMapping(value="/buy/ticketing.do",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@ResponseBody
+	public String ticketing(@RequestParam(value="cityaddr",defaultValue = "서울") String cityaddr,
 			String regDate,@RequestParam(value="branchNum",defaultValue = "1") int branchNum) throws ParseException, JsonMappingException, JsonProcessingException {
 		String url="http://localhost:9090/projectdb/buy/citylist.do";
 		String code=service.get(url).trim();
@@ -108,7 +109,6 @@ public class TicketController {
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM");
 		SimpleDateFormat sdf1=new SimpleDateFormat("E dd");
 		String toDay="";
-		System.out.println(regDate);
 		if(regDate!=null) {
 			toDay=regDate;
 		}else {
@@ -135,14 +135,14 @@ public class TicketController {
 		String scountUrl="http://localhost:9090/projectdb/schedule/scount.do?branchNum="+branchNum;
 		String code2=service.get(scountUrl).trim();
 		List<HashMap<String, Object>> sCount = mapper.readValue(code2, typeRef);
-		model.addAttribute("scount", sCount);
-		model.addAttribute("list", list);
-		System.out.println("scount"+sCount.toString());
-		System.out.println("list"+list.toString());
-		
-		model.addAttribute("mainCityList",mainCityList);
-		model.addAttribute("cityList",cityList);
-		model.addAttribute("monthDay",monthDay);
-		return ".buy.ticket";
+		TestVo vo=new TestVo();
+		vo.setCityList(cityList);
+		vo.setList(list);
+		vo.setMainCityList(mainCityList);
+		vo.setMonthDay(monthDay);
+		vo.setsCount(sCount);
+		String jsonString = gson.toJson(vo).trim();
+		System.out.println("제이슨 응답객체"+jsonString);
+		return jsonString;
 	}
 }
