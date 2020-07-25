@@ -176,18 +176,28 @@ p {
 	<jsp:include page="ticketload.jsp"></jsp:include>
 </div>
 <script type="text/javascript">
+	var branchNum=0;
 	function branchList(data) {
 
 		alert(data);
 	};
-	function theatherList(data) {
-		alert(data);
-	};
 	function dateList(data) {
-
-		alert(data);
+		branchNum=data;
+		alert(branchNum);
 	};
-	var tmp;
+	function theatherList(data) {
+		if(branchNum!=0){
+			$.ajax({
+				url : "${cp}/buy/ticketing.do?branchNum="+branchNum+"&regDate="+data,
+				success : function(tt){
+					alert("zz");
+				}
+			});
+		}else{
+			alert("상영관을 눌러주세요.");
+		}
+	};
+	
 	$(".city").on('click', function() {
 		$(".city").removeClass("hoverCity");
 		$(this).toggleClass("hoverCity");
