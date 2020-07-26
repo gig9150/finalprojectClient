@@ -248,7 +248,8 @@ p {
 				<c:forEach var="seat" items="${scount }">
 					<c:if test="${vo.THEATHERNUM==seat.THEATHERNUM }">
 						<p>▶ ${vo.THEATHERNAME }| ${seat.CNT }석
-						<span class="badge badge-success">예매중</span> </p></c:if>
+						<span class="badge badge-success">예매중</span> </p>
+					</c:if>
 					
 				</c:forEach>
 				</c:if>		
@@ -264,9 +265,20 @@ p {
 	</div>
 </div>
 <script id="entry-template" type="text/x-handlebars-template">
-	{{#each list}}
-		<h1>{{FILMNAME}}</h1>
-	{{/each}}
+	
+	<h1>{{FILMNAME}}</h1>
+	<div class="midieum">
+			{{#each list}}
+					<div><br><h2>{{FILMNAME}}</h2></div>
+				{{#each scount}}
+					<p>▶ {{THEATHERNAME}}|{{CNT}}
+					</p>
+				{{/each}}	
+			<div class="timetable">
+				<p style="font-size: 12px; font-family: sans-serif; font-color: #333333; text-align: center; text-decoration-color: darkslategray;">{{MSTARTTIME}}</p>
+			</div>
+		{{/each}}
+	</div>
 </script>
 
 
@@ -293,9 +305,9 @@ p {
 				data : {'branchNum':branchNum,'regDate':data},
 				success : function(tt){
 					var list=tt.list;
-					$('#warbList').empty();
+					$('#moviebuy').empty();
 					var list = template(tt);
-					$('#warbList').append(list);
+					$('#moviebuy').append(list);
 				}
 			});
 		}else{
