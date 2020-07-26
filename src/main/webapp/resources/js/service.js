@@ -2,6 +2,8 @@
  * 
  */
 $(function(){
+	
+	// 1:1 문의  
 	$("input:radio").change(function(){
 		if($(this).is(":checked")){
 			$(this).parents().next().prop("disabled",false);
@@ -57,6 +59,9 @@ $(function(){
 		});
 	});
 	
+	
+	// 1:1 문의 끝 //////////////////////////////////////////////
+	//지점 신청 ////////////////////////////////////////
 	$("#apply-modal-checkbox").on('click',function(e){
 		if($("#apply-modal-checkbox").is(":checked")){
 			$("#myModal").modal();
@@ -69,23 +74,12 @@ $(function(){
 		$("#apply-modal-checkbox").prop("checked",true);
 	});
 	
-	$("#addr-search").on('click',function(e){
-		$("#addr-modal").modal();
-	});
-	
-	$("#addr-choice").on('click',function(){
-		$("#addr-text").val(addr);
-		$("#city-addr").val(cityAddr[0]);
-		$("#addr-modal").modal('hide');
-	});
-	
 	$('#Carousel').carousel({
         interval: 5000
     })
+    
+    //지점 신청 끝///////////////////////////////////////////////////
 	
-	setTimeout(function(){
-		map.relayout();
-	},2000);
 	
 	/*/////////////////////////////////카카오 지도/////////////////////////////// */
 	var addr = '';
@@ -171,4 +165,19 @@ $(function(){
 	        }
 	    }
 	}
+	
+	$("#addr-search").on('click',function(e){
+		$("#addr-modal").modal();
+	});
+	
+	$("#addr-choice").on('click',function(){
+		$("#addr-text").val(addr);
+		$("#city-addr").val(cityAddr[0]);
+		$("#addr-modal").modal('hide');
+	});
+	
+	setTimeout(function(){
+		map.relayout();
+	},2000);
+	/////////////////////////////////////////////////////////////
 });

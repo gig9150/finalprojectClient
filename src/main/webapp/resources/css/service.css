@@ -150,7 +150,27 @@
 	width:100px;
 	cursor:pointer;
 }
+/*서비스 홈 */
+#service-home-container{
+	position: relative;
+    bottom: 300px;
+    border-bottom:1px solid black;
+}
+.service-home{
+	padding: 60px;
+    background: gainsboro;
+    width: 900px;
+}
+.service-home-glyphicon{
+	font-size:80px;
+	color:#01738b;
+}
 
+
+
+
+
+/*////////////////////////////////*/
 /*카카오 지도*/
 .kakao-map{
 	padding: 0;

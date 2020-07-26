@@ -40,7 +40,7 @@
 		<div class="agree-box">
 			<dl>
 				<dt>
-					<input type="checkbox" id="chk" class="checkbox"> <span><label
+					<input type="checkbox" id="chk" class="checkbox" required> <span><label
 						for="chk"><strong>개인정보 수집에 대한 동의</strong></label></span>
 						<span class="agree-span">[필수]</span>
 				</dt>
@@ -55,15 +55,15 @@
 			</dl>
 		</div>
 		<div class="container question-div">
-			<form name="form-test" action="" method="get">
+			<form name="form-test" action="" method="get" onsubmit="return askException()">
 				<div class="row">
 					<div class="col-xs-6 form-group">
 						<label for="name"> 이름 </label> <input type="text" id="name"
 							name="name" class="form-control">
 					</div>
 					<div class="col-xs-6 form-group">
-						<label for="surname"> 이메일 </label> <input type="text" id="surname"
-							name="surname" class="form-control">
+						<label for="email"> 이메일 </label> <input type="text" id="email"
+							name="email" class="form-control">
 					</div>
 				</div>
 				<div class="row">
@@ -126,3 +126,37 @@
 </div>
 </div>
 </div>
+<script>
+	//예외 처리
+	
+	$(".question-btn").click(function(e){
+		if(${id eq null} || ${id eq ""}){
+			alert("로그인 후 이용 가능합니다...");	
+			e.preventDefault();
+		}
+	});
+	
+	function askException(){
+		if($("#name").val() == "" || $("#name").val() == null){
+			alert("아이디를 입력하세요");
+			return false;
+		}
+		if($("#email").val() == "" || $("#email").val() == null){
+			alert("이메일을 입력하세요");
+			return false;
+		}
+		if($("#title").val() == "" || $("#title").val() == null){
+			alert("제목을 입력하세요");
+			return false;
+		}
+		if($("#content").val() == "" || $("#content").val() == null){
+			alert("내용을 입력하세요");
+			return false;
+		}
+
+		return true;
+		
+	}
+	
+	
+</script>
