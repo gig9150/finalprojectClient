@@ -67,7 +67,7 @@
 			<h1 class="h1_tit">보안 비밀 번호 입력</h1>
 			<p class="h_desc">온라인 고객 정보보호를 위한 본인 확인 절차 입니다.<br> MegaCinema 로그인시 사용하는 비밀번호를 입력해 주세요. </p>
 	</div>
-	<form action="">
+	<form action="${cp }/log/memsecok.do" method="post" id="memsecok">
 		<div class="member_info">
 			<div class="table_col">
 				<table>
@@ -100,9 +100,51 @@
 			</div>
 		</div>
 		<div class="btn_sec btn_center">
-			<button type="button" class="btn btn_em" id="btn_submit">확인</button>
+			<button type="submit" class="btn btn_em" id="btn_submit">확인</button>
 		</div>
 		</form>
 </div>
 </body>
+<script type="text/javascript">
+$(function(){
+	var nowpwd = ${memPwd};
+	$("#btn_submit").attr("disabled", "disabled");
+	//비밀번호 예외처리
+	$("#passwd").focusout(function(){
+		var val = $(this).val();
+		regex = /^[A-Za-z0-9]{4,12}$/;
+		if(val == "" || val == null){
+			$("#passwd_chek").text("비밀번호를 작성하시오.");
+			$("#btn_submit").attr("disabled", "disabled");
+		}else if(!regex.test(val)){
+			$("#passwd_chek").text("4~12자리의 영문 대소문자와 숫자로만 입력");
+			$("#btn_submit").attr("disabled", "disabled");
+		}else{
+			$("#passwd_chek").text("");
+			$("#btn_submit").attr("disabled", "disabled");
+		}
+	});
+	
+	//비밀번호 확인예외처리
+	$("#memPwd").focusout(function(){
+		var val = $(this).val();
+		var val2 = $("#passwd").val();
+		regex = /^[A-Za-z0-9]{4,12}$/;
+		if(val == "" || val == null){
+			$("#memPwd_chek").text("비밀번호를 작성하시오.");
+			$("#btn_submit").attr("disabled", "disabled");
+		}else if(nowpwd != val){
+			$("#memPwd_chek").text("비밀번호가 맞지 않음.");
+			$("#btn_submit").attr("disabled", "disabled");
+		}else if(val != val2){
+			$("#memPwd_chek").text("비밀번호가 일치 하지 않음.");
+			$("#btn_submit").attr("disabled", "disabled");
+		}else{
+			$("#memPwd_chek").text("");
+			$("#btn_submit").removeAttr("disabled");
+		}
+	});
+});
+
+</script>
 </html>

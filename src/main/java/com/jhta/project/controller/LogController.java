@@ -38,28 +38,45 @@ public class LogController {
 	public String memuser() {
 		return ".log.memuser";
 	}
-//	@RequestMapping("/log/memuserok.do")
-//	public String memuserok(String memId, String memPhone, String email) {
-//		String url="http://localhost:9090/projectdb/log/memuser.do?memId="+memId+"&memPhone="+memPhone+"&email="+email;
-//		System.out.println(memId);
-//		System.out.println(memPhone);
-//		System.out.println(email);
-//		Gson gson = new Gson();
-//		String jsonString = gson.toJson(vo);
-//		System.out.println(jsonString);
-//		String code=service.post(url, jsonString).trim();
-//		if(code.equals("success")) {
-//			return ".main";
-//		}else {
-//			return "error";
-//		}
-//	}
+	@RequestMapping("/log/memuserok.do")
+	public String memuserok(MembershipVo vo) {
+		String url="http://localhost:9090/projectdb/log/memuserok.do";
+		Gson gson = new Gson();
+		String jsonString = gson.toJson(vo);
+		System.out.println(jsonString);
+		String code=service.post(url, jsonString).trim();
+		if(code.equals("success")) {
+			return ".main";
+		}else {
+			return "error";
+		}
+	}
 	
 	//비밀번호 변경
 	@RequestMapping("/log/mempwd.do")
 	public String mempwd() {
 		return ".log.mempwd";
 	}
+
+	@RequestMapping("/log/mempwdok.do")
+	public String mempwdok(String memPwd,HttpSession session) {
+		String memId = (String)session.getServletContext().getAttribute("memId");
+		MembershipVo vo = new MembershipVo();
+		vo.setMemPwd(memPwd);
+		vo.setMemId(memId);
+		System.out.println("여기 비번바꿈"+memId);
+		String url="http://localhost:9090/projectdb/log/mempwdok.do";
+		Gson gson = new Gson();
+		String jsonString = gson.toJson(vo);
+		System.out.println(jsonString);
+		String code=service.post(url, jsonString).trim();
+		if(code.equals("success")) {
+			return ".main";
+		}else {
+			return "error";
+		}
+	}
+	
 	//회원 탈퇴
 	@RequestMapping("/log/memsecession.do")
 	public String memsecession() {
@@ -73,6 +90,27 @@ public class LogController {
 	public String memsecession3() {
 		return ".log.memsecession3";
 	}
+	@RequestMapping("/log/memsecok.do")
+	public String memsecok(HttpSession session) {
+		String memId = (String)session.getServletContext().getAttribute("memId");
+		String memPwd = (String)session.getServletContext().getAttribute("memPwd");
+		MembershipVo vo = new MembershipVo();
+		vo.setMemId(memId);
+		vo.setMemId(memPwd);
+		System.out.println(memId);
+		System.out.println(memPwd);
+		String url="http://localhost:9090/projectdb/log/memsecok.do";
+		Gson gson = new Gson();
+		String jsonString = gson.toJson(vo);
+		System.out.println(jsonString);
+		String code=service.post(url, jsonString).trim();
+		if(code.equals("success")) {
+			return ".main";
+		}else {
+			return "error";
+		}
+	}
+	
 	
 	
 	

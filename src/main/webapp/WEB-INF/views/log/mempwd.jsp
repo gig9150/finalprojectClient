@@ -26,7 +26,6 @@
 </style>
 <link rel="stylesheet" href="${cp }/resources/css/mypage/mypage_top_menu.css" type="text/css">
 <link rel="stylesheet" href="${cp }/resources/css/log/memuser.css" type="text/css">
-<script src="${cp }/resources/js/log/mempwd.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -65,9 +64,11 @@
 	</div>
 	<div class="cont_header">
 			<h1 class="h1_tit">비밀번호 변경</h1>
+			<h1>${memPwd }</h1>
+			<h1>${memId }</h1>
 			<p class="h_desc">비밀번호는 2-3개월에 한 번씩 바꿔주시면 까먹습니다. </p>
 	</div>
-	<form action="">
+	<form action="${cp }/log/mempwdok.do" method="post" id="mempwdfind">
 		<div class="member_info">
 			<div class="table_header">
 				<h3 class="h3_tit">비밀번호 변경</h3>
@@ -104,10 +105,57 @@
 		</div>
 		<div class="btn_sec btn_center">
 			<button type="button" class="btn" id="btn_cancel" onclick = "location.href = '${cp}/' ">취소</button>
-			<button type="button" class="btn btn_em" id="btn_submit">수정</button>
+			<button type="submit" class="btn btn_em" id="btn_submit">수정</button>
 		</div>
 		</form>
 	
 </div>
 </body>
+
+
+<script type="text/javascript">
+$(function(){
+	var nowpwd = ${memPwd};
+	$("#btn_submit").attr("disabled", "disabled");
+	//비밀번호 예외처리
+	$("#passwd").focusout(function(){
+		var val = $(this).val();
+		regex = /^[A-Za-z0-9]{4,12}$/;
+		if(val == "" || val == null){
+			$("#passwd_chek").text("비밀번호를 작성하시오.");
+			$("#btn_submit").attr("disabled", "disabled");
+		}else if(nowpwd == val){
+			$("#passwd_chek").text("다른 비밀번호를 작성하시오.");
+			$("#btn_submit").attr("disabled", "disabled");
+		}else if(!regex.test(val)){
+			$("#passwd_chek").text("4~12자리의 영문 대소문자와 숫자로만 입력");
+			$("#btn_submit").attr("disabled", "disabled");
+		}else{
+			$("#passwd_chek").text("");
+			$("#btn_submit").attr("disabled", "disabled");
+		}
+	});
+	
+	//비밀번호 확인예외처리
+	$("#memPwd").focusout(function(){
+		var val = $(this).val();
+		var val2 = $("#passwd").val();
+		regex = /^[A-Za-z0-9]{4,12}$/;
+		if(val == "" || val == null){
+			$("#memPwd_chek").text("비밀번호를 작성하시오.");
+			$("#btn_submit").attr("disabled", "disabled");
+		}else if(nowpwd == val){
+			$("#memPwd_chek").text("다른 비밀번호를 작성하시오.");
+			$("#btn_submit").attr("disabled", "disabled");
+		}else if(val != val2){
+			$("#memPwd_chek").text("비밀번호가 일치 하지 않음.");
+			$("#btn_submit").attr("disabled", "disabled");
+		}else{
+			$("#memPwd_chek").text("");
+			$("#btn_submit").removeAttr("disabled");
+		}
+	});
+});
+
+</script>
 </html>
