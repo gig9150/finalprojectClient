@@ -31,7 +31,7 @@
 		color: #fff;	
 		width: 113px;
 		height: 36px;
-		padding: 0px 15px;
+		padding: 0px 7px;
 		margin: 0px 3px;
 		text-decoration: none;
 		border-radius: 5px;
@@ -70,6 +70,29 @@
 		border-top: 1px solid;
 		width: 100%;
 	}
+	#textarea{ 
+		display: inline-block;
+	    width: 100%;
+	    height: 200px;
+	    padding: 10px;
+	    line-height: 16px;
+	    resize: none;
+	}
+	.input-text{
+		display: inline-block;
+	    width: 100%;
+	    height: 32px;
+	    padding: 0 10px;
+	}
+	th{
+		background-color: #f7f8f9;
+	}
+	input{
+		height: 32px; 
+	}
+	tbody {
+		border-bottom: 1px solid #ddd;
+	}
 }
 </style>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -82,7 +105,7 @@
 				<li>1:1 문의글 답변 운영시간 09:00 ~ 21:00</li>
 			</ul>
 			<div id="myinquiry_btn">
-				<a href="#" class="button purple" id="myQnaBtn" title="나의 문의내역 페이지로 이동">나의 문의내역</a>
+				<a href="${cp }/mypage/inquiry.do" class="button purple" id="myQnaBtn" title="나의 문의내역 페이지로 이동">나의 문의내역</a>
 			</div>
 		</div>
 		
@@ -114,13 +137,36 @@
 		</div>
 		<p class="reset">* 원활한 서비스 이용을 위한 최소한의 개인정보이므로 동의하지 않을 경우 서비스를 이용하실 수 없습니다</p>
 		<p class="reset font-orange" style="text-align: right;">* 필수</p>
-		
-		<div id="inquiry_table_div">
-			<table id="inquiry_table">
-				<tr>
-					<td>dd</td>
-				</tr>
-			</table>
-		</div>	
+		<form action="${cp }/mypage/inquiryInsertOk.do" method="post">
+			<div id="inquiry_table_div">
+				<table id="inquiry_table" class="table">
+					<tbody>
+						<tr>
+							<th style="vertical-align: middle; padding-left: 20px;">이름<em class="font-orange">*</em></th>
+							<td><input type="text" value="이름(세션)" name="memName"></td>
+							<th style="vertical-align: middle; padding-left: 20px;">이메일<em class="font-orange">*</em></th>
+							<td><input type="text" value="이메일(세션)" name="email"></td>
+						</tr>
+						<tr>
+							<th style="vertical-align: middle; padding-left: 20px;">휴대전화<em class="font-orange">*</em></th>
+							<td colspan="3"><input type="text" value="휴대전화(세션)" name="memPhone"></td>
+						</tr>
+						<tr>
+							<th style="vertical-align: middle; padding-left: 20px;">제목<em class="font-orange">*</em></th>
+							<td colspan="3"><input type="text" class="input-text" name="qnaTitle"></td>
+						</tr>
+						<tr>
+							<th style="vertical-align: middle; padding-left: 20px;">내용<em class="font-orange">*</em></th>
+							<td colspan="3">
+								<textarea id="textarea" name="askContent" cols="30" rows="5" placeholder="※ 불편사항이나 문의사항을 남겨주시면 최대한 신속하게 답변 드리겠습니다."></textarea>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="btn_div" style="text-align: center;">
+				<button type="submit" class="inquiry_submit_btn" style="background-color: #503396; color: white; height: 40px" >등록</button>
+			</div>
+		</form>
 	</div><!-- contents -->
 </div><!-- wrap -->

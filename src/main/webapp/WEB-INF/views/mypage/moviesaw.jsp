@@ -18,7 +18,7 @@
 	#tit{   		font-size: 22px;	}
 	#movieContent{		padding: 10px;	}
 	#movieCount{		color: #FF243E;	    font-size: 21px;	    font-family: 'Roboto';	    text-decoration: underline;	}
-	#mypageTit{		padding: 10px;	    font-size: 26px;	}
+	#mypageTit{		padding: 10px;	    font-size: 26px;	display: inline-block;}
 	.modal-header .modal-title{		text-align: center;		display: inline-block;	}
 	.modal-header .cloas{		display: inline-block;		text-align: right;	}
 	.starR{
@@ -45,6 +45,11 @@
 	.modal-body #score{		margin-right: 5px;    	font-size: 38px;	}
 	.modal-body #score span{		font-size: 17px;	}
 	#modal-movie-tit{		font-size: 22px;	}
+	#mypage_moviesaw_title{
+		height: 100px;
+		border: 1px solid red;
+		width: 100%;
+	}
 	
 </style>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -58,9 +63,16 @@
 	<%@include file="mypageInfo.jsp" %>
 	<%@include file="mypage_top_menu.jsp" %>
 	<div id="mypage_moviesaw_wrap">
-		<div id="mypage_moviesaw_title">
+		<div id="mypage_moviesaw_title" style="float: left;">
 			<h4 id="mypageTit">내가 관람한 영화 <span id="movieCount">${movieCount }</span>편</h4>
+			<div style="float: right;">
+				<select>
+					<option>전체</option>
+					<option>2020</option>
+				</select>
+			</div>
 		</div>
+		<br>
 		<ul id="my_movie_list">
 		<c:forEach items="${list }" var="list" varStatus="i">
 			<li>
@@ -94,7 +106,7 @@
 			
 		<!-- Modal -->
 		<!-- 리뷰 등록 -->
-		<div class="modal fade" id="reviewInsert${i.index }" role="dialog" class="modalTest">
+		<div class="modal fade" id="reviewInsert${i.index }" role="dialog">
 			<input type="text" value="${list.filmnum }" id="review_insert_filmnum${i.index }">
 			<input type="text" value="${list.chargenum }" id="review_insert_chargenum${i.index }">
 		  <div class="modal-dialog">
@@ -137,7 +149,7 @@
 		 <!-- //////////////////////////////////////////////////////////////////////////////////  -->
 		<!-- Modal -->
 		<!-- 리뷰 수정 -->
-		<div class="modal fade" id="reviewUpdate${i.index }" role="dialog" class="modalTest">
+		<div class="modal fade" id="reviewUpdate${i.index }" role="dialog">
 			<input type="text" value="${list.filmnum }" id="review_update_filmnum${i.index }">
 			<input type="text" value="${list.chargenum }" id="review_update_chargenum${i.index }">
 		 <div class="modal-dialog">
@@ -150,7 +162,7 @@
 		     <div class="modal-body">
 		     	<strong id="modal-movie-tit">${list.filmname }</strong>
 		      	<div class="starRev">
-		      	 <h4 style="display: inline-block;" class="starScore">${list.mScore }</h4><span>점</span><br>
+		      	 <h4 style="display: inline-block;" class="starScore${i.index }">${list.mScore }</h4><span>점</span><br>
 				  <c:forEach var="z" begin="1" end="${list.mScore }">
 		       	  	<span class="starR on">${z }</span>
 		       	  </c:forEach>
@@ -195,6 +207,7 @@
 		
 		//리뷰 등록
 		$('.btn_insert .btn').click(function(){
+			location.reload(true);
 			index=$(this).next().val();
 			var mScore=$(".score").text();
 			var rContent=$("#review_insert_content"+index).val();
@@ -216,13 +229,13 @@
 		});
 		//리뷰 수정
 		$('.btn_update .btn').click(function(){
+			location.reload(true);
 			index=$(this).next().val();
 			var mScore=$(".score").text();
 			var rContent=$("#review_update_content"+index).val();
 			var filmnum=$("#review_update_filmnum"+index).val();
 			var chargenum=$("#review_update_chargenum"+index).val();
 			alert(mScore+","+rContent+","+filmnum+","+chargenum);
-			console.log(rContent);
 			$.ajax({
 				url:"${cp}/mypage/reviewUpdate.do",
 				data : {"mScore":5,"rContent":rContent,"filmNum":filmnum,"chargeNum":chargenum},
@@ -236,6 +249,7 @@
 				}
 			});
 		});
+		
 		
 	});
 	

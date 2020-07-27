@@ -50,9 +50,6 @@ public class MyPageController {
 		PageUtil pu=new PageUtil(pageNum, totalRowCount, 10, 5);
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		
-		System.out.println(pu.getStartRow() +"-------------------");
-		System.out.println(pu.getEndRow()+"222222222222222222");
-		
 		map.put("startRow", pu.getStartRow());
 		map.put("endRow", pu.getEndRow());
 		map.put("memNum", memNum);//회원번호
@@ -132,15 +129,19 @@ public class MyPageController {
 	}
 	//문의 등록
 	@RequestMapping("/mypage/inquiryInsertOk.do")
-	public String askInsertOk(Model model) {
+	public String askInsertOk(String qnaTitle, String askContent, String memPhone, String email, String memName,Model model) {
 		int memNum=1;
-		
-		String url = "http://localhost:9090/projectdb/mypage/inquiryInsert.do?memNum="+memNum;
-		String code=service.get(url).trim();
+		AskVo vo=new AskVo(0, memNum, qnaTitle, askContent, null, null, null, memPhone, email, memName);
+		String url = "http://localhost:9090/projectdb/mypage/inquiryInsert.do";
 		Gson gson=new Gson();
-		AskVo vo=gson.fromJson(code, AskVo.class);
-		model.addAttribute("vo",vo);
-		return ".mypage.inquiryInsert";
+		String jsonString=gson.toJson(vo);
+		String code=service.post(url,jsonString).trim();
+		int result=Integer.parseInt(code);
+		if(result>0) {
+			return askList(1,model);
+		}else {
+			return "error";
+		}
 	}
 	
 	//회원정보관리

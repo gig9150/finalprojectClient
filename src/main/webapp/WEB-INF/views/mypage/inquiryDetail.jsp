@@ -32,6 +32,9 @@
 	width: 100%;
 	border-bottom: 1px solid gray;
 }
+.dot-list{
+	border-bottom: 1px solid;
+}
 </style>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -41,7 +44,10 @@
 	<div id="inquiry_wrap">
 		<%@include file="mypageInfo.jsp" %>
 		<%@include file="mypage_top_menu.jsp" %>
-		<h4>나의 문의내역</h4>
+		<h2>나의 문의내역</h2>
+		<ul class="dot-list">
+			<li id="tabDesc">고객센터를 통해 남기신 1:1 문의내역을 확인하실 수 있습니다.</li>
+		</ul>
 		<table class="table">
 			<thead>
 				<tr>
@@ -81,6 +87,9 @@
 				</tr>
 			</tbody>
 		</table>
+		<div class="btn_div" style="text-align: center;">
+			<button style="background-color: #503396; color: white; height: 40px" >목록</button>
+		</div>
 	</div>
 </body>
 </html>
