@@ -237,11 +237,7 @@
 					"filmNum" : filmNum
 				},
 				success : function(reviewListVo) {
-					<form action="">
-					
-					
-					
-					</form>
+
 					$(reviewListVo).each(
 							function(i, review) {
 								$("#story_box").append(
