@@ -12,10 +12,11 @@
 }
 /*전체 content감싸는 wrap*/
 #content_wrap {
-	width: 1000px;
-	height: 1200px;
+	width: 970px;
+	height: 1800px;
 	padding: 50px 0 0 0;
 	margin: auto;
+	border: 1px solid red;
 }
 /*네비게이션 div 현재상영작 상영예정작 list & 관람평순 평점순 관객수순*/
 #nav_list {
@@ -33,6 +34,11 @@
 	font-size: 20px;
 	color: #000;
 	text-decoration: none;
+}
+
+.sub_tab{
+	text-decoration: none;
+
 }
 /*관람평순 평점순 관객수순 list부분 */
 
@@ -59,14 +65,13 @@
 	margin: auto;
 }
 
-#movie_screen_box {
-  position: relative;
-  width: 100%;
-}
-
 .active, #movie_screen_box img:hover {
   opacity: 0.9;
   background-color: black;
+}
+/*
+#movie_screen_box .each_movie{
+	position: relative;
 }
 
 
@@ -74,24 +79,24 @@
 	
 }
 
-#movie_screen_box .each_movie src .btnImg{
+#movie_screen_box .each_movie src .btn_detail {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
-  opacity: 0;
+  opacity: 1;
   font-size: 16px;
   padding: 12px 24px;
   border: none;
   cursor: pointer;
   border-radius: 5px;
   text-align: center;
-}
+}*/
 
-#movie_screen_box .each_movie src .btnImg:hover {
+#movie_screen_box .each_movie src :hover {
   background-color: #ffffff;
-  opacity: 0.5;
+  opacity: 0.1;
   color:black;
 }
 
@@ -106,21 +111,22 @@
 
 .rate_info{
 	border-right: 1px solid #ccc;
-	line-height: 8px;
 	padding-right: 5px;
 	margin-right: 5px;
+	line-height: 5px;
 }
 
 </style>
+<div>
 	<div id="content_wrap">
 		<div id="nav_list">
 			<ul class="main_title">
-				<li><a href="">현재상영작</a></li>
-				<li><a href="">상영예정작</a></li>
+				<li class="sub_tab"><a href="${cp}/movie/showAllMovies.do">현재상영작</a></li>
+				<li class="sub_tab"><a href="#">상영예정작</a></li>
 			</ul>
 			<ul class="btn_type">
-				<li><a href="#">예매순</a></li>
-				<li><a href="#">평점순</a></li>
+				<li><a href="${cp}/movie/showAllMovies.do">예매순</a></li>
+				<li><a href="${cp }/movie/showAllMoviesMRate.do">평점순</a></li>
 				<li><a href="#">관람평순</a></li>
 			</ul>
 		</div>
@@ -130,10 +136,10 @@
 				<c:forEach var="movieList" items="${allMovieList }">
 						<li class="screen_add_box"
 						style="margin-bottom: 40px; float: left;">
-						<div class="each_movie" style="float: left;">
+						<div class="each_movie" style="float: left; margin-right: 15px;">
 								<img src="${movieList.movieImgUrl }"
-									style="width: 220px;" /> 
-									<a href="${cp}/movie/movieDetailView.do?filmNum=${movieList.filmNum }" class="btnImg">상세정보</a>
+									style="width: 220px;" />
+									<div><a href="${cp}/movie/movieDetailView.do?filmNum=${movieList.filmNum }" class="btnImg" style="position:absolute;">상세정보</a></div>
 								<div style="margin-top: 10px">
 									<strong class="tit_info" style="display: block;">${movieList.filmName }</strong>
 									<div class="sub_info"> <span class="rate_info">예매율<strong>
@@ -162,8 +168,13 @@
 			</ul>
 		</div>
 	</div>
-
+</div>
 
 <script>
-
+	${'#btn_current_movie'}.on('click',showCurrentMovie);
+	
+	function showCurrentMovie(){
+		
+		
+	}
 </script>

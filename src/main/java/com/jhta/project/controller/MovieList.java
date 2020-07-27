@@ -27,6 +27,19 @@ public class MovieList {
 		model.addAttribute("allMovieList", allMovieList);
 		return ".movie.showMovies";
 	}
+	
+	//영화 평점순 클릭했을 때 함수(평점순으로 상영 영화 불러오기)
+	@RequestMapping("/movie/showAllMoviesMRate.do")
+	public String showAllMoviesMRate(Model model){
+		System.out.println("CONTROLLER평점순");
+		List<AllMoviesVo> allMovieList=movieListService.moviesByMRate();
+		AllMoviesVo allMoviesVo= new AllMoviesVo();
+		System.out.println("여기까지오나??????????");
+		model.addAttribute("allMovieList", allMovieList);
+		return ".movie.showMovies";
+	}
+	
+	
 	/*
 	//관람평순으로 상영 영화 불러오기
 	public String moviesByMReview() {

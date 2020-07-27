@@ -19,12 +19,12 @@ public class MovieListService {
 		System.out.println("SERVICE진입");
 		return mListDao.showAllMovies();
 	}
-	/*
+	
 	//평점순으로 상영 영화 불러오기
-	public List<AllByMRateVo> moviesByMRate(int filmNum){
+	public List<AllMoviesVo> moviesByMRate(){
 		System.out.println("평점순 상영영화 service");
-		return mListDao.moviesByMRate(filmNum);
-	}*/
+		return mListDao.moviesByMRate();
+	}
 	
 	//관람평순으로 상영 영화 불러오기
 	public List<AllByMReviewVo> moviesByMReview() {

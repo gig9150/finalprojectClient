@@ -22,12 +22,12 @@ public class MovieListDao {
 		System.out.println("DAO진입");
 		return sqlSession.selectList(NAMESPACE+".movieListRrate");
 	}
-	/*
+
 	//평점순으로 상영 영화 불러오기
-	public List<AllByMRateVo> moviesByMRate(int filmNum){
+	public List<AllMoviesVo> moviesByMRate(){
 		System.out.println("평점순 상영 dao");
-		return sqlSession.selectList(NAMESPACE+".movieListMRate",filmNum);
-	}*/
+		return sqlSession.selectList(NAMESPACE+".movieListMRate");
+	}
 	
 	//관람평순으로 상영 영화 불러오기
 	public List<AllByMReviewVo> moviesByMReview() {

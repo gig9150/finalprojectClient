@@ -7,7 +7,7 @@
 		select *
 		from film where filmNum=#{filmNum}
 	</select>
-	
+
 	<!-- 예매율별 영화명,영화이미지, 예매율  -->
 	<select id="movieListRrate" resultType="allmovies">
 		select trunc(totalpeople/totalSum*100,1) rRate,bb.*,trunc(nvl((select avg(mscore) from mreview mr where	bb.filmnum=mr.filmnum),0),1) mRate
@@ -27,31 +27,48 @@
 		        order by totalPeople desc)bb
 	</select>
 	
-	<!-- 평점별 영화명, 영화번호, 영화이미지 
-	<select id="movieListMRate" resultType="allbymrate" parameterType="int">
+	<!-- 평점별 영화명, 영화번호, 영화이미지-->
+	<select id="movieListMRate" resultType="allmovies">
 		<![CDATA[
-			select aa.*, m.movieimgUrl, trunc(nvl((select avg(mscore) from mreview mr where
-			aa.filmnum=mr.filmnum),0),1) mRate
-				from
-				(
-					select filmName, filmNum from film where filmend>=sysdate
-				)aa, movieimg m
-			where m.filmNum= aa.filmNum
+        select trunc(totalpeople/totalSum*100,1) rRate,bb.*,trunc(nvl((select avg(mscore)from mreview mr where bb.filmnum=mr.filmnum),0),1) mRate
+        from     (select aa.*, m.movieimgUrl, nvl((select sum(totalpeople)from total t where aa.filmnum=t.filmnum),0) totalPeople, 
+        (select sum(totalCount) from
+        (select (select sum(totalpeople) total from total t where aa.filmnum=t.filmnum) totalCount
+        
+        from 
+        (
+        select filmName, filmNum from film where filmend>=sysdate
+        )aa, movieimg m
+        where m.filmNum= aa.filmNum)) totalSum
+                    from 
+                    (
+                        select filmName, filmNum from film where filmend>=sysdate
+                    )aa, movieimg m
+                where m.filmNum= aa.filmNum)bb
+                order by mRate desc
 		]]>
 	</select>
-	-->
+	
 	
 	<!-- 누적관객수별 영화명, 영화이미지, 누적관객수 -->
-	<select id="showAllMovies" resultType="allmovies">
+	<select id="movieListVisitor" resultType="allmovies">
 		<![CDATA[
-			select aa.*, m.movieimgUrl, nvl((select sum(totalpeople) from total t where
-			aa.filmnum=t.filmnum),0) totalPeople
-				from
-				(
-					select filmName, filmNum from film where filmend>=sysdate
-				)aa, movieimg m
-			where m.filmNum= aa.filmNum
-			order by totalPeople desc
+        select trunc(totalpeople/totalSum*100,1) rRate,bb.*,trunc(nvl((select avg(mscore)from mreview mr where bb.filmnum=mr.filmnum),0),1) mRate
+        from     (select aa.*, m.movieimgUrl, nvl((select sum(totalpeople)from total t where aa.filmnum=t.filmnum),0) totalPeople, 
+        (select sum(totalCount) from
+        (select (select sum(totalpeople) total from total t where aa.filmnum=t.filmnum) totalCount
+        
+        from 
+        (
+        select filmName, filmNum from film where filmend>=sysdate
+        )aa, movieimg m
+        where m.filmNum= aa.filmNum)) totalSum
+                    from 
+                    (
+                        select filmName, filmNum from film where filmend>=sysdate
+                    )aa, movieimg m
+                where m.filmNum= aa.filmNum)bb
+                order by totalPeople desc
 		]]>
 	</select>
 	<!-- 리뷰순 영화명, 영화이미지, 누적관객수 -->
