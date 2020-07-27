@@ -179,11 +179,15 @@ p {
 		<h3>영      화</h3>
 		<div>
 			<c:forEach var="filmVo" items="${movieList }">
-				<div>${filmVo.filmName }</div>
+				<div class="filmList" style="width: 80%;height: 100%;margin: auto;">
+					<button type="button" class="btn btn-danger" style="width: 100%;margin: 10px;"
+						onclick="branchSelectList('${filmVo.filmNum }')">
+					<h2>${filmVo.filmName }</h2></button>
+				</div>
 			</c:forEach>
 		</div>
 	</div>
-	<div style="border: 1px solid blue;width: 30%;">
+	<div id="branchView" style="border: 1px solid blue;width: 30%;">
 		<h3>상  영  관</h3>
 		<div id="theatherList" style="display: inline-block;float: left;width: 50%;">
 			<ul style="text-align: center;width: 90%;list-style: none;">
@@ -272,16 +276,42 @@ p {
 <script type="text/javascript">
 	
 	var branchNum=0;
-	function branchList(data) {
-
-		alert(data);
+	
+	// 상영관 ajax 시작..
+	function branchSelectList(data) {
+		$.ajax({
+			url : "${cp}/buy/branchSelect.do",
+			dataType : "JSON",
+			data : {filmNum:data},
+			success : function(tt){
+				$("#branchView").children().remove();
+				alert(tt);
+				str="<h3>상  영  관</h3>"+
+					"<div id='theatherList' style='display: inline-block;float: left;width: 50%;'>"+
+					"<ul style='text-align: center;width: 90%;list-style: none;'>";
+				tt.mainCityList.forEach(function(vo,xxx){
+					str+="<li><div class='city' onclick='branchList("+vo.cityaddr+")'>"+
+						"<span>"+vo.cityaddr+"("+vo.cityCount+")</span></div></li>";
+				});//mainCityList Each문끝
+				str+="</ul></div>"+
+					"<div style='display: inline-block;float: left;width: 50%;'>"+
+					"<ul style='text-align: center;width: 90%;list-style: none;margin-top: 10px;margin-left:0px;'>";
+				tt.cityList.forEach(function(branchvo,xxx){
+					str+="<li style='text-align: left;margin-left:0px;'>"+
+						"<div class='branch' onclick='dateList("+branchvo.branchNum+")'>"+
+						"<span style='padding-left: 20px'>"+branchvo.brName+"</span></div></li>";
+				});//cityList Each문 끝
+				str+="</ul></div>";
+				$("#branchView").html(str);
+			}//콜백함수 끝
+		});//ajax끝
 	};
-	function dateList(data) {
-		branchNum=data;
-		alert(branchNum);
-	};
+	
+	
+	
+	//영화관 ajax 시작..
 	function theatherList(data) {
-		alert(data)
+		alert(data);
 		if(branchNum!=0){
 			$.ajax({
 				url : "${cp}/buy/ticketing.do",
@@ -320,6 +350,43 @@ p {
 		}
 	};
 	
+	// 날짜 리스트 ajax
+	function dateList(data) {
+		branchNum=data;
+		alert(branchNum);
+		$.ajax({
+			url : "${cp}/buy/ticketDate.do",
+			dataType : "JSON",
+			data : {'branchNum':data},
+			success : function(tt){
+				$("#movieday").children().remove();
+				var str="<h3>날      짜</h3><div style='overflow-y: scroll; height: 85%;'>"+
+					"<div style='text-align: center;width: 50%;list-style: none; margin: auto;'>";
+				var daliy="";
+				tt.forEach(function(day,xxx){
+					if(day.indexOf('-')!=-1){
+						daliy=day;
+						var yearsMon=day.split('-');
+						str+="<div>"+yearsMon[0]+"년<br>"+yearsMon[1]+"월</div>";
+					}else{
+						var days=day.split(' ');
+						var totalDay=daliy+"-"+days[1];
+						str+="<div class='hover' onclick='theatherList("+totalDay+")'>"+day+"일</div>";
+					}
+				});
+				str+="</div></div>";
+				$("#movieday").html(str);
+			}
+		});
+	};
+	
+	function branchList(data) {
+
+		alert(data);
+	};
+	
+	
+	
 	function dateFormat(x){
 		var date = new Date(x);
 		var hour = date.getHours();
@@ -332,6 +399,8 @@ p {
 		}
 		return hour+":"+min;
 	}
+	
+	
 	
 	
 	$("#warbList").on('click','.city', function() {

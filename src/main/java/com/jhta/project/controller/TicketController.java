@@ -25,7 +25,7 @@ import com.jhta.project.service.RestService;
 import com.jhta.project.vo.BranchVo;
 import com.jhta.project.vo.CityListVo;
 import com.jhta.project.vo.FilmVo;
-import com.jhta.project.vo.TestVo;
+import com.jhta.project.vo.TicektBuyVo;
 
 @Controller
 public class TicketController {
@@ -35,7 +35,7 @@ public class TicketController {
 	@RequestMapping("/buy/ticket.do")
 	public String ticket(Model model,@RequestParam(value="cityaddr",defaultValue = "서울") String cityaddr,
 			String regDate,@RequestParam(value="branchNum",defaultValue = "1") int branchNum) throws ParseException, JsonMappingException, JsonProcessingException {
-		String url="http://localhost:9090/projectdb/buy/citylist.do";
+		String url="http://localhost:9090/projectdb/buy/citylist.do?filmNum=1";
 		String code=service.get(url).trim();
 		Gson gson=new Gson();
 		CityListVo[] array=gson.fromJson(code, CityListVo[].class);
@@ -142,7 +142,7 @@ public class TicketController {
 		List<HashMap<String, Object>> sCount = mapper.readValue(code2, typeRef);
 		
 		
-		TestVo vo=new TestVo();
+		TicektBuyVo vo=new TicektBuyVo();
 		vo.setCityList(cityList);
 		vo.setList(list);
 		vo.setMainCityList(mainCityList);
@@ -151,5 +151,51 @@ public class TicketController {
 		String jsonString = gson.toJson(vo).trim();
 		System.out.println("제이슨 응답객체"+jsonString);
 		return jsonString;
+	}
+	
+	
+	@RequestMapping(value="/buy/branchSelect.do",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@ResponseBody
+	public String branchSelect(int filmNum) {
+		String url="http://localhost:9090/projectdb/buy/citylist.do?filmNum="+filmNum;
+		String code=service.get(url).trim();
+		Gson gson=new Gson();
+		CityListVo[] array=gson.fromJson(code, CityListVo[].class);
+		List<CityListVo> mainCityList=Arrays.asList(array);
+		String searchCityUrl="http://localhost:9090/projectdb/buy/searchCity.do?cityaddr=서울";
+		String cityCode=service.get(searchCityUrl).trim();
+		BranchVo[] cityArray=gson.fromJson(cityCode, BranchVo[].class);
+		List<BranchVo> cityList=Arrays.asList(cityArray);
+		TicektBuyVo vo=new TicektBuyVo();
+		vo.setMainCityList(mainCityList);
+		vo.setCityList(cityList);
+		String jsonString=gson.toJson(vo);
+		return jsonString;
+	}
+	
+	@RequestMapping(value="/buy/ticketDate.do",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@ResponseBody
+	public String ticketDate(int branchNum) throws ParseException {
+		String url="http://localhost:9090/projectdb/buy/ticketDate.do?branchNum="+branchNum;
+		String code=service.get(url).trim();
+		
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM");
+		SimpleDateFormat sdf1=new SimpleDateFormat("E dd");
+		Date d=new SimpleDateFormat("yyyy-MM-dd").parse(code);
+		String toDay=new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+		Date date=new SimpleDateFormat("yyyy-MM-dd").parse(toDay);
+		List<String> monthDay=new ArrayList<String>();
+		String oneMonth="";
+		for(long i=date.getTime();i<=d.getTime();i=i+1000*60*60*24) {
+			if(!oneMonth.equals(sdf.format(i))){
+				oneMonth=sdf.format(i);
+				monthDay.add(oneMonth);
+			}
+			String oneDay=sdf1.format(i);
+			monthDay.add(oneDay);
+		}
+		
+		Gson gson=new Gson();
+		return gson.toJson(monthDay);
 	}
 }

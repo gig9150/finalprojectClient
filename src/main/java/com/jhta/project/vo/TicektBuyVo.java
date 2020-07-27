@@ -3,7 +3,7 @@ package com.jhta.project.vo;
 import java.util.HashMap;
 import java.util.List;
 
-public class TestVo {
+public class TicektBuyVo {
 	private List<HashMap<String, Object>> list;
 	private List<HashMap<String, Object>> sCount;
 	private List<CityListVo> mainCityList;
