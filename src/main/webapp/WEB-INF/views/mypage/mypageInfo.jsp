@@ -117,7 +117,6 @@
 	    float: left;
 	    width: 280px;
 	    min-height: 116px;
-	    border-right: 1px solid #ccc;
 	    margin-left: 20px;
 	}
 	
@@ -131,6 +130,7 @@
 	    float: left;
 	    width: 280px;
 	    min-height: 116px;
+	    border-right: 1px solid #ccc;
 	    margin-left: 20px;
 	}
 	
@@ -151,7 +151,7 @@
 				</div>
 			</div>
 			<div class="grade">
-				<p class="name">회원(세션받음)님은<br>일반등급(세션받음)입니다.</p>
+				<p class="name">회원(세션)님은<br>일반등급(세션)입니다.</p>
 				<div class="link">
 					<a href="#" title="개인정보수정 페이지로 이동">개인정보수정 > <i class="iconset ico-arr-right-reverse"></i></a>
 					<a href="#" title="개인정보수정 페이지로 이동">로그아웃  ><i class="iconset ico-arr-right-reverse"></i></a>
@@ -167,10 +167,22 @@
 	
 				<div class="cont-area">
 					<div class="total">
-						<p class="now">0 P</p>
+						<p class="now">0 P (세션)</p>
 					</div>
 				</div>
 				
+			</div>
+			
+			<div class="ddd">
+				<div class="cont-area">
+					<p class="tit">선호극장</p>
+				</div>
+				
+				<div class="cont-area">
+					<div class="total">
+						<p class="tit">??? / ???</p>
+					</div>
+				</div>
 			</div>
 			
 			<div class="cupon">
@@ -185,17 +197,7 @@
 				</div>
 			</div>
 			
-			<div class="ddd">
-				<div class="cont-area">
-					<p class="tit">스티커</p>
-				</div>
-				
-				<div class="cont-area">
-					<div class="total">
-						<p class="tit">??? / ???</p>
-					</div>
-				</div>
-			</div>
+			
 			
 			
 		</div>

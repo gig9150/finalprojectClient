@@ -1,6 +1,7 @@
 package com.jhta.project.controller;
 
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 
@@ -64,20 +65,31 @@ public class MyPageController {
 		model.addAttribute("list",list);
 		return ".mypage.cupon";
 	}
-	
 	//내가 본 영화
 	@RequestMapping("/mypage/moviesaw.do")
-	public String moviesaw(Model model) {
+	public String moviesaw(Model model,String syear) {
 		int memNum=1;
-		String url = "http://localhost:9090/projectdb/mypage/moviesaw.do?memNum="+memNum;
-		String code=service.get(url).trim();
+		Calendar cal = Calendar.getInstance();
+		String year=cal.get(Calendar.YEAR)+"";
+		year = year.substring(2, 4);
+		if(syear!=null) {
+			year=syear;
+		}
+		System.out.println(year);
+		HashMap<String, Object> map=new HashMap<String, Object>();
+		map.put("memNum", memNum);
+		map.put("year",year);
+		
+		String url = "http://localhost:9090/projectdb/mypage/moviesaw.do";
 		Gson gson=new Gson();
+		String jsonString=gson.toJson(map);
+		String code=service.post(url,jsonString).trim();
 		MovieSawVo[] arrays=gson.fromJson(code, MovieSawVo[].class);
 		List<MovieSawVo> list=Arrays.asList(arrays);
 		model.addAttribute("list",list);
 		
-		String countUrl = "http://localhost:9090/projectdb/mypage/movieCount.do?memNum="+memNum;
-		String countCode=service.get(countUrl).trim();
+		String countUrl = "http://localhost:9090/projectdb/mypage/movieCount.do";
+		String countCode=service.post(countUrl,jsonString).trim();
 		int movieCount = Integer.parseInt(countCode);
 		model.addAttribute("movieCount",movieCount);
 		

@@ -46,8 +46,7 @@
 	.modal-body #score span{		font-size: 17px;	}
 	#modal-movie-tit{		font-size: 22px;	}
 	#mypage_moviesaw_title{
-		height: 100px;
-		border: 1px solid red;
+		height: 60px;
 		width: 100%;
 	}
 	
@@ -65,10 +64,15 @@
 	<div id="mypage_moviesaw_wrap">
 		<div id="mypage_moviesaw_title" style="float: left;">
 			<h4 id="mypageTit">내가 관람한 영화 <span id="movieCount">${movieCount }</span>편</h4>
-			<div style="float: right;">
-				<select>
-					<option>전체</option>
-					<option>2020</option>
+			<div style="float: right; margin-top: 25px; margin-right: 15px;">
+				<select id="selectYear">
+					<option <c:if test="${tihs=='전체'}"> selected </c:if>>전체</option>
+					<c:forEach items="${list }" var="y">
+						<c:if test="${yy != y.year }">
+							<option value=${y.year } <c:if test="${tihs==y.year}"> selected </c:if>>20${y.year }년</option>
+						</c:if>
+						<c:set var='yy' value='${y.year }'/>
+					</c:forEach>
 				</select>
 			</div>
 		</div>
@@ -248,6 +252,23 @@
 					console.log('에러입니다');
 				}
 			});
+		});
+		
+		$('#selectYear').change(function(){
+			var syear=$(this).val();
+			location.href="${cp}/mypage/moviesaw.do?syear="+syear;
+// 			$.ajax({
+// 				url:"${cp}/mypage/moviesaw.do",
+// 				data : {"syear":syear},
+// 				type: 'POST',
+// 				dataType : 'JSON',
+// 				success : function(data){
+// 					alert('성공');
+// 				},
+// 				error: function(data){
+// 					alert('에러');
+// 				}
+// 			});
 		});
 		
 		
