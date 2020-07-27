@@ -33,8 +33,19 @@
 	<div id="inquiry_wrap">
 	<%@include file="mypageInfo.jsp" %>
 	<%@include file="mypage_top_menu.jsp" %>
+		<div style="width: 100%; height: 60px;">
+			<h3 style="float: left; margin-left: 10px">MY 예매내역</h3>
+			<select id="selectYear" style="float: right; margin-top: 25px; margin-right: 85px;">
+				<option value='all'>전체</option>
+				<c:forEach items="${list }" var="y">
+					<c:if test="${yy != y.year }">
+						<option value=${y.year } <c:if test="${y.year == syear }">selected  </c:if>>20${y.year }년</option>
+					</c:if>
+					<c:set var='yy' value='${y.year }'/>
+				</c:forEach>
+			</select>
+		</div>
 		<div id="ticketing_box">
-			<h3>MY 예매내역</h3>
 			<c:if test="${empty list}">
 				<tr>
 					<td colspan="4">
@@ -98,6 +109,17 @@
 		</div>
 	</div>
 </body>
+<script type="text/javascript" src="${cp }/resources/js/jquery-3.5.1.js"></script>
+<script type="text/javascript">
+	$('#selectYear').change(function(){
+		var syear=$(this).val();
+		if(syear!='all'){
+			location.href="${cp}/mypage/selectPayment.do?syear="+syear;
+		}else{
+			location.href="${cp}/mypage/payment.do";
+		}
+	});
+</script>
 </html>
 
 

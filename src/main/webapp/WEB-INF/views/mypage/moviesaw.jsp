@@ -66,10 +66,10 @@
 			<h4 id="mypageTit">내가 관람한 영화 <span id="movieCount">${movieCount }</span>편</h4>
 			<div style="float: right; margin-top: 25px; margin-right: 15px;">
 				<select id="selectYear">
-					<option <c:if test="${tihs=='전체'}"> selected </c:if>>전체</option>
+					<option value='all'>전체</option>
 					<c:forEach items="${list }" var="y">
 						<c:if test="${yy != y.year }">
-							<option value=${y.year } <c:if test="${tihs==y.year}"> selected </c:if>>20${y.year }년</option>
+							<option value=${y.year } <c:if test="${y.year == syear }">selected  </c:if>>20${y.year }년</option>
 						</c:if>
 						<c:set var='yy' value='${y.year }'/>
 					</c:forEach>
@@ -145,10 +145,6 @@
 		      </div>
 		    </div>
 		  </div>
-		  
-		  
-		
-		
 		 </div>
 		 <!-- //////////////////////////////////////////////////////////////////////////////////  -->
 		<!-- Modal -->
@@ -240,23 +236,27 @@
 			var filmnum=$("#review_update_filmnum"+index).val();
 			var chargenum=$("#review_update_chargenum"+index).val();
 			alert(mScore+","+rContent+","+filmnum+","+chargenum);
-			$.ajax({
-				url:"${cp}/mypage/reviewUpdate.do",
-				data : {"mScore":5,"rContent":rContent,"filmNum":filmnum,"chargeNum":chargenum},
-				type: 'POST',
-				dataType : 'JSON',
-				success : function(data){
-					console.log('수정 성공');
-				},
-				error: function(data){
-					console.log('에러입니다');
-				}
-			});
+// 			$.ajax({
+// 				url:"${cp}/mypage/reviewUpdate.do",
+// 				data : {"mScore":5,"rContent":rContent,"filmNum":filmnum,"chargeNum":chargenum},
+// 				type: 'POST',
+// 				dataType : 'JSON',
+// 				success : function(data){
+// 					console.log('수정 성공');
+// 				},
+// 				error: function(data){
+// 					console.log('에러입니다');
+// 				}
+// 			});
 		});
 		
 		$('#selectYear').change(function(){
 			var syear=$(this).val();
-			location.href="${cp}/mypage/moviesaw.do?syear="+syear;
+			if(syear!='all'){
+				location.href="${cp}/mypage/selectList.do?syear="+syear;
+			}else{
+				location.href="${cp}/mypage/moviesaw.do";
+			}
 // 			$.ajax({
 // 				url:"${cp}/mypage/moviesaw.do",
 // 				data : {"syear":syear},

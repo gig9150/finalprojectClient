@@ -13,6 +13,7 @@ public class TicketingVo {
 	private String filmname;//영화명
 	private String payment;//결제수단
 	private String movieimgurl;//영화이미지
+	private String year;
 	
 	public TicketingVo() {
 		super();
@@ -20,7 +21,7 @@ public class TicketingVo {
 
 	public TicketingVo(String mstarttime, String brname, String theathername, String chregdate, int totalbill,
 			int cuponrate, String cname, String seatname, int usercount, String filmname, String payment,
-			String movieimgurl) {
+			String movieimgurl, String year) {
 		super();
 		this.mstarttime = mstarttime;
 		this.brname = brname;
@@ -34,6 +35,7 @@ public class TicketingVo {
 		this.filmname = filmname;
 		this.payment = payment;
 		this.movieimgurl = movieimgurl;
+		this.year = year;
 	}
 
 	public String getMstarttime() {
@@ -132,4 +134,12 @@ public class TicketingVo {
 		this.movieimgurl = movieimgurl;
 	}
 
+	public String getYear() {
+		return year;
+	}
+
+	public void setYear(String year) {
+		this.year = year;
+	}
+	
 }

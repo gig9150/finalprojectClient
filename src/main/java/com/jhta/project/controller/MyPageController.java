@@ -40,6 +40,32 @@ public class MyPageController {
 		return ".mypage.payment";
 	}
 	
+	@RequestMapping("/mypage/selectPayment.do")
+	public String selectPayment(Model model,String syear) {
+		int memNum=1;
+		Calendar cal = Calendar.getInstance();
+		String year=cal.get(Calendar.YEAR)+"";
+		year = year.substring(2, 4);
+		if(syear!=null) {
+			year=syear;
+		}
+		HashMap<String, Object> map=new HashMap<String, Object>();
+		map.put("memNum", memNum);
+		map.put("year",year);
+		
+		String url = "http://localhost:9090/projectdb/mypage/selectPayment.do";
+		Gson gson=new Gson();
+		String jsonString=gson.toJson(map);
+		String code=service.post(url,jsonString).trim();
+		TicketingVo[] arrays=gson.fromJson(code, TicketingVo[].class);
+		List<TicketingVo> list=Arrays.asList(arrays);
+		model.addAttribute("list",list);
+		
+		model.addAttribute("syear",syear);
+		model.addAttribute("year",year);
+		return ".mypage.payment";
+	}
+	
 	//쿠폰함
 	@RequestMapping("/mypage/cupon.do")
 	public String cupon(@RequestParam(value="pageNum",defaultValue = "1")int pageNum,Model model) {
@@ -67,7 +93,24 @@ public class MyPageController {
 	}
 	//내가 본 영화
 	@RequestMapping("/mypage/moviesaw.do")
-	public String moviesaw(Model model,String syear) {
+	public String moviesaw(Model model) {
+		int memNum=1;
+		String url = "http://localhost:9090/projectdb/mypage/moviesaw.do?memNum="+memNum;
+		Gson gson=new Gson();
+		String code=service.get(url).trim();
+		MovieSawVo[] arrays=gson.fromJson(code, MovieSawVo[].class);
+		List<MovieSawVo> list=Arrays.asList(arrays);
+		model.addAttribute("list",list);
+		
+		String countUrl = "http://localhost:9090/projectdb/mypage/movieCount.do?memNum="+memNum;
+		String countCode=service.get(countUrl).trim();
+		int movieCount = Integer.parseInt(countCode);
+		model.addAttribute("movieCount",movieCount);
+		return ".mypage.moviesaw";
+	}
+	
+	@RequestMapping("/mypage/selectList.do")
+	public String selectList(Model model,String syear) {
 		int memNum=1;
 		Calendar cal = Calendar.getInstance();
 		String year=cal.get(Calendar.YEAR)+"";
@@ -80,7 +123,7 @@ public class MyPageController {
 		map.put("memNum", memNum);
 		map.put("year",year);
 		
-		String url = "http://localhost:9090/projectdb/mypage/moviesaw.do";
+		String url = "http://localhost:9090/projectdb/mypage/selectList.do";
 		Gson gson=new Gson();
 		String jsonString=gson.toJson(map);
 		String code=service.post(url,jsonString).trim();
@@ -88,15 +131,16 @@ public class MyPageController {
 		List<MovieSawVo> list=Arrays.asList(arrays);
 		model.addAttribute("list",list);
 		
-		String countUrl = "http://localhost:9090/projectdb/mypage/movieCount.do";
+		String countUrl = "http://localhost:9090/projectdb/mypage/selectMovieCount.do";
 		String countCode=service.post(countUrl,jsonString).trim();
 		int movieCount = Integer.parseInt(countCode);
 		model.addAttribute("movieCount",movieCount);
 		
+		model.addAttribute("syear",syear);
+		model.addAttribute("year",year);
 		return ".mypage.moviesaw";
 	}
-	
-	
+
 	//1:1문의 리스트
 	@RequestMapping("/mypage/inquiry.do")
 	public String askList(@RequestParam(value="pageNum",defaultValue = "1")int pageNum,Model model) {
