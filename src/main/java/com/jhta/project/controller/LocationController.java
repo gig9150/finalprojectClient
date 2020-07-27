@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.jhta.project.service.LocationService;
+import com.jhta.project.vo.LocationBranchListVo;
 import com.jhta.project.vo.LocationListVo;
 import com.jhta.project.vo.ProposalVo;
 
@@ -28,8 +29,8 @@ public class LocationController {
 
 	@RequestMapping("/show/showTimeList.do")
 	public String showTime(@RequestParam(value = "cityAddr", defaultValue = "서울") String cityAddr,
-			@RequestParam(value = "brName", defaultValue = "서울")String brName, 
-			String regDates, 
+			@RequestParam(value = "brName", defaultValue = "서울점")String brName,
+			String regDates,
 			Model model,
 			HttpSession session) throws ParseException {
 		LocationListVo locatedList=service.locatedList(cityAddr);
@@ -50,15 +51,30 @@ public class LocationController {
 		if(brName!=null) {
 			model.addAttribute("branchName",brName);
 		}
+		System.out.println("아 돋체 뭔데:"+regDates);
 		HashMap<String, Object> map=new HashMap<String, Object>();
 		map.put("brName", brName);
 		map.put("regDates", regDates);
-		List<LocationListVo> movlist=service.locMovieList(map);
+		List<LocationBranchListVo> movlist=service.locMovieList(map);
+		System.out.println("잘가져오는지 확인:"+movlist);
+		System.out.println(movlist.get(0).getBranchNum());
+		List<HashMap<String, Object>> scount=service.scount(movlist.get(0).getBranchNum());
+		
+		HashMap<String, Integer> map2=new HashMap<String, Integer>();
+		for(LocationBranchListVo vo:movlist) {
+			map2.put("theatherNum", vo.getTheatherNum());
+			map2.put("mscheduleNum", vo.getmScheduleNum());
+			int c=service.left(map2);
+			vo.setCnt(c);
+		}
+		
+	
+		model.addAttribute("leftseat",map2);
 		model.addAttribute("locatedList", locatedList);
 		model.addAttribute("list",list);
 		model.addAttribute("cityAddr",cityAddr);
 		model.addAttribute("movlist",movlist);
-		
+		model.addAttribute("scount", scount);
 		
 		
 		return ".show.showTimes";

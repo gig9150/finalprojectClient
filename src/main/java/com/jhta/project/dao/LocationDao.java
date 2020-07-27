@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.jhta.project.vo.LocationBranchListVo;
 import com.jhta.project.vo.LocationListVo;
 import com.jhta.project.vo.ProposalVo;
 
@@ -24,8 +25,10 @@ public class LocationDao {
 		return sqlSession.selectList(NAMESPACE+".list");
 	}
 	
-	public List<LocationListVo> locMovieList(HashMap<String,Object> map) {
+	public List<LocationBranchListVo> locMovieList(HashMap<String,Object> map) {
 		return sqlSession.selectList(NAMESPACE+".locmovielist", map);
 	}
+	
+	
 	
 }

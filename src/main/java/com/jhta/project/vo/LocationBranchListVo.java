@@ -4,29 +4,47 @@ import java.util.Date;
 
 public class LocationBranchListVo {
 	private int mScheduleNum;
-	private Date mStarTime;
+	private Date mStartTime;
 	private int purchaseFilmNum;
 	private int theatherNum;
 	private int branchNum;
 	private String filmName;
 	private String theatherName;
+	private String theatherSort;
 	private int filmNum;
 	private String brName;
-	
+	private Date regDates;
+	private int cnt;
+
 	public LocationBranchListVo() {}
 
-	public LocationBranchListVo(int mScheduleNum, Date mStarTime, int purchaseFilmNum, int theatherNum, int branchNum,
-			String filmName, String theatherName, int filmNum, String brName) {
+	public LocationBranchListVo(int mScheduleNum, Date mStartTime, int purchaseFilmNum, int theatherNum, int branchNum,
+			String filmName, String theatherName, String theatherSort, int filmNum, String brName,int cnt) {
 		super();
 		this.mScheduleNum = mScheduleNum;
-		this.mStarTime = mStarTime;
+		this.mStartTime = mStartTime;
 		this.purchaseFilmNum = purchaseFilmNum;
 		this.theatherNum = theatherNum;
 		this.branchNum = branchNum;
 		this.filmName = filmName;
 		this.theatherName = theatherName;
+		this.theatherSort = theatherSort;
 		this.filmNum = filmNum;
 		this.brName = brName;
+		this.cnt=cnt;
+	}
+	public int getCnt() {
+		return cnt;
+	}
+	public void setCnt(int cnt) {
+		this.cnt = cnt;
+	}
+	public String getTheatherSort() {
+		return theatherSort;
+	}
+
+	public void setTheatherSort(String theatherSort) {
+		this.theatherSort = theatherSort;
 	}
 
 	public int getmScheduleNum() {
@@ -37,12 +55,12 @@ public class LocationBranchListVo {
 		this.mScheduleNum = mScheduleNum;
 	}
 
-	public Date getmStarTime() {
-		return mStarTime;
+	public Date getmStartTime() {
+		return mStartTime;
 	}
 
-	public void setmStarTime(Date mStarTime) {
-		this.mStarTime = mStarTime;
+	public void setmStartTime(Date mStartTime) {
+		this.mStartTime = mStartTime;
 	}
 
 	public int getPurchaseFilmNum() {
@@ -102,6 +120,13 @@ public class LocationBranchListVo {
 	}
 	
 	
+	public Date getRegDates() {
+		return regDates;
+	}
+
+	public void setRegDates(Date regDates) {
+		this.regDates = regDates;
+	}
 	
 	
 }
