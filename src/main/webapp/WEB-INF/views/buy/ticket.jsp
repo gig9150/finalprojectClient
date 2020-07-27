@@ -64,7 +64,7 @@ span {
 	margin-left: 200px;
 	margin-right: 200px;
 	height: -webkit-fill-available;
-	overflow-y: scroll;
+	overflow-y: auto;
 }
 
 .alltable::-webkit-scrollbar {
@@ -189,7 +189,7 @@ p {
 	</div>
 	<div id="branchView" style="border: 1px solid blue;width: 30%;">
 		<h3>상  영  관</h3>
-		<div id="theatherList" style="display: inline-block;float: left;width: 50%;">
+		<div id="theatherList" style="display: inline-block;float: left;width: 50%;overflow-y: auto; height: 85%;">
 			<ul style="text-align: center;width: 90%;list-style: none;">
 				<c:forEach var="vo" items="${mainCityList }">
 					<li>
@@ -214,7 +214,7 @@ p {
 	</div>
 	<div id="movieday" style="border: 1px solid green;width: 10%;">
 		<h3>날      짜</h3>
-		<div style="overflow-y: scroll; height: 85%;">
+		<div style="overflow-y: auto; height: 85%;">
 			<div style="text-align: center;width: 50%;list-style: none; margin: auto;">
 				<c:forEach var="vo" items="${monthDay }">
 					<c:choose>
@@ -245,40 +245,16 @@ p {
 	</div>
 	<div id="moviebuy" style="border: 1px solid blue;width: 30%;">
 		<h3>시      간</h3>
-			<div class="midieum">
-				<c:set var="checkName" value="null" />
-				<c:set var="checkTheather" value="0" />
-				<c:forEach var="vo" items="${list }">
-					<c:if test="${vo.FILMNAME != checkName }">
-						<div><br><h2>${vo.FILMNAME }</h2></div>
-					</c:if>
-					<c:if test="${vo.THEATHERNUM != checkTheather }">
-					<c:forEach var="seat" items="${scount }">
-						<c:if test="${vo.THEATHERNUM==seat.THEATHERNUM }">
-							<p>▶ ${vo.THEATHERNAME }| ${seat.CNT }석
-							<span class="badge badge-success">예매중</span> </p>
-						</c:if>
-						
-					</c:forEach>
-					</c:if>		
-				<div class="timetable">
-						<jsp:useBean id="myDate" class="java.util.Date"/>
-							<c:set target="${myDate}" property="time" value="${vo.MSTARTTIME }"/>
-							<fmt:formatDate value="${myDate }" pattern="HH:mm" var="mstarttime" />
-					<p style="font-size: 12px; font-family: sans-serif; font-color: #333333; text-align: center; text-decoration-color: darkslategray;">${mstarttime }</p>
-				</div>
-				<c:set var="checkName" value="${vo.FILMNAME }" />
-				<c:set var="checkTheather" value="${vo.THEATHERNUM }" />
-			</c:forEach>
-		</div>
+		<p style='vertical-align: middle;'>상영관,영화,시간표를 클릭해주세요.</p>
 	</div>
 </div>
 <script type="text/javascript">
-	
+	var filmNum=0;
 	var branchNum=0;
 	
 	// 상영관 ajax 시작..
 	function branchSelectList(data) {
+		filmNum=data;
 		$.ajax({
 			url : "${cp}/buy/branchSelect.do",
 			dataType : "JSON",
@@ -287,7 +263,7 @@ p {
 				$("#branchView").children().remove();
 				alert(tt);
 				str="<h3>상  영  관</h3>"+
-					"<div id='theatherList' style='display: inline-block;float: left;width: 50%;'>"+
+					"<div id='theatherList' style='display: inline-block;float: left;width: 50%; overflow-y: auto;'>"+
 					"<ul style='text-align: center;width: 90%;list-style: none;'>";
 				tt.mainCityList.forEach(function(vo,xxx){
 					str+="<li><div class='city' onclick='branchList("+vo.cityaddr+")'>"+
@@ -307,23 +283,26 @@ p {
 		});//ajax끝
 	};
 	
+	var cityaddr;
 	
-	
-	//영화관 ajax 시작..
-	function theatherList(data) {
-		alert(data);
+	//상영관 ajax 시작..
+	function theatherList(data,data1,data2) {
+		if(data1<10){
+			data1="0"+String(data1);
+		}
+		if(data2<10) data2= "0"+String(data2);
 		if(branchNum!=0){
 			$.ajax({
 				url : "${cp}/buy/ticketing.do",
 				dataType : "JSON",
-				data : {'branchNum':branchNum,'regDate':data},
+				data : {'branchNum':branchNum,'regDate':data+"-"+data1+"-"+data2,'cityaddr':cityaddr},
 				success : function(tt){
 						$("#moviebuy").children().remove();
 						var checkName="";
 						var checkTheather =0;
 						var str="";
 						str="<h3>시      간</h3>" +
-							 "<div class='midieum'>";
+							 "<div class='midieum' style='overflow-y: auto; height: 85%;'>";
 						tt.list.forEach(function(vo,xxx){
 							if(vo.FILMNAME != checkName){
 								str+="<div><br><h2>"+vo.FILMNAME+"</h2></div>";
@@ -336,7 +315,8 @@ p {
 									}
 								});
 							}
-							str+="<div class='timetable'>"+
+							//${cp}/buy/screen/selected.do?mscheduleNum='"+vo.MSCHEDULENUM+"&theatherNum="+vo.THEATHERNUM+"
+							str+="<div class='timetable' onclick='func("+vo.MSCHEDULENUM+","+vo.THEATHERNUM+")'>"+
 									"<p style='font-size: 12px; font-family: sans-serif; font-color: #333333; text-align: center; text-decoration-color: darkslategray;'>"+dateFormat(vo.MSTARTTIME)+"</p>"+
 								"</div>";
 							checkName=vo.FILMNAME;
@@ -360,18 +340,19 @@ p {
 			data : {'branchNum':data},
 			success : function(tt){
 				$("#movieday").children().remove();
-				var str="<h3>날      짜</h3><div style='overflow-y: scroll; height: 85%;'>"+
+				var str="<h3>날      짜</h3><div style='overflow-y: auto; height: 85%;'>"+
 					"<div style='text-align: center;width: 50%;list-style: none; margin: auto;'>";
-				var daliy="";
+				var day1="";
+				var day2="";
 				tt.forEach(function(day,xxx){
 					if(day.indexOf('-')!=-1){
-						daliy=day;
 						var yearsMon=day.split('-');
+						day1=yearsMon[0];
+						day2=yearsMon[1];
 						str+="<div>"+yearsMon[0]+"년<br>"+yearsMon[1]+"월</div>";
 					}else{
 						var days=day.split(' ');
-						var totalDay=daliy+"-"+days[1];
-						str+="<div class='hover' onclick='theatherList("+totalDay+")'>"+day+"일</div>";
+						str+="<div class='hover' onclick='theatherList("+day1+","+day2+","+days[1]+")'>"+day+"일</div>";
 					}
 				});
 				str+="</div></div>";
@@ -381,12 +362,12 @@ p {
 	};
 	
 	function branchList(data) {
-
+		cityaddr=data;
 		alert(data);
 	};
 	
 	
-	
+	//밀리초 가공..
 	function dateFormat(x){
 		var date = new Date(x);
 		var hour = date.getHours();
@@ -400,6 +381,10 @@ p {
 		return hour+":"+min;
 	}
 	
+	function func(data1,data2){
+		alert(data1+":"+data2);
+		location.href="${cp}/buy/screen/selected.do?mscheduleNum="+data1+"&theatherNum="+data2+"&filmNum="+filmNum;		
+	}
 	
 	
 	

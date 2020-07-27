@@ -48,6 +48,7 @@ public class TicketController {
 		
 		String dateUrl="http://localhost:9090/projectdb/movie/deadline.do";
 		String deadLine=service.get(dateUrl).trim();
+		System.out.println(deadLine);
 		Date d=new SimpleDateFormat("yyyy-MM-dd").parse(deadLine);
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM");
 		SimpleDateFormat sdf1=new SimpleDateFormat("E dd");
@@ -97,7 +98,7 @@ public class TicketController {
 	@ResponseBody
 	public String ticketing(@RequestParam(value="cityaddr",defaultValue = "서울") String cityaddr,
 			String regDate,@RequestParam(value="branchNum",defaultValue = "1") int branchNum) throws ParseException, JsonMappingException, JsonProcessingException {
-		String url="http://localhost:9090/projectdb/buy/citylist.do";
+		String url="http://localhost:9090/projectdb/buy/citylist.do?filmNum=1";
 		String code=service.get(url).trim();
 		Gson gson=new Gson();
 		CityListVo[] array=gson.fromJson(code, CityListVo[].class);
