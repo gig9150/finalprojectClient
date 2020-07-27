@@ -45,11 +45,11 @@ public class HomeController {
 //		model.addAttribute("movieMap",movieMap);
 		
 		
-//		String thumbnailMovieUrl ="http://localhost:9090/projectdb/getThumbnailMovie.do";
-//		String ThumbnailMovie = service.get(thumbnailMovieUrl).trim();
-//		HashMap<String,Object>[] map = gson.fromJson(ThumbnailMovie, HashMap[].class);
-//		List<HashMap<String,Object>> list=Arrays.asList(map);
-//		model.addAttribute("list",list);
+		String thumbnailMovieUrl ="http://localhost:9090/projectdb/getThumbnailMovie.do";
+		String ThumbnailMovie = service.get(thumbnailMovieUrl).trim();
+		HashMap<String,Object>[] map = gson.fromJson(ThumbnailMovie, HashMap[].class);
+		List<HashMap<String,Object>> list=Arrays.asList(map);
+		model.addAttribute("list",list);
 		String cp=session.getServletContext().getContextPath();
 		session.getServletContext().setAttribute("cp",cp);
 		return ".main";

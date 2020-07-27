@@ -433,20 +433,20 @@ header > .container .search-box input[type="submit"] {
 .movie-search-row > .col-md-3:first-child{
 	height: 38px;
 }
-/* 모달 */
+/* layout 모달 */
 
-.modal-content{
+.layout-modal-content{
 	width: fit-content;
     height: fit-content;
     margin: 15% -40%;
 }
 
-.modal-body{
+.layout-modal-body{
 	width: fit-content !important;
     height: fit-content !important;
 }
 
-.modal-footer{
+.layout-modal-footer{
 	text-align:left;
 }
 

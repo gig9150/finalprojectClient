@@ -8,7 +8,7 @@
 		</p>
 		<ul>
 			<li><a href="${cp}/service/serviceBoard.do">고객센터 홈</a><span>></span></li>
-			<li><a href="">자주 묻는 질문</a><span>></span></li>
+			<li><a href="${cp}/service/repeatedQna.do">자주 묻는 질문</a><span>></span></li>
 			<li><a href="">공지사항</a><span>></span></li>
 			<li class="on"><a href="${cp}/service/questionBoard.do">1:1문의</a><span
 				class="on">></span></li>

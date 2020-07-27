@@ -58,6 +58,7 @@ $(function(){
 			}
 		});
 	});
+
 	
 	
 	// 1:1 문의 끝 //////////////////////////////////////////////
@@ -79,14 +80,37 @@ $(function(){
     })
     
     //지점 신청 끝///////////////////////////////////////////////////
-	
+   
+    /*////////////////////// 자주묻는 질문 //////////////////////////*/
+    	$(".repeated-qna-main-one").on('click',function(e){
+			if($(this).next().css("display") == "none"){
+				$(this).next().css("display","block");
+			}else{
+				$(this).next().css("display","none");
+			}
+		});
+    /*//////////////////////////////////////////////////////////*/
 	
 	/*/////////////////////////////////카카오 지도/////////////////////////////// */
+    
+    $("#addr-search").on('click',function(e){
+		$("#addr-modal").modal();
+	});
+	
+	$("#addr-choice").on('click',function(){
+		$("#addr-text").val(addr);
+		$("#city-addr").val(cityAddr[0]);
+		$("#addr-modal").modal('hide');
+	});
+	
+	setTimeout(function(){
+		map.relayout();
+	},2000);
+	
 	var addr = '';
 	var cityAddr = '';
-	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-	
-	mapOption = {
+	var mapContainer = document.getElementById('map') // 지도를 표시할 div 
+	var mapOption = {
 	    center: new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
 	    level: 1 // 지도의 확대 레벨
 	};
@@ -165,19 +189,5 @@ $(function(){
 	        }
 	    }
 	}
-	
-	$("#addr-search").on('click',function(e){
-		$("#addr-modal").modal();
-	});
-	
-	$("#addr-choice").on('click',function(){
-		$("#addr-text").val(addr);
-		$("#city-addr").val(cityAddr[0]);
-		$("#addr-modal").modal('hide');
-	});
-	
-	setTimeout(function(){
-		map.relayout();
-	},2000);
 	/////////////////////////////////////////////////////////////
 });

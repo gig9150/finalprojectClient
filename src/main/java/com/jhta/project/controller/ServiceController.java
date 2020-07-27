@@ -8,12 +8,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
+import com.jhta.page.util.PageUtil;
 import com.jhta.project.service.RestService;
 import com.jhta.project.vo.ProposalVo;
+import com.jhta.project.vo.QnaVo;
 
 @Controller
 public class ServiceController {
@@ -30,6 +33,29 @@ public class ServiceController {
 		List<HashMap<String,Object>> qnaList =  Arrays.asList(qnaMap);
 		model.addAttribute("qnaList",qnaList);
 		return ".service.serviceBoard";
+	}
+	
+	@RequestMapping("/service/repeatedQna.do")
+	public String goRepeatedQna(@RequestParam(value="pageNum",defaultValue = "1")int pageNum,
+			@RequestParam(value="qnaTitle",defaultValue = "")String qnaTitle,Model model) throws JsonProcessingException {
+		String url = "http://localhost:9090/projectdb/service/qna/searchList.do";
+		String countUrl = "http://localhost:9090/projectdb/service/qna/searchCount.do?qnaTitle="+qnaTitle;
+		HashMap<String,Object> map = new HashMap<String,Object>();
+		ObjectMapper mapper = new ObjectMapper();
+		Gson gson = new Gson();
+		String count = service.get(countUrl).trim();
+		PageUtil pu = new PageUtil(pageNum,Integer.parseInt(count),10,5);
+		map.put("startRow",pu.getStartRow());
+		map.put("endRow",pu.getEndRow());
+		map.put("qnaTitle",qnaTitle);
+		String sMap = mapper.writeValueAsString(map);
+		String json = service.post(url,sMap).trim();
+		QnaVo[] vo = gson.fromJson(json, QnaVo[].class);
+		List<QnaVo> list = Arrays.asList(vo);
+		model.addAttribute("pu",pu);
+		model.addAttribute("list",list);
+		model.addAttribute("qnaTitle",qnaTitle);
+		return ".service.repeatedQna";
 	}
 	
 	@RequestMapping("/service/questionBoard.do")

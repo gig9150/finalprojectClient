@@ -10,7 +10,7 @@
 		<ul>
 			<li class="on"><a href="${cp}/service/serviceBoard.do">고객센터
 					홈</a><span class="on">></span></li>
-			<li><a href="">자주 묻는 질문</a><span>></span></li>
+			<li><a href="${cp}/service/repeatedQna.do">자주 묻는 질문</a><span>></span></li>
 			<li><a href="">공지사항</a><span>></span></li>
 			<li><a href="${cp}/service/questionBoard.do">1:1문의</a><span>></span></li>
 			<li><a href="">대관 문의</a><span>></span></li>
@@ -29,12 +29,12 @@
 	</div>
 	<div class="service-content">
 		<div class="container" id="service-home-container">
-			<h2>고객센터 홈</h2>
+			<h2 style="margin-bottom: 30px;">고객센터 홈</h2>
 			<div class="service-home">
 				<form class="form-inline" action="">
 					<div class="form-group">
 						<label>빠른 검색</label>&nbsp;&nbsp; <input type="text"
-							placeholder="검색어를 입력하세요..." class="form-control"> <input
+							placeholder="검색어를 입력하세요..." class="form-control" style="width: 450px; "> <input
 							type="submit" class="btn btn-default" value="검색 ">
 					</div>
 				</form>

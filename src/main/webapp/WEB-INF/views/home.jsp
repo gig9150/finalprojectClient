@@ -23,15 +23,15 @@
 				</div>
 				<div class="modal fade" id="foo${status.count}">
 					<div class="modal-dialog">
-						<div class="modal-content">
+						<div class="layout-modal-content">
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal"
 									aria-label="Close">
 									<span aria-hidden="true">&times;</span>
 								</button>
 							</div>
-						<div class="modal-body">${map.MOVIEURL}</div>
-						<div class="modal-footer">${map.FILMSTORY}</div>
+						<div class="layout-modal-body">${map.MOVIEURL}</div>
+						<div class="layout-modal-footer">${map.FILMSTORY}</div>
 						</div>
 					</div>
 				</div>
@@ -221,7 +221,7 @@
 					<li>
 						<div class="timeline-image">
 							<img class="img-circle img-responsive"
-								src="http://lorempixel.com/250/250/cats/1" alt="">
+								src="${cp}/resources/logo/남자사진.jpg" alt="" style="height:fit-content;">
 						</div>
 						<div class="timeline-panel">
 							<div class="timeline-heading">
@@ -239,7 +239,7 @@
 					<li>
 						<div class="timeline-image">
 							<img class="img-circle img-responsive"
-								src="http://lorempixel.com/250/250/cats/1" alt="">
+								src="${cp}/resources/logo/남자사진.jpg" alt="">
 						</div>
 						<div class="timeline-panel">
 							<div class="timeline-heading">
@@ -257,7 +257,7 @@
 					<li>
 						<div class="timeline-image">
 							<img class="img-circle img-responsive"
-								src="http://lorempixel.com/250/250/cats/1" alt="">
+								src="${cp}/resources/logo/남자사진.jpg" alt="">
 						</div>
 						<div class="timeline-panel">
 							<div class="timeline-heading">
@@ -275,7 +275,7 @@
 					<li>
 						<div class="timeline-image">
 							<img class="img-circle img-responsive"
-								src="http://lorempixel.com/250/250/cats/1" alt="">
+								src="${cp}/resources/logo/남자사진.jpg" alt="">
 						</div>
 						<div class="timeline-panel">
 							<div class="timeline-heading">

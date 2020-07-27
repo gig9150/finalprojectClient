@@ -155,21 +155,122 @@
 	position: relative;
     bottom: 300px;
     border-bottom:1px solid black;
+    padding-left: 0;
 }
 .service-home{
-	padding: 60px;
+	padding: 40px;
     background: gainsboro;
     width: 900px;
+    border-radius: 10px;
 }
 .service-home-glyphicon{
 	font-size:80px;
 	color:#01738b;
 }
 
+/*자주 묻는 질문~~~~@@@@*/
+.repeated-qna-menu{
+	margin-top: 30px;
+}
+
+.repeated-qna-ul{
+	list-style: none;
+}
+
+.repeated-qna-li{
+	text-align: center;
+    padding: 8px;
+	float: left;
+    width: 25%;
+    border: 1px solid #d8d9db;
+    opacity:0.8;
+}
+
+.repeated-qna-li:hover{
+	opacity:1;
+}
+
+.repeated-qna-row{
+	width:900px;
+	padding-bottom:0;
+	padding-top:120px;
+}
+
+.repeated-qna-main{
+	border-top:1px solid #eaeaea;
+}
+
+.repeated-qna-main-one {
+	padding:25px;
+}
+
+.repeated-qna-main-one a {
+	color: #037b94 !important;
+}
+
+.repeated-qna-main-one a p  {
+	margin-bottom:0;
+}
+
+.repeated-qna-main-two{
+	display:none;
+	padding:25px;
+}
+
+.repeated-qna-main-two p{
+	text-indent: 50px;
+}
+
+.repeated-qna-main-two p span{
+	color:#ec7f7a;
+}
+
+
+.repeated-qna-main-one:hover{
+	background-color:#f2f4f5;
+	cursor: pointer;
+}
+
+.repeated-qna-main-paging{
+	clear: both;
+    position: relative;
+    margin: 0 auto;
+    padding: 30px 0 0 0;
+    text-align: center;
+	
+}
+
+.pagination strong{
+	color: #fff;
+    background-color: #01738b;
+    border-color: #01738b;
+}
+
+.pagination a,.pagination a strong{
+	display: inline-block;
+    position: relative;
+    min-width: 40px;
+    height: 40px;
+    margin: 0;
+    padding: 0 3px;
+    border: 1px solid #ebebeb;
+    text-decoration: none;
+    line-height: 30px;
+    color: #333;
+    font-weight: 400;
+    vertical-align: middle;
+    border-radius: 4px;
+}
+
+.pagination a:hover{
+	border-color: #01738b;
+	color:#01738b;
+}
 
 
 
 
+/*/////////////////*/
 /*////////////////////////////////*/
 /*카카오 지도*/
 .kakao-map{
