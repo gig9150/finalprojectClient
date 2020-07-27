@@ -24,6 +24,7 @@ import com.google.gson.Gson;
 import com.jhta.project.service.RestService;
 import com.jhta.project.vo.BranchVo;
 import com.jhta.project.vo.CityListVo;
+import com.jhta.project.vo.FilmVo;
 import com.jhta.project.vo.TestVo;
 
 @Controller
@@ -79,9 +80,13 @@ public class TicketController {
 		List<HashMap<String, Object>> sCount = mapper.readValue(code2, typeRef);
 		model.addAttribute("scount", sCount);
 		model.addAttribute("list", list);
-		System.out.println("scount"+sCount.toString());
-		System.out.println("list"+list.toString());
 		
+		String filmbuylistUrl="http://localhost:9090/projectdb/movie/filmbuylist.do";
+		String smovieList=service.get(filmbuylistUrl).trim();
+		FilmVo[] movieArray= gson.fromJson(smovieList, FilmVo[].class);
+		List<FilmVo> movieList=Arrays.asList(movieArray);		
+		
+		model.addAttribute("movieList",movieList);
 		model.addAttribute("mainCityList",mainCityList);
 		model.addAttribute("cityList",cityList);
 		model.addAttribute("monthDay",monthDay);
@@ -135,6 +140,8 @@ public class TicketController {
 		String scountUrl="http://localhost:9090/projectdb/schedule/scount.do?branchNum="+branchNum;
 		String code2=service.get(scountUrl).trim();
 		List<HashMap<String, Object>> sCount = mapper.readValue(code2, typeRef);
+		
+		
 		TestVo vo=new TestVo();
 		vo.setCityList(cityList);
 		vo.setList(list);
