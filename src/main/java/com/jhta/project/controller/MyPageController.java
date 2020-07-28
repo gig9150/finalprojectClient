@@ -5,6 +5,8 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -29,8 +31,8 @@ public class MyPageController {
 	
 	//결제 내역,예매 내역
 	@RequestMapping("/mypage/payment.do")
-	public String payment(Model model) {
-		int memNum=1;
+	public String payment(Model model,HttpSession session) {
+		int memNum=(int)session.getServletContext().getAttribute("memNum");
 		String url = "http://localhost:9090/projectdb/mypage/payment.do?memNum="+memNum;
 		String code=service.get(url).trim();
 		Gson gson=new Gson();
@@ -41,8 +43,8 @@ public class MyPageController {
 	}
 	
 	@RequestMapping("/mypage/selectPayment.do")
-	public String selectPayment(Model model,String syear) {
-		int memNum=1;
+	public String selectPayment(Model model,String syear,HttpSession session) {
+		int memNum=(int)session.getServletContext().getAttribute("memNum");
 		Calendar cal = Calendar.getInstance();
 		String year=cal.get(Calendar.YEAR)+"";
 		year = year.substring(2, 4);
@@ -68,8 +70,8 @@ public class MyPageController {
 	
 	//쿠폰함
 	@RequestMapping("/mypage/cupon.do")
-	public String cupon(@RequestParam(value="pageNum",defaultValue = "1")int pageNum,Model model) {
-		int memNum=1;
+	public String cupon(@RequestParam(value="pageNum",defaultValue = "1")int pageNum,Model model,HttpSession session) {
+		int memNum=(int)session.getServletContext().getAttribute("memNum");
 		String countUrl = "http://localhost:9090/projectdb/mypage/cuponCount.do?memNum="+memNum;
 		String countCode=service.get(countUrl).trim();
 		int totalRowCount = Integer.parseInt(countCode);
@@ -93,8 +95,8 @@ public class MyPageController {
 	}
 	//내가 본 영화
 	@RequestMapping("/mypage/moviesaw.do")
-	public String moviesaw(Model model) {
-		int memNum=1;
+	public String moviesaw(Model model,HttpSession session) {
+		int memNum=(int)session.getServletContext().getAttribute("memNum");
 		String url = "http://localhost:9090/projectdb/mypage/moviesaw.do?memNum="+memNum;
 		Gson gson=new Gson();
 		String code=service.get(url).trim();
@@ -110,8 +112,8 @@ public class MyPageController {
 	}
 	
 	@RequestMapping("/mypage/selectList.do")
-	public String selectList(Model model,String syear) {
-		int memNum=1;
+	public String selectList(Model model,String syear,HttpSession session) {
+		int memNum=(int)session.getServletContext().getAttribute("memNum");
 		Calendar cal = Calendar.getInstance();
 		String year=cal.get(Calendar.YEAR)+"";
 		year = year.substring(2, 4);
@@ -143,8 +145,8 @@ public class MyPageController {
 
 	//1:1문의 리스트
 	@RequestMapping("/mypage/inquiry.do")
-	public String askList(@RequestParam(value="pageNum",defaultValue = "1")int pageNum,Model model) {
-		int memNum=1;
+	public String askList(@RequestParam(value="pageNum",defaultValue = "1")int pageNum,Model model,HttpSession session) {
+		int memNum=(int)session.getServletContext().getAttribute("memNum");
 		String countUrl = "http://localhost:9090/projectdb/mypage/askCount.do?memNum="+memNum;
 		String countCode=service.get(countUrl).trim();
 		int totalRowCount = Integer.parseInt(countCode);
@@ -185,8 +187,8 @@ public class MyPageController {
 	}
 	//문의 등록
 	@RequestMapping("/mypage/inquiryInsertOk.do")
-	public String askInsertOk(String qnaTitle, String askContent, String memPhone, String email, String memName,Model model) {
-		int memNum=1;
+	public String askInsertOk(String qnaTitle, String askContent, String memPhone, String email, String memName,Model model,HttpSession session) {
+		int memNum=(int)session.getServletContext().getAttribute("memNum");
 		AskVo vo=new AskVo(0, memNum, qnaTitle, askContent, null, null, null, memPhone, email, memName);
 		String url = "http://localhost:9090/projectdb/mypage/inquiryInsert.do";
 		Gson gson=new Gson();
@@ -194,7 +196,7 @@ public class MyPageController {
 		String code=service.post(url,jsonString).trim();
 		int result=Integer.parseInt(code);
 		if(result>0) {
-			return askList(1,model);
+			return askList(1,model, session);
 		}else {
 			return "error";
 		}
