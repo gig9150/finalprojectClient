@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<script type="text/javascript" src="${cp }/resources/js/jquery-3.5.1.js"></script>
 
 <style>
 * {
@@ -132,15 +131,15 @@
 		</div>
 
 		<div id="movie_screen_box" >
-			<ul class="movie_list">
+			<ul class="movie_list" >
 				<c:forEach var="movieList" items="${allMovieList }">
 						<li class="screen_add_box"
-						style="margin-bottom: 40px; float: left;">
-						<div class="each_movie" style="float: left; margin-right: 15px;">
+						style="margin-bottom: 40px; display:inline-block">
+						<div class="each_movie" style=" margin-right: 15px;">
 								<img src="${movieList.movieImgUrl }"
 									style="width: 220px;" />
-									<div><a href="${cp}/movie/movieDetailView.do?filmNum=${movieList.filmNum }" class="btnImg" style="position:absolute;">상세정보</a></div>
-								<div style="margin-top: 10px">
+									<div><a href="${cp}/movie/movieDetailView.do?filmNum=${movieList.filmNum }" class="btnImg" >상세정보</a></div>
+								    <div style="margin-top: 10px">
 									<strong class="tit_info" style="display: block;">${movieList.filmName }</strong>
 									<div class="sub_info"> <span class="rate_info">예매율<strong>
 											${movieList.rRate}</strong>%</span>  <span class="star_info">평점 <img src="${cp }/resources/image/movieDetail/star_small.png">

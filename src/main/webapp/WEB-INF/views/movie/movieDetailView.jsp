@@ -83,7 +83,7 @@
 .section2 {
 	/*background-color: #ccc;*/
 	width: 100%;
-	height: 60%;
+	height: 65%;
 }
 
 /*영화상세보기*/
@@ -139,6 +139,94 @@
 	text-align: center;
 	font-size: 16px;
 }
+
+
+.movi_review_box{
+    height: 90px;
+    margin-bottom: 55px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+
+.movi_review_score{
+    float: left;
+    width: 300px;
+    height: 88px;
+    background: #F8F8F8;
+    text-align: center;
+    border-right: 1px solid #ccc;
+}
+
+.movi_review_comment{
+    float: left;
+    width: 438px;
+    height: 88px;
+}
+
+textarea {
+	width: 100%;
+    line-height: 1.5;
+    box-sizing: border-box;
+    padding: 13px 18px;
+    border: 1px solid #DDD;
+    resize: none;
+    font-size: 14px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+}
+.btn_submit{
+    float: left;
+    width: 112px;
+    height: 90px;
+    border: none;
+    margin: -1px -1px 0 0;
+    padding: 0;
+    background: #666;
+    color: #fff;
+    font-size: 15px;
+
+}
+
+button {
+	cursor: pointer;
+	appearance: button;
+    -webkit-writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    color: -internal-light-dark(buttontext, rgb(170, 170, 170));
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: center;
+    align-items: flex-start;
+    cursor: default;
+    background-color: -internal-light-dark(rgb(239, 239, 239), rgb(74, 74, 74));
+    box-sizing: border-box;
+    margin: 0em;
+    font: 400 13.3333px Arial;
+    padding: 1px 6px;
+    border-width: 2px;
+    border-style: outset;
+    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(195, 195, 195));
+    border-image: initial;
+}
+
+
+.starR{
+  background: url('${cp}/resources/image/movieDetail/star_2.png') no-repeat right 0;
+  background-size: auto 100%;
+  margin-right:5px;
+  width: 15px;
+  height: 15px;
+  display: inline-block;
+  text-indent: -9999px;
+  cursor: pointer;
+}
+.starR.on{background-position:0 0;}
+
 </style>
 
 <div class="container">
@@ -198,7 +286,44 @@
 							<button id="btn_review" style="width: 49%;">
 								<span style="border-bottom: 1px solid #ccc; font-size: 16px;">평점 및 관람평</span>
 							</button>
-							<div id="review_section"></div>
+							<div id="review_section">
+								<div class="movi_info">
+									<span class="">총 평점</span><img src="${cp }/resources/image/movieDetail/star_big.png"> {컨트롤러가공후데이터념겨주기} <span class="">/ 10</span>
+									<p class="txt_info"><span>영화 관람 후 관람평을 작성하시면<br> M.POINT 50P를 적립해 드립니다.</span></p>
+								</div>
+							
+								<div class="movi_review_box">
+									<div class="movi_review_score">
+										<div class="starRev">
+										 <span class="starR on">별1</span>
+											  <span class="starR">별2</span>
+											  <span class="starR">별3</span>
+											  <span class="starR">별4</span>
+											  <span class="starR">별5</span>
+											  <span class="starR">별6</span>
+											  <span class="starR">별7</span>
+											  <span class="starR">별8</span>
+											  <span class="starR">별9</span>
+											  <span class="starR">별10</span>
+										
+										</div>
+									
+									</div>
+									<div class="movi_review_comment">
+										<textarea rows="3" cols="3" placeholder="평점 및 영화 관람평을 작성해주세요. 한글 110자/ 영문 220자 작성 가능합니다.">
+										
+										
+										
+										</textarea>
+										
+									</div>
+								<button type="submit" id="btnComment" class="btn_submit" >
+								관람평 작성
+								</button>								
+								</div>
+							
+							
+							</div>
 							<div id="story_box" class="bottom_box" style="padding-top: 15px">
 								<p>${movieDetailVo.filmStory }</p>
 
@@ -213,6 +338,13 @@
 </div>
 <script>
 	$(function() {
+		$('.starRev span').click(function(){
+			  $(this).parent().children('span').removeClass('on');
+			  $(this).addClass('on').prevAll('span').addClass('on');
+			  return false;
+			});
+		
+		
 		var cloneDiv = $("#story_box").clone();
 		$('#btn_detail').click(function() {
 			var filmNum = $("#filmNum").val();
@@ -237,7 +369,9 @@
 					"filmNum" : filmNum
 				},
 				success : function(reviewListVo) {
-
+					$("#review_section").append(
+						"<form action=''></form>"
+					);
 					$(reviewListVo).each(
 							function(i, review) {
 								$("#story_box").append(
