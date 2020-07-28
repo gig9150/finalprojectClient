@@ -202,6 +202,7 @@ public class MyPageController {
 		}
 	}
 	
+	
 	//회원정보관리
 	@RequestMapping("/mypage/memberInfo.do")
 	public String memberInfo(){
