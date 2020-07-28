@@ -39,8 +39,8 @@ public class BranchController {
 	
 	@RequestMapping(value="/service/question/branch.do",produces="application/json;charset=UTF-8")
 	@ResponseBody
-	public String getBranch(String proAddr) {
-		String url = "http://localhost:9090/projectdb/service/branch.do?proAddr="+proAddr;
+	public String getBranch(String cityAddr) {
+		String url = "http://localhost:9090/projectdb/service/branch.do?cityAddr="+cityAddr;
 		Gson gson = new Gson();
 		String region =service.get(url).trim();
 		String[] array = gson.fromJson(region, String[].class);

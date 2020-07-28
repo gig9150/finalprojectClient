@@ -13,7 +13,7 @@ body {
   line-height: 1.5;
   font-size: 15px;
   color: #444444;
-  font-weight: 400;
+  font-weight: 500;
   font-family: NanumBarunGothic,Dotum,'돋움',sans-serif;
 }
 
@@ -410,7 +410,7 @@ header > .container .search-box input[type="submit"] {
 	BORDER-RIGHT: medium none;
 	BORDER-TOP: medium none;
 	background-color: #120c0b;
-	font-size: 22px;
+	font-size: 17px;
 }
 
 .movie-search-row-div > button{
@@ -420,12 +420,13 @@ header > .container .search-box input[type="submit"] {
 }
 
 .movie-search-row-div > button > span{
-	font-size:30px;
+	font-size: 25px;
+    top: -1px;
 }
 
 .movie-search-row-div > p{
 	display: inline-block;
-	font-size:30px;
+	font-size: 20px;
 	position: relative;
     bottom: 5px;
     margin: 0;
@@ -494,7 +495,7 @@ header > .container .search-box input[type="submit"] {
 	width: 20%;
 	text-align: center;
 }
-.menu-link > span{
+.menu-link > a >  span{
 	left:5px;
 	color: #ffffff;
 	font-size: 110px;
@@ -642,6 +643,22 @@ header > .container .search-box input[type="submit"] {
 }
 .main-section4 hr{
 	margin-bottom: 40px;
+}
+
+.main-section4-rowtwo div,.main-section4-rowone div p{
+	text-align:center;
+	margin-bottom:0;
+}
+.main-section4-rowone{
+	border-top: 1px solid #e2e2e2;
+	border-bottom: 1px solid #e2e2e2;
+	padding:20px 0!important;
+}
+.main-section4-rowone div:nth-child(1){
+	border-right: 1px solid #e2e2e2;
+}
+.main-section4-rowone div:nth-child(3){
+	border-left: 1px solid #e2e2e2;
 }
 
 /*/////////////////////////////////////////////////////*/
@@ -812,9 +829,11 @@ footer > .container > div {
   align-items: center;
   flex-wrap: wrap;
   padding-top: 25px;
+  font-size: 15px;
 }
 footer > .container > div > nav > a {
   color: #cacfd6;
+  font-size: 15px;
 }
 footer > .container > div > nav > a:hover {
   color: #66ceff;

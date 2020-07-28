@@ -151,22 +151,24 @@
 		</div>
 		<div class="container">
 			<div class="menu-link">
-				<span class="glyphicon glyphicon-star" aria-hidden="true"> </span><a>vip
-					lounge</a>
+				<a href="#"><span class="glyphicon glyphicon-star" aria-hidden="true"> </span>
+				<p>vip lounge</p></a>
 			</div>
 			<div class="menu-link">
-				<span class="glyphicon glyphicon-glass" aria-hidden="true"> </span><a>멤버쉽</a>
+				<a href="#"><span class="glyphicon glyphicon-glass" aria-hidden="true"> </span>
+				<p>멤버쉽</p></a>
 			</div>
 			<div class="menu-link">
-				<span class="glyphicon glyphicon-credit-card" aria-hidden="true">
-				</span><a>할인카드안내</a>
+				<a href="#"><span class="glyphicon glyphicon-credit-card" aria-hidden="true"></span>
+				<p>할인카드안내</p></a>
 			</div>
 			<div class="menu-link">
-				<span class="glyphicon glyphicon-headphones" aria-hidden="true">
-				</span><a>이벤트</a>
+				<a href="#"><span class="glyphicon glyphicon-headphones" aria-hidden="true"></span>
+				<p>이벤트</p></a>
 			</div>
 			<div class="menu-link">
-				<span class="glyphicon glyphicon-inbox" aria-hidden="true"> </span><a>스토어</a>
+				<a href="${cp}/store/store.do"><span class="glyphicon glyphicon-inbox" aria-hidden="true"> </span>
+				<p>스토어</p></a>
 			</div>
 		</div>
 		<hr>
@@ -188,7 +190,8 @@
 						</p> <img src="${cp}/resources/logo/MovieTheaters.jpg">
 					</a>
 				</div>
-				<div class="col-md-2 new-branch-info">
+				
+				<!-- <div class="col-md-2 new-branch-info">
 					<a>
 						<p>
 							<span>부산/창원/서울<br>2020/06/24
@@ -203,7 +206,7 @@
 							</span> <strong>창원</strong>
 						</p> <img src="${cp}/resources/logo/MovieTheaters.jpg">
 					</a>
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</div>
@@ -310,7 +313,7 @@
 	<div class="container main-section4">
 		<h2>메가시네마 안내</h2>
 		<hr>
-		<div class="row">
+		<div class="row main-section4-rowone">
 			<div class="col-md-2">
 				<p>메가시네마</p>
 			</div>
@@ -320,10 +323,10 @@
 				</p>
 			</div>
 			<div class="col-md-2">
-				<p>더보기 &raquo;</p>
+				<p>더보기 <span style="font-size:20px;">&raquo;</span></p>
 			</div>
 		</div>
-		<div class="row">
+		<div class="row main-section4-rowtwo">
 			<div class="col-md-2">
 				<a href="${cp}/service/serviceBoard.do"> <span
 					class="glyphicon glyphicon-headphones service-home-glyphicon"

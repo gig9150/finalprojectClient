@@ -26,13 +26,12 @@ $(function(){
 	
 	$("#postal").change(function(){
 		if($(this).is(":checked")){
-			console.log("dzdzdz");
 			$.ajax({
 				url:"http://localhost:9090/project/service/question/region.do",
 				type:"get",
 				dataType:"json",
 				success:function(data){
-					$("#postal-select1 option").not('option:first').remove();
+					$("#postal-select1 option").not(':first').remove();
 					$(data).each(function(i,val){
 						var data = val.data;
 						$("#postal-select1").append("<option value='"+data+"'>"+data+"</option>");
@@ -43,17 +42,16 @@ $(function(){
 	});
 	
 	$("#postal-select1").change(function(){
-		var proAddr = $("#postal-select1").val();
-		console.log(proAddr);
+		var cityAddr = $("#postal-select1").val();
 		$("#postal-select2").prop("disabled",false);
 		$.ajax({
-			url: "http://localhost:9090/project/service/question/branch.do?proAddr="+proAddr,
+			url: "http://localhost:9090/project/service/question/branch.do?cityAddr="+cityAddr,
 			dataType:"json",
 			success:function(data){
-				$("#postal-select2 option").not('option:first').remove();
+				$("#postal-select2 option").not(':first').remove();
 				$(data).each(function(i,val){
-					var data = val.data;
-					$("#postal-select2").append("<option value='"+data+"'>"+data+"</option>")
+					var da = val.data;
+					$("#postal-select2").append("<option value='"+da+"'>"+da+"</option>")
 				});
 			}
 		});
@@ -90,7 +88,27 @@ $(function(){
 			}
 		});
     /*//////////////////////////////////////////////////////////*/
+	/*/////////////////////////////////분실물 게시판///////////////////////////// */
 	
+		$(".region-select").change(function(){
+			$(".branch-select").prop("disabled",false);
+			$(".branch-select option").not(":first").remove();
+			var cityAddr = $(this).val()
+			$.ajax({
+				url:"http://localhost:9090/project/service/getBranch.do?cityAddr="+cityAddr,
+				type:"json",
+				success:function(data){
+					$(data).each(function(i,val){
+						var brName = "<option value='"+val+"'>"+val+"</option>"
+						$(".branch-select").append(brName);
+					});
+				}
+			});
+		});
+	
+	
+	
+	/**/
 	/*/////////////////////////////////카카오 지도/////////////////////////////// */
     
     $("#addr-search").on('click',function(e){

@@ -11,18 +11,14 @@
 		</div>
 		<div class="row border">
 			<div class="col-md-4">
-			
 			<!-- id,이름,연락처 값 세션에서 받아오기 -->
-			
 			<label>아이디:</label><input type="text" class="form-control"
 				placeholder="id" name="memberId" value="asd1234" readonly="readonly">
 			</div>
-			
 			<div class="col-md-4">
 				<label>이름:</label><input type="text" class="form-control"
 					placeholder="name" readonly="readonly" value="허웅">
 			</div>
-			
 			<div class="col-md-4">
 				<label>연락처:</label><input type="text" class="form-control"
 					placeholder="phone" readonly="readonly" value="01077206566">

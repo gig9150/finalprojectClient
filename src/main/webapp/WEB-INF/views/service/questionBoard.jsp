@@ -9,11 +9,11 @@
 		<ul>
 			<li><a href="${cp}/service/serviceBoard.do">고객센터 홈</a><span>></span></li>
 			<li><a href="${cp}/service/repeatedQna.do">자주 묻는 질문</a><span>></span></li>
-			<li><a href="">공지사항</a><span>></span></li>
+			<li><a href="${cp}">공지사항</a><span>></span></li>
 			<li class="on"><a href="${cp}/service/questionBoard.do">1:1문의</a><span
 				class="on">></span></li>
-			<li><a href="">대관 문의</a><span>></span></li>
-			<li><a href="">분실문 문의</a><span>></span></li>
+			<li><a href="${cp}">대관 문의</a><span>></span></li>
+			<li><a href="${cp}/service/lostThingBoard.do">분실문 문의</a><span>></span></li>
 		</ul>
 		<div class="customer-div">
 			<div class="tit">
@@ -26,8 +26,8 @@
 			</p>
 		</div>
 	</div>
-	<div class="service-content">
-		<h2>1:1 문의</h2>
+	<div class="service-content" style="bottom:10px;">
+		<h1 style="margin-bottom:30px">1:1 문의</h1>
 		<div>
 			<ul>
 				<li>문의하시기 전 FAQ를 확인하시면 궁금증을 더욱 빠르게 해결하실 수 있습니다.</li>

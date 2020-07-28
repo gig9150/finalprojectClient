@@ -11,10 +11,10 @@
 			<li><a href="${cp}/service/serviceBoard.do">고객센터 홈</a><span>></span></li>
 			<li class="on"><a href="${cp}/service/repeatedQna.do">자주 묻는
 					질문</a><span class="on">></span></li>
-			<li><a href="">공지사항</a><span>></span></li>
+			<li><a href="${cp}">공지사항</a><span>></span></li>
 			<li><a href="${cp}/service/questionBoard.do">1:1문의</a><span>></span></li>
-			<li><a href="">대관 문의</a><span>></span></li>
-			<li><a href="">분실문 문의</a><span>></span></li>
+			<li><a href="${cp}">대관 문의</a><span>></span></li>
+			<li><a href="${cp}/service/lostThingBoard.do">분실문 문의</a><span>></span></li>
 		</ul>
 		<div class="customer-div">
 			<div class="tit">
@@ -30,7 +30,7 @@
 	<div class="service-content">
 		<div class="container" id="service-home-container"
 			style="padding-bottom: 30px;">
-			<h2 style="margin-bottom: 30px;">자주 묻는 질문</h2>
+			<h1 style="margin-bottom: 30px;">자주 묻는 질문</h1>
 			<div class="service-home">
 				<form class="form-inline" action="${cp}/service/repeatedQna.do?pageNum=${pu.pageNum}&qnaTitle=${qnaTitle}">
 					<div class="form-group">

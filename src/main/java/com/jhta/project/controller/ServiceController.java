@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -76,6 +77,27 @@ public class ServiceController {
 		ObjectMapper mapper=new ObjectMapper();
 		String jsonString= mapper.writeValueAsString(vo);
 		String code=service.post(url,jsonString).trim();
+		return code;
+	}
+	
+	//분실물 게시판 매핑
+	@RequestMapping("/service/lostThingBoard.do")
+	public String goLostThingBoard(Model model) {
+		String url = "http://localhost:9090/projectdb/service/region.do";
+		Gson gson = new Gson();
+		String code = service.get(url).trim();
+		String[] region = gson.fromJson(code,String[].class);
+		List<String> list = Arrays.asList(region);
+		model.addAttribute("list",list);
+		return ".service.lostThingBoard";
+	}
+
+	@RequestMapping(value="/service/getBranch.do",produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String regionBranch(String cityAddr){
+		String url = "http://localhost:9090/projectdb/service/branch.do?cityAddr="+cityAddr;
+		String code = service.get(url).trim();
+		System.out.println("ddd"+code);
 		return code;
 	}
 }
