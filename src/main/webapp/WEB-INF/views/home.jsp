@@ -13,7 +13,8 @@
 			<c:forEach var="map" items="${list}" varStatus="status">
 				<div class="col-xs-6 col-md-3">
 					<a class="thumbnail"> <img src="${map.MOVIEIMGURL}"
-						data-toggle="modal" class="modaldata" data-target="#foo${status.count}"></a>
+						data-toggle="modal" class="modaldata"
+						data-target="#foo${status.count}"></a>
 					<div>
 						<button type="button" class="btn btn-default home-movie-btn1">
 							<span class="glyphicon glyphicon-heart"></span>&nbsp;<a>${map.VG}</a>
@@ -30,8 +31,8 @@
 									<span aria-hidden="true">&times;</span>
 								</button>
 							</div>
-						<div class="layout-modal-body">${map.MOVIEURL}</div>
-						<div class="layout-modal-footer">${map.FILMSTORY}</div>
+							<div class="layout-modal-body">${map.MOVIEURL}</div>
+							<div class="layout-modal-footer">${map.FILMSTORY}</div>
 						</div>
 					</div>
 				</div>
@@ -98,15 +99,18 @@
 					<!-- Wrapper for slides -->
 					<div class="carousel-inner" role="listbox">
 						<div class="item active">
-							<img src="${cp}/resources/logo/혜택1.jpg" style="width: 403px;height: 542px;">
+							<img src="${cp}/resources/logo/혜택1.jpg"
+								style="width: 403px; height: 542px;">
 							<div class="carousel-caption">...</div>
 						</div>
 						<div class="item">
-							<img src="${cp}/resources/logo/혜택1.jpg" style="width: 403px;height: 542px;">
+							<img src="${cp}/resources/logo/혜택1.jpg"
+								style="width: 403px; height: 542px;">
 							<div class="carousel-caption">...</div>
 						</div>
 						<div class="item">
-							<img src="${cp}/resources/logo/혜택1.jpg" style="width: 403px;height: 542px;">
+							<img src="${cp}/resources/logo/혜택1.jpg"
+								style="width: 403px; height: 542px;">
 							<div class="carousel-caption">...</div>
 						</div>
 					</div>
@@ -167,7 +171,7 @@
 		</div>
 		<hr>
 		<div class="container">
-			<div class="row" style="margin-top:40px; color: #ffffff">
+			<div class="row" style="margin-top: 40px; color: #ffffff">
 				<div class="col-md-3">
 					<p>
 						<span style="display: block;"> LIFE THEATER MEGABOX </span> <strong
@@ -206,7 +210,7 @@
 </section>
 <section>
 	<div class="container main-section3">
-		<h1 style="position:absolute;color:#ffffff;margin-bottom:20px;">오늘의 영화</h1>
+		<h2>오늘의 영화</h2>
 		<div class="row">
 			<div class="col-lg-4">
 				<img src="${cp}/resources/images/1.png">
@@ -221,7 +225,8 @@
 					<li>
 						<div class="timeline-image">
 							<img class="img-circle img-responsive"
-								src="${cp}/resources/logo/남자사진.jpg" alt="" style="height:fit-content;">
+								src="${cp}/resources/logo/남자사진.jpg" alt=""
+								style="height: fit-content;">
 						</div>
 						<div class="timeline-panel">
 							<div class="timeline-heading">
@@ -229,7 +234,8 @@
 								<h4 class="subheading">아이디</h4>
 							</div>
 							<div class="timeline-body">
-								<p class="text-muted">리뷰</p><br>
+								<p class="text-muted">리뷰</p>
+								<br>
 								<p class="text-muted">평점</p>
 								<small>좋아요 갯수 + 개</small>
 							</div>
@@ -239,7 +245,8 @@
 					<li>
 						<div class="timeline-image">
 							<img class="img-circle img-responsive"
-								src="${cp}/resources/logo/남자사진.jpg" alt="">
+								src="${cp}/resources/logo/남자사진.jpg" alt=""
+								style="height: fit-content;">
 						</div>
 						<div class="timeline-panel">
 							<div class="timeline-heading">
@@ -247,7 +254,8 @@
 								<h4 class="subheading">아이디</h4>
 							</div>
 							<div class="timeline-body">
-								<p class="text-muted">리뷰</p><br>
+								<p class="text-muted">리뷰</p>
+								<br>
 								<p class="text-muted">평점</p>
 								<small>좋아요 갯수 + 개</small>
 							</div>
@@ -257,7 +265,8 @@
 					<li>
 						<div class="timeline-image">
 							<img class="img-circle img-responsive"
-								src="${cp}/resources/logo/남자사진.jpg" alt="">
+								src="${cp}/resources/logo/남자사진.jpg" alt=""
+								style="height: fit-content;">
 						</div>
 						<div class="timeline-panel">
 							<div class="timeline-heading">
@@ -265,7 +274,8 @@
 								<h4 class="subheading">아이디</h4>
 							</div>
 							<div class="timeline-body">
-								<p class="text-muted">리뷰</p><br>
+								<p class="text-muted">리뷰</p>
+								<br>
 								<p class="text-muted">평점</p>
 								<small>좋아요 갯수 + 개</small>
 							</div>
@@ -275,7 +285,8 @@
 					<li>
 						<div class="timeline-image">
 							<img class="img-circle img-responsive"
-								src="${cp}/resources/logo/남자사진.jpg" alt="">
+								src="${cp}/resources/logo/남자사진.jpg" alt=""
+								style="height: fit-content;">
 						</div>
 						<div class="timeline-panel">
 							<div class="timeline-heading">
@@ -283,12 +294,12 @@
 								<h4 class="subheading">아이디</h4>
 							</div>
 							<div class="timeline-body">
-								<p class="text-muted">리뷰</p><br>
+								<p class="text-muted">리뷰</p>
+								<br>
 								<p class="text-muted">평점</p>
 								<small>좋아요 갯수 + 개</small>
 							</div>
 						</div>
-						<div class="line"></div>
 					</li>
 				</ul>
 			</div>
@@ -296,7 +307,84 @@
 	</div>
 </section>
 <section>
-	<div class="container main-section4"></div>
+	<div class="container main-section4">
+		<h2>메가시네마 안내</h2>
+		<hr>
+		<div class="row">
+			<div class="col-md-2">
+				<p>메가시네마</p>
+			</div>
+			<div class="col-md-8">
+				<p>
+					<a><span>[공지]</span>필름/클래식 소사이어티 회원 이용 및 변경 사항 (월별 할인 쿠폰) 안내</a>
+				</p>
+			</div>
+			<div class="col-md-2">
+				<p>더보기 &raquo;</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2">
+				<a> <span
+					class="glyphicon glyphicon-headphones service-home-glyphicon"
+					aria-hidden="true" onclick="${cp}/service/serviceBoard.do"></span>
+					<p>
+						<strong>고객센터</strong>
+					</p>
+				</a>
+			</div>
+			<div class="col-md-2">
+				<a> <span
+					class="glyphicon glyphicon-comment
+								 service-home-glyphicon"
+					aria-hidden="true"></span>
+					<p>
+						<strong>자주묻는 질문</strong>
+					</p>
+				</a>
+			</div>
+			<div class="col-md-2">
+				<a> <span
+					class="glyphicon glyphicon-folder-close
+								 service-home-glyphicon"
+					aria-hidden="true"></span>
+					<p>
+						<strong>분실물 문의</strong>
+					</p>
+				</a>
+			</div>
+			<div class="col-md-2">
+				<a> <span
+					class="glyphicon glyphicon-heart-empty
+								 service-home-glyphicon"
+					aria-hidden="true"></span>
+					<p>
+						<strong>1:1문의</strong>
+					</p>
+				</a>
+			</div>
+			<div class="col-md-2">
+				<a> <span
+					class="glyphicon glyphicon-user
+							 service-home-glyphicon"
+					aria-hidden="true"></span>
+					<p>
+						<strong>대관문의</strong>
+					</p>
+				</a>
+			</div>
+			<div class="col-md-2">
+				<a> <span
+					class="glyphicon glyphicon-pencil
+							 service-home-glyphicon"
+					aria-hidden="true"></span>
+					<p>
+						<strong>공지사항</strong>
+					</p>
+				</a>
+			</div>
+		</div>
+	</div>
 </section>
 
 
