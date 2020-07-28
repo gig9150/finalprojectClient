@@ -191,6 +191,7 @@
 					<p class="tit">관람권 / 쿠폰함</p>
 				</div>
 				
+				
 				<div class="cont-area">
 					<div class="total">
 						<a href="${cp }/mypage/cupon.do"><img src="${cp }/resources/images/mypage/coupon_icon.png" style="width: 70px; height: 70px;"></a>
