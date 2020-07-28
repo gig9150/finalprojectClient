@@ -128,7 +128,7 @@ $(function(){
 			$("#submit").attr("disabled", "disabled");
 		}else{
 			$("#email_chek").text("");
-			$("#submit").removeAttr("disabled");
+			$("#submit").attr("disabled", "disabled");
 		}
 	});
 	
@@ -136,6 +136,13 @@ $(function(){
 		$(".chek_font").text("");
 	});
 	
+	$("input[type='text']").focusout(function(){
+		if(($("input[type='text']").val()!="" || $("input[type='text']").val()!=null) &&
+				($(".chek_font").text()== "" || $(".chek_font").text()==null)){
+			console.log("dd");
+			$("#submit").removeAttr("disabled");
+		}
+	});
 	
 });
 

@@ -172,10 +172,10 @@ public class LogController {
 			MembershipVo vo =  gson.fromJson(code, MembershipVo.class);
 			
 			//마일리지 세션에 담기(성진 7/28 2:34pm)
-			String mileUrl="http://localhost:9090/projectdb/log/mlie.do?memId="+memId;
-			String mileCode = service.get(mileUrl).trim();
-			MileVo MileVo =  gson.fromJson(mileCode, MileVo.class);
-			session.getServletContext().setAttribute("mile",MileVo.getMile());
+//			String mileUrl="http://localhost:9090/projectdb/log/mlie.do?memId="+memId;
+//			String mileCode = service.get(mileUrl).trim();
+//			MileVo MileVo =  gson.fromJson(mileCode, MileVo.class);
+//			session.getServletContext().setAttribute("mile",MileVo.getMile());
 			
 			System.out.println(vo);
 			session.getServletContext().setAttribute("memNum",vo.getMemNum());
