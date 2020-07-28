@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -50,9 +52,10 @@ public class MovieBuyController {
 	}
 	
 	@RequestMapping("/buy/screen/insert.do")
-	public String completa(String[] seatName,int[] seatNum,int seatMoney,String msg,Model model) {
+	public String completa(String[] seatName,int[] seatNum,int seatMoney,String msg,Model model,HttpSession session) {
+		//int memNum=(int)session.getServletContext().getAttribute("memNum");
 		System.out.println("결제 완료쪽 컨트롤러다..."+seatMoney);
-		String url="http://localhost:9090/projectdb/buy/screen/insert.do?seatMoney="+seatMoney+"&memNum=1";
+		String url="http://localhost:9090/projectdb/buy/screen/insert.do?seatMoney="+seatMoney+"&memNum=1";//+memNum;
 		Gson gson=new Gson();
 		List<BookVo> list=new ArrayList<BookVo>();
 		for(int i=0;i<seatName.length;i++) {
