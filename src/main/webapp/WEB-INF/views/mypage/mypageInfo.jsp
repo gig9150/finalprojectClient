@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -167,7 +168,7 @@
 	
 				<div class="cont-area">
 					<div class="total">
-						<p class="now">0 P (세션)</p>
+						<p class="now">${mile }P</p>
 					</div>
 				</div>
 				

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <header>
 	  <div class="top-div">
 	      	<ul class="top-menu-one">
@@ -8,7 +9,14 @@
 	      		<li><a href="">고객센터</a></li>
 	      	</ul>
 		    <ul class="top-menu-two">
-		      <li><a href="${cp }/log/login.do">로그인</a></li>
+		    <c:choose>
+		    	<c:when test="${empty memId }">
+				      <li><a href="${cp }/log/login.do">로그인</a></li>
+		    	</c:when>
+		    	<c:otherwise>
+				      <li><a href="${cp }/log/logout.do">로그아웃</a></li>
+		    	</c:otherwise>
+		    </c:choose>
 		      <li><a href="${cp }/log/signupstart.do">회원가입</a></li>
 		      <li><a href="${cp }/mypage/payment.do">마이페이지</a></li>
 		    </ul>

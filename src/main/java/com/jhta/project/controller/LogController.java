@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -12,6 +13,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.jhta.project.service.RestService;
 import com.jhta.project.vo.MembershipVo;
+import com.jhta.project.vo.MileVo;
 
 @Controller
 public class LogController {
@@ -82,6 +84,14 @@ public class LogController {
 	public String memsecession() {
 		return ".log.memsecession";
 	}
+	//로그아웃
+	@RequestMapping("/log/logout.do")
+	public String logout(HttpSession session) {
+		session.getServletContext().removeAttribute("memId");
+		session.getServletContext().removeAttribute("memPwd");
+		session.getServletContext().removeAttribute("mlie");
+		return ".main";
+	}
 	@RequestMapping("/log/memsecession2.do")
 	public String memsecession2() {
 		return ".log.memsecession2";
@@ -106,6 +116,8 @@ public class LogController {
 		String code=service.post(url, jsonString).trim();
 		System.out.println("코드"+code);
 		if(code.equals("success")) {
+			session.getServletContext().removeAttribute("memId");
+			session.getServletContext().removeAttribute("memPwd");
 			return ".main";
 		}else if(code.equals(null)) {
 			return ".error";
@@ -143,7 +155,7 @@ public class LogController {
 		}
 	}
 	@RequestMapping(value="/log/loging.do")
-	public String loging(HttpSession session, String email, String pass) {
+	public String loging(HttpSession session, String email, String pass,Model model) {
 		String memId = email;
 		String memPwd = pass;
 		System.out.println("나 여기");
@@ -154,9 +166,17 @@ public class LogController {
 		System.out.println("code[]:"+code);
 		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").create();
 		if(code.equals("")||code.equals(null)) {
+			model.addAttribute("msg","탈퇴된 회원입니다");
 			return "error";
 		}else {
 			MembershipVo vo =  gson.fromJson(code, MembershipVo.class);
+			
+			//마일리지 세션에 담기(성진 7/28 2:34pm)
+			String mileUrl="http://localhost:9090/projectdb/log/mlie.do?memId="+memId;
+			String mileCode = service.get(mileUrl).trim();
+			MileVo MileVo =  gson.fromJson(mileCode, MileVo.class);
+			session.getServletContext().setAttribute("mile",MileVo.getMile());
+			
 			System.out.println(vo);
 			session.getServletContext().setAttribute("memNum",vo.getMemNum());
 			session.getServletContext().setAttribute("memName",vo.getMemName());
@@ -171,4 +191,6 @@ public class LogController {
 			return ".main";
 		}
 	}
+	
+	
 }
