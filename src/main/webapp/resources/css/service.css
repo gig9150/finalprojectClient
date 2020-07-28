@@ -341,13 +341,18 @@
 	padding-left:0;
 	padding-right:5px;
 }
-.lost-table-menu .col-md-3 a span{
-	position:absolute;
-	right: 19px;
-    top: 5px;
-    height: 100%;
+.lost-search{
+	position: absolute;
+    right: 16px;
+    top: 0px;
+    height: 100% !important;
+    width: 17% !important;
     font-size: 25px;
+    background:url(../logo/남자사진.jpg);
+	background-repeat: no-repeat;
+	background-size: contain;
 }
+
 .lost-table-menu .col-md-3 input{
 	height: 34px;
 	width: 100%;

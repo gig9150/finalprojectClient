@@ -43,30 +43,32 @@
 			<div class="col-md-3">
 				<p>전체<span>111,111</span>건</p>
 			</div>
-			<div class="col-md-2">
-				<select class="form-control region-select">
-					<option>지역 선택</option>
-					<c:forEach items="${list}" var="re">
-						<option value="${re}">${re}</option>
-					</c:forEach>
-				</select>
-			</div>
-			<div class="col-md-2">
-				<select class="form-control branch-select"  disabled="disabled">
-					<option>극장 선택</option>
-				</select>
-			</div>
-			<div class="col-md-2">
-				<select class="form-control">
-					<option>접수상태 선택</option>
-					<option>미답변</option>
-					<option>답변완료</option>
-				</select>
-			</div>
-			<div class="col-md-3">
-				<input type="form-control">
-				<a href="#" class="lost-search"><span class="glyphicon glyphicon-search"></span></a>
-			</div>
+			<form action="">
+				<div class="col-md-2">
+					<select class="form-control region-select" name="region">
+						<option>지역 선택</option>
+						<c:forEach items="${list}" var="re">
+							<option value="${re}">${re}</option>
+						</c:forEach>
+					</select>
+				</div>
+				<div class="col-md-2">
+					<select class="form-control branch-select"  disabled="disabled" name="branch">
+						<option>극장 선택</option>
+					</select>
+				</div>
+				<div class="col-md-2">
+					<select class="form-control">
+						<option>접수상태 선택</option>
+						<option>미답변</option>
+						<option>답변완료</option>
+					</select>
+				</div>
+				<div class="col-md-3">
+					<input type="form-control" name="keyword">
+					<input type="submit" class="lost-search" value="">
+				</div>
+			</form>
 		</div>
 		<table class="table table-striped">
 			<colgroup>
