@@ -42,4 +42,14 @@ public class MovieReviews {
 		System.out.println(reviewListVo.size());
 		return reviewListVo;
 	}
+	
+	//관람평 작성 클릭하면 여기로 진입
+	@RequestMapping("/movie/writecomment.do")
+	public int writecomment(String textarea, int starScore) {
+		HashMap<String, Object> map=new HashMap<String, Object>();
+		map.put("textarea", textarea);
+		map.put("starScore",starScore);
+		
+		return 1;
+	}
 }

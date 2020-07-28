@@ -293,35 +293,33 @@ button {
 								</div>
 							
 								<div class="movi_review_box">
+								<form action="" method="post">
 									<div class="movi_review_score">
 										<div class="starRev">
-										 <span class="starR on">별1</span>
-											  <span class="starR">별2</span>
-											  <span class="starR">별3</span>
-											  <span class="starR">별4</span>
-											  <span class="starR">별5</span>
-											  <span class="starR">별6</span>
-											  <span class="starR">별7</span>
-											  <span class="starR">별8</span>
-											  <span class="starR">별9</span>
-											  <span class="starR">별10</span>
+										 <span class="starR on">1</span>
+											  <span class="starR">2</span>
+											  <span class="starR">3</span>
+											  <span class="starR">4</span>
+											  <span class="starR">5</span>
+											  <span class="starR">6</span>
+											  <span class="starR">7</span>
+											  <span class="starR">8</span>
+											  <span class="starR">9</span>
+											  <span class="starR">10</span>
 										
 										</div>
 									
 									</div>
 									<div class="movi_review_comment">
-										<textarea rows="3" cols="3" placeholder="평점 및 영화 관람평을 작성해주세요. 한글 110자/ 영문 220자 작성 가능합니다.">
-										
-										
-										
-										</textarea>
+										<textarea rows="3" cols="3" name="form_comment_section" placeholder="평점 및 영화 관람평을 작성해주세요. 한글 110자/ 영문 220자 작성 가능합니다." id="textarea"></textarea>
 										
 									</div>
-								<button type="submit" id="btnComment" class="btn_submit" >
+								<button id="btnComment" class="btn_submit" >
 								관람평 작성
-								</button>								
+								</button>
+								</form>								
 								</div>
-							
+
 							
 							</div>
 							<div id="story_box" class="bottom_box" style="padding-top: 15px">
@@ -338,9 +336,11 @@ button {
 </div>
 <script>
 	$(function() {
+		var starScore=0;
 		$('.starRev span').click(function(){
 			  $(this).parent().children('span').removeClass('on');
 			  $(this).addClass('on').prevAll('span').addClass('on');
+			  starScore=$(this).text();
 			  return false;
 			});
 		
@@ -399,7 +399,17 @@ button {
 				}
 			});
 		}
-
+		
+		$('#btnComment').click(function(){
+			var textarea=$('#textarea').val();
+			alert($('#textarea').val());
+			alert(starScore);
+			console.log(textarea);
+			var star=$('#')
+			
+			href.location="${cp}/movie/writecomment.do?textarea="+textarea'&starScore='+starScore;
+		});
+		
 		function showTime(data){
 			var regdate=new Date(data);
 			var year=regdate.getFullYear();
