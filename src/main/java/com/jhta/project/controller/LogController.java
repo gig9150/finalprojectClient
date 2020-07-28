@@ -87,9 +87,16 @@ public class LogController {
 	//로그아웃
 	@RequestMapping("/log/logout.do")
 	public String logout(HttpSession session) {
+		session.getServletContext().removeAttribute("memNum");
+		session.getServletContext().removeAttribute("memName");
 		session.getServletContext().removeAttribute("memId");
 		session.getServletContext().removeAttribute("memPwd");
-		session.getServletContext().removeAttribute("mlie");
+		session.getServletContext().removeAttribute("memPhone");
+		session.getServletContext().removeAttribute("birth");
+		session.getServletContext().removeAttribute("email");
+		session.getServletContext().removeAttribute("grade");
+		session.getServletContext().removeAttribute("memRegdate");
+		session.getServletContext().removeAttribute("mile");
 		return ".main";
 	}
 	@RequestMapping("/log/memsecession2.do")

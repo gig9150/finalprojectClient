@@ -12,13 +12,14 @@
 		    <c:choose>
 		    	<c:when test="${empty memId }">
 				      <li><a href="${cp }/log/login.do">로그인</a></li>
+				      <li><a href="${cp }/log/signupstart.do">회원가입</a></li>
+				      <li><a href="${cp }/log/login.do">마이페이지</a></li>
 		    	</c:when>
 		    	<c:otherwise>
 				      <li><a href="${cp }/log/logout.do">로그아웃</a></li>
+				      <li><a href="${cp }/mypage/payment.do">마이페이지</a></li>
 		    	</c:otherwise>
 		    </c:choose>
-		      <li><a href="${cp }/log/signupstart.do">회원가입</a></li>
-		      <li><a href="${cp }/mypage/payment.do">마이페이지</a></li>
 		    </ul>
 	  </div>
       <div class="container">
