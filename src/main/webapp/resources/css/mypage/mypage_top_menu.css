@@ -1,0 +1,22 @@
+@charset "utf-8";
+#mypage_top_menu{
+	margin-bottom: 30px;
+}
+#mypage_top_menu ul{
+	margin: 0;
+	border-bottom: 1px solid gray;
+}
+#mypage_top_menu ul li{
+	display: inline-block;
+}
+#mypage_top_menu ul li a{
+	display: inline-block;
+	width: 140px;
+	height: 100%;
+	text-align: center;
+	text-decoration: none;
+}
+#mypage_top_menu ul li a span{
+	font-size: 18px;
+	line-height: 50px;
+}

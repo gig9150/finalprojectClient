@@ -6,4 +6,13 @@
 	<select id="getinfo" parameterType="int" resultType="ask">
 		select * from ask where askNum=#{askNum} 
 	</select>
+	
+	<select id="askList" parameterType="int" resultType="ask">
+		select * from ask where memNum=#{memNum}
+	</select>
+	
+	<select id="count" resultType="int">
+		select NVL(count(*),0) from ask
+	</select>
+	
 </mapper>

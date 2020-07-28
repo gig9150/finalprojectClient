@@ -73,6 +73,7 @@ public class ServiceController {
 	@RequestMapping("/service/branchApplyInsert.do")
 	public String branchApplyInsert(String cityAddr,String proStatus,String memberId,String proAddr,String proGoal,String proScale) throws JsonProcessingException {
 		String url = "http://localhost:9090/projectdb/service/branchApplyInsert.do";
+		System.out.println("444444444");
 		ProposalVo vo = new ProposalVo(0,memberId,proAddr,proGoal,proScale,proStatus,null,cityAddr);
 		ObjectMapper mapper=new ObjectMapper();
 		String jsonString= mapper.writeValueAsString(vo);

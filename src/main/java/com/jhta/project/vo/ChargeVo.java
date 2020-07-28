@@ -11,8 +11,9 @@ public class ChargeVo {
 	private Date chRegdate;
 	private int bookNum;
 	private String phone;
+	private int totalBill;
 	public ChargeVo(int chargeNum, int memNum, int cDetailNum, String payment, String memStatus, Date chRegdate,
-			int bookNum, String phone) {
+			int bookNum, String phone, int totalBill) {
 		super();
 		this.chargeNum = chargeNum;
 		this.memNum = memNum;
@@ -22,6 +23,7 @@ public class ChargeVo {
 		this.chRegdate = chRegdate;
 		this.bookNum = bookNum;
 		this.phone = phone;
+		this.totalBill = totalBill;
 	}
 	public ChargeVo() {
 		super();
@@ -73,6 +75,12 @@ public class ChargeVo {
 	}
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+	public int getTotalBill() {
+		return totalBill;
+	}
+	public void setTotalBill(int totalBill) {
+		this.totalBill = totalBill;
 	}
 	
 }
