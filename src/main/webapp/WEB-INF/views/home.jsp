@@ -325,16 +325,16 @@
 		</div>
 		<div class="row">
 			<div class="col-md-2">
-				<a> <span
+				<a href="${cp}/service/serviceBoard.do"> <span
 					class="glyphicon glyphicon-headphones service-home-glyphicon"
-					aria-hidden="true" onclick="${cp}/service/serviceBoard.do"></span>
+					aria-hidden="true"></span>
 					<p>
 						<strong>고객센터</strong>
 					</p>
 				</a>
 			</div>
 			<div class="col-md-2">
-				<a> <span
+				<a href="${cp}/service/repeatedQna.do"> <span
 					class="glyphicon glyphicon-comment
 								 service-home-glyphicon"
 					aria-hidden="true"></span>
@@ -344,7 +344,7 @@
 				</a>
 			</div>
 			<div class="col-md-2">
-				<a> <span
+				<a href="#"> <span
 					class="glyphicon glyphicon-folder-close
 								 service-home-glyphicon"
 					aria-hidden="true"></span>
@@ -354,7 +354,7 @@
 				</a>
 			</div>
 			<div class="col-md-2">
-				<a> <span
+				<a href="${cp}/service/questionBoard.do"> <span
 					class="glyphicon glyphicon-heart-empty
 								 service-home-glyphicon"
 					aria-hidden="true"></span>
@@ -364,7 +364,7 @@
 				</a>
 			</div>
 			<div class="col-md-2">
-				<a> <span
+				<a href="#"> <span
 					class="glyphicon glyphicon-user
 							 service-home-glyphicon"
 					aria-hidden="true"></span>
@@ -374,7 +374,7 @@
 				</a>
 			</div>
 			<div class="col-md-2">
-				<a> <span
+				<a href="#"> <span
 					class="glyphicon glyphicon-pencil
 							 service-home-glyphicon"
 					aria-hidden="true"></span>
