@@ -23,7 +23,7 @@
 			<form class="login100-form validate-form" action="${cp }/log/loging.do" method="post" id="loging">
 				<span class="login100-form-title p-b-26"> 로 그 인 </span> <span
 					class="login100-form-title p-b-48"> 
-					<img src="${cp}/resources/img/smile.png" alt="smile" style="width:75px"/>
+					<img src="${cp}/resources/images/smile.png" alt="smile" style="width:75px"/>
 				</span>
 
 				<div class="wrap-input100 validate-input"
