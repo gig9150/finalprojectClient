@@ -7,36 +7,40 @@
 <head>
 <style>
 	#inquiry_wrap{
-		border: 1px solid gray;
 		width: 50%;
 		height: 100%;
 		margin: auto;
+		margin-bottom: 50px;
 	}
 	#inquiry_page li{
 		text-align: center;
 		list-style: none;
+		display: inline-block;
 	}
 	#inquiry_page input{
-		text-align: right;
+		text-align: center;
+	}
+	#inquiry_div{
+		padding: 80px 0px;
+		width: 100%;
+		text-align: center;
+	}
+	#inquiry_div p{
+		font-size: 24px;
 	}
 </style>
-<link rel="stylesheet" href="${cp }/resources/css/mypage/mypage_top_menu.css" type="text/css">
+<script type="text/javascript" src="${cp }/resources/js/jquery-3.5.1.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 <div id="inquiry_wrap">
-	<div id="mypage_top_menu">
-		<ul>
-			<li><a href="${cp }/mypage/payment.do"><span>결제내역</span></a></li>
-			<li><a href="#"><span>쿠폰함</span></a></li>
-			<li><a href="#"><span>내가 본 영화</span></a></li>
-			<li><a href="${cp }/mypage/inquiry.do"><span>1:1문의</span></a></li>
-			<li><a href="${cp }/mypage/memberInfo.do"><span>회원정보관리</span></a></li>
-		</ul>
-	</div>
+	<%@include file="mypageInfo.jsp" %>
+	<%@include file="mypage_top_menu.jsp" %>
+	
 	<div>
-		<table class="table table-hover">
+	<h4>나의 문의내역</h4>
+		<table class="table table-bordered">
 		  <thead>
 			<tr>
 				<th>번호</th>
@@ -47,25 +51,47 @@
 		  </thead>
 		  <tbody>
 			<c:forEach items="${list }" var="vo">
-			<c:set var="count" value="${count + 1}" />
 				<tr>
-					<th>${count }</th>
-					<th><a href="#">${vo.qnaTitle }</a></th>
+					<th>${pu.totalRowCount - vo.rnum +1 }</th>
+					<th><a href="${cp }/mypage/inquiryDatail.do?askNum=${vo.askNum}">${vo.qnaTitle }</a></th>
 					<th>${vo.askRegdate }</th>
 					<th>${vo.response }</th>
 				</tr>
 			</c:forEach>
+			<c:if test="${empty list}">
+				<tr>
+					<td colspan="4">
+						<div id="inquiry_div">
+							<img src="${cp }/resources/images/mypage/inquiry.png"/>
+							<p>문의 내역이 존재하지 않습니다.</p>
+							<input type="button" value="문의등록" onclick="location.href='${cp}/mypage/inquiryInsert.do'" class="btn">
+						</div>
+					</td>
+				</tr>
+			</c:if>	
 		  </tbody>
 		</table>
-		
 		<div id="inquiry_page">
-			<c:forEach var="i" begin="${pu.startPageNum }" end="${pu.endPageNum }">
-				<li><a href="${cp }/mypage/inquiry.do?pageNum=${i}">[${i }]</a></li>
-			</c:forEach>
-			<input type="button" value="문의등록" onclick="location.href='#'">
+			<div style="text-align: center;">
+				<c:forEach var="i" begin="${pu.startPageNum }" end="${pu.endPageNum }">
+					<li style="text-align: center;"><a href="${cp }/mypage/inquiry.do?pageNum=${i}">[${i }]</a></li>
+				</c:forEach>
+			</div>
+			<div style="text-align: right;">
+				<button style="background-color: orange; width: 138px; height: 30px" onclick="location.href='${cp}/mypage/inquiryInsert.do'">문의등록</button>
+			</div>
 		</div>
 	</div>
 </div>
 
+
+
+
 </body>
 </html>
+
+
+
+
+
+
