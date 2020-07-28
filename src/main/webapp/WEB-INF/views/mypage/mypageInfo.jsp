@@ -151,9 +151,9 @@
 				</div>
 			</div>
 			<div class="grade">
-				<p class="name">회원(세션)님은<br>일반등급(세션)입니다.</p>
+				<p class="name">${memName }님은<br>${grade }입니다.</p>
 				<div class="link">
-					<a href="#" title="개인정보수정 페이지로 이동">개인정보수정 > <i class="iconset ico-arr-right-reverse"></i></a>
+					<a href="${cp }/log/memuser.do" title="개인정보수정 페이지로 이동">개인정보수정 > <i class="iconset ico-arr-right-reverse"></i></a>
 					<a href="#" title="개인정보수정 페이지로 이동">로그아웃  ><i class="iconset ico-arr-right-reverse"></i></a>
 				</div>
 			</div>
@@ -180,7 +180,7 @@
 				
 				<div class="cont-area">
 					<div class="total">
-						<p class="tit">??? / ???</p>
+						<p class="tit">선호극장을 설정하세요.</p>
 					</div>
 				</div>
 			</div>
