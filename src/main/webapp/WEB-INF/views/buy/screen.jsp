@@ -96,6 +96,7 @@ li {
 				<form action="${cp }/buy/screen/reservation.do" method="post">
 					<div id="formAction">
 					</div>
+					<input type="hidden" name="mscheduleNum" value="${mscheduleNum }">
 					<button disabled="disabled" type="submit" id="btn2" style="border-bottom:5%;" class="btn btn-primary btn-block">구매하기</button>
 				</form>
 			</div>

@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
@@ -33,14 +32,16 @@ public class MovieBuyController {
 		List<SeatVo> list=Arrays.asList(array);
 		model.addAttribute("list",list);
 		model.addAttribute("theatherNum",theatherNum);
+		model.addAttribute("mscheduleNum",mscheduleNum);
 		return ".buy.screen";
 	}
 	
 	@RequestMapping(value="/buy/screen/reservation.do")
-	public String reservation(String[] seatName,int[] seatNum,int seatMoney,Model model) {
+	public String reservation(String[] seatName,int[] seatNum,int seatMoney,int mscheduleNum,Model model) {
 		model.addAttribute("seatName",seatName);
 		model.addAttribute("seatNum",seatNum);
 		model.addAttribute("seatMoney",seatMoney);
+		model.addAttribute("mscheduleNum",mscheduleNum);
 		return ".buy.ticketing";
 	}
 	
@@ -52,10 +53,10 @@ public class MovieBuyController {
 	}
 	
 	@RequestMapping("/buy/screen/insert.do")
-	public String completa(String[] seatName,int[] seatNum,int seatMoney,String msg,Model model,HttpSession session) {
-		//int memNum=(int)session.getServletContext().getAttribute("memNum");
+	public String completa(String[] seatName,int[] seatNum,int seatMoney,String msg,int mscheduleNum,Model model,HttpSession session) {
+		int memNum=(int)session.getServletContext().getAttribute("memNum");
 		System.out.println("결제 완료쪽 컨트롤러다..."+seatMoney);
-		String url="http://localhost:9090/projectdb/buy/screen/insert.do?seatMoney="+seatMoney+"&memNum=1";//+memNum;
+		String url="http://localhost:9090/projectdb/buy/screen/insert.do?seatMoney="+seatMoney+"&memNum="+memNum+"&mscheduleNum="+mscheduleNum;
 		Gson gson=new Gson();
 		List<BookVo> list=new ArrayList<BookVo>();
 		for(int i=0;i<seatName.length;i++) {

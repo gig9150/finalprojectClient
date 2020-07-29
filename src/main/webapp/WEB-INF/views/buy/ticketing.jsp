@@ -18,6 +18,7 @@
 			<div>
 				<h2>총 결제금액 : ${seatMoney }</h2>
 				<input type="hidden" name="seatMoney" value="${seatMoney }">
+				<input type="hidden" name="mscheduleNum" value="${mscheduleNum }">
 				<c:forEach var="num" items="${seatNum }">
 					<input type="hidden" name="seatNum" value="${num }">
 				</c:forEach>
