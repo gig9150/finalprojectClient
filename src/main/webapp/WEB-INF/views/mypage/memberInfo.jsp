@@ -5,9 +5,11 @@
 <head>
 <style>
 	#inquiry_wrap{
-		width: 50%;
+		width: 100%;
 		height: 100%;
 		margin: auto;
+		position: relative;
+    	right: 5px;
 	}
 	#mypage_menu_box ul li{
 		list-style: none;
@@ -27,7 +29,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div id="inquiry_wrap">
+<div id="inquiry_wrap" class="container">
 	<%@include file="mypageInfo.jsp" %>
 	<%@include file="mypage_top_menu.jsp" %>
 	<div id="mypage_menu_box">

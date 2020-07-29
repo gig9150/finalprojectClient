@@ -5,7 +5,7 @@
 <html>
 <head>
 <style>
-#inquiry_wrap {	width: 50%;	height: 100%;	margin: auto;}
+#inquiry_wrap {	position: relative; top: 37px; width: 100%;	height: 100%;	margin: auto;}
 #ticketing_box {	width: 100%;	height: 100%;	margin-bottom: 50px;}
 #ticketing_info {	border: 1px solid gray;	width: 90%;	height: 220px; margin: 10px;}
 #ticketing_poster {	width: 20%;	height: 100%;	float: left;	padding: 10px;}
@@ -30,7 +30,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div id="inquiry_wrap">
+	<div id="inquiry_wrap" class="container">
 	<%@include file="mypageInfo.jsp" %>
 	<%@include file="mypage_top_menu.jsp" %>
 		<div style="width: 100%; height: 60px;">

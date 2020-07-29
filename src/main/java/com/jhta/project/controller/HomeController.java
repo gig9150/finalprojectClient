@@ -38,7 +38,7 @@ public class HomeController {
 //		model.addAttribute("movieMap",movieMap);
 		
 		
-		String thumbnailMovieUrl ="http://localhost:9090/projectdb/getThumbnailMovie.do";
+		String thumbnailMovieUrl = "http://localhost:9090/projectdb/getThumbnailMovie.do";
 		String ThumbnailMovie = service.get(thumbnailMovieUrl).trim();
 		HashMap<String,Object>[] map = gson.fromJson(ThumbnailMovie, HashMap[].class);
 		List<HashMap<String,Object>> list=Arrays.asList(map);

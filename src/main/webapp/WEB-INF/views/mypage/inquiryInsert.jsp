@@ -2,10 +2,12 @@
 	pageEncoding="UTF-8"%>
 <style>
 	#inquiry_wrap{
-		width: 50%;
+		width: 100%;
 		height: 100%;
 		margin: auto;
 		margin-bottom: 50px;
+		position: relative;
+   	 	top: 40px;
 	}
 	#mypage-infomation {
 	    position: relative;
@@ -96,7 +98,7 @@
 }
 </style>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<div id="inquiry_wrap">
+<div id="inquiry_wrap" class="container">
 	<div id="contents">
 		<h2 class="tit">1:1 문의</h2>
 		<div id="mypage-infomation">

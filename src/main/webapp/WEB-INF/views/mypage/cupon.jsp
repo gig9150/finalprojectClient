@@ -6,7 +6,7 @@
 <head>
 <style>
 	#cupon_wrap{
-		width: 50%;
+		width: 100%;
 		height: 100%;
 		margin: auto;
 		margin-bottom: 50px;
@@ -29,7 +29,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div id="cupon_wrap">
+<div id="cupon_wrap" class="container">
 	<%@include file="mypageInfo.jsp" %>
 	<%@include file="mypage_top_menu.jsp" %>
 	<div>

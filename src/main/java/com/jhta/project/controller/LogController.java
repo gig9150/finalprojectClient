@@ -42,7 +42,7 @@ public class LogController {
 	}
 	@RequestMapping("/log/memuserok.do")
 	public String memuserok(MembershipVo vo) {
-		String url="http://localhost:9090/projectdb/log/memuserok.do";
+		String url= "http://localhost:9090/projectdb/log/memuserok.do";
 		Gson gson = new Gson();
 		String jsonString = gson.toJson(vo);
 		System.out.println(jsonString);
@@ -67,7 +67,7 @@ public class LogController {
 		vo.setMemPwd(memPwd);
 		vo.setMemId(memId);
 		System.out.println("여기 비번바꿈"+memId);
-		String url="http://localhost:9090/projectdb/log/mempwdok.do";
+		String url= "http://localhost:9090/projectdb/log/mempwdok.do";
 		Gson gson = new Gson();
 		String jsonString = gson.toJson(vo);
 		System.out.println(jsonString);
@@ -141,7 +141,7 @@ public class LogController {
 	@ResponseBody
 	public String idcheck(String memId) {
 		System.out.println(memId);
-		String url="http://localhost:9090/projectdb/log/idcheck.do?memId="+memId;
+		String url= "http://localhost:9090/projectdb/log/idcheck.do?memId="+memId;
 		System.out.println(url);
 		String code=service.get(url).trim();
 		Gson gson = new Gson();
@@ -150,7 +150,7 @@ public class LogController {
 	
 	@RequestMapping(value="/log/signmake.do")
 	public String signmake(MembershipVo vo) {
-		String url="http://localhost:9090/projectdb/log/signmake.do";
+		String url= "http://localhost:9090/projectdb/log/signmake.do";
 		Gson gson = new Gson();
 		String jsonString = gson.toJson(vo);
 		System.out.println("이거 제이슨 스트링 " +jsonString);
@@ -168,7 +168,7 @@ public class LogController {
 		System.out.println("나 여기");
 		System.out.println(memId);
 		System.out.println(memPwd);
-		String url="http://localhost:9090/projectdb/log/loging.do?memId="+memId+"&memPwd="+memPwd;
+		String url= "http://localhost:9090/projectdb/log/loging.do?memId="+memId+"&memPwd="+memPwd;
 		String code = service.get(url).trim();
 		System.out.println("code[]:"+code);
 		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").create();
@@ -179,7 +179,7 @@ public class LogController {
 			MembershipVo vo =  gson.fromJson(code, MembershipVo.class);
 			
 			//마일리지 세션에 담기(성진 7/28)
-			String mileUrl="http://localhost:9090/projectdb/log/mlie.do?memId="+memId;
+			String mileUrl= "http://localhost:9090/projectdb/log/mlie.do?memId="+memId;
 			String mileCode = service.get(mileUrl).trim();
 			int mile = Integer.parseInt(mileCode);
 			session.getServletContext().setAttribute("mile",mile);

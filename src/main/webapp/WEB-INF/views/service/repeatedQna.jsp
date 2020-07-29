@@ -53,7 +53,7 @@
 					<li class="repeated-qna-li"><a href="#" class="repeated-qna-a">스토어</a></li>
 					<li class="repeated-qna-li"><a href="#" class="repeated-qna-a">회원
 							등급</a></li>
-					<li class="repeated-qna-li"><a href="#" class="repeated-qna-a">ㅇㅋㅇㅋ</a></li>
+					<li class="repeated-qna-li"><a href="#" class="repeated-qna-a">vip</a></li>
 				</ul>
 			</div>
 			<div class="row repeated-qna-row">

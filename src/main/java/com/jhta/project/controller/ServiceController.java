@@ -64,9 +64,13 @@ public class ServiceController {
 		return ".service.questionBoard";
 	}
 	
+//	@RequestMapping("/service/questionInsert.do")
+//	public String QuestionInsert(String ) {
+//		
+//	}
+	
 	@RequestMapping("/service/branchApplyBoard.do")
 	public String goApplyBoard() {
-		//세션에 담겨진 아이디정보로 id,이름,연락처 뽑아가기
 		return ".service.branchApplyBoard";
 	}
 	

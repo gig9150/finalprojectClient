@@ -7,7 +7,7 @@
 <head>
 <style>
 	#inquiry_wrap{
-		width: 50%;
+		width: 100%;
 		height: 100%;
 		margin: auto;
 		margin-bottom: 50px;
@@ -34,7 +34,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div id="inquiry_wrap">
+<div id="inquiry_wrap" class="container">
 	<%@include file="mypageInfo.jsp" %>
 	<%@include file="mypage_top_menu.jsp" %>
 	

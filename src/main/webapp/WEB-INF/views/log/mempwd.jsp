@@ -6,7 +6,7 @@
 <style>
 	#inquiry_wrap{
 		border: 1px solid gray;
-		width: 50%;
+		width: 100%;
 		height: 100%;
 		margin: auto;
 	}
@@ -30,7 +30,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div id="inquiry_wrap">
+<div id="inquiry_wrap" class="container">
 	<div id="mypage_top_menu">
 		<ul>
 			<li><a href="${cp }/mypage/payment.do"><span>결제내역</span></a></li>

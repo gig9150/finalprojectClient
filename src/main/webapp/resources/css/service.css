@@ -120,6 +120,11 @@
 	padding: 20px 0 !important;
 }
 
+.applyBoard .row h1{
+	position: relative;
+	left: 13px;
+}
+
 .apply-btn-one{
 	float:left;
 }

@@ -13,17 +13,16 @@
 			<div class="col-md-4">
 			<!-- id,이름,연락처 값 세션에서 받아오기 -->
 			<label>아이디:</label><input type="text" class="form-control"
-				placeholder="id" name="memberId" value="asd1234" readonly="readonly">
+				placeholder="id" name="memberId" value="${memId}" readonly="readonly">
 			</div>
 			<div class="col-md-4">
 				<label>이름:</label><input type="text" class="form-control"
-					placeholder="name" readonly="readonly" value="허웅">
+					placeholder="name" readonly="readonly" value="${memName}">
 			</div>
 			<div class="col-md-4">
 				<label>연락처:</label><input type="text" class="form-control"
-					placeholder="phone" readonly="readonly" value="01077206566">
+					placeholder="phone" readonly="readonly" value="${memPhone}">
 			</div>
-			
 		</div>
 		<div class="row">
 			<div class="col-xs-10">

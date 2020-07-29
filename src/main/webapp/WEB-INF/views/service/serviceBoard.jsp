@@ -41,7 +41,7 @@
 			</div>
 			<div class="row">
 				<div class="col-md-4">
-					<a>
+					<a href="${cp}/service/repeatedQna.do">
 						<span class="glyphicon glyphicon-comment
 							 service-home-glyphicon" 
 							aria-hidden="true"></span>
@@ -52,7 +52,7 @@
 					</a>
 				</div>
 				<div class="col-md-4">
-					<a>
+					<a href="${cp}/service/lostThingBoard.do">
 						<span class="glyphicon glyphicon-folder-close
 							 service-home-glyphicon" 
 							aria-hidden="true"></span>
@@ -63,7 +63,7 @@
 					</a>
 				</div>
 				<div class="col-md-4">
-					<a>
+					<a href="${cp}/service/questionBoard.do">
 						<span class="glyphicon glyphicon-heart-empty
 							 service-home-glyphicon" 
 							aria-hidden="true"></span>
@@ -76,7 +76,7 @@
 				</div>
 				<div class="row" style="border-bottom:1px solid black;">
 					<div class="col-md-4">
-						<a>
+						<a href="${cp}">
 							<span class="glyphicon glyphicon-user
 							 service-home-glyphicon" 
 							aria-hidden="true"></span>
@@ -87,7 +87,7 @@
 						</a>
 					</div>
 					<div class="col-md-4">
-						<a>
+						<a href="${cp}">
 							<span class="glyphicon glyphicon-pencil
 							 service-home-glyphicon" 
 							aria-hidden="true"></span>
@@ -103,12 +103,16 @@
 						<div style="
 						border-bottom: 1px solid #555;margin-bottom:30px;">
 							<h3 style="display:inline-block;">자주 묻는 질문 best5</h3>
-							<a style="position:relative;left:160px;">더보기</a>
+							<a href="${cp}/service/repeatedQna.do" 
+							style="position:relative;left:160px;">더보기</a>
 						</div>
 						<div style="border-bottom:1px solid #eaeaea;">
 							<ol>
 								<c:forEach items="${qnaList}" var="map">
-									<li>${map.QNATITLE}&nbsp;:&nbsp;${map.QNACONTENT}</li>
+									<a href="${cp}/service/repeatedQna.do">
+									<li style="word-break:break-all;">
+									<span style="color:#01738b">
+									Q.</span>${map.QNATITLE}</li></a>
 								</c:forEach>
 							</ol>
 						</div>
@@ -117,15 +121,15 @@
 						<div style="
 						border-bottom: 1px solid #555;margin-bottom:20px;">
 							<h3 style="display:inline-block;">공지사항</h3>
-							<a style="position:relative;left:290px;">더보기</a>
+							<a href="${cp}" style="position:relative;left:290px;">더보기</a>
 						</div>
 						<div style="border-bottom:1px solid #eaeaea;">
 							<ol>
-								<li>공지사항1:공지사항내용1</li>
-								<li>공지사항1:공지사항내용1</li>
-								<li>공지사항1:공지사항내용1</li>
-								<li>공지사항1:공지사항내용1</li>
-								<li>공지사항1:공지사항내용1</li>
+								<a href="${cp}"><li><span style="color:#01738b">[서울점]</span>공지사항1</li></a>
+								<a href="${cp}"><li><span style="color:#01738b">[상봉점]</span>공지사항2</li></a>
+								<a href="${cp}"><li><span style="color:#01738b">[미아점]</span>공지사항3</li></a>
+								<a href="${cp}"><li><span style="color:#01738b">[건대점]</span>공지사항4</li></a>
+								<a href="${cp}"><li><span style="color:#01738b">[신촌점]</span>공지사항5</li></a>
 							</ol>
 						</div>
 					</div>

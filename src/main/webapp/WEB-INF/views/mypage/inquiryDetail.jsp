@@ -7,7 +7,7 @@
 <head>
 <style>
 #inquiry_wrap {
-	width: 50%;
+	width: 100%;
 	height: 100%;
 	margin: auto;
 	margin-bottom: 50px;
@@ -41,7 +41,7 @@
 <script type="text/javascript" src="${cp }/resources/js/jquery-3.5.1.js"></script>
 </head>
 <body>
-	<div id="inquiry_wrap">
+	<div id="inquiry_wrap" class="container">
 		<%@include file="mypageInfo.jsp" %>
 		<%@include file="mypage_top_menu.jsp" %>
 		<h2>나의 문의내역</h2>

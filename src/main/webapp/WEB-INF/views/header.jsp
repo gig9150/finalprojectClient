@@ -17,6 +17,7 @@
 		    	</c:when>
 		    	<c:otherwise>
 				      <li><a href="${cp }/log/logout.do">로그아웃</a></li>
+				      <li><a href="${cp }/log/signupstart.do">회원가입</a></li>
 				      <li><a href="${cp }/mypage/payment.do">마이페이지</a></li>
 		    	</c:otherwise>
 		    </c:choose>

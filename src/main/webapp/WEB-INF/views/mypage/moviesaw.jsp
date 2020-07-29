@@ -5,8 +5,8 @@
 <html>
 <head>
 <style>
-	#inquiry_wrap{width: 50%;height: 100%;	margin: auto;}
-	#mypage_moviesaw_wrap{		height: 100%;		width: 100%;	}
+	#inquiry_wrap{width:100%;position: relative;top: 37px;}
+	#mypage_moviesaw_wrap{height: 100%;width: 100%;	}
 	#my_movie_list li { list-style: none;width: 49%; display: inline-block; border: 1px solid #ccc; margin-bottom: 10px;}
 	#poster{		display: inline-block;		float: left;		padding: 10px;		width: 210px;	}
 	#detail_info{		display: inline-block;		padding-top: 10px;    	padding-bottom: 10px;		clear: both;		width: 50%;	}
@@ -58,7 +58,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div id="inquiry_wrap">
+<div id="inquiry_wrap" class="container">
 	<%@include file="mypageInfo.jsp" %>
 	<%@include file="mypage_top_menu.jsp" %>
 	<div id="mypage_moviesaw_wrap">
