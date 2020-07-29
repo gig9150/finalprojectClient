@@ -48,6 +48,7 @@ public class LocationController {
 				model.addAttribute("weeklists",weeklists);
 			}
 		}
+		
 		if(brName!=null) {
 			model.addAttribute("branchName",brName);
 		}
@@ -68,15 +69,14 @@ public class LocationController {
 			vo.setCnt(c);
 		}
 		
-	
+		System.out.println("brName:"+brName);
 		model.addAttribute("leftseat",map2);
 		model.addAttribute("locatedList", locatedList);
 		model.addAttribute("list",list);
 		model.addAttribute("cityAddr",cityAddr);
 		model.addAttribute("movlist",movlist);
-		model.addAttribute("scount", scount);
-		
-		
+		model.addAttribute("scount", scount);		
+		model.addAttribute("brName", brName);
 		return ".show.showTimes";
 	}
 	

@@ -16,7 +16,11 @@
 .centerplace::-webkit-scrollbar {
 	display: none;
 }
-
+.high{
+	border-color: gray;
+    border: solid 2px;
+    border-radius: 10px 10px 10px 10px;
+}
 .areas {
 	margin: auto;
 	height: fit-content;
@@ -30,7 +34,8 @@
     width:
 }
 .manycity{
-	background: linear-gradient( to top, SlateBlue, LightGray );
+	border-radius: 10px 10px 10px 10px;
+	border solid 3px;
 	height:200px;
 	margin: 5px;
     padding: 15px;
@@ -39,6 +44,7 @@
 }
 .datetable{
 	text-align: center;
+	margin-top: 30px;
 }
 
 .timetable {
@@ -48,6 +54,11 @@
 	width: 72px;
 	text-shadow: bold;
 }
+.timetable:hover {
+	border: 2px solid black;
+	background-color: LightGray;
+	opacity: 1;
+}
 p {
     margin: 0 0 4px;
 }
@@ -55,6 +66,27 @@ p {
 	height:1px;
 	background-color:black;
 }
+.linetitle{
+	height:1px;
+	border : solid 3px;
+	background-bottom-color:black;
+}
+.notice{
+	border : solid 1px;
+	border-color:gray;
+	padding: 15px;
+    margin-bottom: 20px;
+    font-size :11px;
+}
+.help{
+	margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 13px;
+    font-style: oblique;
+}
+a:hover { 
+	text-decoration:none;
+} 
 </style>
 <script type="text/javascript">
 	$(window).on('load',function(){
@@ -90,25 +122,34 @@ p {
 			}
 		});
 	}
-	
 </script>
-
 <div class="centerplace">
 	으 아 아 악
+	<div class="high">
+	<p/>
 	<div class="areas">
 		<c:forEach var="i" items="${list }">
-			<button type="button" class="btn btn-outline-secondary"
+			<button type="button" class="btn btn-outline-default"
 				value="${i.cityAddr }"
 				style="height: 50px; width: 100px; font-size: unset;">${i.cityAddr }</button>
 		</c:forEach>
+		<div class="line"></div>
 	</div>
 	<div class="manycity">
 	</div>
-
+	</div>
+	<div class="varchar">
+	<br><h1>${brName}</h1><br>
+	</div>
+	<div class="linetitle"></div>
+	<div class="help">
+	<p style="color:MediumPurple;">* 시간을 클릭하시면 빠른 예매를 하실 수 있습니다.</p>
+	</div>
+	<div class="line"></div>
 	<div class="datetable">
 		<c:forEach var="weeks" items="${weeklists }" varStatus="i">
 		<a href="${cp }/show/showTimeList.do?brName=${branchName }&regDates=${weeks}">
-		<button type="button" class="btn btn-light" style="font-family: fantasy;<c:if test="${i.index==0 }">background-color:gray;</c:if>">
+		<button type="button" class="btn btn-light" style="font-family: fantasy;<c:if test="${i.index==0 }">background-color:MediumPurple;</c:if>">
 		${weeks}</button></a>
 		</c:forEach>
 	</div>
@@ -121,24 +162,45 @@ p {
 		<c:if test="${vo.filmName != checkName }">
 		<br>
 		<div class="line"></div>
-			<div><h2 style="margin-bottom: 20px;">${vo.filmName }</h2></div>
+			<div><h4 style="margin-top: 10px;margin-bottom: 20px; display:inline-block;">${vo.filmName }</h4> <span class="badge badge-info"> 상영중</span></div>
 		</c:if>
 			<c:if test="${vo.theatherNum!=checkTheather }">
 				<p>▶  ${vo.theatherName } | ${vo.theatherSort }
 				<c:forEach var="s" items="${scount }">
 					<c:if test="${vo.theatherNum==s.THEATHERNUM }">
-						| ${s.CNT }석</p></c:if></c:forEach>
+						| 총 ${s.CNT }석 </p></c:if></c:forEach>
 				</c:if>
 			<div class="timetable">
 			<a href="${cp }/buyscreenselected.do?filmNum=${vo.filmNum}&mScheduleNum=${vo.mScheduleNum}&theatherNum=${vo.theatherNum}">
 				<fmt:formatDate value="${vo.mStartTime }" pattern="HH:mm" var="starttime"/>
-				<p style="font-size: 12px; font-family: sans-serif; color: #333333; text-align: center; text-decoration-color: darkslategray;">${starttime }</p>
-				<p style="font-size: 12px; font-family: sans-serif; color: #1E90FF; text-align: center;">${vo.cnt }석</p><br>
-			</div></a>
-
+						<p style="font-size: 12px; font-family: sans-serif; color: #333333; text-align: center; text-decoration-color: darkslategray;">${starttime }</p>
+						<p style="font-size: 12px; font-family: sans-serif; color: #1E90FF; text-align: center;">${vo.cnt }석</p><br>
+			</a></div>
 		<c:set var="checkName" value="${vo.filmName }" />
 		<c:set var="checkTheather" value="${vo.theatherNum }" />
 		<c:set var="starttime" value="${starttime }"/>
 	</c:forEach>
 		</div>
+		<div>
+			<div class="notice">
+				<li>지연입장에 의한 관람불편을 최소화하고자 본 영화는 약 10분 후 시작됩니다.</li>
+				<li>쾌적한 관람 환경을 위해 상영시간 이전에 입장 부탁드립니다.</li>
+			</div>
+		</div>
 </div>
+<script>
+	function morningNight(x){
+		var d=new Date(x);
+		var h=d.getHours();
+		alert(h);
+		if(h<9){
+			alert("morning");
+			return "morning";
+		}else if(h>20){
+			alert("night")
+			return "night";
+		}else{
+			return "normal";
+		}
+	}
+</script>
