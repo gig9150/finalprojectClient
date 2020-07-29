@@ -15,7 +15,7 @@
 	height: 1800px;
 	padding: 50px 0 0 0;
 	margin: auto;
-	border: 1px solid red;
+/* 	border: 1px solid red; */
 }
 /*네비게이션 div 현재상영작 상영예정작 list & 관람평순 평점순 관객수순*/
 #nav_list {
@@ -170,10 +170,5 @@
 </div>
 
 <script>
-	${'#btn_current_movie'}.on('click',showCurrentMovie);
-	
-	function showCurrentMovie(){
-		
-		
-	}
+
 </script>

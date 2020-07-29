@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.google.gson.Gson;
 import com.jhta.project.service.MovieListService;
 import com.jhta.project.vo.AllByMRateVo;
 import com.jhta.project.vo.AllMoviesVo;
@@ -54,13 +55,14 @@ public class MovieList {
 		MovieDetailVo movieDetailVo=movieListService.showMovieDetailInfo(filmNum);
 		//영화예매율디테일정보vo
 		AllMoviesVo movieDetailRate=movieListService.showMovieDetailRate(filmNum);
-		AllMoviesVo allMoviesVo= new AllMoviesVo();
-		
+		Gson gson=new Gson();
+		String test=gson.toJson(movieDetailVo);
+		String test1=gson.toJson(movieDetailRate);
+		System.out.println("movieDetailVo:"+test);
+		System.out.println("movieDetailRate:"+test1);
 		model.addAttribute("movieDetailVo",movieDetailVo);
 		model.addAttribute("movieDetailRate",movieDetailRate);
 		
-		System.out.println("detailvo에 담긴 값"+movieDetailVo);
-		System.out.println("detail중 filmname뽑기"+ movieDetailVo.getFilmName());
 		return ".movie.movieDetailView";
 	}
 }

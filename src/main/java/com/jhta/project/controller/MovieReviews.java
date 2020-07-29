@@ -44,11 +44,13 @@ public class MovieReviews {
 	}
 	
 	//관람평 작성 클릭하면 여기로 진입
-	@RequestMapping("/movie/writecomment.do")
-	public int writecomment(String textarea, int starScore) {
-		HashMap<String, Object> map=new HashMap<String, Object>();
-		map.put("textarea", textarea);
-		map.put("starScore",starScore);
+	@RequestMapping("/movie/writeComment.do")
+	public int writeComment() {
+//		HashMap<String, Object> map=new HashMap<String, Object>();
+//		map.put("textarea", textarea);
+//		map.put("starScore",starScore);
+//		map.put("filmNum", filmNum);
+		System.out.println("1111111111111");
 		
 		return 1;
 	}
