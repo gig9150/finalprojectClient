@@ -94,22 +94,44 @@
 	padding: 5px;
 	outline: 0;
 }
+
+#btn_detail.on{
+	background-color: rgba(0, 0, 0, 0);
+	color: black;
+	padding: 10px;
+	outline: 0;
+	border-bottom: 2px solid black !important;
+}
 /*영화리뷰보기*/
 #btn_review {
-	border: 0 solid skyblue;
 	background-color: rgba(0, 0, 0, 0);
 	color: gray;
-	padding: 5px;
+	padding: 10px;
 	outline: 0;
+	border-bottom: 1px solid #ccc !important;
 }
 
-#btn_group button:hover {
+#btn_review.on {
+	background-color: rgba(0, 0, 0, 0);
 	color: black;
+	padding: 10px;
+	outline: 0;
+	border-bottom: 2px solid black !important;
+}
+
+/*영화리뷰div*/
+.review_section {
+	display: none;
+}
+
+.review_section.on {
+	display: block;
 }
 
 /***********************from this point ajax append css starts ********************/
 .box_div {
 	margin-top: 18px;
+
 	/*border-top: 1px solid #ccc;*/
 }
 
@@ -183,31 +205,7 @@ textarea {
 }
 
 button {
-	cursor: pointer;
-	appearance: button;
-	-webkit-writing-mode: horizontal-tb !important;
-	text-rendering: auto;
-	color: -internal-light-dark(buttontext, rgb(170, 170, 170));
-	letter-spacing: normal;
-	word-spacing: normal;
-	text-transform: none;
-	text-indent: 0px;
-	text-shadow: none;
-	display: inline-block;
-	text-align: center;
-	align-items: flex-start;
-	cursor: default;
-	background-color: -internal-light-dark(rgb(239, 239, 239),
-		rgb(74, 74, 74));
-	box-sizing: border-box;
-	margin: 0em;
-	font: 400 13.3333px Arial;
-	padding: 1px 6px;
-	border-width: 2px;
-	border-style: outset;
-	border-color: -internal-light-dark(rgb(118, 118, 118),
-		rgb(195, 195, 195));
-	border-image: initial;
+	border: none !important;
 }
 
 .starR {
@@ -278,66 +276,71 @@ button {
 						</ul>
 					</div>
 				</div>
-	
+
 			</div>
 
 			<div class="section2">
+
 				<div class="container">
+
 					<ul class="small_container">
+
 						<li style="width: 100%;">
+
 							<div id="btn_group">
-								<button id="btn_detail" style="width: 49%">
-									<span style="border-bottom: 1px solid #ccc; font-size: 16px;">영화상세정보</span>
+
+								<button id="btn_detail" class="on" style="width: 49%">
+
+									<span style="font-size: 16px;">영화상세정보</span>
+
 								</button>
+
 								<button id="btn_review" style="width: 49%;">
-									<span style="border-bottom: 1px solid #ccc; font-size: 16px;">
-										평점 및 관람평</span>
+
+									<span style="font-size: 16px;">평점 및 관람평(${reviewCount })</span>
+
 								</button>
 
 								<div id="story_box" class="bottom_box" style="padding-top: 15px">
 									<p>${movieDetailVo.filmStory }</p>
 								</div>
-																<div id="review_section">
+								<div class="review_section">
 									<div class="movi_info">
 										<div class="container">
 											<span class="">총 평점</span><img
 												src="${cp }/resources/image/movieDetail/star_big.png">
-											7 <span class="">/ 10</span>
+											 <span class="" sytle=""><strong>${movieGrade}</strong>/ 10</span>
 											<p class="txt_info">
-												<span>영화 관람 후 관람평을 작성하시면<br> M.POINT 50P를 적립해
-													드립니다.
+												<span>영화 관람 후 관람평을 작성하시면<br> M.POINT 50점을
+													적립해드립니다.
 												</span>
 											</p>
 										</div>
 									</div>
 
 									<div class="movi_review_box">
-										<form action="${cp }/movie/writeComment.do" method="post" onsubmit="return check()">
+										<form id="frm">
 											<div class="movi_review_score">
 												<div class="starRev">
 													<span class="starR on">1</span> <span class="starR">2</span>
-													<span class="starR">3</span> <span class="starR">4</span> 
-													<span class="starR">5</span> <span class="starR">6</span> 
-													<span class="starR">7</span> <span class="starR">8</span> 
-													<span class="starR">9</span> <span class="starR">10</span>
-
+													<span class="starR">3</span> <span class="starR">4</span> <span
+														class="starR">5</span> <span class="starR">6</span> <span
+														class="starR">7</span> <span class="starR">8</span> <span
+														class="starR">9</span> <span class="starR">10</span>
 												</div>
-											<input type="hidden" name="starScore">
-											<input type="hidden" name="filmNum" value="${movieDetailRate.filmNum}">
+												<input type="hidden" name="starScore" value="1"> <input
+													type="hidden" name="filmNum" id="filmNum"
+													value="${movieDetailRate.filmNum}">
 											</div>
 											<div class="movi_review_comment">
-												<textarea rows="3" cols="3" name="form_comment_section"
+												<textarea rows="3" cols="3" name="textarea"
 													placeholder="평점 및 영화 관람평을 작성해주세요. 한글 110자/ 영문 220자 작성 가능합니다."
 													id="textarea"></textarea>
-
 											</div>
 											<button type="submit" id="btnComment" class="btn_submit">관람평 작성</button>
 										</form>
 									</div>
-
-
 								</div>
-								
 							</div>
 						</li>
 					</ul>
@@ -348,7 +351,7 @@ button {
 </div>
 <script>
 	$(function() {
-		var starScore = 0;
+		var starScore = 1;
 		$('.starRev span').click(function() {
 			$(this).parent().children('span').removeClass('on');
 			$(this).addClass('on').prevAll('span').addClass('on');
@@ -358,85 +361,109 @@ button {
 
 		var cloneDiv = $("#story_box").clone();
 		$('#btn_detail').click(function() {
+			$(this).addClass('on');
+			$('#btn_review').removeClass('on');
+			$('.review_section').removeClass('on');
 			var filmNum = $("input[name='filmNum']").val();
 			$("#story_box").empty();
 			$("#story_box").append(cloneDiv);
 			rowCount = 5;
 		});
-
 		var rowCount = 5;
+		
+		
+		
 		$('#btn_review').on('click', reviewBoard);
-
+		
 		$("#story_box").on('click', ".reviewMore", reviewBoard);
-
+		
 		function reviewBoard() {
-			var filmNum = $("input[name='filmNum']").val();
+			
 			$("#story_box").empty();
-			$.ajax({
-						url : "${cp}/movie/showMovieReviews.do?rowCount="
-								+ rowCount,
-						type : "get",
-						dateType : "json",
-						data : {
-							"filmNum" : filmNum
-						},
-						success : function(reviewListVo) {
+			
+			var filmNum = $("input[name='filmNum']").val();
+			$('.review_section').addClass('on');
+			$('#btn_detail').removeClass('on');
+
+			$('#btn_review').addClass('on');
+
+
+			$.ajax({url : "${cp}/movie/showMovieReviews.do?rowCount="+ rowCount,
+					type : "get",
+					dataType : "json",
+					data : {"filmNum" : filmNum},
+					success : function(reviewListVo) {
+							
 							$("#review_section").append(
-									"<form action=''></form>");
-							$(reviewListVo)
-									.each(
-											function(i, review) {
-												$("#story_box")
-														.append(
-																"<div class='box_div'></div>")
-												$("#story_box")
-														.append(
-																"<span class='box_name'>"
-																		+ review.memName
-																		+ "</span>");
-												$("#story_box")
-														.append(
-																"<img src='${cp}/resources/image/movieDetail/star_small.png'>");
-												$("#story_box").append(
-														"<span class='box_mScore'>"
-																+ review.mScore
-																+ "</span>");
-												$("#story_box")
-														.append(
-																"<div>"
-																		+ review.rContent
-																		+ "</div>");
-												$("#story_box")
-														.append(
-																"<div>"
-																		+ showTime(review.mReviewDate)
-																		+ "</div>");
+							"<form action=''></form>");
+							$(reviewListVo).each(function(i, review) {$("#story_box").append("<div class='box_div'></div>")
+
+												$("#story_box").append("<span class='box_name'>"+ review.memName
+												+ "</span>");
+												
+												$("#story_box").append("<img src='${cp}/resources/image/movieDetail/star_small.png'>");
+												$("#story_box").append("<span class='box_mScore'>"
+												+ review.mScore+ "</span>");
+												$("#story_box").append("<div>"+ review.rContent+ "</div>");
+												$("#story_box").append("<div>"+ showTime(review.mReviewDate)
+												+ "</div>");
 												//$("#story_box").append(
 												//"<img src='${cp}/resources/image/movieDetail/star_small.png'>");
 												rowCount = rowCount + 5;
+												
 											});
-							$("#story_box").append(
-									"<button class='reviewMore'>더보기</button>");
+
+							$("#story_box").append("<button class='reviewMore'>더보기</button>");
+							
 						}
+					
 					});
+			
 		}
 
-// 		$('#btnComment').on('click',function() {
-//  			var textarea = $('#textarea').val();
-//  			alert($('#textarea').val());
-//  			alert(starScore);
-//  			console.log(textarea);
-//  			var star = $('#');
-// 		};
-		
-		function check(){
-			if(starScore>0){
-				$("input[name='starScore']").val(starScore);
-				return true;
-			}else{
-				return false;
+		function functionAjax(){
+			var filmNum = $("#filmNum").val();
+			var textarea=$("#textarea").val();
+				if(textarea=='null'){
+					alert("관람평을 한 자이상 작성하세요");
+				}
+			var params=$("#frm").serialize();
+	//		alert(params)
+			$.ajax({
+				url : "${cp}/movie/writeComment.do",
+				dataType : "json",
+				data : {
+					"filmNum":filmNum,
+					"memNum" : 41,
+					"mScore":starScore,
+					"rContent":textarea,
+					"rowCount":rowCount
+					},
+				success : function(data) {
+				//alert("1111111111111111111111"+data);
+							//-1은 리뷰가 이미 작성 됐을때,/-2는 구매 안했을때, -3 인설트 실패.
+					//alert(data[0]) 0번째는 -2가 담겨있음
+						for(var alertNum in data){
+							if(alertNum==-2){
+								alert("관람 내역이 없습니다.");
+							}else{
+								alert("작성한 리뷰 내역이 존재합니다.")
+							}
+						}
+					}
+				});
 			}
-		};
+		
+				$('#btnComment').on('click',function(e){
+					e.preventDefault();
+					if('${empty memId}'){
+						//location.href="${cp}/login/login.do"
+							functionAjax();
+					}else{
+						functionAjax();
+					}
+				});
+
 
 		function showTime(data) {
 			var regdate = new Date(data);

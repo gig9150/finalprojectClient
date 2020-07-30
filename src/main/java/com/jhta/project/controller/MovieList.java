@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.google.gson.Gson;
 import com.jhta.project.service.MovieListService;
+import com.jhta.project.service.ReviewListService;
 import com.jhta.project.vo.AllByMRateVo;
 import com.jhta.project.vo.AllMoviesVo;
 import com.jhta.project.vo.MovieDetailVo;
@@ -17,6 +18,8 @@ import com.jhta.project.vo.MovieDetailVo;
 public class MovieList {
 	@Autowired
 	MovieListService movieListService;
+	@Autowired
+	private ReviewListService reviewService;
 	
 	//영화 nav클릭했을 때 처음으로 터지는 함수(예매율순으로 상영 영화 불러오기)
 	@RequestMapping("/movie/showAllMovies.do")
@@ -55,6 +58,11 @@ public class MovieList {
 		MovieDetailVo movieDetailVo=movieListService.showMovieDetailInfo(filmNum);
 		//영화예매율디테일정보vo
 		AllMoviesVo movieDetailRate=movieListService.showMovieDetailRate(filmNum);
+		
+		//총 관람평 갯수 
+		int reviewCount=reviewService.count(filmNum);
+		//영화 평점
+		int movieGrade=reviewService.movieGrade(filmNum);
 		Gson gson=new Gson();
 		String test=gson.toJson(movieDetailVo);
 		String test1=gson.toJson(movieDetailRate);
@@ -62,7 +70,8 @@ public class MovieList {
 		System.out.println("movieDetailRate:"+test1);
 		model.addAttribute("movieDetailVo",movieDetailVo);
 		model.addAttribute("movieDetailRate",movieDetailRate);
-		
+		model.addAttribute("reviewCount",reviewCount);
+		model.addAttribute("movieGrade",movieGrade);
 		return ".movie.movieDetailView";
 	}
 }

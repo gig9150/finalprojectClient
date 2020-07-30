@@ -25,13 +25,28 @@
 		order by mreviewdate desc
 	</select>
 	
+	<!-- 관람평작성 조건에 부합하는지 확인하는 매퍼 -->
+	<select id="chkReview" resultType="hashmap" parameterType="hashmap">
+            select (
+            	select count(*) review from mreview mr, film f,(select chargenum from charge where memnum=#{memNum}) c
+           		where f.filmnum=mr.filmnum and c.chargenum=mr.chargenum and f.filmnum=#{filmNum}) reviewChek,
+           			(select count(*) from charge where chargenum = any (select chargenum from book where mschedulenum =
+            	(select mschedulenum from mschedule where purchasefilmnum= (select purchasefilmnum from purchasefilm where filmnum=#{filmNum})))
+            	and memnum = #{memNum}) buyCheck,
+            nvl((select chargenum from charge where chargenum = any (select chargenum from book where mschedulenum =
+            	(select mschedulenum from mschedule where purchasefilmnum= (select purchasefilmnum from purchasefilm where filmnum=#{filmNum})))
+            	and memnum = #{memNum}),0) chargenum
+            from dual
+	</select>
 	
-	<select id="insertReview" resultType="int" parameterType="hashmap">
-	insert into usertbl (username, userid) values ('김덕팔' , 'ejrvkf12') 
-
-출처: https://121202.tistory.com/25 [책방 창고]
-		insert into mreview (rcontent, mscore) values(#{rcontent},#{mscore})
+	<!-- 리뷰테이블에 관람평 insert시키기 -->
+	<insert id="writeReview" parameterType="mreview">
+		insert into mreview values(MREVIEWNUM.nextval, 
+		rContent=#{rContent}, 0, mScore=#{mScore}, memNum=#{memNum},filmNum=#{filmNum}, chargeNum=#{chargeNum},mReviewDate=sysdate)
+	</insert>
 	
+	<select id="movieGrade" parameterType="int" resultType="int">
+		 select avg(mscore) avg from mreview where filmNum=#{filmNum}
 	</select>
 	
 </mapper>
