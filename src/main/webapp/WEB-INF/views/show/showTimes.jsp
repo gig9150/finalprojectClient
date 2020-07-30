@@ -9,6 +9,7 @@
 <style>
 .centerplace {
 	margin: auto;
+	margin-top: 4%;
 	height: fit-content;
 	width: 1090px;
     overflow-y: scroll;
@@ -91,23 +92,20 @@ a:hover {
 </style>
 <script type="text/javascript">
 	$(window).on('load',function(){
-		if('${cityAddr}'!='서울 중구 정동 5-1'){
+		if('${cityAddr}'!='서울'){
 			brNameList('${cityAddr}');
 		}else{
-			brNameList('서울점');	
+			brNameList('서울');	
 		}
-		
 		$(".areas button").click(function(){
 			var cityAddr=$(this).val();
 			brNameList(cityAddr);
-			
 		});
-		
 	
 	});
 	function brNameList(cityAddr){
 		$.ajax({
-			url:"http://localhost:8082/project/show/showTimers.do?cityAddr="+cityAddr,
+			url:"http://localhost:9090/project/show/showTimers.do?cityAddr="+cityAddr,
 			dataType:"json",
 			success:function(data){
 				$(".manycity").empty();

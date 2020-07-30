@@ -120,6 +120,7 @@ public class LocationController {
 	@RequestMapping(value="/show/showTimers.do",produces="application/json;charset=utf-8")
 	@ResponseBody
 	public LocationListVo showTimers(String cityAddr){
+		System.out.println("종현오빠 뭘 잘못한거야:2222222222222333333333444445555111111"+cityAddr);
 		String locatedlLstUrl="http://localhost:9090/projectdb/show/locatedList.do?cityAddr="+cityAddr;
 		String slocatedList=service.get(locatedlLstUrl).trim();
 		Gson gson=new Gson();
