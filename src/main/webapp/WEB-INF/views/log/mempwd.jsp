@@ -64,8 +64,6 @@
 	</div>
 	<div class="cont_header">
 			<h1 class="h1_tit">비밀번호 변경</h1>
-			<h1>${memPwd }</h1>
-			<h1>${memId }</h1>
 			<p class="h_desc">비밀번호는 2-3개월에 한 번씩 바꿔주시면 까먹습니다. </p>
 	</div>
 	<form action="${cp }/log/mempwdok.do" method="post" id="mempwdfind">
