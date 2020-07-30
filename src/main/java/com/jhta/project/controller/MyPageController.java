@@ -210,9 +210,9 @@ public class MyPageController {
 	}
 	
 	//평점/리뷰 작성
-	@RequestMapping(value="/mypage/reviewInsert.do",produces = {MediaType.APPLICATION_JSON_UTF8_VALUE,MediaType.APPLICATION_XML_VALUE})
+	@RequestMapping(value="/mypage/reviewInsert.do",produces="application/json;charset=UTF-8")
 	@ResponseBody
-	public String reviewInsert(String rContent,int mScore,int filmNum, int chargeNum) {
+	public HashMap<String,String> reviewInsert(String rContent,int mScore,int filmNum, int chargeNum) {
 		 						//시퀀스     리뷰내용 좋아요수 평점  회원번호 영화번호        예약번호      작성일
 		MReviewVo vo=new MReviewVo(0, rContent, 0, mScore, 1, filmNum, chargeNum, null);
 		String url = "http://localhost:9090/projectdb/mypage/reviewInsert.do";
@@ -220,17 +220,20 @@ public class MyPageController {
 		String jsonString=gson.toJson(vo);
 		String code=service.post(url,jsonString).trim();
 		int result=Integer.parseInt(code);
+		HashMap<String,String> map=new HashMap<String, String>();
 		if(result>0) {
-			return "success";
+			System.out.println(result+"---result");
+			map.put("code","success");
 		}else {
-			return "fail";
+			map.put("code","error");
 		}
+		return map;
 	}
 	
 	//평점/리뷰 수정
-	@RequestMapping(value="/mypage/reviewUpdate.do",produces = {MediaType.APPLICATION_JSON_UTF8_VALUE,MediaType.APPLICATION_XML_VALUE})
+	@RequestMapping("/mypage/reviewUpdate.do")
 	@ResponseBody
-	public String reviewUpdate(String rContent,int mScore,int filmNum, int chargeNum) {
+	public HashMap<String,String> reviewUpdate(String rContent,int mScore,int filmNum, int chargeNum){
 								 //시퀀스     리뷰내용 좋아요수 평점  회원번호 영화번호        예약번호      작성일
 		MReviewVo vo=new MReviewVo(0, rContent, 0, mScore, 1, filmNum, chargeNum, null);
 		String url = "http://localhost:9090/projectdb/mypage/reviewUpdate.do";
@@ -238,11 +241,14 @@ public class MyPageController {
 		String jsonString=gson.toJson(vo);
 		String code=service.post(url,jsonString).trim();
 		int result=Integer.parseInt(code);
+		HashMap<String,String> map=new HashMap<String, String>();
 		if(result>0) {
-			return "success";
+			System.out.println(result+"---result");
+			map.put("code","success");
 		}else {
-			return "error";
+			map.put("code","error");
 		}
+		return map;
 	}
 	
 	

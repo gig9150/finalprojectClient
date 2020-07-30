@@ -6,14 +6,14 @@
 <head>
 <style>
 	#inquiry_wrap{width:100%;position: relative;top: 37px;}
-	#mypage_moviesaw_wrap{height: 100%;width: 100%;	}
+	#mypage_moviesaw_wrap{height: 100%;width: 100%;	margin-bottom: 50px;}
 	#my_movie_list li { list-style: none;width: 49%; display: inline-block; border: 1px solid #ccc; margin-bottom: 10px;}
 	#poster{		display: inline-block;		float: left;		padding: 10px;		width: 210px;	}
 	#detail_info{		display: inline-block;		padding-top: 10px;    	padding-bottom: 10px;		clear: both;		width: 50%;	}
 	#poster img{border-radius: 10px;		width: 184px;		height: 262px;	}
 	#review_box{		display: inline-block;		width: 50%;	}
-	#review_box dd{		height: 90px;	}
-	#review_box dt{		color: #FF7787;	}
+	#review_box dd{		height: 70px;	padding: 3px;}
+	#review_box dt{		color: #FF7787;	padding: 0px; height: 25px}
 	.reviewBtn{		border: 1px solid;		border-radius: 10px;		background-color:transparent;	}
 	#tit{   		font-size: 22px;	}
 	#movieContent{		padding: 10px;	}
@@ -97,10 +97,10 @@
 					<div id="btn_box">
 						<c:choose>
 							<c:when test="${list.mreview == '관람평을 작성해보세요.'}">
-								<input type="button" value="관람평등록" data-toggle="modal" data-target="#reviewInsert${i.index }">
+								<input type="button" class="btn" value="관람평등록" data-toggle="modal" data-target="#reviewInsert${i.index }">
 							</c:when>
 							<c:otherwise>
-								<input type="button" value="관람평수정" data-toggle="modal" data-target="#reviewUpdate${i.index }">
+								<input type="button" class="btn" value="관람평수정" data-toggle="modal" data-target="#reviewUpdate${i.index }">
 							</c:otherwise>
 						</c:choose>
 					</div>
@@ -108,11 +108,12 @@
 			</li>
 			
 			
+			
 		<!-- Modal -->
 		<!-- 리뷰 등록 -->
 		<div class="modal fade" id="reviewInsert${i.index }" role="dialog">
-			<input type="text" value="${list.filmnum }" id="review_insert_filmnum${i.index }">
-			<input type="text" value="${list.chargenum }" id="review_insert_chargenum${i.index }">
+			<input type="hidden" value="${list.filmnum }" id="review_insert_filmnum${i.index }">
+			<input type="hidden" value="${list.chargenum }" id="review_insert_chargenum${i.index }">
 		  <div class="modal-dialog">
 						
 		    <!-- Modal content-->
@@ -138,7 +139,7 @@
 		      </div>
 		      <div class="modal-footer">
 		      	<div class="btn_insert">
-			        <button type="button" class="btn btn-default" data-dismiss="modal">확인</button>
+			        <button type="button" class="btnOk" data-dismiss="modal">확인</button>
 			        <input type="hidden" value="${i.index }">
 			        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
 		        </div>
@@ -150,8 +151,8 @@
 		<!-- Modal -->
 		<!-- 리뷰 수정 -->
 		<div class="modal fade" id="reviewUpdate${i.index }" role="dialog">
-			<input type="text" value="${list.filmnum }" id="review_update_filmnum${i.index }">
-			<input type="text" value="${list.chargenum }" id="review_update_chargenum${i.index }">
+			<input type="hidden" value="${list.filmnum }" id="review_update_filmnum${i.index }">
+			<input type="hidden" value="${list.chargenum }" id="review_update_chargenum${i.index }">
 		 <div class="modal-dialog">
 		   <!-- Modal content-->
 		   <div class="modal-content">
@@ -167,7 +168,7 @@
 		       	  	<span class="starR on">${z }</span>
 		       	  </c:forEach>
 		       	  <c:if test="${list.mScore!=10 }">
-			       	  <c:forEach var="j" begin="${list.mScore }" end="10">
+			       	  <c:forEach var="j" begin="${list.mScore+1 }" end="10">
 						  <span class="starR">${j }</span>
 			       	  </c:forEach>
 		       	  </c:if>
@@ -176,7 +177,7 @@
 		     </div>
 		     <div class="modal-footer">
 		     	<div class="btn_update">
-			       <button type="button" class="btn btn-default" data-dismiss="modal">확인</button>
+			       <button type="button" class="btnOk" data-dismiss="modal">확인</button>
 			        <input type="hidden" value="${i.index }">
 			       <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
 		       </div>
@@ -197,8 +198,9 @@
 <script type="text/javascript">
 	$(function(){
 		var index=0;
+		var starScore=0;
 		$('.starRev span').click(function(){
-			var starScore=$(this).text();
+			starScore=$(this).text();
 			$('.starScore').text(starScore);
 		  $(this).parent().children('span').removeClass('on');
 		  $(this).addClass('on').prevAll('span').addClass('on');
@@ -206,49 +208,42 @@
 		});
 		
 		//리뷰 등록
-		$('.btn_insert .btn').click(function(){
-			location.reload(true);
+		$('.btn_insert .btnOk').click(function(){
 			index=$(this).next().val();
 			var mScore=$(".score").text();
 			var rContent=$("#review_insert_content"+index).val();
 			var filmnum=$("#review_insert_filmnum"+index).val();
 			var chargenum=$("#review_insert_chargenum"+index).val();
-			alert(mScore+","+rContent+","+filmnum+","+chargenum);
 			$.ajax({
 				url:"${cp}/mypage/reviewInsert.do",
-				data : {"mScore":5,"rContent":rContent,"filmNum":filmnum,"chargeNum":chargenum},
+				data : {"mScore":starScore,"rContent":rContent,"filmNum":filmnum,"chargeNum":chargenum},
+				contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 				type: 'POST',
 				dataType : 'JSON',
 				success : function(data){
-					console.log('등록 성공');
-				},
-				error: function(data){
-					console.log('에러입니다');
+					window.location.reload()
 				}
 			});
 		});
 		//리뷰 수정
-		$('.btn_update .btn').click(function(){
-			location.reload(true);
+		$('.btn_update .btnOk').click(function(){
 			index=$(this).next().val();
 			var mScore=$(".score").text();
 			var rContent=$("#review_update_content"+index).val();
 			var filmnum=$("#review_update_filmnum"+index).val();
 			var chargenum=$("#review_update_chargenum"+index).val();
-			alert(mScore+","+rContent+","+filmnum+","+chargenum);
 			$.ajax({
 				url:"${cp}/mypage/reviewUpdate.do",
-				data : {"mScore":5,"rContent":rContent,"filmNum":filmnum,"chargeNum":chargenum},
+				data : {"mScore":starScore,"rContent":rContent,"filmNum":filmnum,"chargeNum":chargenum},
+				contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 				type: 'POST',
 				dataType : 'JSON',
 				success : function(data){
-					console.log('수정 성공');
-				},
-				error: function(data){
-					console.log('에러입니다');
+					window.location.reload();
 				}
 			});
 		});
+		
 		
 		$('#selectYear').change(function(){
 			var syear=$(this).val();
