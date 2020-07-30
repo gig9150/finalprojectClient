@@ -45,8 +45,8 @@
         <div class='menu-group'>
           <a href="#">예매</a>
            <div class="sub-menu">
-	          <a href="${cp }/buy/screen/selected.do">테스트용</a>
 	          <a href="${cp }/buy/ticket.do">빠른예매</a>
+	          <a href="${cp }/show/showTimeList.do">상영 시간표</a>
           </div>
         </div>
         <div class='menu-group'>
@@ -59,7 +59,7 @@
         <div class='menu-group'>
           <a href="#">극장</a>
           <div class="sub-menu">
-            <a href="#">전체극장</a>
+         	<a href="${cp }/show/showTimeList.do">전체극장</a>
             <a href="#">특별관</a>
           </div>
         </div>

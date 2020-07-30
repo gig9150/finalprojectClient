@@ -36,6 +36,8 @@
   	<typeAlias type="com.jhta.project.vo.TheatherVo" alias="theather"/>
   	<typeAlias type="com.jhta.project.vo.TotalVo" alias="total"/>
   	<typeAlias type="com.jhta.project.vo.WScheduleVo" alias="wschedule"/>
+	<typeAlias type="com.jhta.project.vo.LocationBranchListVo" alias="locationbranchlist"/>
+	<typeAlias type="com.jhta.project.vo.LocationListVo" alias="locationlist"/>
   </typeAliases>
   <mappers>
   <mapper resource="com/jhta/mybatis/mapper/ActorMapper.xml"/>

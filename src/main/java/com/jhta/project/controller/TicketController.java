@@ -150,7 +150,6 @@ public class TicketController {
 		vo.setMonthDay(monthDay);
 		vo.setsCount(sCount);
 		String jsonString = gson.toJson(vo).trim();
-		System.out.println("제이슨 응답객체"+jsonString);
 		return jsonString;
 	}
 	

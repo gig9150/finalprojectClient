@@ -162,7 +162,7 @@
 		     <div class="modal-body">
 		     	<strong id="modal-movie-tit">${list.filmname }</strong>
 		      	<div class="starRev">
-		      	 <h4 style="display: inline-block;" class="starScore${i.index }">${list.mScore }</h4><span>점</span><br>
+		      	 <h4 style="display: inline-block;" class="starScore">${list.mScore }</h4><span>점</span><br>
 				  <c:forEach var="z" begin="1" end="${list.mScore }">
 		       	  	<span class="starR on">${z }</span>
 		       	  </c:forEach>
@@ -236,18 +236,18 @@
 			var filmnum=$("#review_update_filmnum"+index).val();
 			var chargenum=$("#review_update_chargenum"+index).val();
 			alert(mScore+","+rContent+","+filmnum+","+chargenum);
-// 			$.ajax({
-// 				url:"${cp}/mypage/reviewUpdate.do",
-// 				data : {"mScore":5,"rContent":rContent,"filmNum":filmnum,"chargeNum":chargenum},
-// 				type: 'POST',
-// 				dataType : 'JSON',
-// 				success : function(data){
-// 					console.log('수정 성공');
-// 				},
-// 				error: function(data){
-// 					console.log('에러입니다');
-// 				}
-// 			});
+			$.ajax({
+				url:"${cp}/mypage/reviewUpdate.do",
+				data : {"mScore":5,"rContent":rContent,"filmNum":filmnum,"chargeNum":chargenum},
+				type: 'POST',
+				dataType : 'JSON',
+				success : function(data){
+					console.log('수정 성공');
+				},
+				error: function(data){
+					console.log('에러입니다');
+				}
+			});
 		});
 		
 		$('#selectYear').change(function(){
@@ -257,18 +257,6 @@
 			}else{
 				location.href="${cp}/mypage/moviesaw.do";
 			}
-// 			$.ajax({
-// 				url:"${cp}/mypage/moviesaw.do",
-// 				data : {"syear":syear},
-// 				type: 'POST',
-// 				dataType : 'JSON',
-// 				success : function(data){
-// 					alert('성공');
-// 				},
-// 				error: function(data){
-// 					alert('에러');
-// 				}
-// 			});
 		});
 		
 		

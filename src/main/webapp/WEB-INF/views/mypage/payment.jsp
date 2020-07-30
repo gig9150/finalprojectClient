@@ -96,7 +96,7 @@
 							</div>
 							<div id="payment_box_price">
 								<c:set var="price" value="12000" />
-								<label>${list.payment}</label> <span class="ticketing_span">${(price*list.usercount)-list.cuponrate }원</span><br>
+								<label>${list.payment}</label> <span class="ticketing_span">${list.totalbill-list.cuponrate }원</span><br>
 								<label>쿠폰할인</label> <span class="ticketing_span">${list.cuponrate }원</span><br>
 							</div>
 							<div id="payment_box_total">
