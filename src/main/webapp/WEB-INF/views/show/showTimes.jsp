@@ -61,6 +61,7 @@
 }
 p {
     margin: 0 0 4px;
+    font-size: 13px;
 }
 .line{
 	height:1px;
@@ -124,7 +125,6 @@ a:hover {
 	}
 </script>
 <div class="centerplace">
-	으 아 아 악
 	<div class="high">
 	<p/>
 	<div class="areas">
@@ -162,7 +162,7 @@ a:hover {
 		<c:if test="${vo.filmName != checkName }">
 		<br>
 		<div class="line"></div>
-			<div><h4 style="margin-top: 10px;margin-bottom: 20px; display:inline-block;">${vo.filmName }</h4> <span class="badge badge-info"> 상영중</span></div>
+			<div><a href="${cp }?filmNum=${vo.filmNum }" style="color:black;"><h4 style="margin-top: 10px;margin-bottom: 20px; display:inline-block;">${vo.filmName }</h4></a> <span class="badge badge-info"> 상영중</span></div>
 		</c:if>
 			<c:if test="${vo.theatherNum!=checkTheather }">
 				<p>▶  ${vo.theatherName } | ${vo.theatherSort }
@@ -188,19 +188,3 @@ a:hover {
 			</div>
 		</div>
 </div>
-<script>
-	function morningNight(x){
-		var d=new Date(x);
-		var h=d.getHours();
-		alert(h);
-		if(h<9){
-			alert("morning");
-			return "morning";
-		}else if(h>20){
-			alert("night")
-			return "night";
-		}else{
-			return "normal";
-		}
-	}
-</script>
