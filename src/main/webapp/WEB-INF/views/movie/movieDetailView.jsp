@@ -424,9 +424,7 @@ button {
 		function functionAjax(){
 			var filmNum = $("#filmNum").val();
 			var textarea=$("#textarea").val();
-				if(textarea=='null'){
-					alert("관람평을 한 자이상 작성하세요");
-				}
+
 			var params=$("#frm").serialize();
 	//		alert(params)
 			$.ajax({
@@ -440,14 +438,19 @@ button {
 					"rowCount":rowCount
 					},
 				success : function(data) {
+					if(textarea=='null'){
+						alert("관람평을 한 자이상 작성하세요");
+					}
 				//alert("1111111111111111111111"+data);
 							//-1은 리뷰가 이미 작성 됐을때,/-2는 구매 안했을때, -3 인설트 실패.
 					//alert(data[0]) 0번째는 -2가 담겨있음
-						for(var alertNum in data){
-							if(alertNum==-2){
+						for(var i in data){
+							if(data[i].mScore==-2){
 								alert("관람 내역이 없습니다.");
+							}else if(data[i].mScore== -1){
+								alert("작성한 리뷰 내역이 존재합니다.");
 							}else{
-								alert("작성한 리뷰 내역이 존재합니다.")
+								alert("띡-! 에러 다시 시도해주세요");
 							}
 						}
 					}

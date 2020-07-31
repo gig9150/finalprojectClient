@@ -59,15 +59,16 @@ public class MovieReviews {
 		map.put("rContent",rContent);
 		map.put("rowCount",rowCount);
 		
-		System.out.println("1111111111111");
+//		System.out.println("1111111111111");
 		HashMap<String, BigDecimal> chkMap =reviewService.chkReview(filmNum, memNum);
-		System.out.println(chkMap+"..........." + chkMap);
+	
 		int reviewCheck=chkMap.get("REVIEWCHEK").intValue();
 		int buyCheck=chkMap.get("BUYCHECK").intValue();
 		int chargeNum=chkMap.get("CHARGENUM").intValue();
-		
+		System.out.println(reviewCheck+"..........." + buyCheck);
 		//리뷰등록
 		if(reviewCheck==0 && buyCheck!=0) {
+			System.out.println("11111111111111");
 			int codeNum=reviewService.insertMReview(filmNum,memNum,mScore,rContent,chargeNum);
 			//List<ReviewBoardVo> ReviewBoardVoList = new List<ReviewBoardVo>();
 			if(codeNum==1) {//리뷰테이블에 정상적으로 insert가 되었을 때
@@ -75,6 +76,7 @@ public class MovieReviews {
 				List<ReviewBoardVo> ReviewBoardVoList=mr.showReviews(null, filmNum, 0, rowCount);
 				return ReviewBoardVoList;
 			}else {
+				System.out.println("222222222222");
 				//-1은 리뷰가 이미 작성 됐을때,
 				//-2는 구매 안했을때, -3 인설트 실패.
 				List<ReviewBoardVo> list=new ArrayList<ReviewBoardVo>();
