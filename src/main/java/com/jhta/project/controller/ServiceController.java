@@ -82,7 +82,11 @@ public class ServiceController {
 		ObjectMapper mapper=new ObjectMapper();
 		String jsonString= mapper.writeValueAsString(vo);
 		String code=service.post(url,jsonString).trim();
-		return code;
+		if(code.equals("success")) {
+			return ".main";
+		}else {
+			return code;
+		}
 	}
 	
 	//분실물 게시판 매핑
