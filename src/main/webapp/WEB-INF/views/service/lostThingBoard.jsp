@@ -43,9 +43,9 @@
 			<div class="col-md-3">
 				<p>전체<span>111,111</span>건</p>
 			</div>
-			<form action="">
+			<form action="${cp}/service/lostThingBoard.do">
 				<div class="col-md-2">
-					<select class="form-control region-select" name="region">
+					<select class="form-control region-select">
 						<option>지역 선택</option>
 						<c:forEach items="${list}" var="re">
 							<option value="${re}">${re}</option>
@@ -58,10 +58,10 @@
 					</select>
 				</div>
 				<div class="col-md-2">
-					<select class="form-control">
+					<select class="form-control" name="getDate">
 						<option>접수상태 선택</option>
-						<option>미답변</option>
-						<option>답변완료</option>
+						<option value="미답변">미답변</option>
+						<option value="답변">답변완료</option>
 					</select>
 				</div>
 				<div class="col-md-3">
@@ -81,36 +81,31 @@
 			<tr>
 				<th>번호</th><th>극장</th><th>제목</th><th>접수상태</th><th>등록일</th>
 			</tr>
-			<tr>
-				<td>dd</td><td>dd</td><td>dd</td><td>dd</td><td>dd</td>		
-			</tr>
-			<tr>
-				<td>dd</td><td>dd</td><td>dd</td><td>dd</td><td>dd</td>		
-			</tr>
-			<tr>
-				<td>dd</td><td>dd</td><td>dd</td><td>dd</td><td>dd</td>		
-			</tr>
-			<tr>
-				<td>dd</td><td>dd</td><td>dd</td><td>dd</td><td>dd</td>		
-			</tr>
-			<tr>
-				<td>dd</td><td>dd</td><td>dd</td><td>dd</td><td>dd</td>		
-			</tr>
-			<tr>
-				<td>dd</td><td>dd</td><td>dd</td><td>dd</td><td>dd</td>		
-			</tr>
-			<tr>
-				<td>dd</td><td>dd</td><td>dd</td><td>dd</td><td>dd</td>		
-			</tr>
-			<tr>
-				<td>dd</td><td>dd</td><td>dd</td><td>dd</td><td>dd</td>		
-			</tr>
-			<tr>
-				<td>dd</td><td>dd</td><td>dd</td><td>dd</td><td>dd</td>		
-			</tr>
-			<tr>
-				<td>dd</td><td>dd</td><td>dd</td><td>dd</td><td>dd</td>		
-			</tr>
+			<c:forEach items="${mList}" var="map">
+				<script>
+					console.log("DZDZ:"+${map.MISSNUM});
+					console.log("DZDZ:"+${map.BRNAME});
+					console.log("DZDZ:"+${map.MISSTITLE});
+					console.log("DZDZ:"+${map.MISSDETAIL});
+					console.log("DZDZ:"+${map.FINDDATE});
+				</script>
+				<tr>
+					<td>${MAP.MISSNUM}</td> 
+					<td>${MAP.BRNAME}</td>
+					<td>${MAP.MISSTITLE}</td>
+					<td>${MAP.MISSDETAIL}</td>
+					<td>${MAP.FINDDATE}</td>
+				</tr>
+			</c:forEach>
 		</table>
+		<c:if test="${pu.startPageNum>5}">
+			<a href="${cp}/service/lostThingBoard.do?pageNum=${pu.startPage-1}&branch=${branch}&getDate=${getDate}">[이전]</a>
+		</c:if>
+		<c:forEach begin="${pu.startPageNum}" end="${pu.endPageNum}" var="i">
+			<a href="${cp}/service/lostThingBoard.do">[${i}]</a>
+		</c:forEach>
+		<c:if test="${pu.totalPageCount>=pu.endPageNum}">
+			<a href="${cp}/service/lostThingBoard.do?pageNum=${pu.endPageNum+1}&branch=${branch}&getDate=${getDate}">[다음]</a>
+		</c:if>
 	</div>
 </div>

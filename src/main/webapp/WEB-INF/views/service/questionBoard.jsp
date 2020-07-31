@@ -55,15 +55,17 @@
 			</dl>
 		</div>
 		<div class="container question-div">
-			<form name="form-test" action="" method="get" onsubmit="return askException()">
+			<form name="form-test" onsubmit="return askException()"
+			 method="get">
 				<div class="row">
+					<input type="hidden" value="${memNum}" name="num">
 					<div class="col-xs-6 form-group">
 						<label for="name"> 이름 </label> <input type="text" id="name"
-							name="name" class="form-control">
+							name="name" class="form-control" value="${memId}">
 					</div>
 					<div class="col-xs-6 form-group">
 						<label for="email"> 이메일 </label> <input type="text" id="email"
-							name="email" class="form-control">
+							name="email" class="form-control" value="${memEmail}">
 					</div>
 				</div>
 				<div class="row">
@@ -72,7 +74,7 @@
 							id="street" name="street" class="form-control street"> -
 						<input type="text" name="street" class="form-control street">
 						- <input type="text" name="street" class="form-control street">
-						<input type="button" class="btn btn-default" value="인증요청">
+						<input type="button" class="btn btn-default street-btn" value="인증요청">
 					</div>
 				</div>
 				<div class="row">
@@ -128,35 +130,58 @@
 </div>
 <script>
 	//예외 처리
-	
-	$(".question-btn").click(function(e){
-		if(${id eq null} || ${id eq ""}){
-			alert("로그인 후 이용 가능합니다...");	
-			e.preventDefault();
+	$(function(){
+		$(".question-btn").click(function(e){
+			if(${memId eq null} || ${memId eq ""}){
+				alert("로그인 후 이용 가능합니다...");	
+				e.preventDefault();
+			}
+		});
+		
+// 		$(".street-btn").click(function(){
+// 			var num = 0;
+// 			$(".street").each(function(i,val){
+// 				console.log(val);
+// 				if($(val).val()==null || $(val).val()==""){
+// 					alert("번호를 입력하세요.");
+// 					return false;
+// 				}
+// 				num++;
+// 			});
+// 			if(num>=3){
+// 				alert("인증이 완료되었습니다.");
+// 				$(".street").each(function(i,val){
+// 					$(this).prop("disabled",true);
+// 				});
+// 			}
+// 		});
+		
+		
+		function askException(){
+			alert("submit");
+			if(${memId eq null} || ${memId eq ""}){
+				alert("회원만 등록 가능합니다...");
+				return false;
+			}
+			if($("#name").val() == "" || $("#name").val() == null){
+				alert("아이디를 입력하세요");
+				return false;
+			}
+			if($("#email").val() == "" || $("#email").val() == null){
+				alert("이메일을 입력하세요");
+				return false;
+			}
+			if($("#title").val() == "" || $("#title").val() == null){
+				alert("제목을 입력하세요");
+				return false;
+			}
+			if($("#content").val() == "" || $("#content").val() == null){
+				alert("내용을 입력하세요");
+				return false;
+			}
+			alert("문의가 등록 되었습니다..");
 		}
 	});
-	
-	function askException(){
-		if($("#name").val() == "" || $("#name").val() == null){
-			alert("아이디를 입력하세요");
-			return false;
-		}
-		if($("#email").val() == "" || $("#email").val() == null){
-			alert("이메일을 입력하세요");
-			return false;
-		}
-		if($("#title").val() == "" || $("#title").val() == null){
-			alert("제목을 입력하세요");
-			return false;
-		}
-		if($("#content").val() == "" || $("#content").val() == null){
-			alert("내용을 입력하세요");
-			return false;
-		}
-
-		return true;
-		
-	}
 	
 	
 </script>

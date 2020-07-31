@@ -66,6 +66,8 @@ button:hover {
 
 #content{
 	height:auto;
+	position: relative;
+	top: 770px;
 }
 
 /* ///////////////////////////////header//////////////////////////////////////// */
@@ -74,6 +76,27 @@ button:hover {
 	border-bottom: 1px solid rgba(255,255,255,.2);
 	height:130px;
 	background-color: #0f0b0b;
+}
+#header:before{
+	content:'';
+	position: absolute;
+    left: 0;
+    top: 0;
+    display: block;
+    width: 400%;
+    height: 92%;
+    background: url(../logo/movie1.jpg);
+    background-repeat:no-repeat;
+}
+#header:after{
+	content: "";
+    position: absolute;
+    z-index: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 140px;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 85%, rgba(0, 0, 0, 1) 100%);
 }
 #search{
 	width:100px;
@@ -235,11 +258,13 @@ header{
 	padding-top:20px;
 }
 header > .container {
+  width: 1300px;
   display: flex;
   justify-content: space-between;
   background-color:block;
   flex-wrap: wrap;
   padding-top: 20px;
+  position: relative;
 }
 header > .container .logo {
   order: -1;
@@ -349,7 +374,7 @@ header > .container .search-box input[type="submit"] {
 }
 
 .slider {
-  background-color: #120c0b;
+  background-color: rgba(0, 0, 0, 1);
 }
 
 .slider .container > .slider-header {
@@ -394,8 +419,9 @@ header > .container .search-box input[type="submit"] {
 .movie-search-row.row{
 	margin-top:20px;
 	padding-top:20px;
-	background-color:#150f10;
+	background-color:rgba(0, 0, 0, 1);
 	border-bottom:none;
+	
 }
 
 .movie-search-row.row > div{
@@ -409,7 +435,7 @@ header > .container .search-box input[type="submit"] {
 	BORDER-LEFT: medium none;
 	BORDER-RIGHT: medium none;
 	BORDER-TOP: medium none;
-	background-color: #120c0b;
+	background-color: rgba(0, 0, 0, 1);
 	font-size: 17px;
 }
 

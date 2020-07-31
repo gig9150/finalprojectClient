@@ -66,13 +66,13 @@ public class ServiceController {
 	
 	@RequestMapping("/service/branchApplyBoard.do")
 	public String goApplyBoard() {
-		//세션에 담겨진 아이디정보로 id,이름,연락처 뽑아가기
 		return ".service.branchApplyBoard";
 	}
 	
 	@RequestMapping("/service/branchApplyInsert.do")
 	public String branchApplyInsert(String cityAddr,String proStatus,String memberId,String proAddr,String proGoal,String proScale) throws JsonProcessingException {
 		String url = "http://localhost:9090/projectdb/service/branchApplyInsert.do";
+		System.out.println("444444444");
 		ProposalVo vo = new ProposalVo(0,memberId,proAddr,proGoal,proScale,proStatus,null,cityAddr);
 		ObjectMapper mapper=new ObjectMapper();
 		String jsonString= mapper.writeValueAsString(vo);
@@ -82,13 +82,36 @@ public class ServiceController {
 	
 	//분실물 게시판 매핑
 	@RequestMapping("/service/lostThingBoard.do")
-	public String goLostThingBoard(Model model) {
+	public String goLostThingBoard(@RequestParam(value="pageNum",defaultValue = "1")int pageNum,
+			Model model,String branch,String getDate,String keyword) {
+		//select박스 뽑아오기
 		String url = "http://localhost:9090/projectdb/service/region.do";
 		Gson gson = new Gson();
 		String code = service.get(url).trim();
 		String[] region = gson.fromJson(code,String[].class);
 		List<String> list = Arrays.asList(region);
 		model.addAttribute("list",list);
+		
+		//리스트 뽑아오기
+		HashMap<String,Object> map = new HashMap<String,Object>();
+		map.put("branch",branch);
+		map.put("getDate",getDate);
+		map.put("keyword",keyword);
+		String smap = gson.toJson(map);
+		String listUrl = "http://localhost:9090/projectdb/service/lostThingBoard.do";
+		String countUrl = "http://localhost:9090/projectdb/service/lostThingCount.do";
+		String count = service.post(countUrl,smap).trim();
+		PageUtil pu = new PageUtil(pageNum,Integer.parseInt(count),10,5);
+		map.put("startRow",pu.getStartRow());
+		map.put("endRow",pu.getEndRow());
+		String smap2 = gson.toJson(map);
+		String slist = service.post(listUrl,smap2).trim();
+		HashMap<String,Object>[] mMap  = gson.fromJson(slist, HashMap[].class);
+		List<HashMap<String,Object>> mList= Arrays.asList(mMap);
+		model.addAttribute("mList",mList);
+		model.addAttribute("pu",pu);
+		model.addAttribute("branch",branch);
+		model.addAttribute("getDate",getDate);
 		return ".service.lostThingBoard";
 	}
 
@@ -97,7 +120,6 @@ public class ServiceController {
 	public String regionBranch(String cityAddr){
 		String url = "http://localhost:9090/projectdb/service/branch.do?cityAddr="+cityAddr;
 		String code = service.get(url).trim();
-		System.out.println("ddd"+code);
 		return code;
 	}
 }
