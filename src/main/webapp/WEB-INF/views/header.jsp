@@ -51,9 +51,8 @@
         </div>
         <div class='menu-group'>
           <a href="#">영화</a>
-          <div class="sub-menu">
-            <a href="#">전체영화</a>
-            <a href="#">영화 한줄평</a>
+            <div class="sub-menu">
+            <a href="${cp}/movie/showAllMovies.do">전체영화</a>
           </div>
         </div>
         <div class='menu-group'>
