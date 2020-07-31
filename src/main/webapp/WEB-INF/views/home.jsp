@@ -8,6 +8,12 @@
 			<h2>
 				박스 오피스&nbsp;<small>box office</small>
 			</h2>
+			<button class="dz"></button>
+			<script>
+				$(".dz").click(function(){
+					$('h2').toggleClass('.test').css("background",'url(../logo/movie2.jpg)');
+				});
+			</script>
 		</div>
 		<div class="flexslider">
 			<c:forEach var="map" items="${list}" varStatus="status">
