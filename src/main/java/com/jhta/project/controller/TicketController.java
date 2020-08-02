@@ -81,7 +81,8 @@ public class TicketController {
 		List<HashMap<String, Object>> sCount = mapper.readValue(code2, typeRef);
 		model.addAttribute("scount", sCount);
 		model.addAttribute("list", list);
-		
+		System.out.println("11111111111111"+list.toString());
+
 		String filmbuylistUrl="http://localhost:9090/projectdb/movie/filmbuylist.do";
 		String smovieList=service.get(filmbuylistUrl).trim();
 		FilmVo[] movieArray= gson.fromJson(smovieList, FilmVo[].class);
@@ -97,8 +98,8 @@ public class TicketController {
 	@RequestMapping(value="/buy/ticketing.do",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	@ResponseBody
 	public String ticketing(@RequestParam(value="cityaddr",defaultValue = "서울") String cityaddr,
-			String regDate,@RequestParam(value="branchNum",defaultValue = "1") int branchNum) throws ParseException, JsonMappingException, JsonProcessingException {
-		String url="http://localhost:9090/projectdb/buy/citylist.do?filmNum=1";
+			String regDate,@RequestParam(value="branchNum",defaultValue = "1") int branchNum,int filmNum) throws ParseException, JsonMappingException, JsonProcessingException {
+		String url="http://localhost:9090/projectdb/buy/citylist.do?filmNum="+filmNum;
 		String code=service.get(url).trim();
 		Gson gson=new Gson();
 		CityListVo[] array=gson.fromJson(code, CityListVo[].class);
@@ -141,7 +142,7 @@ public class TicketController {
 		String scountUrl="http://localhost:9090/projectdb/schedule/scount.do?branchNum="+branchNum;
 		String code2=service.get(scountUrl).trim();
 		List<HashMap<String, Object>> sCount = mapper.readValue(code2, typeRef);
-		
+		System.out.println("11111111111111"+list.toString());
 		
 		TicektBuyVo vo=new TicektBuyVo();
 		vo.setCityList(cityList);
@@ -156,13 +157,13 @@ public class TicketController {
 	
 	@RequestMapping(value="/buy/branchSelect.do",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	@ResponseBody
-	public String branchSelect(int filmNum) {
+	public String branchSelect(int filmNum,@RequestParam(value="cityaddr",defaultValue = "서울") String cityaddr) {
 		String url="http://localhost:9090/projectdb/buy/citylist.do?filmNum="+filmNum;
 		String code=service.get(url).trim();
 		Gson gson=new Gson();
 		CityListVo[] array=gson.fromJson(code, CityListVo[].class);
 		List<CityListVo> mainCityList=Arrays.asList(array);
-		String searchCityUrl="http://localhost:9090/projectdb/buy/searchCity.do?cityaddr=서울";
+		String searchCityUrl="http://localhost:9090/projectdb/buy/searchCity.do?cityaddr="+cityaddr;
 		String cityCode=service.get(searchCityUrl).trim();
 		BranchVo[] cityArray=gson.fromJson(cityCode, BranchVo[].class);
 		List<BranchVo> cityList=Arrays.asList(cityArray);
@@ -197,5 +198,13 @@ public class TicketController {
 		
 		Gson gson=new Gson();
 		return gson.toJson(monthDay);
+	}
+	
+	@RequestMapping(value="/buy/branchList.do",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@ResponseBody
+	public String branchList(String cityAddr) {
+		String url="http://localhost:9090/projectdb/buy/branchList.do?cityAddr="+cityAddr;
+		String code=service.get(url).trim();
+		return code;
 	}
 }

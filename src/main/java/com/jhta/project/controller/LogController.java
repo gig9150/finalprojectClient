@@ -13,7 +13,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.jhta.project.service.RestService;
 import com.jhta.project.vo.MembershipVo;
-import com.jhta.project.vo.MileVo;
 
 @Controller
 public class LogController {

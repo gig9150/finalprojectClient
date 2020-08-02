@@ -14,8 +14,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
 import com.jhta.project.service.RestService;
+import com.jhta.project.vo.AllMoviesVo;
 import com.jhta.project.vo.BookVo;
+import com.jhta.project.vo.MovieDetailVo;
 import com.jhta.project.vo.SeatVo;
+import com.jhta.project.vo.TicketingVo;
 
 @Controller
 public class MovieBuyController {
@@ -33,15 +36,28 @@ public class MovieBuyController {
 		model.addAttribute("list",list);
 		model.addAttribute("theatherNum",theatherNum);
 		model.addAttribute("mscheduleNum",mscheduleNum);
+		model.addAttribute("filmNum",filmNum);
 		return ".buy.screen";
 	}
 	
 	@RequestMapping(value="/buy/screen/reservation.do")
-	public String reservation(String[] seatName,int[] seatNum,int seatMoney,int mscheduleNum,Model model) {
+	public String reservation(String[] seatName,int[] seatNum,int seatMoney,int mscheduleNum,int filmNum,Model model) {
+		Gson gson=new Gson();
+		//영화디테일정보vo
+		String infoUrl="http://localhost:9090/projectdb/movie/detailInfo.do?filmNum="+filmNum;
+		String sMovieDetailVo=service.get(infoUrl).trim();
+		MovieDetailVo movieDetailVo=gson.fromJson(sMovieDetailVo, MovieDetailVo.class);
+		
+		//영화예매율디테일정보vo
+		String movieDetailRateUrl="http://localhost:9090/projectdb/movie/movieDetailRate.do?filmNum="+filmNum;
+		String smovieDetailRate=service.get(movieDetailRateUrl).trim();
+		AllMoviesVo movieDetailRate=gson.fromJson(smovieDetailRate, AllMoviesVo.class);
 		model.addAttribute("seatName",seatName);
 		model.addAttribute("seatNum",seatNum);
 		model.addAttribute("seatMoney",seatMoney);
 		model.addAttribute("mscheduleNum",mscheduleNum);
+		model.addAttribute("movieDetailVo",movieDetailVo);
+		model.addAttribute("movieDetailRate",movieDetailRate);
 		return ".buy.ticketing";
 	}
 	
@@ -54,8 +70,12 @@ public class MovieBuyController {
 	
 	@RequestMapping("/buy/screen/insert.do")
 	public String completa(String[] seatName,int[] seatNum,int seatMoney,String msg,int mscheduleNum,Model model,HttpSession session) {
-		int memNum=(int)session.getServletContext().getAttribute("memNum");
-		System.out.println("결제 완료쪽 컨트롤러다..."+seatMoney);
+		int memNum=0;
+		try {
+			memNum=(int)session.getServletContext().getAttribute("memNum");
+		}catch(NullPointerException np) {
+			return ".log.login";
+		}
 		String url="http://localhost:9090/projectdb/buy/screen/insert.do?seatMoney="+seatMoney+"&memNum="+memNum+"&mscheduleNum="+mscheduleNum;
 		Gson gson=new Gson();
 		List<BookVo> list=new ArrayList<BookVo>();
@@ -69,8 +89,12 @@ public class MovieBuyController {
 		}catch(Exception e) {
 			return code;
 		}
-		model.addAttribute("code",code);
-		return ".buy.checked";
+		String surl = "http://localhost:9090/projectdb/mypage/payment.do?memNum="+memNum;
+		String scode=service.get(surl).trim();
+		TicketingVo[] arrays=gson.fromJson(scode, TicketingVo[].class);
+		List<TicketingVo> slist=Arrays.asList(arrays);
+		model.addAttribute("list",slist);
+		return ".mypage.payment";
 	}
 	
 }

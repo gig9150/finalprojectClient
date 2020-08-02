@@ -177,9 +177,9 @@ p {
 	style="width: 1200px; height: 700px; display: block; border: 2px solid black; margin: auto;">
 	<div id="movielist" style="border: 1px solid red;width: 30%;">
 		<h3>영      화</h3>
-		<div>
+		<div style="width: 80%;height: 85%; overflow: auto;">
 			<c:forEach var="filmVo" items="${movieList }">
-				<div class="filmList" style="width: 80%;height: 100%;margin: auto;">
+				<div class="filmList" style="width: 80%;margin: auto;height: 15%;">
 					<button type="button" class="btn btn-danger" style="width: 100%;margin: 10px;"
 						onclick="branchSelectList('${filmVo.filmNum }')">
 					<h2>${filmVo.filmName }</h2></button>
@@ -245,6 +245,7 @@ p {
 	</div>
 	<div id="moviebuy" style="border: 1px solid blue;width: 30%;">
 		<h3>시      간</h3>
+		<br><br><br>
 		<p style='vertical-align: middle;'>상영관,영화,시간표를 클릭해주세요.</p>
 	</div>
 </div>
@@ -261,7 +262,6 @@ p {
 			data : {filmNum:data},
 			success : function(tt){
 				$("#branchView").children().remove();
-				alert(tt);
 				str="<h3>상  영  관</h3>"+
 					"<div id='theatherList' style='display: inline-block;float: left;width: 50%; overflow-y: auto;'>"+
 					"<ul style='text-align: center;width: 90%;list-style: none;'>";
@@ -269,7 +269,7 @@ p {
 					str+="<li><div class='city' onclick='branchList("+vo.cityaddr+")'>"+
 						"<span>"+vo.cityaddr+"("+vo.cityCount+")</span></div></li>";
 				});//mainCityList Each문끝
-				str+="</ul></div>"+
+				str+="</ul></div id='branchList'>"+
 					"<div style='display: inline-block;float: left;width: 50%;'>"+
 					"<ul style='text-align: center;width: 90%;list-style: none;margin-top: 10px;margin-left:0px;'>";
 				tt.cityList.forEach(function(branchvo,xxx){
@@ -295,7 +295,7 @@ p {
 			$.ajax({
 				url : "${cp}/buy/ticketing.do",
 				dataType : "JSON",
-				data : {'branchNum':branchNum,'regDate':data+"-"+data1+"-"+data2,'cityaddr':cityaddr},
+				data : {'branchNum':branchNum,'regDate':data+"-"+data1+"-"+data2,'cityaddr':cityaddr,'filmNum':filmNum},
 				success : function(tt){
 						$("#moviebuy").children().remove();
 						var checkName="";
@@ -315,9 +315,9 @@ p {
 									}
 								});
 							}
-							//${cp}/buy/screen/selected.do?mscheduleNum='"+vo.MSCHEDULENUM+"&theatherNum="+vo.THEATHERNUM+"
 							str+="<div class='timetable' onclick='func("+vo.MSCHEDULENUM+","+vo.THEATHERNUM+")'>"+
 									"<p style='font-size: 12px; font-family: sans-serif; font-color: #333333; text-align: center; text-decoration-color: darkslategray;'>"+dateFormat(vo.MSTARTTIME)+"</p>"+
+// 									"<p style='font-size: 12px; font-family: sans-serif; color: #1E90FF; text-align: center;'>"+vo.REMAINING 석+"</p>"+
 								"</div>";
 							checkName=vo.FILMNAME;
 							checkTheather=vo.THEATHERNUM;
@@ -333,7 +333,6 @@ p {
 	// 날짜 리스트 ajax
 	function dateList(data) {
 		branchNum=data;
-		alert(branchNum);
 		$.ajax({
 			url : "${cp}/buy/ticketDate.do",
 			dataType : "JSON",
@@ -361,9 +360,28 @@ p {
 		});
 	};
 	
+	//cityaddr눌렀을때..
 	function branchList(data) {
 		cityaddr=data;
-		alert(data);
+		$.ajax({
+			url : "${cp}/buy/branchList.do",
+			dataType : "JSON",
+			data : {'cityaddr':data},
+			success : function(tt){
+				$("#branchList").children().remove();
+				var str="</div id='branchList'>"+
+				"<div style='display: inline-block;float: left;width: 50%;'>"+
+				"<ul style='text-align: center;width: 90%;list-style: none;margin-top: 10px;margin-left:0px;'>";
+				tt.forEach(function(branchvo,xxx){
+					str+="<li style='text-align: left;margin-left:0px;'>"+
+						"<div class='branch' onclick='dateList("+branchvo.branchNum+")'>"+
+						"<span style='padding-left: 20px'>"+branchvo.brName+"</span></div></li>";
+				});//cityList Each문 끝
+				str+="</ul></div>";
+				str+="</div>";
+				$("#branchList").html(str);
+			}
+		});
 	};
 	
 	
