@@ -35,6 +35,13 @@
 	height: 45px;
 	position: absolute;
 }
+.seat1 {
+	width: 45px;
+	height: 45px;
+	position: absolute;
+	background-color: black;
+	color : white;
+}
 
 #content_div {
 	width: 100%;
@@ -96,6 +103,7 @@ li {
 				<form action="${cp }/buy/screen/reservation.do" method="post">
 					<div id="formAction">
 					</div>
+					<input type="hidden" name="filmNum" value="${filmNum }">
 					<input type="hidden" name="mscheduleNum" value="${mscheduleNum }">
 					<button disabled="disabled" type="submit" id="btn2" style="border-bottom:5%;" class="btn btn-primary btn-block">구매하기</button>
 				</form>
@@ -115,7 +123,13 @@ li {
 			var seatY = '${vo.seatY}';
 			var seatSale = '${vo.seatSale}';
 			var seatName = '${vo.seatName}';
-			var btn = $("<input type='button' class='seat' disabled='disabled' value='"+seatName+"'></input>");
+			var booking = '${vo.booking}';
+			var btn ="";
+			if(booking == '1'){
+				btn = $("<input type='button' class='seat1' disabled='disabled' value='"+seatName+"'></input>");
+			}else{
+				btn = $("<input type='button' class='seat' disabled='disabled' value='"+seatName+"'></input>");
+			}
 			if (seatSale == '80') {
 				btn.css("backgroundColor", "blue");
 			} else if (seatSale == '90') {

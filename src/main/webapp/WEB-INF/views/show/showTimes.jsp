@@ -163,7 +163,7 @@ a:hover {
 		<c:if test="${vo.filmName != checkName }">
 		<br>
 		<div class="line"></div>
-			<div><a href="${cp }?filmNum=${vo.filmNum }" style="color:black;"><h4 style="margin-top: 10px;margin-bottom: 20px; display:inline-block;">${vo.filmName }</h4></a> <span class="badge badge-info"> 상영중</span></div>
+			<div><a href="${cp }/movie/movieDetailView.do?filmNum=${vo.filmNum }" style="color:black;"><h4 style="margin-top: 10px;margin-bottom: 20px; display:inline-block;">${vo.filmName }</h4></a> <span class="badge badge-info"> 상영중</span></div>
 		</c:if>
 			<c:if test="${vo.theatherNum!=checkTheather }">
 				<p>▶  ${vo.theatherName } | ${vo.theatherSort }
@@ -172,7 +172,7 @@ a:hover {
 						| 총 ${s.CNT }석 </p></c:if></c:forEach>
 				</c:if>
 			<div class="timetable">
-			<a href="${cp }/buyscreenselected.do?filmNum=${vo.filmNum}&mScheduleNum=${vo.mScheduleNum}&theatherNum=${vo.theatherNum}">
+			<a href="${cp }/buy/screen/selected.do?filmNum=${vo.filmNum}&mscheduleNum=${vo.mScheduleNum}&theatherNum=${vo.theatherNum}">
 						<p style="font-size: 12px; font-family: sans-serif; color: #333333; text-align: center; text-decoration-color: darkslategray;">${vo.mStartTime }</p>
 						<p style="font-size: 12px; font-family: sans-serif; color: #1E90FF; text-align: center;">${vo.cnt }석</p><br>
 			</a></div>
