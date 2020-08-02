@@ -3,6 +3,43 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <section class="slider">
+	<div id="carousel-example-generic" class="carousel slide"
+		data-ride="carousel">
+		<!-- Indicators -->
+		<ol class="carousel-indicators">
+			<li data-target="#carousel-example-generic" data-slide-to="0"
+				class="active"></li>
+			<li data-target="#carousel-example-generic" data-slide-to="1"></li>
+			<li data-target="#carousel-example-generic" data-slide-to="2"></li>
+		</ol>
+
+		<!-- Wrapper for slides -->
+		<div class="carousel-inner" role="listbox">
+			<div class="item active">
+				<img src="${cp}/resources/logo/movie1.jpg" alt="...">
+				<div class="carousel-caption">...</div>
+			</div>
+			<div class="item">
+				<img src="${cp}/resources/logo/movie2.jpg" alt="...">
+				<div class="carousel-caption">...</div>
+			</div>
+			<div class="item">
+				<img src="${cp}/resources/logo/movie1.jpg" alt="...">
+				<div class="carousel-caption">...</div>
+			</div>
+		</div>
+
+		<!-- Controls -->
+		<a class="left carousel-control" href="#carousel-example-generic"
+			role="button" data-slide="prev"> <span
+			class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> <span
+			class="sr-only">Previous</span>
+		</a> <a class="right carousel-control" href="#carousel-example-generic"
+			role="button" data-slide="next"> <span
+			class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+			<span class="sr-only">Next</span>
+		</a>
+	</div>
 	<div class="container">
 		<div class="slider-header">
 			<h2>
@@ -151,24 +188,29 @@
 		</div>
 		<div class="container">
 			<div class="menu-link">
-				<a href="#"><span class="glyphicon glyphicon-star" aria-hidden="true"> </span>
-				<p>vip lounge</p></a>
+				<a href="#"><span class="glyphicon glyphicon-star"
+					aria-hidden="true"> </span>
+					<p>vip lounge</p></a>
 			</div>
 			<div class="menu-link">
-				<a href="#"><span class="glyphicon glyphicon-glass" aria-hidden="true"> </span>
-				<p>멤버쉽</p></a>
+				<a href="#"><span class="glyphicon glyphicon-glass"
+					aria-hidden="true"> </span>
+					<p>멤버쉽</p></a>
 			</div>
 			<div class="menu-link">
-				<a href="#"><span class="glyphicon glyphicon-credit-card" aria-hidden="true"></span>
-				<p>할인카드안내</p></a>
+				<a href="#"><span class="glyphicon glyphicon-credit-card"
+					aria-hidden="true"></span>
+					<p>할인카드안내</p></a>
 			</div>
 			<div class="menu-link">
-				<a href="#"><span class="glyphicon glyphicon-headphones" aria-hidden="true"></span>
-				<p>이벤트</p></a>
+				<a href="#"><span class="glyphicon glyphicon-headphones"
+					aria-hidden="true"></span>
+					<p>이벤트</p></a>
 			</div>
 			<div class="menu-link">
-				<a href="${cp}/store/store.do"><span class="glyphicon glyphicon-inbox" aria-hidden="true"> </span>
-				<p>스토어</p></a>
+				<a href="${cp}/store/store.do"><span
+					class="glyphicon glyphicon-inbox" aria-hidden="true"> </span>
+					<p>스토어</p></a>
 			</div>
 		</div>
 		<hr>
@@ -190,7 +232,7 @@
 						</p> <img src="${cp}/resources/logo/MovieTheaters.jpg">
 					</a>
 				</div>
-				
+
 				<!-- <div class="col-md-2 new-branch-info">
 					<a>
 						<p>
@@ -323,7 +365,9 @@
 				</p>
 			</div>
 			<div class="col-md-2">
-				<p>더보기 <span style="font-size:20px;">&raquo;</span></p>
+				<p>
+					더보기 <span style="font-size: 20px;">&raquo;</span>
+				</p>
 			</div>
 		</div>
 		<div class="row main-section4-rowtwo">
