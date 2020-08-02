@@ -6,7 +6,7 @@
 	<div id="carousel-example-generic" class="carousel slide"
 		data-ride="carousel">
 		<!-- Indicators -->
-		<ol class="carousel-indicators">
+		<ol class="carousel-indicators main-indicators">
 			<li data-target="#carousel-example-generic" data-slide-to="0"
 				class="active"></li>
 			<li data-target="#carousel-example-generic" data-slide-to="1"></li>
@@ -14,7 +14,7 @@
 		</ol>
 
 		<!-- Wrapper for slides -->
-		<div class="carousel-inner" role="listbox">
+		<div class="carousel-inner main-slide" role="listbox">
 			<div class="item active">
 				<img src="${cp}/resources/logo/movie1.jpg" alt="...">
 				<div class="carousel-caption">...</div>
@@ -24,100 +24,102 @@
 				<div class="carousel-caption">...</div>
 			</div>
 			<div class="item">
-				<img src="${cp}/resources/logo/movie1.jpg" alt="...">
+				<img src="${cp}/resources/logo/movie3.jpg" alt="...">
 				<div class="carousel-caption">...</div>
 			</div>
 		</div>
 
 		<!-- Controls -->
-		<a class="left carousel-control" href="#carousel-example-generic"
+		<a class="left carousel-control main-control" href="#carousel-example-generic"
 			role="button" data-slide="prev"> <span
 			class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> <span
 			class="sr-only">Previous</span>
-		</a> <a class="right carousel-control" href="#carousel-example-generic"
+		</a> <a class="right carousel-control main-control" href="#carousel-example-generic"
 			role="button" data-slide="next"> <span
 			class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 			<span class="sr-only">Next</span>
 		</a>
 	</div>
-	<div class="container">
-		<div class="slider-header">
-			<h2>
-				박스 오피스&nbsp;<small>box office</small>
-			</h2>
-		</div>
-		<div class="flexslider">
-			<c:forEach var="map" items="${list}" varStatus="status">
-				<div class="col-xs-6 col-md-3">
-					<a class="thumbnail"> <img src="${map.MOVIEIMGURL}"
-						data-toggle="modal" class="modaldata"
-						data-target="#foo${status.count}"></a>
-					<div>
-						<button type="button" class="btn btn-default home-movie-btn1">
-							<span class="glyphicon glyphicon-heart"></span>&nbsp;<a>${map.VG}</a>
-						</button>
-						<button type="button" class="btn btn-primary home-movie-btn2">예매</button>
-					</div>
-				</div>
-				<div class="modal fade" id="foo${status.count}">
-					<div class="modal-dialog">
-						<div class="layout-modal-content">
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal"
-									aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-							</div>
-							<div class="layout-modal-body">${map.MOVIEURL}</div>
-							<div class="layout-modal-footer">${map.FILMSTORY}</div>
+	<div class="test-controller">
+		<div class="container main-controller1">
+			<div class="slider-header">
+				<h2>
+					박스 오피스&nbsp;<small>box office</small>
+				</h2>
+			</div>
+			<div class="flexslider">
+				<c:forEach var="map" items="${list}" varStatus="status">
+					<div class="col-xs-6 col-md-3">
+						<a class="thumbnail"> <img src="${map.MOVIEIMGURL}"
+							data-toggle="modal" class="modaldata"
+							data-target="#foo${status.count}"></a>
+						<div>
+							<button type="button" class="btn btn-default home-movie-btn1">
+								<span class="glyphicon glyphicon-heart"></span>&nbsp;<a>${map.VG}</a>
+							</button>
+							<button type="button" class="btn btn-primary home-movie-btn2">예매</button>
 						</div>
 					</div>
-				</div>
-			</c:forEach>
+					<div class="modal fade" id="foo${status.count}">
+						<div class="modal-dialog">
+							<div class="layout-modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal"
+										aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="layout-modal-body">${map.MOVIEURL}</div>
+								<div class="layout-modal-footer">${map.FILMSTORY}</div>
+							</div>
+						</div>
+					</div>
+				</c:forEach>
+			</div>
 		</div>
-	</div>
-	<div class="container">
-		<div class="row movie-search-row">
-			<div class="col-md-3">
-				<div class="movie-search-row-div">
-					<input type="text" placeholder="영화명을 입력해주세요">
-					<button type="button">
-						<span class="glyphicon glyphicon-search" aria-hidden="true">
-						</span>
-					</button>
+		<div class="container main-controller2">
+			<div class="row movie-search-row">
+				<div class="col-md-3">
+					<div class="movie-search-row-div">
+						<input type="text" placeholder="영화명을 입력해주세요">
+						<button type="button">
+							<span class="glyphicon glyphicon-search" aria-hidden="true">
+							</span>
+						</button>
+					</div>
 				</div>
-			</div>
-			<div class="col-md-3">
-				<div class="movie-search-row-div">
-					<button type="button">
-						<span class="glyphicon glyphicon-time" aria-hidden="true">
-						</span>
-					</button>
-					<p>상영시간표</p>
+				<div class="col-md-3">
+					<div class="movie-search-row-div">
+						<button type="button">
+							<span class="glyphicon glyphicon-time" aria-hidden="true">
+							</span>
+						</button>
+						<p>상영시간표</p>
+					</div>
 				</div>
-			</div>
-			<div class="col-md-3">
-				<div class="movie-search-row-div">
-					<button type="button">
-						<span class="glyphicon glyphicon-film" aria-hidden="true">
-						</span>
-					</button>
-					<p>박스오피스</p>
+				<div class="col-md-3">
+					<div class="movie-search-row-div">
+						<button type="button">
+							<span class="glyphicon glyphicon-film" aria-hidden="true">
+							</span>
+						</button>
+						<p>박스오피스</p>
+					</div>
 				</div>
-			</div>
-			<div class="col-md-3">
-				<div class="movie-search-row-div">
-					<button type="button">
-						<span class="glyphicon glyphicon-tags" aria-hidden="true">
-						</span>
-					</button>
-					<p>빠른 예매</p>
+				<div class="col-md-3">
+					<div class="movie-search-row-div">
+						<button type="button">
+							<span class="glyphicon glyphicon-tags" aria-hidden="true">
+							</span>
+						</button>
+						<p>빠른 예매</p>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </section>
-<section>
+<section class="section2">
 	<div class="container main-grid">
 		<h2>혜택</h2>
 		<hr>
@@ -249,104 +251,6 @@
 						</p> <img src="${cp}/resources/logo/MovieTheaters.jpg">
 					</a>
 				</div> -->
-			</div>
-		</div>
-	</div>
-</section>
-<section>
-	<div class="container main-section3">
-		<h2>오늘의 영화</h2>
-		<div class="row">
-			<div class="col-lg-4">
-				<img src="${cp}/resources/images/1.png">
-				<div>
-					<button class="section3-button-one">상세정보</button>
-					<button class="section3-button-two">예매하러가기</button>
-				</div>
-			</div>
-			<div class="col-lg-8">
-				<h3 class="text-center">영화 리뷰</h3>
-				<ul class="timeline">
-					<li>
-						<div class="timeline-image">
-							<img class="img-circle img-responsive"
-								src="${cp}/resources/logo/남자사진.jpg" alt=""
-								style="height: fit-content;">
-						</div>
-						<div class="timeline-panel">
-							<div class="timeline-heading">
-								<h4>이름+님</h4>
-								<h4 class="subheading">아이디</h4>
-							</div>
-							<div class="timeline-body">
-								<p class="text-muted">리뷰</p>
-								<br>
-								<p class="text-muted">평점</p>
-								<small>좋아요 갯수 + 개</small>
-							</div>
-						</div>
-						<div class="line"></div>
-					</li>
-					<li>
-						<div class="timeline-image">
-							<img class="img-circle img-responsive"
-								src="${cp}/resources/logo/남자사진.jpg" alt=""
-								style="height: fit-content;">
-						</div>
-						<div class="timeline-panel">
-							<div class="timeline-heading">
-								<h4>이름+님</h4>
-								<h4 class="subheading">아이디</h4>
-							</div>
-							<div class="timeline-body">
-								<p class="text-muted">리뷰</p>
-								<br>
-								<p class="text-muted">평점</p>
-								<small>좋아요 갯수 + 개</small>
-							</div>
-						</div>
-						<div class="line"></div>
-					</li>
-					<li>
-						<div class="timeline-image">
-							<img class="img-circle img-responsive"
-								src="${cp}/resources/logo/남자사진.jpg" alt=""
-								style="height: fit-content;">
-						</div>
-						<div class="timeline-panel">
-							<div class="timeline-heading">
-								<h4>이름+님</h4>
-								<h4 class="subheading">아이디</h4>
-							</div>
-							<div class="timeline-body">
-								<p class="text-muted">리뷰</p>
-								<br>
-								<p class="text-muted">평점</p>
-								<small>좋아요 갯수 + 개</small>
-							</div>
-						</div>
-						<div class="line"></div>
-					</li>
-					<li>
-						<div class="timeline-image">
-							<img class="img-circle img-responsive"
-								src="${cp}/resources/logo/남자사진.jpg" alt=""
-								style="height: fit-content;">
-						</div>
-						<div class="timeline-panel">
-							<div class="timeline-heading">
-								<h4>이름+님</h4>
-								<h4 class="subheading">아이디</h4>
-							</div>
-							<div class="timeline-body">
-								<p class="text-muted">리뷰</p>
-								<br>
-								<p class="text-muted">평점</p>
-								<small>좋아요 갯수 + 개</small>
-							</div>
-						</div>
-					</li>
-				</ul>
 			</div>
 		</div>
 	</div>

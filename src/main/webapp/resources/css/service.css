@@ -3,8 +3,9 @@
 /* 서비스 메뉴 */
 .service-main {
 	position: relative;
-	left: 330px;
-	margin-top: 30px;
+    left: 317px;
+    margin-top: 30px;
+    top: 83px;
 }
 
 .serviceMenu {
@@ -22,6 +23,8 @@
 	display: inline-block;
 	position: relative;
 	bottom:60px;
+	margin-left:30px;
+	margin-bottom: 80px;
 }
 
 .serviceMenu>p {

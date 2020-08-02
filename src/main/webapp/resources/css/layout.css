@@ -71,9 +71,12 @@ button:hover {
 /* ///////////////////////////////header//////////////////////////////////////// */
 #header{
 	margin:0 0 0 0;
-	border-bottom: 1px solid rgba(255,255,255,.2);
 	height:130px;
-	background-color: #0f0b0b;
+	z-index: 999;
+    position: absolute;
+    top: 0;
+    text-align: center;
+    width: 100%;
 }
 #search{
 	width:100px;
@@ -230,7 +233,6 @@ header > .container{
 }
 
 header{
-	background-color:#0f0b0b;
 	margin:0;
 	padding-top:20px;
 }
@@ -335,7 +337,41 @@ header > .container .search-box input[type="submit"] {
 /* ///////////////////////////////////////////////////////// */
 
 /* //////////////////////////home/////////////////////////// */
+.test-controller{
+	top: 350px;
+    position: relative;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 85%, rgba(0, 0, 0, 1) 100%);
+}
 
+.main-slide:after{
+	content: "";
+    position: absolute;
+    z-index: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 140px;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 85%, rgba(0, 0, 0, 1) 100%);
+}
+
+.header-before{
+	content: "";
+    position: absolute;
+    z-index: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 140px;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 85%, rgba(0, 0, 0, 1) 100%);
+}
+
+.main-indicators{
+	top: 165%;
+}
+
+.main-control{
+	top: 100%;
+}
 .flexslider {
   background: none !important;
   border: none !important;
@@ -351,6 +387,9 @@ header > .container .search-box input[type="submit"] {
 
 .slider {
   background-color: #120c0b;
+  position: absolute;
+  bottom: 100px;
+  z-index: 1;
 }
 
 .slider .container > .slider-header {
@@ -395,7 +434,6 @@ header > .container .search-box input[type="submit"] {
 .movie-search-row.row{
 	margin-top:20px;
 	padding-top:20px;
-	background-color:#150f10;
 	border-bottom:none;
 }
 
@@ -410,7 +448,7 @@ header > .container .search-box input[type="submit"] {
 	BORDER-LEFT: medium none;
 	BORDER-RIGHT: medium none;
 	BORDER-TOP: medium none;
-	background-color: #120c0b;
+	background: transparent;
 	font-size: 17px;
 }
 
@@ -455,6 +493,16 @@ header > .container .search-box input[type="submit"] {
 /*///*/
 
 /*home.jsp grid*/
+
+.section2{
+	position: relative;
+    top: 1500px;
+}
+
+.main-grid{
+	height: 3000px;
+}
+
 .main-grid hr{
 	margin:0;
 }
@@ -470,10 +518,10 @@ header > .container .search-box input[type="submit"] {
 .main-grid::before{
 	position: absolute;
     left: 0;
-    top: 1378px;
+    top: 500px;
     display: block;
     width: 100%;
-    height: 92%;
+    height: 28%;
     background-color: #503396;
 }
 .main-grid h2{
@@ -580,15 +628,15 @@ header > .container .search-box input[type="submit"] {
 .main-section3{
 	height:1000px;
 }
-.main-section3::before{
-	position: absolute;
-    left: 0;
-    top: 2224px;
-    display: block;
-    width: 100%;
-    height: 124%;
-    background-color: #252451;
-}
+/* .main-section4::before{ */
+/* 	position: absolute; */
+/*     left: 0; */
+/*     top: 2890px; */
+/*     display: block; */
+/*     width: 100%; */
+/*     height: 700px; */
+/*     background-color: #252451; */
+/* } */
 
 .container.main-section3{
 	padding-top: 157px;
@@ -636,6 +684,9 @@ header > .container .search-box input[type="submit"] {
     font-size: 3em;
 }
 /*////////////////////////container main-section4////////////////////////////*/
+.main-section4{
+	margin-bottom: 50px;
+}
 .main-section4 h2{
 	font-size: 3em;
     color: #351f66 !important;
