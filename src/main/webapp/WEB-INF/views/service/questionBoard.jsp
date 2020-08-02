@@ -55,7 +55,7 @@
 			</dl>
 		</div>
 		<div class="container question-div">
-			<form name="form-test" onsubmit="return askException()"
+			<form name="form-test" onsubmit="return askException"
 			 method="get">
 				<div class="row">
 					<input type="hidden" value="${memNum}" name="num">
@@ -71,10 +71,7 @@
 				<div class="row">
 					<div class="col-xs-9 form-group has-warnin">
 						<label for="street"> 휴대폰 <br></label> <input type="text"
-							id="street" name="street" class="form-control street"> -
-						<input type="text" name="street" class="form-control street">
-						- <input type="text" name="street" class="form-control street">
-						<input type="button" class="btn btn-default street-btn" value="인증요청">
+							id="street" name="street" class="form-control street">
 					</div>
 				</div>
 				<div class="row">
@@ -137,24 +134,6 @@
 				e.preventDefault();
 			}
 		});
-		
-// 		$(".street-btn").click(function(){
-// 			var num = 0;
-// 			$(".street").each(function(i,val){
-// 				console.log(val);
-// 				if($(val).val()==null || $(val).val()==""){
-// 					alert("번호를 입력하세요.");
-// 					return false;
-// 				}
-// 				num++;
-// 			});
-// 			if(num>=3){
-// 				alert("인증이 완료되었습니다.");
-// 				$(".street").each(function(i,val){
-// 					$(this).prop("disabled",true);
-// 				});
-// 			}
-// 		});
 		
 		
 		function askException(){

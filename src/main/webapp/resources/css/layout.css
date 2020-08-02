@@ -478,7 +478,6 @@ header > .container .search-box input[type="submit"] {
 .layout-modal-content{
 	width: fit-content;
     height: fit-content;
-    margin: 15% -40%;
 }
 
 .layout-modal-body{
@@ -488,6 +487,11 @@ header > .container .search-box input[type="submit"] {
 
 .layout-modal-footer{
 	text-align:left;
+	font-size: 2em;
+}
+
+.modal-backdrop.in{
+	position:absolute;	
 }
 
 /*///*/
