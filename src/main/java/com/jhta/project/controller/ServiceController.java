@@ -64,10 +64,20 @@ public class ServiceController {
 		return ".service.questionBoard";
 	}
 	
-//	@RequestMapping("/service/questionInsert.do")
-//	public String QuestionInsert(String ) {
-//		
-//	}
+	@RequestMapping("/service/questionInsert.do")
+	public String QuestionInsert(String title,String content,int num,
+			String name,Model model) {
+		String url = "http://localhost:9090/projectdb/service/askInsert.do";
+		HashMap<String,Object> map = new HashMap<String,Object>();
+		map.put("title",title);
+		map.put("content", content);
+		map.put("num",num);
+		Gson gson = new Gson();
+		String sMap = gson.toJson(map);
+		String code = service.post(url,sMap).trim();
+		model.addAttribute("name",name);
+		return ".service.success";
+	}
 	
 	@RequestMapping("/service/branchApplyBoard.do")
 	public String goApplyBoard() {
@@ -106,7 +116,6 @@ public class ServiceController {
 	public String regionBranch(String cityAddr){
 		String url = "http://localhost:9090/projectdb/service/branch.do?cityAddr="+cityAddr;
 		String code = service.get(url).trim();
-		System.out.println("ddd"+code);
 		return code;
 	}
 }

@@ -57,8 +57,7 @@
 				</select>
 			</div>
 			<div class="col-md-2">
-				<select class="form-control">
-					<option>접수상태 선택</option>
+				<select class="form-control" name="">
 					<option>미답변</option>
 					<option>답변완료</option>
 				</select>

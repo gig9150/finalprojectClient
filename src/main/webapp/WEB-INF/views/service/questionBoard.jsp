@@ -56,22 +56,23 @@
 		</div>
 		<div class="container question-div">
 			<form name="form-test" onsubmit="return askException"
-			 method="get">
+			 method="get" action = "${cp}/service/questionInsert.do">
 				<div class="row">
-					<input type="hidden" value="${memNum}" name="num">
+					<input type="hidden" value="1" name="num">
 					<div class="col-xs-6 form-group">
 						<label for="name"> 이름 </label> <input type="text" id="name"
-							name="name" class="form-control" value="${memId}">
+							name="name" class="form-control" value="${memName}">
 					</div>
 					<div class="col-xs-6 form-group">
 						<label for="email"> 이메일 </label> <input type="text" id="email"
-							name="email" class="form-control" value="${memEmail}">
+							name="email" class="form-control" value="${email}">
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-xs-9 form-group has-warnin">
 						<label for="street"> 휴대폰 <br></label> <input type="text"
-							id="street" name="street" class="form-control street">
+							id="street" name="street" class="form-control street" 
+							value="${memPhone}">
 					</div>
 				</div>
 				<div class="row">
@@ -116,7 +117,7 @@
 
 				<div class="row text-right">
 					<div class="col-xs-12">
-						<input type="submit" value="등록 " class="btn btn-lg btn-success">
+						<input type="submit" value="등록 ">
 					</div>
 				</div>
 			</form>
