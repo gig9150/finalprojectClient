@@ -28,7 +28,7 @@ public class MovieBuyController {
 	
 	@RequestMapping(value="/buy/screen/selected.do")
 	public String search(int theatherNum,int mscheduleNum,int filmNum,Model model) {
-		String url="http://localhost:9090/projectdb/room/seat/search.do?theatherNum="+theatherNum;
+		String url="http://localhost:9090/projectdb/room/seat/buy.do?theatherNum="+theatherNum+"&mscheduleNum="+mscheduleNum;
 		String code=service.get(url).trim();
 		Gson gson=new Gson();
 		SeatVo[] array=gson.fromJson(code, SeatVo[].class);

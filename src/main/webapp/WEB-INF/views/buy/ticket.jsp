@@ -177,9 +177,9 @@ p {
 	style="width: 1200px; height: 700px; display: block; border: 2px solid black; margin: auto;">
 	<div id="movielist" style="border: 1px solid red;width: 30%;">
 		<h3>영      화</h3>
-		<div style="width: 80%;height: 85%; overflow: auto;">
+		<div style="width: 100%;height: 85%; overflow: auto;">
 			<c:forEach var="filmVo" items="${movieList }">
-				<div class="filmList" style="width: 80%;margin: auto;height: 15%;">
+				<div class="filmList" style="width: 90%;margin: auto;height: 15%;">
 					<button type="button" class="btn btn-danger" style="width: 100%;margin: 10px;"
 						onclick="branchSelectList('${filmVo.filmNum }')">
 					<h2>${filmVo.filmName }</h2></button>
@@ -200,7 +200,7 @@ p {
 				</c:forEach>
 			</ul>
 		</div>
-		<div style="display: inline-block;float: left;width: 50%;">
+		<div style="display: inline-block;float: left;width: 50%;" id="branchList">
 			<ul style="text-align: center;width: 90%;list-style: none;margin-top: 10px;margin-left:0px;">
 				<c:forEach var="branchvo" items="${cityList }">
 					<li style="text-align: left;margin-left:0px;">
@@ -286,6 +286,7 @@ p {
 	var cityaddr;
 	
 	//상영관 ajax 시작..
+	// "<p style='font-size: 12px; font-family: sans-serif; color: #1E90FF; text-align: center;'>"+vo.REMAINING 석+"</p>"+
 	function theatherList(data,data1,data2) {
 		if(data1<10){
 			data1="0"+String(data1);
@@ -317,7 +318,6 @@ p {
 							}
 							str+="<div class='timetable' onclick='func("+vo.MSCHEDULENUM+","+vo.THEATHERNUM+")'>"+
 									"<p style='font-size: 12px; font-family: sans-serif; font-color: #333333; text-align: center; text-decoration-color: darkslategray;'>"+dateFormat(vo.MSTARTTIME)+"</p>"+
-// 									"<p style='font-size: 12px; font-family: sans-serif; color: #1E90FF; text-align: center;'>"+vo.REMAINING 석+"</p>"+
 								"</div>";
 							checkName=vo.FILMNAME;
 							checkTheather=vo.THEATHERNUM;
@@ -340,7 +340,7 @@ p {
 			success : function(tt){
 				$("#movieday").children().remove();
 				var str="<h3>날      짜</h3><div style='overflow-y: auto; height: 85%;'>"+
-					"<div style='text-align: center;width: 50%;list-style: none; margin: auto;'>";
+					"<div style='text-align: center;width: 50%; list-style: none; margin: auto;'>";
 				var day1="";
 				var day2="";
 				tt.forEach(function(day,xxx){
@@ -362,17 +362,18 @@ p {
 	
 	//cityaddr눌렀을때..
 	function branchList(data) {
+		alert(data);
 		cityaddr=data;
 		$.ajax({
 			url : "${cp}/buy/branchList.do",
 			dataType : "JSON",
 			data : {'cityaddr':data},
 			success : function(tt){
+				alert(tt);
 				$("#branchList").children().remove();
-				var str="</div id='branchList'>"+
-				"<div style='display: inline-block;float: left;width: 50%;'>"+
-				"<ul style='text-align: center;width: 90%;list-style: none;margin-top: 10px;margin-left:0px;'>";
-				tt.forEach(function(branchvo,xxx){
+				var str="<div style='display: inline-block;float: left;width: 50%;' id='branchList'>"+
+						"<ul style='text-align: center;width: 90%;list-style: none;margin-top: 10px;margin-left:0px;'>";
+				tt.each(function(branchvo,xxx){
 					str+="<li style='text-align: left;margin-left:0px;'>"+
 						"<div class='branch' onclick='dateList("+branchvo.branchNum+")'>"+
 						"<span style='padding-left: 20px'>"+branchvo.brName+"</span></div></li>";

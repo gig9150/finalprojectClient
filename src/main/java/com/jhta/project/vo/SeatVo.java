@@ -7,6 +7,8 @@ public class SeatVo {
 	private int seatY;
 	private int seatSale;
 	private String seatName;
+	private int booking;
+	
 	public SeatVo(int seatNum, int theatherNum, int seatX, int seatY, int seatSale, String seatName) {
 		super();
 		this.seatNum = seatNum;
@@ -18,6 +20,13 @@ public class SeatVo {
 	}
 	public SeatVo() {
 		super();
+	}
+	
+	public int getBooking() {
+		return booking;
+	}
+	public void setBooking(int booking) {
+		this.booking = booking;
 	}
 	public int getSeatNum() {
 		return seatNum;
