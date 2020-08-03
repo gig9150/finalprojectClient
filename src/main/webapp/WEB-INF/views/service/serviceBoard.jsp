@@ -11,7 +11,7 @@
 			<li class="on"><a href="${cp}/service/serviceBoard.do">고객센터
 					홈</a><span class="on">></span></li>
 			<li><a href="${cp}/service/repeatedQna.do">자주 묻는 질문</a><span>></span></li>
-			<li><a href="${cp}">공지사항</a><span>></span></li>
+			<li><a href="${cp}/service/noticeBoard.do">공지사항</a><span>></span></li>
 			<li><a href="${cp}/service/questionBoard.do">1:1문의</a><span>></span></li>
 			<li><a href="${cp}">대관 문의</a><span>></span></li>
 			<li><a href="${cp}/service/lostThingBoard.do">분실문 문의</a><span>></span></li>

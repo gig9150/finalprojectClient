@@ -84,6 +84,11 @@ public class ServiceController {
 		return ".service.branchApplyBoard";
 	}
 	
+	@RequestMapping("/service/noticeBoard.do")
+	public String goNoticeBoard() {
+		return ".service.notice";
+	}
+	
 	@RequestMapping("/service/branchApplyInsert.do")
 	public String branchApplyInsert(String cityAddr,String proStatus,String memberId,String proAddr,String proGoal,String proScale) throws JsonProcessingException {
 		String url = "http://localhost:9090/projectdb/service/branchApplyInsert.do";

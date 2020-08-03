@@ -8,11 +8,11 @@
 	<ul class="nav nav-tabs store-nav" role="tablist">
 		<li role="presentation" class="active"><a href="#home"
 			aria-controls="home" role="tab" data-toggle="tab">새로운 상품 </a></li>
-		<li role="presentation"><a href="#profile"
+		<li role="presentation"><a href="#home"
 			aria-controls="profile" role="tab" data-toggle="tab">패키지</a></li>
-		<li role="presentation"><a href="#messages"
+		<li role="presentation"><a href="#home"
 			aria-controls="messages" role="tab" data-toggle="tab">메가 티켓</a></li>
-		<li role="presentation"><a href="#settings"
+		<li role="presentation"><a href="#home"
 			aria-controls="settings" role="tab" data-toggle="tab">팝콘/음료/굿즈</a></li>
 	</ul>
 

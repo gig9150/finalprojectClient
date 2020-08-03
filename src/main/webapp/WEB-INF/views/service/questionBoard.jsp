@@ -9,7 +9,7 @@
 		<ul>
 			<li><a href="${cp}/service/serviceBoard.do">고객센터 홈</a><span>></span></li>
 			<li><a href="${cp}/service/repeatedQna.do">자주 묻는 질문</a><span>></span></li>
-			<li><a href="${cp}">공지사항</a><span>></span></li>
+			<li><a href="${cp}/service/noticeBoard.do">공지사항</a><span>></span></li>
 			<li class="on"><a href="${cp}/service/questionBoard.do">1:1문의</a><span
 				class="on">></span></li>
 			<li><a href="${cp}">대관 문의</a><span>></span></li>
@@ -34,7 +34,7 @@
 				<li>1:1 문의글 답변 운영시간 09:00 ~ 21:00</li>
 			</ul>
 			<div class="question-button">
-				<a href="#" class="question-btn">나의 문의내역</a>
+				<a href="${cp}/mypage/inquiry.do" class="question-btn">나의 문의내역</a>
 			</div>
 		</div>
 		<div class="agree-box">
@@ -111,7 +111,7 @@
 					<div class="col-xs-12 form-group">
 						<label for="content"> 내용 </label>
 						<textarea id="content" name="content" class="form-control"
-							rows="3"></textarea>
+							rows="3" style="margin-top:20px;"></textarea>
 					</div>
 				</div>
 
