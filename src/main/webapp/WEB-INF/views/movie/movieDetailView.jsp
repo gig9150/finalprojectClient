@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<script type="text/javascript" src="${cp }/resources/js/jquery-3.5.1.js"></script>
+
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <style>
@@ -80,7 +80,7 @@
 	margin-right: 20px;
 }
 /*두번째 section 영화줄거리, 평점 및 관람평*/
-.section2 {
+.section22 {
 	/*background-color: #ccc;*/
 	width: 100%;
 	height: 65%;
@@ -176,7 +176,7 @@
 
 .movi_review_comment {
 	float: left;
-	width: 438px;
+	width: 537px;
 	height: 88px;
 }
 
@@ -279,7 +279,7 @@ button {
 
 			</div>
 
-			<div class="section2">
+			<div class="section22">
 
 				<div class="container">
 
@@ -287,7 +287,7 @@ button {
 
 						<li style="width: 100%;">
 
-							<div id="btn_group">
+							<div id="btn_group22">
 
 								<button id="btn_detail" class="on" style="width: 49%">
 
@@ -319,7 +319,6 @@ button {
 									</div>
 
 									<div class="movi_review_box">
-										<form id="frm">
 											<div class="movi_review_score">
 												<div class="starRev">
 													<span class="starR on">1</span> <span class="starR">2</span>
@@ -338,7 +337,6 @@ button {
 													id="textarea"></textarea>
 											</div>
 											<button type="submit" id="btnComment" class="btn_submit">관람평 작성</button>
-										</form>
 									</div>
 								</div>
 							</div>
@@ -431,7 +429,6 @@ button {
 				dataType : "json",
 				data : {
 					"filmNum":filmNum,
-					"memNum" : 41,
 					"mScore":starScore,
 					"rContent":textarea,
 					"rowCount":rowCount
@@ -463,8 +460,8 @@ button {
 				$('#btnComment').on('click',function(e){
 					e.preventDefault();
 					if('${empty memId}'){
-						//location.href="${cp}/login/login.do"
-							functionAjax();
+						location.href="${cp}/log/login.do";
+						//functionAjax();
 					}else{
 						functionAjax();
 					}

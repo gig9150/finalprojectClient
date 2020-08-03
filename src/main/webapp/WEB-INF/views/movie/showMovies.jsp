@@ -121,12 +121,10 @@
 		<div id="nav_list">
 			<ul class="main_title">
 				<li class="sub_tab"><a href="${cp}/movie/showAllMovies.do">현재상영작</a></li>
-				<li class="sub_tab"><a href="#">상영예정작</a></li>
 			</ul>
 			<ul class="btn_type">
 				<li><a href="${cp}/movie/showAllMovies.do">예매순</a></li>
 				<li><a href="${cp }/movie/showAllMoviesMRate.do">평점순</a></li>
-				<li><a href="#">관람평순</a></li>
 			</ul>
 		</div>
 
