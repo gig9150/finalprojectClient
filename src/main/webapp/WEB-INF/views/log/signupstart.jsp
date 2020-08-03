@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <link href="/project/resources/css/log/signupstart.css" rel="stylesheet">
-<section class="all_warp">
+<section class="all_warp" style="padding-top: 150px;">
 	<form action="${cp }/log/signup.do" id="section01" method="post">
 		<ul class="join_box">
 			<li class="checkBox check01">
