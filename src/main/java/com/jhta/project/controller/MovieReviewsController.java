@@ -34,10 +34,12 @@ public class MovieReviewsController {
 	/////////////////////////////////////////평점 및 관람평 클릭하면 ajax통신하는 함수////////////////////////////////////
 	@RequestMapping(value="/movie/showMovieReviews.do",produces = {MediaType.APPLICATION_JSON_UTF8_VALUE,MediaType.APPLICATION_XML_VALUE})
 	@ResponseBody
-	public String showReviews(Model model, int filmNum, @RequestParam(value="pageNum", defaultValue = "1") int pageNum,@RequestParam(value="rowCount",defaultValue = "5")int rowCount) {
+	public String showReviews(Model model, int filmNum, HttpSession session, @RequestParam(value="pageNum", defaultValue = "1") int pageNum,@RequestParam(value="rowCount",defaultValue = "5")int rowCount) {
+		int memNum=(int)session.getServletContext().getAttribute("memNum");
 		Gson gson=new Gson();
 		HashMap<String, Object> map=new HashMap<String, Object>();
 		map.put("filmNum", filmNum);
+		map.put("memNum",memNum);
 		map.put("rowCount",rowCount);
 		//객체를 제이슨형태로 변환. toJson
 		String jsonString=gson.toJson(map);
