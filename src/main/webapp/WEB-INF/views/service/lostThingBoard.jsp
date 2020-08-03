@@ -13,7 +13,7 @@
 					질문</a><span>></span></li>
 			<li><a href="${cp}/service/noticeBoard.do">공지사항</a><span>></span></li>
 			<li><a href="${cp}/service/questionBoard.do">1:1문의</a><span>></span></li>
-			<li><a href="${cp}">대관 문의</a><span>></span></li>
+			<li><a href="${cp}/service/questionBoard.do">대관 문의</a><span>></span></li>
 			<li class="on"><a href="${cp}/service/lostThingBoard.do">분실문 문의</a>
 			<span class="on">></span></li>
 		</ul>
@@ -41,7 +41,7 @@
 		</div>
 		<div class="row lost-table-menu">
 			<div class="col-md-3">
-				<p>전체<span>111,111</span>건</p>
+				<p>전체&nbsp;<span style="color: #01738b">3</span>&nbsp;건</p>
 			</div>
 			<div class="col-md-2">
 				<select class="form-control region-select">
@@ -79,34 +79,13 @@
 				<th>번호</th><th>극장</th><th>제목</th><th>접수상태</th><th>등록일</th>
 			</tr>
 			<tr>
-				<td>dd</td><td>dd</td><td>dd</td><td>dd</td><td>dd</td>		
+				<td>1</td><td>상봉점</td><td>검정 지갑</td><td>미답변</td><td>2020.08.03</td>		
 			</tr>
 			<tr>
-				<td>dd</td><td>dd</td><td>dd</td><td>dd</td><td>dd</td>		
+				<td>2</td><td>종로점</td><td>5관 저녁 11시 15분 반도 카드 분실</td><td>답변완료</td><td>2020.08.03</td>		
 			</tr>
 			<tr>
-				<td>dd</td><td>dd</td><td>dd</td><td>dd</td><td>dd</td>		
-			</tr>
-			<tr>
-				<td>dd</td><td>dd</td><td>dd</td><td>dd</td><td>dd</td>		
-			</tr>
-			<tr>
-				<td>dd</td><td>dd</td><td>dd</td><td>dd</td><td>dd</td>		
-			</tr>
-			<tr>
-				<td>dd</td><td>dd</td><td>dd</td><td>dd</td><td>dd</td>		
-			</tr>
-			<tr>
-				<td>dd</td><td>dd</td><td>dd</td><td>dd</td><td>dd</td>		
-			</tr>
-			<tr>
-				<td>dd</td><td>dd</td><td>dd</td><td>dd</td><td>dd</td>		
-			</tr>
-			<tr>
-				<td>dd</td><td>dd</td><td>dd</td><td>dd</td><td>dd</td>		
-			</tr>
-			<tr>
-				<td>dd</td><td>dd</td><td>dd</td><td>dd</td><td>dd</td>		
+				<td>3</td><td>강남점</td><td>지갑분실물</td><td>답변완료</td><td>2020.08.03</td>	
 			</tr>
 		</table>
 	</div>

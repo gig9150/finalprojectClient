@@ -4,6 +4,8 @@
 	width: 1271px;
 	height: 637px;
 	margin-left: 336px;
+	bottom: 100px;
+    position: relative;
 }
 
 .form-group {

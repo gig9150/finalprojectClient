@@ -13,7 +13,7 @@
 					질문</a><span>></span></li>
 			<li class="on"><a href="${cp}/service/noticeBoard.do">공지사항</a><span class="on">></span></li>
 			<li><a href="${cp}/service/questionBoard.do">1:1문의</a><span>></span></li>
-			<li><a href="${cp}">대관 문의</a><span>></span></li>
+			<li><a href="${cp}/service/questionBoard.do">대관 문의</a><span>></span></li>
 			<li><a href="${cp}/service/lostThingBoard.do">분실문 문의</a>
 			<span>></span></li>
 		</ul>
@@ -35,7 +35,7 @@
 		</div>
 		<div class="row lost-table-menu">
 			<div class="col-md-3">
-				<p>전체<span>111,111</span>건</p>
+				<p>전체&nbsp;<span style="color: #01738b">2</span>&nbsp;건</p>
 			</div>
 			<div class="col-md-2">
 				
@@ -61,42 +61,18 @@
 		<table class="table table-striped">
 			<colgroup>
 				<col style="width:10%"/> 
-				<col style="width:30%"/>
-				<col style="width:50%"/> 
+				<col style="width:20%"/>
+				<col style="width:60%"/> 
 				<col style="width:10%"/> 
 			</colgroup>
 			<tr>
-				<th>번호</th><th>제목</th><th>내용</th><th>등록일</th>
+				<th>번호</th><th>구분</th><th>제목</th><th>등록일</th>
 			</tr>
 			<tr>
-				<td>dd</td><td>dd</td><td>dd</td><td>dd</td>	
+				<td>1</td><td>공지</td><td>[은평점]영업 재개 안내</td><td>2020.07.28</td>	
 			</tr>
 			<tr>
-				<td>dd</td><td>dd</td><td>dd</td><td>dd</td>	
-			</tr>
-			<tr>
-				<td>dd</td><td>dd</td><td>dd</td><td>dd</td>		
-			</tr>
-			<tr>
-				<td>dd</td><td>dd</td><td>dd</td><td>dd</td>	
-			</tr>
-			<tr>
-				<td>dd</td><td>dd</td><td>dd</td><td>dd</td>	
-			</tr>
-			<tr>
-				<td>dd</td><td>dd</td><td>dd</td><td>dd</td>	
-			</tr>
-			<tr>
-				<td>dd</td><td>dd</td><td>dd</td><td>dd</td>	
-			</tr>
-			<tr>
-				<td>dd</td><td>dd</td><td>dd</td><td>dd</td>		
-			</tr>
-			<tr>
-				<td>dd</td><td>dd</td><td>dd</td><td>dd</td>	
-			</tr>
-			<tr>
-				<td>dd</td><td>dd</td><td>dd</td><td>dd</td>	
+				<td>2</td><td>공지</td><td>메가시네마 이용약관 변경 안내</td><td>2020.07.27</td>	
 			</tr>
 		</table>
 	</div>

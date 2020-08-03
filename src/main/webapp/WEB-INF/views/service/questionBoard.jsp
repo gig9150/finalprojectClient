@@ -12,7 +12,7 @@
 			<li><a href="${cp}/service/noticeBoard.do">공지사항</a><span>></span></li>
 			<li class="on"><a href="${cp}/service/questionBoard.do">1:1문의</a><span
 				class="on">></span></li>
-			<li><a href="${cp}">대관 문의</a><span>></span></li>
+			<li><a href="${cp}/service/questionBoard.do">대관 문의</a><span>></span></li>
 			<li><a href="${cp}/service/lostThingBoard.do">분실문 문의</a><span>></span></li>
 		</ul>
 		<div class="customer-div">
@@ -55,24 +55,24 @@
 			</dl>
 		</div>
 		<div class="container question-div">
-			<form name="form-test" onsubmit="return askException"
+			<form name="form-test" onsubmit="askException()"
 			 method="get" action = "${cp}/service/questionInsert.do">
 				<div class="row">
 					<input type="hidden" value="${memNum}" name="num">
 					<div class="col-xs-6 form-group">
 						<label for="name"> 이름 </label> <input type="text" id="name"
-							name="name" class="form-control" value="${memName}">
+							name="name" class="form-control" value="${memName}" required>
 					</div>
 					<div class="col-xs-6 form-group">
 						<label for="email"> 이메일 </label> <input type="text" id="email"
-							name="email" class="form-control" value="${email}">
+							name="email" class="form-control" value="${email}" required>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-xs-9 form-group has-warnin">
 						<label for="street"> 휴대폰 <br></label> <input type="text"
 							id="street" name="street" class="form-control street" 
-							value="${memPhone}">
+							value="${memPhone}" required>
 					</div>
 				</div>
 				<div class="row">
@@ -104,20 +104,20 @@
 				<div class="row">
 					<div class="col-xs-12 form-group">
 						<label for="title"> 제목 </label> <input type="text" id="title"
-							name="title" class="form-control">
+							name="title" class="form-control" required>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-xs-12 form-group">
 						<label for="content"> 내용 </label>
 						<textarea id="content" name="content" class="form-control"
-							rows="3" style="margin-top:20px;"></textarea>
+							rows="3" style="margin-top:20px;" required></textarea>
 					</div>
 				</div>
-
+				
 				<div class="row text-right">
 					<div class="col-xs-12">
-						<input type="submit" value="등록 ">
+						<input type="submit" value="등록 " id="ad" class="btn btn-default">
 					</div>
 				</div>
 			</form>
@@ -136,32 +136,8 @@
 			}
 		});
 		
-		
-		function askException(){
-			alert("submit");
-			if(${memId eq null} || ${memId eq ""}){
-				alert("회원만 등록 가능합니다...");
-				return false;
-			}
-			if($("#name").val() == "" || $("#name").val() == null){
-				alert("아이디를 입력하세요");
-				return false;
-			}
-			if($("#email").val() == "" || $("#email").val() == null){
-				alert("이메일을 입력하세요");
-				return false;
-			}
-			if($("#title").val() == "" || $("#title").val() == null){
-				alert("제목을 입력하세요");
-				return false;
-			}
-			if($("#content").val() == "" || $("#content").val() == null){
-				alert("내용을 입력하세요");
-				return false;
-			}
-			alert("문의가 등록 되었습니다..");
+		if(${memId eq null} || ${memId eq ""}){
+			$("#ad").prop("disabled",true);	
 		}
 	});
-	
-	
 </script>

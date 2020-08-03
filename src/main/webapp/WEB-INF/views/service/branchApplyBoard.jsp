@@ -13,22 +13,22 @@
 			<div class="col-md-4">
 			<!-- id,이름,연락처 값 세션에서 받아오기 -->
 			<label>아이디:</label><input type="text" class="form-control"
-				placeholder="id" name="memberId" value="${memId}" readonly="readonly">
+				placeholder="id" name="memberId" value="${memId}" readonly="readonly" required>
 			</div>
 			<div class="col-md-4">
 				<label>이름:</label><input type="text" class="form-control"
-					placeholder="name" readonly="readonly" value="${memName}">
+					placeholder="name" readonly="readonly" value="${memName}" required>
 			</div>
 			<div class="col-md-4">
 				<label>연락처:</label><input type="text" class="form-control"
-					placeholder="phone" readonly="readonly" value="${memPhone}">
+					placeholder="phone" readonly="readonly" value="${memPhone}" required>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-xs-10">
 				<label>희망지점주소:</label><input type="text" class="form-control"
 					placeholder="addr" id="addr-text" name="proAddr">
-					<input type="hidden" id="city-addr" name="cityAddr">
+					<input type="hidden" id="city-addr" name="cityAddr" required>
 			</div>
 			<div class="col-xs-2">
 				<button class="btn btn-primary" id="addr-search">주소 검색</button>
@@ -60,11 +60,11 @@
 		<div class="row">
 			<div class="col-md-9">
 				<label>목적:</label><textarea class="form-control" rows="5"
-					placeholder="purpose" name="proGoal"></textarea>
+					placeholder="purpose" name="proGoal" required></textarea>
 			</div>
 			<div class="col-md-3">
 				<label>규모</label><input type="text" class="form-control"
-					placeholder="scale" name="proScale">
+					placeholder="scale" name="proScale" required>
 			</div>
 		</div>
 		<div class="row">

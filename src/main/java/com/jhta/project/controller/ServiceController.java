@@ -85,23 +85,27 @@ public class ServiceController {
 	}
 	
 	@RequestMapping("/service/noticeBoard.do")
-	public String goNoticeBoard() {
+	public String goNoticeBoard(Model model) {
+		String url = "http://localhost:9090/projectdb/service/region.do";
+		Gson gson = new Gson();
+		String code = service.get(url).trim();
+		String[] region = gson.fromJson(code,String[].class);
+		List<String> list = Arrays.asList(region);
+		model.addAttribute("list",list);
 		return ".service.notice";
 	}
 	
 	@RequestMapping("/service/branchApplyInsert.do")
-	public String branchApplyInsert(String cityAddr,String proStatus,String memberId,String proAddr,String proGoal,String proScale) throws JsonProcessingException {
+	public String branchApplyInsert(String cityAddr,String proStatus,String memberId,
+			String proAddr,String proGoal,String proScale,Model model) throws JsonProcessingException {
 		String url = "http://localhost:9090/projectdb/service/branchApplyInsert.do";
 		System.out.println("444444444");
 		ProposalVo vo = new ProposalVo(0,memberId,proAddr,proGoal,proScale,proStatus,null,cityAddr);
 		ObjectMapper mapper=new ObjectMapper();
 		String jsonString= mapper.writeValueAsString(vo);
 		String code=service.post(url,jsonString).trim();
-		if(code.equals("success")) {
-			return ".main";
-		}else {
-			return code;
-		}
+		model.addAttribute("memId",memberId);
+		return ".service.code";
 	}
 	
 	//분실물 게시판 매핑
