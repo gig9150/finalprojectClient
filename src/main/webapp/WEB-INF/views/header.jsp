@@ -4,7 +4,7 @@
 <header>
 		<div class="top-div">
 			<ul class="top-menu-one">
-				<li><a href="">VIP LOUNGE</a></li>
+				<li><a href="${cp}/service/branchApplyBoard.do">지점 신청 문의</a></li>
 				<li><a href="">맴버쉽</a></li>
 				<li><a href="${cp}/service/serviceBoard.do">고객센터</a></li>
 			</ul>
