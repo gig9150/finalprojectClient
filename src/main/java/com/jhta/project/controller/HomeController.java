@@ -24,14 +24,14 @@ public class HomeController {
 	public String home(HttpSession session,Model model) {
 		Gson gson = new Gson();
 		
-		//지점 정보 얻어오기
+////	지점 정보 얻어오기
 //		String newBranchUrl = "http://localhost:9090/projectdb/getNewBranch.do";
-//		//String newBranch = service.get(newBranchUrl).trim();
-//		//HashMap<String,Object>[] branchMap = gson.fromJson(newBranch,HashMap[].class);
-//		//List<HashMap<String,Object>> branchList = Arrays.asList(branchMap);
-//		//model.addAttribute("branchList",branchList);
-		
-		//오늘의 영화 얻어오기
+//		String newBranch = service.get(newBranchUrl).trim();
+//		HashMap<String,Object>[] branchMap = gson.fromJson(newBranch,HashMap[].class);
+//		List<HashMap<String,Object>> branchList = Arrays.asList(branchMap);
+//		model.addAttribute("branchList",branchList);
+//		
+////	오늘의 영화 얻어오기
 //		String todayMovieUrl = "http://localhost:9090/projectdb/getTodayMoive.do";
 //		String todayMoive = service.get(todayMovieUrl).trim();
 //		HashMap<String,Object> movieMap = gson.fromJson(todayMovieUrl,HashMap.class);

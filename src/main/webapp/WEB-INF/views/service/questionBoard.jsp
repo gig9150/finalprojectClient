@@ -58,7 +58,7 @@
 			<form name="form-test" onsubmit="return askException"
 			 method="get" action = "${cp}/service/questionInsert.do">
 				<div class="row">
-					<input type="hidden" value="1" name="num">
+					<input type="hidden" value="${memNum}" name="num">
 					<div class="col-xs-6 form-group">
 						<label for="name"> 이름 </label> <input type="text" id="name"
 							name="name" class="form-control" value="${memName}">
