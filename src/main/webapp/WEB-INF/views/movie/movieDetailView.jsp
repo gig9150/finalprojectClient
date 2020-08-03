@@ -108,7 +108,7 @@
 	color: gray;
 	padding: 10px;
 	outline: 0;
-	border-bottom: 1px solid #ccc !important;
+	/*border-bottom: 1px solid #ccc !important;*/
 }
 
 #btn_review.on {
@@ -287,17 +287,15 @@ button {
 
 						<li style="width: 100%;">
 
-							<div id="btn_group22">
-
 								<button id="btn_detail" class="on" style="width: 49%">
 
-									<span style="font-size: 16px;">영화상세정보</span>
+								영화상세정보
 
 								</button>
 
 								<button id="btn_review" style="width: 49%;">
 
-									<span style="font-size: 16px;">평점 및 관람평(${reviewCount })</span>
+								평점 및 관람평(${reviewCount })
 
 								</button>
 
@@ -339,7 +337,6 @@ button {
 											<button type="submit" id="btnComment" class="btn_submit">관람평 작성</button>
 									</div>
 								</div>
-							</div>
 						</li>
 					</ul>
 				</div>
@@ -459,7 +456,7 @@ button {
 		
 				$('#btnComment').on('click',function(e){
 					e.preventDefault();
-					if('${empty memId}'){
+					if('${empty memNum}'){
 						location.href="${cp}/log/login.do";
 						//functionAjax();
 					}else{
