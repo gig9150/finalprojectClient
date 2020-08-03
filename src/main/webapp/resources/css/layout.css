@@ -388,7 +388,7 @@ header > .container .search-box input[type="submit"] {
 .slider {
   background-color: #120c0b;
   position: absolute;
-  bottom: 100px;
+  bottom: 180px;
   z-index: 1;
 }
 
